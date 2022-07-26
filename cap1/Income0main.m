@@ -1,3 +1,6 @@
+
+%% Analysis of fanplot and score test for datasets Income1 and Income2
+
 %% Data loading
 clear
 inc1=1;
@@ -27,7 +30,7 @@ if prin==1
        print -depsc fanIncome2.eps;
 end
 
-%% Computaion of statistics
+%% Compute statistics in the original and transformed scale
 ysor=sort(y);
 
 
