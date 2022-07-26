@@ -121,13 +121,6 @@ yline(0)
 sum(abs([psiderHU(:) psiderHA(:) psiderTB(:) psiderHYP(:) psiderOPT(:) psiderPD(:)]))
 
 dd=100;
-% iHU=integral(@(u)abs(HUpsider(u,cHU)),-dd,dd);
-% iHA=integral(@(u)abs(HApsider(u,cHA)),-dd,dd);
-% iTB=integral(@(u)abs(TBpsider(u,cTB)),-dd,dd);
-% iHYP=integral(@(u)abs(HYPpsider(u,[cHYP 4.5])),-dd,dd);
-% iOPT=integral(@(u)abs(OPTpsider(u,cOPT)),-dd,dd);
-% iPD=integral(@(u)abs(PDpsider(u,cPD)),-dd,dd);
-
 iHU=integral(@(u)abs(HUpsider(u,cHU)).^2.*normpdf(u),-dd,dd);
 iHA=integral(@(u)abs(HApsider(u,cHA)).^2.*normpdf(u),-dd,dd);
 iTB=integral(@(u)abs(TBpsider(u,cTB)).^2.*normpdf(u),-dd,dd);
@@ -135,15 +128,12 @@ iHYP=integral(@(u)abs(HYPpsider(u,[cHYP 4.5])).^2.*normpdf(u),-dd,dd);
 iOPT=integral(@(u)abs(OPTpsider(u,cOPT)).^2.*normpdf(u),-dd,dd);
 iPD=integral(@(u)abs(PDpsider(u,cPD)).^2.*normpdf(u),-dd,dd);
 
-% iHU=integral(@(u)abs(HUpsider(u,cHU)).*normpdf(u),-dd,dd);
-% iHA=integral(@(u)abs(HApsider(u,cHA)).*normpdf(u),-dd,dd);
-% iTB=integral(@(u)abs(TBpsider(u,cTB)).*normpdf(u),-dd,dd);
-% iHYP=integral(@(u)abs(HYPpsider(u,[cHYP 4.5])).*normpdf(u),-dd,dd);
-% iOPT=integral(@(u)abs(OPTpsider(u,cOPT)).*normpdf(u),-dd,dd);
-% iPD=integral(@(u)abs(PDpsider(u,cPD)).*normpdf(u),-dd,dd);
-
-
-[iHU iHA  iTB iHYP iOPT iPD]
+disp("Show values of area")
+nam=["HU" "HA" "TB" "HYP" "OPT" "PD"];
+areas=[iHU iHA  iTB iHYP iOPT iPD];
+% Analysis of CVS under the normal model for 5 link functions, after fixing bdp = 0.5 and
+% eff =0.95 
+CVS=array2table(areas,"VariableNames",nam)
 
 if prin==1
     % print to postscript
