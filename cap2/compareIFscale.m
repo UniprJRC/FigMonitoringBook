@@ -23,45 +23,6 @@ xlim1=min(x);
 xlim2=max(x);
 dd=100;
 
-% % k = supCVC paramter in HYP link
-% k=4.5;
-% 
-% if bdpboo ==true
-%     bdp=0.5;
-%     cHA=HAbdp(bdp,1);
-%     cTB=TBbdp(bdp,1);
-%     [cHYP,A,B,d]=HYPbdp(bdp,1,k);
-% 
-%     cOPT=OPTbdp(bdp,1);
-%     cPD=PDbdp(bdp);
-% else
-%     cHA=HAeff(eff,1);
-%     cTB=TBeff(eff,1);
-%     cHYP=HYPeff(eff,1,k);
-%     cOPT=OPTeff(eff,1);
-%     cPD=PDeff(eff);
-% end
-% 
-% rhoHAsup=HArho(200000,cHA);
-% kHA=rhoHAsup*bdp;
-% 
-% % kc = E(rho) = sup(rho)*bdp
-% rhoTBsup=cTB^2/6;
-% kTB=rhoTBsup*bdp;
-% 
-% rhoHYPsup=HYPrho(200000,[cHYP,k,A,B,d]);
-% kHYP=rhoHYPsup*bdp;
-% 
-% rhoOPTsup=OPTrho(200000,cOPT);
-% kOPT=rhoOPTsup*bdp;
-% 
-% rhoPDsup=PDrho(200000,cPD);
-% kPD=rhoPDsup*bdp;
-% 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
-% cOPT=cOPT/3;
 
 % k = supCVC parameter in HYP link
 k=4.5;
@@ -128,7 +89,6 @@ else
 end
 
 
- %   cOPT=cOPT/3;
 
 % iHU =integral(@(u)u.*(HUpsi(u,cHU)).*normpdf(u),-dd,dd);
 iHA =integral(@(u)u.*(HApsi(u,cHA)).*normpdf(u),-dd,dd);
