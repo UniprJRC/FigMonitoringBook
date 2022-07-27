@@ -43,7 +43,7 @@ set(gca,"XDir","reverse")
 prin=0;
 if prin==1
     % print to postscript
-    print -depsc trimmean.eps;
+    print -depsc trimmeanIncome1.eps;
 end
 
 %% Create figure histbox
