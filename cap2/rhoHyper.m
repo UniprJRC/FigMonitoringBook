@@ -3,6 +3,8 @@
 % Plot of rho function.
 close all
 yl=0.25;
+lw=2;
+prin=0;
 subplot(2,2,1)
 hold('on')
 x=-7:0.1:7;
