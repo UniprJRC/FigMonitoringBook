@@ -1,13 +1,13 @@
 %% This file is referrd to dataset Income2
-% 1) monitors the trimmed mean 
-% 2) plots it 
+% 1) monitors the trimmed mean
+% 2) plots it
 % 3) create histbox: Income data
 % histogram and boxplot; positive
 % skewness is evident in both panels.
 % 4) creates boxlaIncome2: boxplots for four values of 𝜆 using the
 % normalized Box Cox power transformation after preliminary rescaling of the data to a maximum
-% value of one. 
-% 5) Compute the score tests 
+% value of one.
+% 5) Compute the score tests
 
 %% Data loading
 clear
@@ -23,10 +23,11 @@ for i=1:lalphaAll
     m=floor((n-1)*alphaAll(i));
     meanTru(i)=mean(ysor(m+1:n-m));
     % meanTru1(i)=trimmean(y,100*alphaAll(i));
-    
+
 end
 
 %% Create figure trimmeanIncome2.eps
+close all
 FontSize=14;
 plot(alphaAll,meanTru)
 xlabel('\alpha','FontSize',FontSize)
@@ -48,13 +49,14 @@ if prin==1
 end
 
 %% Create figure histbox
- subplot(1,2,1)
- histogram(y)
- xlabel('Income','FontSize',FontSize)
- ylabel('Frequencies','FontSize',FontSize)
+close all
+subplot(1,2,1)
+histogram(y)
+xlabel('Income','FontSize',FontSize)
+ylabel('Frequencies','FontSize',FontSize)
 subplot(1,2,2)
- boxplot(y,'Labels',{''})
- ylabel('Income','FontSize',FontSize)
+boxplot(y,'Labels',{''})
+ylabel('Income','FontSize',FontSize)
 prin=0;
 if prin==1
     % print to postscript
@@ -94,13 +96,13 @@ ylim([yl1 yl2])
 subplot(2,3,5)
 ytra=normBoxCox(yrs,1,-1,'Jacobian',true);
 boxplot(ytra,'Labels',{''})
-title('$\lambda=-0.5$','Interpreter','latex','FontSize',FontSize)
+title('$\lambda=-1$','Interpreter','latex','FontSize',FontSize)
 ylim([yl1 yl2])
 
 subplot(2,3,6)
-ytra=normBoxCox(yrs,1,-0.5,'Jacobian',true);
+ytra=normBoxCox(yrs,1,-1.5,'Jacobian',true);
 boxplot(ytra,'Labels',{''})
-title('$\lambda=-0.5$','Interpreter','latex','FontSize',FontSize)
+title('$\lambda=-1.5$','Interpreter','latex','FontSize',FontSize)
 ylim([yl1 yl2])
 
 prin=0;
