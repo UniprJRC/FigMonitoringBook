@@ -1,5 +1,4 @@
 % Create figures MD4 and MD4bis
-
 %%  Prepare the input for MD4
 bdp=0.01:0.01:0.5;
 tol=1e-8;
@@ -136,6 +135,7 @@ end
 
 %% close all
 close all
+lwd=2.5;
 subplot(1,2,1)
 hold('on')
 plot(bdp,EFF(:,1),'LineWidth',lwd,'Color','b','LineStyle','-');

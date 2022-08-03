@@ -32,58 +32,27 @@ if bdpboo ==true
     [cHYP,A,B,d]=HYPbdp(bdp,1,k);
     cOPT=OPTbdp(bdp,1);
     cPD=PDbdp(bdp);
-
-
-    rhoHYPsup=HYPrho(200000,[cHYP,k,A,B,d]);
-    kHYP=rhoHYPsup*bdp;
-
-    rhoOPTsup=OPTrho(200000,cOPT);
-    kOPT=rhoOPTsup*bdp;
-
-    rhoPDsup=PDrho(200000,cPD);
-    kPD=rhoPDsup*bdp;
-
-    rhoHAsup=HArho(200000,cPD);
-    kHA=rhoPDsup*bdp;
-
-    rhoTBsup=cTB^2/6;
-    kTB=rhoTBsup*bdp;
-
 else
     % Fix eff to 0.95 and find corresponding bdp
     cHA=HAeff(eff,1);
-    rhoHAsup=HArho(200000,cHA);
-    % Find bdp associated to eff
     [bdpHA,efftest]=HAc(cHA,1);
     assert(abs(eff-efftest)<1e-5,"Lack of convergence on HA")
-    kHA=rhoHAsup*bdpHA;
-
 
     [cHYP,A,B,d]=HYPeff(eff,1,k);
-    rhoHYPsup=HYPrho(200000,[cHYP,k]);
     [bdpHYP,efftest]=HYPc(cHYP,1,'k',k);
     assert(abs(eff-efftest)<1e-5,"Lack of convergence in HYP")
-    kHYP=rhoHYPsup*bdpHYP;
-
 
     cOPT=OPTeff(eff,1);
-    rhoOPTsup=OPTrho(200000,cOPT);
     [bdpOPT,efftest]=OPTc(cOPT,1);
     assert(abs(eff-efftest)<1e-5,"Lack of convergence in OPT")
-    kOPT=bdpOPT*rhoOPTsup;
 
     cPD=PDeff(eff);
-    rhoPDsup=1;
     [bdpPD,efftest]=PDc(cPD);
-    assert(abs(eff-efftest)<1e-5,"Lack of convergence in TB")
-    kPD=bdpPD*rhoOPTsup;
+    assert(abs(eff-efftest)<1e-5,"Lack of convergence in PD")
 
     cTB=TBeff(eff,1);
-    % kc = E(rho) = sup(rho)*bdp
     [bdpTB,efftest]=TBc(cTB,1);
     assert(abs(eff-efftest)<1e-5,"Lack of convergence in TB")
-    rhoTBsup=cTB^2/6;
-    kTB=rhoTBsup*bdpTB;
 end
 
 
@@ -127,7 +96,7 @@ if bdpboo ==true
     plot(x,y,'LineWidth',LineWidth,'LineStyle',linst{6})
     ylim([ylim1 ylim2])
     legend(["TB" "HA"  "HYP"  "OPT" "PD" "Me"],'Location','best','AutoUpdate','off')
-    max([y ifTB ifHA ifHYP ifOPT ifPD])';
+    max([y ifTB ifHA ifHYP ifOPT ifPD])'
 
 else
     legend(["TB" "HA"  "HYP"  "OPT" "PD"],'Location','best','AutoUpdate','off')
