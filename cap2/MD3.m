@@ -3,7 +3,13 @@
 %Analysis of breakdown point and asymptotic efficiency
 %at the normal distribution as a function of alpha in regression.
 c=0.01:0.01:3;
-[bdp,eff]=PDc(c);
+
+bdp=zeros(length(c), 1);
+eff=zeros(length(c), 1);
+for j=1:length(c)
+    [bdp(j),eff(j)]=PDc(c(j));
+end
+
 subplot(2,1,1)
 plot(c,bdp)
 xlabel('$\alpha$','Interpreter','Latex','FontSize',16)
