@@ -3,13 +3,35 @@
 % Then use Student T with 2, 2.1, 2.2, ..., 10 degrees of
 % Plot the value of the ARE(mean,median) empirical and theoretical
 
-%% Compare ARE(mean,median) under the normal distribution
-n=100;
+%% ARE curve as function of degrees of freedom
+% Var(sample mean)/Var(sample median)
+    varmedian=1/(2*normpdf(0))^2;
+    varmean=1;
+    VarRatio=varmean/varmedian;
+
+    %% Compare ARE(mean,median) under the normal distribution
+n=10000000;
 nsimul=10000;
 meandistr=zeros(nsimul,1);
 mediandistr=zeros(nsimul,1);
 
-for j=1:nsimul
+parfor j=1:nsimul
+    y=randn(n,1);
+    meandistr(j)=mean(y);
+    mediandistr(j)=median(y);
+end
+
+disp('ARE(mean,median) empirical when N(0.1)')
+disp(var(meandistr)/var(mediandistr))
+
+
+%% Compare ARE(mean,median) under the normal distribution
+n=100000;
+nsimul=10000;
+meandistr=zeros(nsimul,1);
+mediandistr=zeros(nsimul,1);
+
+parfor j=1:nsimul
     y=randn(n,1);
     meandistr(j)=mean(y);
     mediandistr(j)=median(y);
