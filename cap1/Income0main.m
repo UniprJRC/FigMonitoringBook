@@ -31,6 +31,9 @@ if prin==1
 end
 
 %% Compute statistics in the original and transformed scale
+
+% Table 1.2 and Table 1.4 with lambda=-1 or lambda=-1.5
+
 ysor=sort(y);
 
 
@@ -77,6 +80,11 @@ madn=consfact*mad(y,1);
 loc1=[mea; meanTri; medi; sta; madn];
 
 LOC=[loc loc1]
+
+% The columns of Table 1.2
+loc
+loc1
+
 
 %
 %     Xori=ones(n,1);

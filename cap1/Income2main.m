@@ -112,5 +112,7 @@ if prin==1
 end
 
 %% Analysis of the score test
+% Table 1.3
 one=ones(n,1);
-out=Score(y,one)
+out=Score(y,one, 'la',[-1.5 -1 -0.5 0 0.5 1])
+disp(out.Score)
