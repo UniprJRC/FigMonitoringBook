@@ -96,10 +96,14 @@ if bdpboo ==true
     plot(x,y,'LineWidth',LineWidth,'LineStyle',linst{6})
     ylim([ylim1 ylim2])
     legend(["TB" "HA"  "HYP"  "OPT" "PD" "Me"],'Location','best','AutoUpdate','off')
+
+    % Tabke 2.1, column 2
     max([y ifTB ifHA ifHYP ifOPT ifPD])'
 
 else
     legend(["TB" "HA"  "HYP"  "OPT" "PD"],'Location','best','AutoUpdate','off')
+    
+    % Table 2.1, column 3
     max([ifTB ifHA ifHYP ifOPT ifPD])'
 
 end
