@@ -132,11 +132,15 @@ if bdpboo ==true
     ylim2=1.5;
     ylim([ylim1 ylim2])
     legend(["TB" "HA"  "HYP"  "OPT" "PD" "MADn"],'Location','best','AutoUpdate','off')
-max([y ifTB ifHA ifHYP ifOPT ifPD])'
+
+    % Table 2.1, column 4
+    max([y ifTB ifHA ifHYP ifOPT ifPD])'
 
 else
     legend(["TB" "HA"  "HYP"  "OPT" "PD"],'Location','best','AutoUpdate','off')
-max([ifTB ifHA ifHYP ifOPT ifPD])'
+
+    % Table 2.1, column 5
+    max([ifTB ifHA ifHYP ifOPT ifPD])'
 
 end
 

@@ -131,6 +131,8 @@ iPD=integral(@(u)abs(PDpsider(u,cPD)).^2.*normpdf(u),-dd,dd);
 disp("Show values of area")
 nam=["HU" "HA" "TB" "HYP" "OPT" "PD"];
 areas=[iHU iHA  iTB iHYP iOPT iPD];
+
+% Table 2.2
 % Analysis of CVS under the normal model for 5 link functions, after fixing bdp = 0.5 and
 % eff =0.95 
 CVS=array2table(areas,"VariableNames",nam)

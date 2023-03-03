@@ -57,7 +57,7 @@ ylabel('Income','FontSize',FontSize)
 prin=0;
 if prin==1
     % print to postscript
-    print -depsc boxla.eps;
+    print -depsc histbox.eps;
 end
 
 
@@ -93,9 +93,12 @@ ylim([yl1 yl2])
 prin=0;
 if prin==1
     % print to postscript
-    print -depsc histbox.eps;
+    print -depsc boxla.eps;
 end
 
 %% Analysis of the score test
+% Table 1.1
+
 one=ones(n,1);
-out=Score(y,one)
+out=Score(y,one, 'la', [-1, -0.5, 0, 0.5, 1]);
+disp(out.Score);
