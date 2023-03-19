@@ -19,6 +19,7 @@ outfillm=fitlm(Xall,yori,'exclude','');
 
 
 %% Create Figure fanplotori 
+%% Figure 9: 
 % (top panel)
 ylimy=20;
 nini=100;
@@ -127,8 +128,21 @@ if prin==1
 end
 
 
-
 %% Create fanplottra
+%% Figure 10: Extended fanplot for lambda_P=1 and lambda_n=0.5, 0.25 and 0.0
+
+% (top panel)
+yTOP=normYJpn(yori, [], [1, 0.5], 'inverse',false, 'Jacobian', false);
+outpnTOP=FSRfan(yTOP,Xall,'la',1,'family','YJpn','plots',1,'init',round(nini/2));
+
+% (middle panel)
+yMID=normYJpn(yori, [], [1, 0.25], 'inverse',false, 'Jacobian', false);
+outpnMID=FSRfan(yMID,Xall,'la',1,'family','YJpn','plots',1,'init',round(nini/2));
+
+% (bottom panel)
+yBOT=normYJpn(yori, [], [1, 0.0], 'inverse',false, 'Jacobian', false);
+outpnBOT=FSRfan(yBOT,Xall,'la',1,'family','YJpn','plots',1,'init',round(nini/2));
+
 close all
 nr=3; nc=1;
 ylim1=-10;
@@ -252,7 +266,8 @@ if prin==1
 end
 
 
-%%  Figure 7
+%%  Figure 11: scatterplot of the transformed data
+ymod=normYJpn(yori, [], [1, 0], 'inverse',false, 'Jacobian', false);
 seq=1:length(ymod);
 group=ones(length(ymod),1);
 group(seq(booneg))=2;

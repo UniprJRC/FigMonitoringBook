@@ -34,10 +34,12 @@ load('loyalty.txt');
 y=loyalty(:,4); %#ok<SUSENS>
 X=loyalty(:,1:3);
 n=length(y);
-[outFSRfan]=FSRfan(y,X,'plots',1,'init',round(n*0.3),'nsamp',10000,'la',[-1:0.1:1],'msg',0);
+%la=[-1:0.1:1];
+la=[0:0.1:1];
+[outFSRfan]=FSRfan(y,X,'plots',1,'init',round(n*0.3),'nsamp',10000,'la',la,'msg',0);
 if prin==1
     % print to postscript
-    print -depsc figs\L1.eps
+    print -depsc figs\L2a.eps
 end
 
 
@@ -65,13 +67,18 @@ plot(mdr(end-rr:end,1),mdr(end-rr:end,2),'LineWidth',1.5,'color','r');
         
 %% Figure L4: resfwdplot with outliers highlighted
 % Monitoring scaled residuals with all default parameters
+standard=struct;
+standard.xlim=[0,500];
+standard.ylim=[-6.5, 2.5];
+standard.labx='';
+standard.laby='';
 fground=struct;
 fground.funit=outl;
 fground.Color={'r'};
 fground.flabstep='';
 bground=struct;
 bground.bthresh=4;
-resfwdplot(outEDA,'fground',fground,'bground',bground);
+resfwdplot(outEDA,'fground',fground,'bground',bground, 'standard', standard);
 
 %% Figure L5: 
 % Transformed loyalty cards data: scatterplot against 𝑥1. The 18 outliers detected plotted as
@@ -89,5 +96,9 @@ close all
 j=3;
     plot(outEDA.Bols(:,1),outEDA.Bols(:,3),'LineWidth',2)
     xlim([10 510])
-    xlabel('Subset size m');
+    % xlabel('Subset size m');
     % ylabel(nameX(j-2));
+    ylabel('$\hat \beta_{1}$','Interpreter','Latex','FontSize',14)
+    
+    hold('on')
+    plot(outEDA.Bols(end-rr:end,1), outEDA.Bols(end-rr:end,3),'.','color','r', 'MarkerSize',14);
