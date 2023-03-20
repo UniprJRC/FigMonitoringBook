@@ -116,14 +116,19 @@ end
 
 
 %% Prepare the data for figure 13
-booneg=yori<=0;
-la=1.5;
-yneg=normYJ(yori(booneg),[],la,'inverse',false,'Jacobian',false);
-la=0.5;
-ypos=normYJ(yori(~booneg),[],la,'inverse',false,'Jacobian',false);
-ytra=yori;
-ytra(booneg)=yneg;
-ytra(~booneg)=ypos;
+
+% Why not use normJpn() instead of normYJ() separately for positive and negative?
+%booneg=yori<=0;
+%la=1.5;
+%yneg=normYJ(yori(booneg),[],la,'inverse',false,'Jacobian',false);
+%la=0.5;
+%ypos=normYJ(yori(~booneg),[],la,'inverse',false,'Jacobian',false);
+%ytra=yori;
+%ytra(booneg)=yneg;
+%ytra(~booneg)=ypos;
+
+ytra=normYJpn(yori, [], [0.5, 1.5], 'inverse',false, 'Jacobian', false);
+
 outpn=FSRfan(ytra,X,'intercept',1,'plots',0,'family','YJpn','la',1);
 
 % Create high quality figure 13 (Extended fan plot transf. data)
