@@ -1,4 +1,4 @@
-%% This file is referre to dataset Income1
+%% This file is referred to dataset Income1
 % 1) monitors the trimmed mean 
 % 2) plots it 
 % 3) create histbox: Income data
@@ -12,41 +12,13 @@
 %% Data loading
 clear
 load Income1;
-y=Income1{:,"HOTHVAL"};
+y=Income1{:,"HTOTVAL"};
 n=length(y);
-alphaAll=(0:0.01:0.5)';
-lalphaAll=length(alphaAll);
-meanTru=zeros(lalphaAll,1);
-% meanTru1=meanTru;
-ysor=sort(y);
-for i=1:lalphaAll
-    m=floor((n-1)*alphaAll(i));
-    meanTru(i)=mean(ysor(m+1:n-m));
-    % meanTru1(i)=trimmean(y,100*alphaAll(i));
-end
 
-%% Create figure trimmean.eps
+close all
 FontSize=14;
-plot(alphaAll,meanTru)
-xlabel('\alpha','FontSize',FontSize)
-xlim([0 0.5])
-meany=mean(y);
-mediany=median(y);
-yline(meany)
-yline(mediany)
-ylabel('$\overline y_\alpha$','Interpreter','latex','FontSize',FontSize)
-text(0.45,meany+400,"$\hat \mu = \overline y_n$",'Interpreter','latex','FontSize',FontSize)
-text(0.15,mediany+300,"Me",'Interpreter','latex','FontSize',FontSize)
 
-set(gca,"XDir","reverse")
-
-prin=0;
-if prin==1
-    % print to postscript
-    print -depsc trimmeanIncome1.eps;
-end
-
-%% Create figure histbox
+%% Create figure histbox (Figure 1.2)
 subplot(1,2,1)
 histogram(y)
 xlabel('Income','FontSize',FontSize)
@@ -60,8 +32,7 @@ if prin==1
     print -depsc histbox.eps;
 end
 
-
-%% Create figure trimmean.eps
+%% Create figure trimmean.eps (Figure 1.3)
 yl1=-1;
 yl2=0;
 yrs=y/max(y);
@@ -100,5 +71,63 @@ end
 % Table 1.1
 
 one=ones(n,1);
-out=Score(y,one, 'la', [-1, -0.5, 0, 0.5, 1]);
+out=Score(y,one, 'la', [-1, -0.5, 0, 0.5, 1],'intercept',false);
 disp(out.Score);
+
+%% Descriptive statistics
+ysor=sort(y);
+
+
+alpha=0.10;
+m=floor((n-1)*alpha);
+meanTri=mean(ysor(m+1:n-m));
+% meanTriCHK=trimmean(y,100*alpha)
+mea=mean(y);
+medi=median(y);
+sta=std(y);
+consfact=1/norminv(0.75);
+madn=consfact*mad(y,1);
+
+loc=[mea; meanTri; medi; sta; madn];
+
+%% Trimmed mean monitoring
+alphaAll=(0:0.01:0.5)';
+lalphaAll=length(alphaAll);
+meanTru=zeros(lalphaAll,1);
+% meanTru1=meanTru;
+ysor=sort(y);
+for i=1:lalphaAll
+    m=floor((n-1)*alphaAll(i));
+    meanTru(i)=mean(ysor(m+1:n-m));
+    % meanTru1(i)=trimmean(y,100*alphaAll(i));
+end
+
+%% Create figure which monitors the trimmed mean (Fig 1.4)
+% trimmean.eps 
+figure
+plot(alphaAll,meanTru)
+xlabel('\alpha','FontSize',FontSize)
+xlim([0 0.5])
+meany=mean(y);
+mediany=median(y);
+yline(meany)
+yline(mediany)
+ylabel('$\overline y_\alpha$','Interpreter','latex','FontSize',FontSize)
+text(0.45,meany-1000,"$\hat \mu = \overline y_n$",'Interpreter','latex','FontSize',FontSize)
+text(0.15,mediany+300,"Me",'Interpreter','latex','FontSize',FontSize)
+
+set(gca,"XDir","reverse")
+
+prin=0;
+if prin==1
+    % print to postscript
+    print -depsc trimmeanIncome1.eps;
+end
+
+
+
+
+
+
+
+
