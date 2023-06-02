@@ -30,7 +30,7 @@ Figures 1.2, 1.3., Table 1.1, 1.2,  Figure 1.4 and Figure 1.5
  **Univariate income data from a municipality in north of Italy**
 
 
- Exercise 1.4, Table 1.3, 1.4 and and Figure 1.6 
+ Exercise 1.4, Table 1.3, 1.4 and Figure 1.6 
  [Code](https://github.com/UniprJRC/FigMonitoringBook/blob/main/cap1/Income2main.m).
 
 
