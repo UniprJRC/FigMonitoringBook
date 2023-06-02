@@ -42,14 +42,14 @@ figure;
 h1=subplot(2,1,1);
 eff=0.90;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
-resindexplot(out,'h',h1,'conflev',conflev);
+resindexplot(out,'h',h1,'conflev',conflev,'numlab',{6});
 ylabel(['Eff.=' num2str(eff)])
 h2=subplot(2,1,2);
 eff=0.95;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
-resindexplot(out,'h',h2,'conflev',conflev);
+resindexplot(out,'h',h2,'conflev',conflev,'numlab',{4});
 ylabel(['Eff.=' num2str(eff)])
-
+prin=0;
 if prin==1
     % print to postscript
     print -depsc ARtradrobMM.eps;
