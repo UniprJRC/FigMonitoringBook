@@ -32,7 +32,7 @@ if prin==1
     print -depsc histbox.eps;
 end
 
-%% Create figure trimmean.eps (Figure 1.3)
+%% Create Figure 1.3: boxplots for four value of lamnìbda
 yl1=-1;
 yl2=0;
 yrs=y/max(y);
@@ -89,7 +89,7 @@ consfact=1/norminv(0.75);
 madn=consfact*mad(y,1);
 
 loc=[mea; meanTri; medi; sta; madn];
-
+disp(loc)
 %% Trimmed mean monitoring
 alphaAll=(0:0.01:0.5)';
 lalphaAll=length(alphaAll);
