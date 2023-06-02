@@ -1,13 +1,11 @@
 %% This file is referred to dataset Income1
+% income data from the United States Census Bureau
+% Univariate analysis of the response
+
 % 1) monitors the trimmed mean 
 % 2) plots it 
 % 3) create histbox: Income data
-% from the United States Census Bureau: histogram and boxplot; positive
-% skewness is evident in both panels.
-% 4) creates boxla: boxplots for four values of 𝜆 using the
-% normalized Box Cox power transformation after preliminary rescaling of the data to a maximum
-% value of one. 
-% 5) Compute the score tests (table lam1)
+% from the United States Census Bureau: 
 
 %% Data loading
 clear
@@ -19,6 +17,8 @@ close all
 FontSize=14;
 
 %% Create figure histbox (Figure 1.2)
+% histogram and boxplot; positive
+% skewness is evident in both panels.
 subplot(1,2,1)
 histogram(y)
 xlabel('Income','FontSize',FontSize)
@@ -33,6 +33,9 @@ if prin==1
 end
 
 %% Create Figure 1.3: boxplots for four value of lamnìbda
+% boxla: boxplots for four values of 𝜆 using the
+% normalized Box Cox power transformation after preliminary rescaling of the data to a maximum
+% value of one. 
 yl1=-1;
 yl2=0;
 yrs=y/max(y);
@@ -69,14 +72,13 @@ end
 
 %% Analysis of the score test
 % Table 1.1
-
 one=ones(n,1);
 out=Score(y,one, 'la', [-1, -0.5, 0, 0.5, 1],'intercept',false);
 disp(out.Score);
 
 %% Descriptive statistics
+% Table 1.2
 ysor=sort(y);
-
 
 alpha=0.10;
 m=floor((n-1)*alpha);
