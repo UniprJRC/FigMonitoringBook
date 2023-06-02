@@ -1,4 +1,5 @@
 %% This file is referrd to dataset Income2
+% Exercise 1.4,  Table 1.3, 1.4 and Figure Figure 1.6, 
 
 %% Data loading
 clear

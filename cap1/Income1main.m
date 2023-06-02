@@ -1,11 +1,9 @@
 %% This file is referred to dataset Income1
-% income data from the United States Census Bureau
-% Univariate analysis of the response
+% Univariate analysis of the response for dataset income1 
+% It creates 
+% Figures 1.2, 1.3., Table 1.1, 1.2 
+% Figure 1.4 and Figure 1.5
 
-% 1) monitors the trimmed mean 
-% 2) plots it 
-% 3) create histbox: Income data
-% from the United States Census Bureau: 
 
 %% Data loading
 clear
