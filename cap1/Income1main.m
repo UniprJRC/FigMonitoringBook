@@ -91,7 +91,23 @@ consfact=1/norminv(0.75);
 madn=consfact*mad(y,1);
 
 loc=[mea; meanTri; medi; sta; madn];
-disp(loc)
+
+
+y1=log(y);
+ysor1=sort(y1);
+meanTri1=mean(ysor1(m+1:n-m));
+mea1=mean(y1);
+medi1=median(y1);
+sta1=std(y1);
+madn1=consfact*mad(y1,1);
+
+loc1=[mea1; meanTri1; medi1; sta1; madn1];
+
+LOC=[loc loc1];
+rn=["Mean" "Trimmed mean" "Median" "Standard Deviation" "MADN"];
+LOCt=array2table(LOC,'RowNames',rn);
+disp(LOCt)
+
 %% Trimmed mean monitoring
 alphaAll=(0:0.01:0.5)';
 lalphaAll=length(alphaAll);
@@ -127,9 +143,16 @@ if prin==1
 end
 
 
+%% Create Figure 1.5 fanplot
+% Fanplot using just the intercept
+outFSRfanUNI=FSRfan(y,ones(n,1),'intercept',0,'ylimy',[-24 26],'nsamp',0);
+title('')
 
-
-
+prin=0;
+if prin==1
+    % print to postscript
+    print -depsc fanIncome1.eps;
+end
 
 
 
