@@ -472,7 +472,7 @@ if prin==1
     print -depsc figs\MD3.eps;
 end
 
-%% Marketing data: show details of best solution, create Figure 7.24
+%% Marketing data: show details of best solution, create Figure 7.23
 close all
 j=1;
 outj=VALtfin{j,"Out"};
@@ -494,7 +494,7 @@ fitlm(out.tX,out.ty,'Exclude','')
 % first-order model without transformation of the response or of the
 % explanatory variables
 
-%% Create Figure 7.25
+%% Create Figure 7.24
 close all
 % In the paper just the two top panels have been shown
 aceplot(out,'oneplot',true)
