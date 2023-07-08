@@ -1,5 +1,4 @@
-# Chapter 8
-Extensions of the Multiple Regression Model
+# Chapter 8: Extensions of the Multiple Regression Model
 
 ## Section 8.6.2 Analysing the face masks dataset with random start Forward Searches
 
