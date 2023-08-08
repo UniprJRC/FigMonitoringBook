@@ -49,7 +49,7 @@ xlabel('Ordered fitted values','FontSize',14)
 ylabel('Reciprocal of smoothed residuals ($v$)','Interpreter','latex', ...
     'FontName','Courier New','FontSize',16)
 vec_pos = get(get(gca, 'XLabel'), 'Position');
-set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.5 0]);
+set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.9 0],'Interpreter','latex');
 set(gca,"Xtick",'')
 prin=0;
 if prin==1
@@ -96,7 +96,7 @@ xlabel('Ordered fitted values','FontSize',14)
 ylabel('Reciprocal of smoothed residuals ($v$)','Interpreter','latex', ...
     'FontName','Courier New','FontSize',16)
 vec_pos = get(get(gca, 'XLabel'), 'Position');
-set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.5 0]);
+set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.9 0],'Interpreter','latex');
 set(gca,"Xtick",'')
 
 vbar=mean(smoothresm1Ordyhat(1:ngood));
@@ -154,10 +154,10 @@ text(yhatord(sel),smoothresm1Ordyhat(sel),vstr,'Interpreter','latex', ...
 
 
 xlabel('Ordered fitted values','FontSize',14)
-ylabel('\textsf{Reciprocal of smoothed residuals} ($v$)','Interpreter','latex', ...
+ylabel('Reciprocal of smoothed residuals ($v$)','Interpreter','latex', ...
     'FontName','Times New Roman','FontSize',16)
 vec_pos = get(get(gca, 'XLabel'), 'Position');
-set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.5 0]);
+set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.9 0],'Interpreter','latex');
 set(gca,"Xtick",'')
 
 vbar=mean(smoothresm1Ordyhat(1:ngood));
@@ -216,7 +216,7 @@ xlabel('Ordered fitted values','FontSize',14)
 ylabel('Reciprocal of smoothed residuals ($v$)','Interpreter','latex', ...
     'FontName','Helvetica','FontSize',16)
 vec_pos = get(get(gca, 'XLabel'), 'Position');
-set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.5 0]);
+set(get(gca, 'XLabel'), 'Position', vec_pos + [0 -0.9 0],'Interpreter','latex');
 set(gca,"Xtick",'')
 
 vbar=mean(smoothresm1Ordyhat(1:ngood));
