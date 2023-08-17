@@ -8,6 +8,8 @@ out.bs
 outFS=FSReda(y,X,out.bs);
 yXplot(outFS,'databrush',1,'selunit',[])
 
+%% Monitoring scaled residuals 
+
 %% mdrplot in normal coordinates (to be used?)
 outFS=FSReda(y,X,out.bs);
 p=size(X,2)+1;
@@ -18,6 +20,7 @@ outFS1=outFS;
 outFS1.mdr=MDRinv(:,[1 3]);
 quant=[0.0100    0.5000    0.9900    0.9990    0.9999];
 mdrplot(outFS1,'ncoord',true,'quant',quant,'tag','mdrncoord')
+
 
 %% Monitoring of tstat from FS
 close all

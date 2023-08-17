@@ -180,5 +180,68 @@ if prin==1
 end
 
 
+%% 
+close all;
+clearvars;close all;
+load('hospitalFS.txt');
+y=hospitalFS(:,5);
+X=hospitalFS(:,1:4);
+n=length(y)
+group=ones(n,1);
+group(55:n)=2;
+fitlm([X group],y)
+[out]=FSRaddt(y,[X group],'plots',1,'nameX',{'X1','X2','X3' 'X4' 'dum'},'lwdenv',2,'lwdt',2);
+if prin==1
+    % print to postscript
+    print -depsc SPaddvarDUM.eps;
+end
 
 
+
+%% SD: analysis using S estimators with 2 values of breakdown point
+clearvars;close all;
+load('hospitalFS.txt');
+y=hospitalFS(:,5);
+X=hospitalFS(:,1:4);
+% 95 and 99 conflev
+conflev=[0.95 0.99];
+
+%% TB link
+% Sreg using two different level of breakdown point
+% Using bdp=0.5 it is clear that the first 54 units have a pattern of residuals
+% which is different from the remaining 54
+figure;
+h1=subplot(2,1,1);
+bdp=0.25;
+[out]=Sreg(y,X,'nsamp',3000,'bdp',bdp,'rhofunc','bisquare');
+resindexplot(out,'h',h1,'conflev',conflev);
+ylabel(['Breakdown point =' num2str(bdp)])
+h2=subplot(2,1,2);
+bdp=0.5;
+[out]=Sreg(y,X,'nsamp',3000,'bdp',bdp,'rhofunc','bisquare');
+resindexplot(out,'h',h2,'conflev',conflev);
+ylabel(['Breakdown point =' num2str(bdp)])
+if prin==1
+    % print to postscript
+    print -depsc SPStwobdp.eps;
+end
+
+%% PD LINK
+% Sreg using two different level of breakdown point
+% Using bdp=0.5 it is clear that the first 54 units have a pattern of residuals
+% which is different from the remaining 54
+figure;
+h1=subplot(2,1,1);
+bdp=0.25;
+[out]=Sreg(y,X,'nsamp',3000,'bdp',bdp,'rhofunc','mdpd');
+resindexplot(out,'h',h1,'conflev',conflev);
+ylabel(['Breakdown point =' num2str(bdp)])
+h2=subplot(2,1,2);
+bdp=0.5;
+[out]=Sreg(y,X,'nsamp',3000,'bdp',bdp,'rhofunc','mdpd');
+resindexplot(out,'h',h2,'conflev',conflev);
+ylabel(['Breakdown point =' num2str(bdp)])
+if prin==1
+    % print to postscript
+    print -depsc SPStwobdpPD.eps;
+end

@@ -4,8 +4,12 @@ y=bank_data{:,end};
 X=bank_data{:,1:end-1};
 [out]=LXS(y,X,'nsamp',100000);
 out.bs
+%% 
 outFS=FSReda(y,X,out.bs);
-
+resfwdplot(outFS)
+ if prin==1
+     print -depsc BDmonres.eps;
+ end
 %% Bruhsing from the yXplot
 yXplot(outFS,'databrush',1,'selunit',[])
 
@@ -13,7 +17,7 @@ prin=0;
 if prin==1
     % print to postscript
     print -depsc BDyXbrush.eps;
-    print -depsc BDmonres.eps;
+     print -depsc BDmonres.eps;
 end
 
 %% Monitoring of mdr with sign
