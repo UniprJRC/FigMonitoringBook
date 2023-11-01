@@ -137,3 +137,208 @@ nfore=10;
 outforeLTS = forecastTS(outLTS,'model',model,'nfore',nfore,'conflev',0.999,'titl',[titl ' - LTSts forecast']);
 
 
+%% Exercise 8.5 - Analysis of transformed Airline data
+
+% the original airline data (not contaminated)
+airlines = ...
+    [112  115  145  171  196  204  242  284  315  340  360  417    % Jan
+    118  126  150  180  196  188  233  277  301  318  342  391    % Feb
+    132  141  178  193  236  235  267  317  356  362  406  419    % Mar
+    129  135  163  181  235  227  269  313  348  348  396  461    % Apr
+    121  125  172  183  229  234  270  318  355  363  420  472    % May
+    135  149  178  218  243  264  315  374  422  435  472  535    % Jun
+    148  170  199  230  264  302  364  413  465  491  548  622    % Jul
+    148  170  199  242  272  293  347  405  467  505  559  606    % Aug
+    136  158  184  209  237  259  312  355  404  404  463  508    % Sep
+    119  133  162  191  211  229  274  306  347  359  407  461    % Oct
+    104  114  146  172  180  203  237  271  305  310  362  390    % Nov
+    118  140  166  194  201  229  278  306  336  337  405  432 ]; % Dec
+Y=(airlines(:));
+
+
+% figure generation
+figure;
+plot(Y,'Linewidth',1.5);
+%numpar = {'model parameters:' , 'A=1, B=2, G=1, $\delta_1=0$'};
+%title(gca,'Airline data','FontSize',20);
+xlabel('Month index, from 1949 to 1960','FontSize',18);
+ylabel('Thousands of passengers','FontSize',18);
+set(gca,'FontSize',18)
+
+% the model
+model           = struct;
+model.trend     = 1;     % linear trend
+model.seasonal  = 102;   % two harmonics with time varying seasonality           
+model.s         = 12;    % monthly time series
+model.lshift    = 0;     % no level shift
+
+% Default h is round(nT*0.75), i.e 25% breakdown point
+outLTS102 = LTSts(Y,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
+titl = {'model parameters for Airline data:' , 'A=1, B=2, G=1, $\delta_1=0$'};
+title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
+
+% quadratic grow of amplitude is too much
+model.seasonal  = 202;
+outLTS202 = LTSts(Y,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
+titl = {'model parameters for Airline data:' , 'A=1, B=2, G=2, $\delta_1=0$'};
+title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
+
+% then, transform the data and go back to linear grow of amplitude
+model.seasonal  = 102;
+Ylog = log(Y);
+outLTSlog102 = LTSts(Ylog,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
+titl = {'model parameters for log-transformed Airline data:' , 'A=1, B=2, G=1, $\delta_1=0$'};
+title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
+
+% or simply no grow of amplitude
+model.seasonal  = 2;
+Ylog = log(Y);
+outLTSlog2 = LTSts(Ylog,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
+titl = {'model parameters for log-transformed Airline data:' , 'A=1, B=2, G=0, $\delta_1=0$'};
+title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
+
+
+%% Exercise 8.5 - Monitoring the constructed variable and Box-Cox on the Airline data
+
+% the original airline data (not contaminated)
+airlines = ...
+    [112  115  145  171  196  204  242  284  315  340  360  417    % Jan
+    118  126  150  180  196  188  233  277  301  318  342  391    % Feb
+    132  141  178  193  236  235  267  317  356  362  406  419    % Mar
+    129  135  163  181  235  227  269  313  348  348  396  461    % Apr
+    121  125  172  183  229  234  270  318  355  363  420  472    % May
+    135  149  178  218  243  264  315  374  422  435  472  535    % Jun
+    148  170  199  230  264  302  364  413  465  491  548  622    % Jul
+    148  170  199  242  272  293  347  405  467  505  559  606    % Aug
+    136  158  184  209  237  259  312  355  404  404  463  508    % Sep
+    119  133  162  191  211  229  274  306  347  359  407  461    % Oct
+    104  114  146  172  180  203  237  271  305  310  362  390    % Nov
+    118  140  166  194  201  229  278  306  336  337  405  432 ]; % Dec
+Y = airlines(:);
+
+% true for bottm panel of the Figure, false for the top panel 
+%applylog = true;
+applylog = false;
+if applylog
+    Y = log(Y);
+end
+
+T = numel(Y);
+
+% The time series model
+% Remark: model.X is set in the loop
+model           = struct;
+model.trend     = 1;     % linear trend
+model.seasonal  = 102;   % two harmonics with time varying seasonality
+model.s         = 12;    % monthly time series
+model.lshift    = 0;     % no level shift
+
+rng(12345);  % for replicability
+
+cont = [0 0.1];         % contamination percentage
+cont = floor(T*cont);   % contaminated units
+iic = 0;
+for c = cont
+    iic = iic+1;
+    if c>0
+        %ic    = randi(T,c,1);
+        ic    = (T-c+1:T)';
+        if applylog
+            noise    = log(abs(randn(c,1)));
+            m=randi([-1 ,1],c,1);
+            m(~m)=-1;
+            Y(ic) = Y(ic) + (0.1*median(Y(:)) * m.*noise);
+        else
+            noise = randn(c,1);
+            Y(ic) = Y(ic) + (250 * noise);
+        end
+    end
+
+    % vector of lambda values to be tested
+    % la = [-1 -0.5 0 0.5 1];
+    la = 1;
+    nla = numel(la);
+
+    % breakdown point values to monitor
+    bdp  = 0.5:-0.02:0;
+    nbdp = numel(bdp);
+
+    % w_lambda: T*nla matrix containing the T values of each constructed
+    % variable (one for each monitored lambda)
+    w_lambda = zeros(T,nla);
+    % w_tstat: nbdp*nla matrix containing the score test statistic of each
+    % constructed variable (one for each monitored lambda)
+    w_tstat = zeros(nbdp,nla);
+    warning('off');
+
+    for il = 1 : nla
+
+        % the lambda to be tested
+        la0 = la(il);
+
+        G    = geomean(Y); % geometric mean of y
+        logG = log(G);
+        logY = log(Y);
+
+        if abs(la0) < 10^(-8)
+            z = G * logY;
+            w = z .* (logY/2 - logG);
+        else
+            %z1 = (Y.^la0-1)/(la0*G^(la0-1));
+            %w1 =  Y.^la0.*logY / (la0*G^(la0-1)) - z1 * (1/la0 + logG);
+
+            laiGlaim1 =la0*exp((la0-1)*logG);
+            ylai=exp(la0*logY);
+            ylaim1=ylai-1;
+            z=ylaim1/laiGlaim1;
+            w=(ylai.*logY-ylaim1*(1/la0+logG))/laiGlaim1;
+        end
+
+        w_lambda(:,il) = w;
+
+        % the constructed variable is added to the model as explanatory variable
+        model.X = w;
+        for ibdp = 1:nbdp
+            outLTS = LTSts(Y,'model',model,'plots',0,'bdp',bdp(ibdp),'conflev',0.99,'msg',0,'dispresults',false);
+            therow = find(ismember(outLTS.Btable.Row,'b_explX1'));
+            w_tstat(ibdp,il) = -outLTS.B(therow,3);
+        end
+    end
+
+    if iic==1
+        figure
+        lwd = 3;        % Line width
+        FontSize = 18;  % Font Size
+        ColorOrd=[{[0 0 1]}; {[0 0 0]} ; {[1 0 0]}; {[1 0 1]}; {[1 1 0]}; {[0 1 0]}; {[0 1 1]}];
+        ColorOrd=repmat(ColorOrd,nla,1);  % Specify a color for each lambda trajectory
+        StyleOrd={'-','-.'};
+        BDP = repmat(bdp',1,nla);
+    end
+
+    hp = plot(BDP,w_tstat,'LineWidth',lwd);
+
+    if bdp(end) < bdp(1)
+        set(gca,'XTick',fliplr(bdp));
+    end
+    set(gca,'XDir','reverse');
+
+    set(hp,{'LineStyle'}, StyleOrd(1,iic));
+    set(hp,{'Color'},     ColorOrd(iic,:));
+
+    hold on
+end
+
+set(gca,'fontsize',FontSize);
+labx='Breakdown point';
+laby='Test statistic for the constructed variable';
+titl='Fan plot';
+xlabel(labx,'Fontsize',FontSize);
+ylabel(laby,'Fontsize',FontSize);
+if applylog
+    legend({'Log-transformed Airline data' , 'Last 10% contaminated'},'Fontsize',FontSize+5);
+else
+    legend({'Original Airline data' , 'Last 10% contaminated'},'Fontsize',FontSize+5);
+end
+hold off
+
+

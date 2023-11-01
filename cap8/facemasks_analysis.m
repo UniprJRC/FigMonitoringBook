@@ -157,3 +157,37 @@ set(gca,'FontSize',18)
 xlabel('Subset size m','FontSize',18);
 ylabel('MSR','FontSize',18);
 legend('Initial subset 1' , 'Initial subset 2', 'Initial subset 3','FontSize',14)
+
+
+%% TCLUST figures 8.26-8.28
+
+%352 imports of FFP2 and FFP3 masks (product 6307909810) into the European
+%Union extracted in a day of November. Product 6212200000.
+
+load facemasks.mat;
+X=facemasks.W;
+y=facemasks.V;
+
+intercept=1;
+alphaLik=0;
+alphaX=0;
+SpuriousSolutions=false;
+typeIC='MIXMIX';
+nsamp=5000;
+
+rng(0)
+
+warning('off')
+
+% elbow plot
+out = tclustregIC(y,X,'whichIC',typeIC,'alphaLik',alphaLik,'alphaX',alphaX,'nsamp',nsamp,'msg',0,'intercept',intercept);
+tclustICplot(out,'whichIC',typeIC);
+
+% carbike plot
+outICsol=tclustICsol(out,'whichIC',typeIC,'SpuriousSolutions',SpuriousSolutions,'msg',0);
+carbikeplot(outICsol,'SpuriousSolutions',SpuriousSolutions);
+
+% tclust with optimal solutions
+out3=tclustreg(y,X,3,128,0.04,0,'plots',1,'nsamp',nsamp,'mixt',0,'msg',0,'intercept',intercept);
+out4=tclustreg(y,X,4,128,0.03,0,'plots',1,'nsamp',nsamp,'mixt',0,'msg',0,'intercept',intercept);
+
