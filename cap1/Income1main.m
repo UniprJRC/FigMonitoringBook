@@ -5,10 +5,17 @@
 
 %% Data loading
 clear
-load Income1;
-y=Income1{:,"HTOTVAL"};
-n=length(y);
+load Income1
 
+% y and X in array format
+y=Income1{:,"HTOTVAL"};
+X=Income1{:,1:end-1};
+
+% y and X in table format
+yt=Income1(:,end);
+Xt=Income1(:,1:end-1);
+
+n=length(y);
 close all
 FontSize=14;
 
@@ -236,7 +243,8 @@ n11=length(logy11);
 Scurvmean=(n11+1)*(Txnmean-meany);
 Scurvmedian=(n11+1)*(Txnmed-medy);
 Scurvtrimmean=(n11+1)*(Txntrimmean-trimean);
-%% Plotting part
+
+%% Create Figure 2.1
 figure
 FontSize=14;
 LineWidth=2;
@@ -263,11 +271,7 @@ end
 
 %% Figures for Chapter 10
 
-X=Income1{:,1:end-1};
-yt=Income1(:,end);
-Xt=Income1(:,1:end-1);
-
-%% plot the data
+%% Show the yX plot
 yXplot(yt,Xt);
 sgtitle('Figure 10.1')
 set(gcf,"Name",'Figure 10.1')
