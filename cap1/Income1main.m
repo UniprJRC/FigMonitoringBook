@@ -91,6 +91,7 @@ colnam=["lambda" "Score test"];
 
 ScoreT=array2table([la' Score],"RowNames",rownam,"VariableNames",colnam);
 format bank
+disp("Table 1.1")
 disp(ScoreT)
 
 %% Descriptive statistics
@@ -124,7 +125,7 @@ LOC=[loc loc1];
 rn=["Mean" "Trimmed mean" "Median" "Standard Deviation" "MADN"];
 rc=["Original data" "logged data"];
 LOCt=array2table(LOC,'RowNames',rn,'VariableNames',rc);
-disp("Table 1.1")
+disp("Table 1.2")
 disp(LOCt)
 
 %% Trimmed mean monitoring (Figure 1.4)
