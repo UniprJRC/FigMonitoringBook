@@ -16,6 +16,8 @@ yt=Income1(:,end);
 Xt=Income1(:,1:end-1);
 
 n=length(y);
+one=ones(n,1);
+
 close all
 FontSize=14;
 
@@ -79,7 +81,6 @@ end
 
 %% Analysis of the score test
 % Table 1.1
-one=ones(n,1);
 la=[-1, -0.5, 0, 0.5, 1];
 out=Score(y,one, 'la', la,'intercept',false);
 
@@ -165,7 +166,7 @@ end
 
 %% Create Figure 1.5 fanplot
 % Fanplot using just the intercept
-outFSRfanUNI=FSRfan(y,ones(n,1),'intercept',0,'ylimy',[-24 26],'nsamp',0);
+outFSRfanUNI=FSRfan(y,one,'intercept',0,'ylimy',[-24 26],'nsamp',0);
 title('Figure 1.5')
 set(gcf,"Name",'Figure 1.5')
 
