@@ -1,14 +1,13 @@
-%% VT: (Transformed Fish Morphology data): S estimators with 2 values of bdp
-load ('fishmilr.txt');
-size(fishmilr)
+%% VT: (Body measurements to predict percentage of body fat in males): 
+% S estimators with 2 values of bdp
+load("fatilr.txt")
+size(fatilr)
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
+y = fatilr(:,10);
+X = fatilr(:,1:9);
 
 conflev=[0.95 0.99];
-% Note that the pattern of residuals changes completely
-% Using bdp=0.5 the outliers are correctly found, on the other hand using
-% bdp=0.25 the masking effect is clear
+
 figure;
 h1=subplot(2,1,1);
 bdp=0.25;
@@ -25,22 +24,19 @@ cascade;
 prin=0;
 if prin==1
     % print to postscript
-    print -depsc fishmilr_S.eps;
+    print -depsc fatilr_S.eps;
 end
 
-%% VT: (Transformed Fish Morphology data): MM estimators with 2 values of efficiency
+%% VT: (Body measurements  data): MM estimators with 2 values of efficiency
 clearvars;close all;
-load ('fishmilr.txt');
-size(fishmilr)
+load ('fatilr.txt');
+size(fatilr)
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
+y = fatilr(:,10);
+X = fatilr(:,1:9);
 
 % MMreg using two different level of efficiency
 conflev=[0.95 0.99];
-% Note that the pattern of residuals changes completely
-% Using eff=0.90 the outliers are correctly found, on the other hand using
-% eff=0.95 the masking effect is clear
 figure;
 h1=subplot(2,1,1);
 eff=0.80;
@@ -55,27 +51,27 @@ ylabel(['Eff.=' num2str(eff)])
 prin=1;
 if prin==1
     % print to postscript
-    print -depsc fishmilr_MM.eps;
+    print -depsc fatilr_MM.eps;
 end
 
-%% VT: (Transformed Fish Morphology data): Forward search
+%% VT: (Body measurements  data): Forward search
 clearvars;close all;
-load ('fishmilr.txt');
-size(fishmilr)
+load ('fatilr.txt');
+size(fatilr)
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
+y = fatilr(:,10);
+X = fatilr(:,1:9);
 
-%% No signal during the search
+%% Signal is in step m=250
 [out]=LXS(y,X,'nsamp',1000);
 fsout=FSR(y, X);
 
-%% VT: (Transformed Fish Morphology data): Monitoring S estimtes
+%% VT: (Body measurements  data): Monitoring S estimtes
 clearvars;close all;
-load ('fishmilr.txt');
+load ('fatilr.txt');
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
+y = fatilr(:,10);
+X = fatilr(:,1:9);
 
 [out]=Sregeda(y,X);
 fground = struct;
@@ -90,7 +86,7 @@ prin=1;
 
 if prin==1
     % print to postscript
-    print -depsc fishmilr_S_mon.eps;
+    print -depsc fatilr_S_mon.eps;
 end
 
 RHO = [];
@@ -128,16 +124,16 @@ xlabel('bdp');
 
 if prin==1
     % print to postscript
-    print -depsc fishmilr_S_moncor.eps;
+    print -depsc fatilr_S_moncor.eps;
 end
 
 
-%% VT: (Transformed Fish Morphology data): Monitoring MM estimtes
+%% VT: (Body measurements  data): Monitoring MM estimtes
 clearvars;close all;
-load ('fishmilr.txt');
+load ('fatilr.txt');
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
+y = fatilr(:,10);
+X = fatilr(:,1:9);
 
 [out]=MMregeda(y,X);
 fground = struct;
@@ -148,11 +144,11 @@ resfwdplot(out, 'fground', fground, 'datatooltip','');
 ylabel('Scaled S residuals');
 xlabel('Efficiency');
 
-prin=0;
+prin=1;
 
 if prin==1
     % print to postscript
-    print -depsc fishmilr_MM_mon.eps;
+    print -depsc fatilr_MM_mon.eps;
 end
 
 RHO = [];
@@ -172,7 +168,7 @@ if strcmp(out.class,'Sregeda')
     set(gca,'XDir','reverse','ylim',ylimits);
 end
 title('Spearman');
-ylim(ylimits);
+%ylim(ylimits);
 
 subplot(3,1,2);
 plot(out.eff(1:49),RHO(:,2)');
@@ -180,7 +176,7 @@ if strcmp(out.class,'Sregeda')
     set(gca,'XDir','reverse','ylim',ylimits);
 end
 title('Kendall');
-ylim(ylimits);
+%ylim(ylimits);
 
 subplot(3,1,3);
 plot(out.eff(1:49),RHO(:,3)');
@@ -188,11 +184,11 @@ if strcmp(out.class,'Sregeda')
     set(gca,'XDir','reverse','ylim',ylimits);
 end
 title('Pearson');
-ylim(ylimits);
+%ylim(ylimits);
 xlabel('Efficiency');
 
 
 if prin==1
     % print to postscript
-    print -depsc fishmilr_MM_moncor.eps;
+    print -depsc fatilr_MM_moncor.eps;
 end
