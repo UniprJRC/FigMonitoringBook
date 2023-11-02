@@ -20,6 +20,7 @@ one=ones(n,1);
 
 close all
 FontSize=14;
+prin=0; % do not create eps figures
 
 %% Create figure histbox (Figure 1.2)
 % histogram and boxplot; positive
@@ -33,7 +34,6 @@ boxplot(y,'Labels',{''})
 ylabel('Income','FontSize',FontSize)
 sgtitle('Figure 1.2')
 set(gcf,"Name",'Figure 1.2')
-prin=0;
 if prin==1
     % print to postscript
     print -depsc histbox.eps;
@@ -73,7 +73,7 @@ ylim([yl1 yl2])
 sgtitle('Figure 1.3')
 set(gcf,"Name",'Figure 1.3')
 
-prin=0;
+
 if prin==1
     % print to postscript
     print -depsc boxla.eps;
@@ -158,7 +158,7 @@ set(gca,"XDir","reverse")
 title('Figure 1.4')
 set(gcf,"Name",'Figure 1.4')
 
-prin=0;
+
 if prin==1
     % print to postscript
     print -depsc trimmeanIncome1.eps;
@@ -171,18 +171,17 @@ outFSRfanUNI=FSRfan(y,one,'intercept',0,'ylimy',[-24 26],'nsamp',0);
 title('Figure 1.5')
 set(gcf,"Name",'Figure 1.5')
 
-prin=0;
 if prin==1
     % print to postscript
     print -depsc fanIncome1.eps;
 end
 
 %% Exercise 1.1
-
+% Compute the trimmed mean for the first 15 obs.for two values of alpha
 y15=y(1:15);
-
 n15=length(y15);
-alphaAll=[0.05 0.10]';
+
+alphaAll=[0.05 0.10];
 lalphaAll=length(alphaAll);
 meanTru=zeros(lalphaAll,1);
 ysor=sort(y15);
@@ -201,9 +200,11 @@ disp(meanTru(2))
 %% Visual display of the trimmed mean calling GUItrimmedmean
 % Note that given that GUItrimmean trims alpha72 from both tails it is
 % necessary to use (2*alpha)*100=20 to have the 10 per cent trimmed mean
-outTRI=GUItrimmean(y15,20);
-disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
-disp(outTRI.trimmedmean)
+%{
+    outTRI=GUItrimmean(y15,20);
+    disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
+    disp(outTRI.trimmedmean)
+%}
 
 %% Chapter 2: create input for Figure 2.1
 % SC for mean, median and trimmed mean
@@ -265,10 +266,60 @@ yline(0,'LineStyle',':','LineWidth',1)
 legend({'$\overline y$' '$Me$' '$\overline y_{0.1}$'},'FontSize',20,'Location','southeast','Interpreter','latex')
 title('Figure 2.1')
 set(gcf,"Name",'Figure 2.1')
-prin=0;
+
 if prin==1
     % print to postscript
     print -depsc SC.eps;
+end
+
+%% Chapter 2: create input for Figure 2.28
+% Use contaminated income data 
+y20=[y(1:20); 600000; 575000; 590000];
+
+% Compute MADn;
+mady=mad(y20,1)/0.6745;
+% Fix the efficiency
+eff=0.95;
+
+TBc=TBeff(eff,1);
+HUc=HUeff(eff,1);
+HAc=HAeff(eff,1);
+HYPc=HYPeff(eff,1);
+OPTc=OPTeff(eff,1);
+PDc=PDeff(eff);
+
+
+mu=0:1000:700000;
+avePSI=zeros(length(mu),6);
+for i=1:length(mu)
+
+    avePSI(i,1)=mean(HUpsi((y20-mu(i))./mady,HUc));
+    avePSI(i,2)=mean(HApsi((y20-mu(i))./mady,HAc));
+    avePSI(i,3)=mean(TBpsi((y20-mu(i))./mady,TBc));
+    avePSI(i,4)=mean(HYPpsi((y20-mu(i))./mady,[HYPc,5]));
+    avePSI(i,5)=mean(OPTpsi((y20-mu(i))./mady,OPTc));
+    avePSI(i,6)=mean(PDpsi((y20-mu(i))./mady,PDc));
+
+end
+
+%% Create Figure 2.28
+figure
+Link={'Huber', 'Hampel', 'Tukey', 'Hyperbolic' 'Optimal' 'Power divergence'} ;
+for i=1:6
+    subplot(2,3,i)
+    plot(mu',avePSI(:,i),'LineWidth',2,'Color','k')
+    hold('on')
+    yline(0) %  line([min(mu);max(mu)],[0;0],'LineStyle',':')
+    title(Link(i),'FontSize',14)
+    xlabel('$\mu$','FontSize',14,'Interpreter','Latex')
+    ylabel('$\overline \psi \left( \frac{ y -\mu}{\hat \sigma} \right)$','FontSize',14,'Interpreter','Latex')
+end
+sgtitle('Figure 2.28')
+set(gcf,"Name",'Figure 2.28')
+
+if prin==1
+    % print to postscript
+    print -depsc multsol.eps;
 end
 
 %% Figures for Chapter 10
@@ -277,7 +328,6 @@ end
 yXplot(yt,Xt);
 sgtitle('Figure 10.1')
 set(gcf,"Name",'Figure 10.1')
-prin=1;
 if prin==1
     % print to postscript
     print -depsc inc1f1.eps;
@@ -639,12 +689,3 @@ if prin==1
 end
 
 
-
-%% Definition of the trimmed mean as in the book
-function meantrimmed = trimmeanFS(y,alpha)
-    %trimmeanFS trims a proportion alpha of observations from both ends
-    n=length(y);
-    ysor=sort(y);
-    m=floor((n-1)*alpha);
-    meantrimmed=mean(ysor(m+1:n-m));
-end
