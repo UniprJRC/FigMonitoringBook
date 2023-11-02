@@ -203,4 +203,21 @@ standard=struct;
 standard.xlim=[800 n+1];
 resfwdplot(out,'databrush',databrush,'fground',fground,'standard',standard,'datatooltip','');
 
+%% yXplot with 3 symbols
 
+% Brushed units
+brushedun=[94 188 206 226 373 488 496 535 653 757 764 836 842 856 863 ...
+         1129 1136 1207 1400];
+outTRA=FSR(ytra,X);
+outl=outTRA.outliers;
+% setdiff(brushedun,outTRA.outliers)
+extraOUT=setdiff(outTRA.outliers,brushedun);
+%%  yXplot 
+group=ones(n,1);
+group(brushedun)=2;
+group(extraOUT)=3;
+yXplot(ytra,X,group);
+if prin==1
+    % print to postscript
+    print -depsc BS3groups.eps;
+end
