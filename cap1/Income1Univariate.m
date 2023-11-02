@@ -200,7 +200,8 @@ disp(meanTru(2))
 %% Visual display of the trimmed mean calling GUItrimmedmean
 % Note that given that GUItrimmean trims alpha72 from both tails it is
 % necessary to use (2*alpha)*100=20 to have the 10 per cent trimmed mean
-outTRI=GUItrimmean(y15,20);
-disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
-disp(outTRI.trimmedmean)
-
+%{
+    outTRI=GUItrimmean(y15,20);
+    disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
+    disp(outTRI.trimmedmean)
+%}
