@@ -5,3 +5,5 @@ ysor=sort(y);
 m=floor((n-1)*alpha);
 meantrimmed=mean(ysor(m+1:n-m));
 end
+
+

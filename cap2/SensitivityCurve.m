@@ -1,20 +1,30 @@
-%%  Sensistivity curve for the Income data
+%% Sensistivity curve for the Income data
+% Create input for Figure 2.1
 
 % Load the data
 load Income1;
 % Just use the first 11 observations
-y=log(Income1{1:11,"HOTHVAL"});
-alpha=0.10;
+y=Income1{1:11,"HTOTVAL"};
 
-%% SC for mean, median and trimmed mean
+% SC for mean, median and trimmed mean
+% Just use the first 11 observations
+logy11=log(y(1:11));
+alpha=0.10;
+% useMATLABtrimmean = Boolean which specifies whether to use MATLAB
+% function trimmean or not
+useMATLABtrimmean=false;
+
 % Compute median, mean and trimmed mean for all the observations
-medy=median(y);
-meany=mean(y);
-trimean=trimmean(y,100*(alpha*2),'floor');
-trimean1=trimmeanFS(y,alpha);
+medy=median(logy11);
+meany=mean(logy11);
+if useMATLABtrimmean==true
+    trimean=trimmean(logy11,100*(alpha*2),'floor');
+else
+    trimean=trimmeanFS(logy11,alpha);
+end
 
 % Value which has to be added to compute the sensitivity curve
-x=(9:0.01:13)';
+x=(9:0.01:14)';
 
 % Txnmean, Txnmed and Txntrimmean will contain the value of the sensitivity
 % curve based on y and x(i) i=1, 2, ..., length(x)
@@ -22,20 +32,24 @@ Txnmean=zeros(length(x),1);
 Txnmed=Txnmean;
 Txntrimmean=Txnmean;
 for i=1:length(x)
-    Txnmean(i)=mean([y;x(i)]);
-    Txnmed(i)=median([y;x(i)]);
-    Txntrimmean(i)=trimmean([y;x(i)],20,'floor');
+    Txnmean(i)=mean([logy11;x(i)]);
+    Txnmed(i)=median([logy11;x(i)]);
+    if useMATLABtrimmean==true
+        Txntrimmean(i)=trimmean([logy11;x(i)],20,'floor');
+    else
+        Txntrimmean(i)=trimmeanFS([logy11;x(i)],0.10);
+    end
 end
 
-n=length(y);
-Scurvmean=(n+1)*(Txnmean-meany);
-Scurvmedian=(n+1)*(Txnmed-medy);
-Scurvtrimmean=(n+1)*(Txntrimmean-trimean);
-%% Plotting part
-FontSize=14;
+n11=length(logy11);
+Scurvmean=(n11+1)*(Txnmean-meany);
+Scurvmedian=(n11+1)*(Txnmed-medy);
+Scurvtrimmean=(n11+1)*(Txntrimmean-trimean);
 
+%% Create Figure 2.1
+figure
+FontSize=14;
 LineWidth=2;
-close all
 hold('on')
 plot(x,Scurvmean,'Color','r','LineStyle','-','LineWidth',LineWidth)
 plot(x,Scurvmedian,'Color','b','LineStyle','-.','LineWidth',LineWidth)
@@ -49,8 +63,8 @@ ax=axis;
 yline(0,'LineStyle',':','LineWidth',1)
 % add legend
 legend({'$\overline y$' '$Me$' '$\overline y_{0.1}$'},'FontSize',20,'Location','southeast','Interpreter','latex')
-
-
+title('Figure 2.1')
+set(gcf,"Name",'Figure 2.1')
 prin=0;
 if prin==1
     % print to postscript
