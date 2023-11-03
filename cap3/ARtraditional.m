@@ -174,38 +174,4 @@ if prin==1
     print -depsc ARtradrobMM.eps;
 end
 
-% %% MMreg with hyèerbolic
-% outHYP=MMreg(y,X,'rhofunc','hyperbolic');
-% 
-% %% Plot hyperbolic
-% h1=subplot(2,1,1);
-% resindexplot(outHYP.weights,'ylimy',[0 1],'h',h1,'numlab',[2 43 51])
-% title('Weights')
-% h2=subplot(2,1,2);
-% 
-% resindexplot(outHYP.residuals,'h',h2,'numlab',[2 43 51])
-% title('Scaled residuals')
-% if prin==1
-%     % print to postscript
-%     print -depsc ARweiresMMhyp.eps;
-% end
-% 
-% %% MMreg with AS
-% outAS=MMreg(y,X,'rhofunc','AS');
-% outPD=MMreg(y,X,'rhofunc','mdpd');
-% 
-% %% Plot AS
-% close all
-% h1=subplot(2,1,1);
-% resindexplot(outAS.residuals,'h',h1,'numlab',[2 43 51])
-% title('Scaled residuals using Andrews'' sine')
-% h2=subplot(2,1,2);
-% resindexplot(outPD.residuals,'h',h2,'numlab',[2 43 51])
-% title('Scaled residuals using power divergence')
-% 
-% 
-% 
-% if prin==1
-%     % print to postscript
-%     print -depsc ARresMMaspd.eps;
-% end
+
