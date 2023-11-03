@@ -1,11 +1,9 @@
-%% INFLUENCE FUNCTION at N(0,1)
-% Compute and show graphically the IF at N(0,1) for mean, median and trimmed 
-% mean in the interval -3, -2.9, ..., 3. Add legend and  appropriate titles for 
-% the axes
-
-
-% Show the IF at N(0,1) for mean, median and trimmed mean
+%% Create Figure 2.2
+% INFLUENCE FUNCTION at N(0,1)
 close all
+
+%% Create input for Figure 2.2
+% Show the IF at N(0,1) for mean, median and trimmed mean
 % Suppose mu=0;
 y=(-3:0.01:3)';
 % Compute the IF for the mean
@@ -19,7 +17,8 @@ IFyalpha=zeros(length(y),1);
 for i=1:length(y)
     IFyalpha(i)=(sign(y(i))/(1-2*alpha))*min([abs(y(i)); phiminus1oneminusalpha]);
 end
-% Plotting part
+
+%% Create Figure 2.2
 
 LineWidth=2;
 FontSize=16;

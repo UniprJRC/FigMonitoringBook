@@ -1,6 +1,7 @@
-%% Sensistivity curve for the Income data
-% Create input for Figure 2.1
+%% Create Figure 2.1
+% Sensistivity curve for the Income data
 
+%% Create input for Figure 2.1
 % Load the data
 load Income1;
 % Just use the first 11 observations
