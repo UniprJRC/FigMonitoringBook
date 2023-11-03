@@ -1,5 +1,6 @@
-%% Example to show the issue of multiple solutions problem with redescending psi functions
-
+%% Create Figure 2.28
+% Example to show the issue of multiple solutions problem with redescending psi functions
+close all
 load Income1;
 y=Income1{:,"HTOTVAL"};
 % Use contaminated income data 
