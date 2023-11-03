@@ -1,5 +1,6 @@
-% Create figures MD4 and MD4bis
-%%  Prepare the input for MD4
+% Create Figures 2.14 and 2.15
+
+%%  Prepare the input for Figure 2.14
 bdp=0.01:0.01:0.5;
 tol=1e-8;
 
@@ -47,7 +48,7 @@ for j=1:length(bdp)
     EFF(j,:)=[TBeffj, HAeffj, OPTeffj, PDeffj HYPeffj] ;
 end
 
-%% Plotting part: create MD4
+%% Create Figure 2.14
 % Breakdown point and efficiency as parameters vary for five rho functions: TB Tukey
 % biweight; HA Hampel; OPT optimal, PD power divergence and HYP hyperbolic. The inset is a
 % zoom of the main figure for high breakdown point
@@ -79,9 +80,11 @@ if prin==1
     % print to postscript
     print -depsc figs\MD4.eps;
 end
+sgtitle('Figure 2.14')
+set(gcf,"Name",'Figure 2.14')
 
 
-%%  Prepare the input for MD4bis
+%%  Prepare input for Figure 2.15
 % Breakdown point and efficiency as parameters vary for the Hampel and Hyperbolic rho
 % functions.
 bdp=(0.01:0.01:0.5)';
@@ -133,8 +136,8 @@ for j=1:length(bdp)
 end
 
 
-%% close all
-close all
+%% Create Figure 2.15
+figure
 lwd=2.5;
 subplot(1,2,1)
 hold('on')
@@ -173,10 +176,11 @@ hold('on')
 plot(bdp',EFF(:,3),'LineWidth',lwd,'Color','b','LineStyle','-');
 plot(bdp',EFF(:,4),'LineWidth',lwd,'Color','r','LineStyle','--');
 plot(bdp',EFF(:,5),'LineWidth',lwd,'Color','k','LineStyle',':');
-%set(plot1,{'LineStyle'},slintyp)
-%set(plot1,{'Color'},col)
 xlim([0.4 0.5])
 ylim([0.28 0.42])
+
+sgtitle('Figure 2.15')
+set(gcf,"Name",'Figure 2.15')
 
 prin=0;
 if prin==1
