@@ -1,7 +1,8 @@
 %% Analysis of consistency factor (small sample and asymptotic for MAD)
-% This file creates  fig1:simMAD
+% This file creates  Figure 1.1
 
-%% Take n observations from N(0,1) and compute the MAD
+%% Empirical consisteny factor for MAD when n=5
+% Take n observations from N(0,1) and compute the MAD
 % Repeat the experiment nsimul times and compute the average of the MADs
 nsimul=1000000;
 n=5;
@@ -13,9 +14,11 @@ end
 Mea=mean(MAD);
 disp(Mea)
 
-%% Repeat the previous simulation study for each value of nn=5, 6, ..., 100
-nsimul=100000;
+%% Prepare the input data for Figure 1.1
+% Repeat the previous simulation study for each value of nn=5, 6, ..., 100
+nsimul=1000000;
 nn=5:100;
+% nn=100; just n=100
 maxnn=nn(end);
 minnn=nn(1);
 MADall=NaN(maxnn-minnn+1,1);
@@ -31,6 +34,12 @@ for i=nn
     MADall(i-minnn+1)=Mea;
     disp(['sample size n=' num2str(i)])
 end
+
+disp('Empirical consistenty factor when n=100')
+disp(1./MADall(end))
+% Using nsimul=100,000,000 when n=100
+% the empirical consistency factor is 1.4942
+
 %% Plotting part
 
 close all
@@ -39,8 +48,8 @@ xlabel('Sample size')
 yline(1/norminv(0.75))
 xlim([minnn maxnn])
 ylabel('Empirical consistency factor')
-
-(1./MADall(end))/(1/norminv(0.75))
+title('Figure 1.1')
+set(gcf,'Name','Figure 1.1')
 
 prin=0;
 if prin==1
