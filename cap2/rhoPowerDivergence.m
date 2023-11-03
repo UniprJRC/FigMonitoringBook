@@ -1,4 +1,5 @@
 %% Details of PD link for different values of alpha
+% Creates Figure 2.10
 
 % Plot of rho function. PD
 close all
@@ -7,18 +8,14 @@ subplot(2,2,1)
 hold('on')
 x=-9:0.1:9;
 rhoPD=PDrho(x,c);
-maxrho=max(rhoPD);
+% maxrho=max(rhoPD);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoPD,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex')
 ylabel(['$\rho(u,c=' num2str(c) ') $'],'Interpreter','Latex','FontSize',14)
 
-
-% stem(c,1,'LineWidth',1,'LineStyle',':','Color','r')
-% stem(-c,1,'LineWidth',1,'LineStyle',':','Color','r')
-% kk=0.25;
-% text(c,kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
-% text(-c,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
+sgtitle('Figure 2.10')
+set(gcf,"Name",'Figure 2.10')
 
 subplot(2,2,3)
 hold('on')
@@ -28,14 +25,6 @@ plot(x,psiPD,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex','FontSize',14)
 ylabel(['$\psi(u,c=' num2str(c) ') $'],'Interpreter','Latex','FontSize',14)
 yline(0)
-% stem(c,0,'LineWidth',1,'LineStyle',':','Color','r')
-% stem(-c,0,'LineWidth',1,'LineStyle',':','Color','r')
-% 
- ax=axis;
-% ylim([ax(3)-0.1 ax(4)+0.1])
-% kk=0.2;
-% text(c,-kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
-% text(-c,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
 
 
 c=3;
@@ -50,12 +39,6 @@ xlabel('$u$','Interpreter','Latex')
 ylabel(['$\rho(u,c=' num2str(c) ') $'],'Interpreter','Latex','FontSize',14)
 
 
-% stem(c,1,'LineWidth',1,'LineStyle',':','Color','r')
-% stem(-c,1,'LineWidth',1,'LineStyle',':','Color','r')
-% kk=0.03;
-% text(c,kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
-% text(-c,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
-
 subplot(2,2,4)
 hold('on')
 psiPD=PDpsi(x,c);
@@ -64,17 +47,14 @@ plot(x,psiPD,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex','FontSize',14)
 ylabel(['$\psi(u,c=' num2str(c) ') $'],'Interpreter','Latex','FontSize',14)
 
-% stem(c,0,'LineWidth',1,'LineStyle',':','Color','r')
-% stem(-c,0,'LineWidth',1,'LineStyle',':','Color','r')
 yline(0)
 
 ax=axis;
 kk=0.05;
 ylim([ax(3)-0.1 ax(4)+0.1])
-% text(c,-kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
-% 
-% text(-c,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
 
+sgtitle('Figure 2.10')
+set(gcf,"Name",'Figure 2.10')
 
 if prin==1
     % print to postscript

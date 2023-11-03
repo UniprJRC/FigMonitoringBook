@@ -1,7 +1,9 @@
-% Compare weight functions using bdp=0.5 or eff=0.95
+%% Compare weight functions using bdp=0.5 or eff=0.95
+% Creates Figure 2.11 and 2.11
 
-%% In the first case we use bdp=0.5
+%% In the first case we use bdp=0.5 (Figure 2.11)
 prin=0;
+figure
 FontSize=14;
 FontSizetitl=12;
 x=-6:0.001:6;
@@ -13,7 +15,6 @@ LineWidth=2;
 
 bdp=0.5;
 subplot(2,3,1)
-ceff05HU=HUeff(0.95,1);
 weiHU=HUwei(x,1e-30);
 plot(x,weiHU,'LineWidth',LineWidth)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
@@ -70,6 +71,8 @@ xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 title('Power divergence','FontSize',FontSizetitl)
 ylim([ylim1 ylim2])
 xlim([xlim1 xlim2])
+sgtitle('Figure 2.11')
+set(gcf,"Name",'Figure 2.11')
 
 if prin==1
     % print to postscript
@@ -77,8 +80,9 @@ if prin==1
 end
 
 
-%% Use eff=0.95
-
+%% Use eff=0.95 (Figure 2.12)
+eff=0.95;
+figure
 FontSize=14;
 FontSizetitl=12;
 x=-6:0.01:6;
@@ -89,7 +93,7 @@ xlim2=max(x);
 LineWidth=2;
 
 subplot(2,3,1)
-ceff05HU=HUeff(0.95,1);
+ceff05HU=HUeff(eff,1);
 weiHU=HUwei(x,ceff05HU);
 plot(x,weiHU,'LineWidth',LineWidth)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
@@ -98,7 +102,7 @@ ylim([ylim1 ylim2])
 xlim([xlim1 xlim2])
 
 subplot(2,3,2)
-ceff095HA=HAeff(0.95,1);
+ceff095HA=HAeff(eff,1);
 weiHA=HAwei(x,ceff095HA);
 plot(x,weiHA,'LineWidth',LineWidth)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
@@ -108,7 +112,7 @@ xlim([xlim1 xlim2])
 
 
 subplot(2,3,3)
-ceff095TB=TBeff(0.95,1);
+ceff095TB=TBeff(eff,1);
 weiTB=TBwei(x,ceff095TB);
 plot(x,weiTB,'LineWidth',LineWidth)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
@@ -117,7 +121,7 @@ ylim([ylim1 ylim2])
 xlim([xlim1 xlim2])
 
 subplot(2,3,4)
-ceff095HYP=HYPeff(0.95,1);
+ceff095HYP=HYPeff(eff,1);
 ktuning=4.5;
 weiHYP=HYPwei(x,[ceff095HYP,ktuning]);
 plot(x,weiHYP,'LineWidth',LineWidth)
@@ -128,8 +132,7 @@ xlim([xlim1 xlim2])
 
 
 subplot(2,3,5)
-ceff095OPT=OPTeff(0.95,1);
-% ceff095OPT=ceff095OPT/3;
+ceff095OPT=OPTeff(eff,1);
 weiOPT=OPTwei(x,ceff095OPT);
 weiOPT=weiOPT/max(weiOPT);
 plot(x,weiOPT,'LineWidth',LineWidth)
@@ -139,7 +142,7 @@ ylim([ylim1 ylim2])
 xlim([xlim1 xlim2])
 
 subplot(2,3,6)
-ceff095PD=PDeff(0.95);
+ceff095PD=PDeff(eff);
 weiPD=PDwei(x,ceff095PD);
 weiPD=weiPD/max(weiPD);
 plot(x,weiPD,'LineWidth',LineWidth)
@@ -147,6 +150,8 @@ xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 title('Power divergence','FontSize',FontSizetitl)
 ylim([ylim1 ylim2])
 xlim([xlim1 xlim2])
+sgtitle('Figure 2.12')
+set(gcf,"Name",'Figure 2.12')
 
 if prin==1
     % print to postscript

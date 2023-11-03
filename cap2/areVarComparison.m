@@ -1,4 +1,5 @@
-%% VARIANCE COMPARISON UNDER THE CONTAMINATION MODEL
+%% Create Figure 2.4 
+% VARIANCE COMPARISON UNDER THE CONTAMINATION MODEL
 % Compute the variance of the sample mean and of the sample median (multiplied by 
 % n) under the contamination model $F_\epsilon$ (not all measurements are equally 
 % precise) 

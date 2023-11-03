@@ -1,7 +1,9 @@
 %% Details of Huber link for different values of c
+% Creates Figures 2.5 and 2.6
 
-%% Plot Huber rho function.
+%% Plot Huber rho function. Figure 2.5
 close all
+prin=0;
 x=-3:0.001:3;
 c=1.345;
 rhoHU=HUrho(x,c);
@@ -18,6 +20,8 @@ stem(c,c^2/2)
 stem(-c,c^2/2)
 legend(["Huber $\rho$ function" "$u^2/2$"], ...
     'Interpreter','latex','FontSize',16,'Location','best')
+title('Figure 2.5')
+set(gcf,"Name",'Figure 2.5')
 
 if prin==1
     % print to postscript
@@ -25,8 +29,8 @@ if prin==1
 end
 
 
-%% Huber rhos function for two values of c.
-close all
+%% Huber rho function for two values of c.
+figure
 x=-3:0.001:3;
 yc=0.1;
 lwd=3;
@@ -85,6 +89,8 @@ hold('on')
 stem(c,c,'LineStyle',':','LineWidth',lwd,'Color','r')
 stem(-c,-c,'LineStyle',':','LineWidth',lwd,'Color','r')
 xlim([x(1) x(end)])
+sgtitle('Figure 2.6')
+set(gcf,"Name",'Figure 2.6')
 
 if prin==1
     % print to postscript

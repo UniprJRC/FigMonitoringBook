@@ -1,4 +1,8 @@
-%% Compute empirical and theoretical ARE(Me, Mean) 
+%% Create Figure 2.3 
+% Compute empirical and theoretical ARE(Me, Mean) 
+% under the normal distribution and the Student t
+% Initial part of Section 2.1.2
+% For the final part of Section 2.1.2 see file areVarComparison.m
 close all
 
 %% Theoretical ARE(Me, Mean) when the data are from the Normal distribution

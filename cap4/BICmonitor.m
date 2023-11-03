@@ -159,7 +159,7 @@ end
 close all
 subplot(2,2,1)
 plot(BIClxs(:,1),BIClxs(:,2))
-xlabel('Break down point')
+xlabel('Breakdown point')
 ylabel('BIC')
 [~,indmax]=max(BIClxs(:,2));
 ylim([min(BIClxs(:,2)) max(BIClxs(:,2))])

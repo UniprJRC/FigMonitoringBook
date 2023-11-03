@@ -1,4 +1,5 @@
 %% Details of TB link for different values of c
+% Creates Figure 2.8
 
 % Plot of rho function.
 close all
@@ -7,7 +8,7 @@ subplot(2,2,1)
 hold('on')
 x=-9:0.1:9;
 rhoTB=TBrho(x,c);
-maxrho=max(rhoTB);
+% maxrho=max(rhoTB);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoTB,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex')
@@ -76,6 +77,8 @@ text(c,-kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','le
 
 text(-c,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
 
+sgtitle('Figure 2.8')
+set(gcf,"Name",'Figure 2.8')
 
 if prin==1
     % print to postscript

@@ -1,4 +1,5 @@
 %% Details of Huber link for different values of c
+% Creates Figure 2.7
 
 % Plot of rho function.
 FontSize=10;
@@ -23,8 +24,6 @@ stem(-a,a^2/2,'LineWidth',1,'LineStyle',':','Color','r')
 stem(-b,a*b-a^2/2,'LineWidth',1,'LineStyle',':','Color','r')
 
 
-% stem(c,a*(b+c-a),'LineWidth',1,'LineStyle',':','Color','r')
-% stem(-c,a*(b+c-a),'LineWidth',1,'LineStyle',':','Color','r')
 stem(c,a*b -0.5*a^2+(c-b)*a/2,'LineWidth',1,'LineStyle',':','Color','r')
 stem(-c,a*b -0.5*a^2+(c-b)*a/2,'LineWidth',1,'LineStyle',':','Color','r')
 kk=0.25;
@@ -131,9 +130,8 @@ kk=0.03;
  text(cc*c,kk,{'$c \times c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','left')
 text(-cc*c,kk,{'$-c \times c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','right')
 
-% text([c1*a;-c1*a],[-0.1;0.1],{'$a$';'$-a$'},'Interpreter','latex','FontSize',FontSize)
-% text([c1*b;-c1*b],[-0.1;0.1],{'$b$';'$-b$'},'Interpreter','latex','FontSize',FontSize)
-% text([c1*c;-c1*c],[-0.1;0.1],{'$c$';'$-c$'},'Interpreter','latex','FontSize',FontSize)
+sgtitle('Figure 2.7')
+set(gcf,"Name",'Figure 2.7')
 
 prin=0;
 if prin==1

@@ -1,4 +1,5 @@
 %% Details of hyperbolic link for different values of c
+% Creates Figure 2.9
 
 % Plot of rho function.
 close all
@@ -17,7 +18,7 @@ rhoHYPk5=rhoHYPk5/maxrhoHYPk5;
 plot(x,rhoHYPk5,'color','b','LineStyle','-','LineWidth',lw)
 text(2.3,0.1,['k=' num2str(ktuning)],'Color','b','FontSize',14)
 
-ktuning=3; % bdp= 0.0933 eff=0.9052 
+ktuning=3; % bdp= 0.0933 eff=0.9052
 rhoHYPk3=HYPrho(x,[ctuning,ktuning]);
 maxrhoHYPk3=max(rhoHYPk3);
 rhoHYPk3=rhoHYPk3/maxrhoHYPk3;
@@ -27,11 +28,11 @@ text(0,0.4,['k=' num2str(ktuning)],'Color','k','FontSize',14,'HorizontalAlignmen
 xlabel('$u$','Interpreter','Latex')
 ylabel('$\rho(u,c=6,k) $','Interpreter','Latex','FontSize',14)
 
-  stem(ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
-  stem(-ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
- kk=0.05;
- text(ctuning,kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
- text(-ctuning,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
+stem(ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
+stem(-ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
+kk=0.05;
+text(ctuning,kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
+text(-ctuning,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
 
 subplot(2,2,3)
 hold('on')
@@ -89,11 +90,11 @@ text(0,0.4,['k=' num2str(ktuning)],'Color','k','FontSize',14,'HorizontalAlignmen
 xlabel('$u$','Interpreter','Latex')
 ylabel(['$\rho(u,c=' num2str(ctuning) ',k) $'],'Interpreter','Latex','FontSize',14)
 
-  stem(ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
-  stem(-ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
- kk=0.05;
- text(ctuning,kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
- text(-ctuning,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
+stem(ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
+stem(-ctuning,1,'LineWidth',1,'LineStyle',':','Color','r')
+kk=0.05;
+text(ctuning,kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','left')
+text(-ctuning,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
 
 subplot(2,2,4)
 hold('on')
@@ -130,6 +131,10 @@ text(ctuning,-kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignmen
 
 text(-ctuning,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
 ylim([-yl,yl])
+
+sgtitle('Figure 2.9')
+set(gcf,"Name",'Figure 2.9')
+
 if prin==1
     % print to postscript
     print -depsc rhoHYP.eps;
