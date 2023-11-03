@@ -2,31 +2,28 @@
 % Compare IF of different location estimators (use bdp=0.5 or eff=0.95)
 close all
 clear
-
-%%  Prepare input for Figure 2.16
 FontSize=14;
 FontSizetitl=12;
 LineWidth=2;
-
-bdp=0.5;
-% if bdpboo is true the analysis will be done from bdp=0.5
-% else the analysis will be done for eff=0.95
-
-col=repmat({'m';'k';'g';'b';'c'},3,1);
 linst=repmat({'-';'--';':';'-.';'--';':'},3,1);
-
-ylim1=-4.1;
-ylim2=4.1;
-x=(-7:0.001:7)';
-
-xlim1=min(x);
-xlim2=max(x);
 dd=100;
 
 % k = supCVC parameter in HYP link
 k=4.5;
 
+x=(-7:0.001:7)';
+
+xlim1=min(x);
+xlim2=max(x);
+
+%%  Prepare input for Figure 2.16
+
 % Fix bdp to 0.5
+bdp=0.5;
+
+ylim1=-4.1;
+ylim2=4.1;
+
 cHA=HAbdp(bdp,1);
 cTB=TBbdp(bdp,1);
 [cHYP,A,B,d]=HYPbdp(bdp,1,k);
@@ -63,7 +60,6 @@ ifPD=(PDpsi(x,cPD))/iPD;
 plot(x,ifPD,'LineWidth',LineWidth,'LineStyle',linst{5})
 
 xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
-% title('Tukey biweight','FontSize',FontSizetitl)
 
 
 y= sqrt(2*pi)*sign(x)/2;
@@ -80,9 +76,6 @@ yline(0)
 title('Figure 2.16')
 set(gcf,"Name",'Figure 2.16')
 
-%
-% [iHU iHA  iTB iHYP iOPT iPD]
-%
 prin=0;
 if prin==1
     % print to postscript
@@ -92,21 +85,6 @@ end
 %%  Prepare input for Figure 2.17
 
 eff=0.95;
-
-col=repmat({'m';'k';'g';'b';'c'},3,1);
-linst=repmat({'-';'--';':';'-.';'--';':'},3,1);
-
-ylim1=-4.1;
-ylim2=4.1;
-x=(-7:0.001:7)';
-
-xlim1=min(x);
-xlim2=max(x);
-dd=100;
-
-% k = supCVC parameter in HYP link
-k=4.5;
-
 
 % Fix eff to 0.95 and find corresponding bdp
 cHA=HAeff(eff,1);
@@ -166,8 +144,6 @@ plot(x,ifPD,'LineWidth',LineWidth,'LineStyle',linst{5})
 
 xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 % title('Tukey biweight','FontSize',FontSizetitl)
-
-
 
 legend(["TB" "HA"  "HYP"  "OPT" "PD"],'Location','best','AutoUpdate','off')
 
