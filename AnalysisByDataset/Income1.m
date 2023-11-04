@@ -661,7 +661,7 @@ end
 
 
 
-%% Create Prepare input for Figure 10.11
+%% Prepare input for Figure 10.11
 % RAVAS after deleting the outliers and starting in the transformed scale
 critBestSol=struct;
 critBestSol.pvalDW=0.01;
