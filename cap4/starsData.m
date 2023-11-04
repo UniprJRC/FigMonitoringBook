@@ -1,5 +1,5 @@
 %% Stars data
-% This function creates Figures 3.1-3.5, 3.8 and 3.9
+% This file creates Figures 3.1-3.5, 3.8 and 3.9
 % Figures 4.1-4.4 FS analysis
 % Figure 4.9 scatterplot and fitted regression lines
 % Figures 4.10-4.11 Monitoring plots based on S and MM
