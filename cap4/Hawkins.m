@@ -1,4 +1,4 @@
-%% hawkins data
+%% Hawkins data
 % This file creates Figure 4.23 
 % and Figures 4.27-4.29
 close all;
