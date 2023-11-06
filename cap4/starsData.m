@@ -178,7 +178,7 @@ fground.FontSize=12;
 standard=struct;
 standard.laby='S residuals bisquare \rho function';
 resfwdplot(outS,'standard',standard,'fground',fground, ...
-    'addPlotCorRes',true,'tag','Sres');
+    'corres',true,'tag','Sres');
 
 sgtitle('Figure 4.10')
 set(gcf,"Name",'Figure 4.10')
@@ -201,7 +201,7 @@ fground.funit=sel;
 fground.FontSize=12;
 standard.laby='MM residuals bisquare \rho function';
 resfwdplot(outMM,'standard',standard,'fground',fground, ...
-    'addPlotCorRes',true,'tag','MMres');
+    'corres',true,'tag','MMres');
 sgtitle('Figure 4.11')
 set(gcf,"Name",'Figure 4.11')
 
