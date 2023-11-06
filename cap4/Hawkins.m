@@ -12,10 +12,6 @@ end
 
 %%  HD: resfwdplot persistent brushing with FS
 % Interactive_example
-clearvars;close all;
-load('hawkins.txt');
-y=hawkins(:,9);
-X=hawkins(:,1:8);
 
 [outLXS]=LXS(y,X,'nsamp',10000);
 [out]=FSReda(y,X,outLXS.bs);
