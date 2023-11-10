@@ -8,11 +8,12 @@ y=hospitalFS(:,5);
 X=hospitalFS(:,1:4);
 
 n=length(y);
+prin=0;
 
 %% 
 % LMS using all  subsamples (very lengthy)
 nsamp=0
-[outLXS]=LXS(y,X,'nsamp',0);
+[outLXS]=LXS(y,X,'nsamp',nsamp);
 
 %{
 % best out of 111,469,176 subsets
@@ -33,6 +34,7 @@ if prin==1
     % print to postscript
     print -depsc SPmdrncoord.eps;
 end
+
 %% SP Data Automatic outlier detection
 %{
 outLXS.bs= [ 3   11   20   23   74];

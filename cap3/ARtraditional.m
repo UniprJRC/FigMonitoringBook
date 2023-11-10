@@ -148,6 +148,7 @@ if prin==1
     print -depsc ARtradrobS.eps;
 end
 
+%% Create Figure 3.9 
 %% MR: (Multiple regression data): MM estimators with 2 values of efficiency
 
 % MMreg using two different level of efficiency

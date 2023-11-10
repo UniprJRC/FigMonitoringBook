@@ -1,4 +1,4 @@
-%% Create Figures 2.18 and 2.19
+%% Create Figures 2.20 and 2.21
 % Compare derivatives of psi functions (use bdp=0.5 or eff=0.95)
 close all 
 clear

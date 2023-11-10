@@ -205,6 +205,7 @@ set(gcf,"Name",'Figure 4.21')
 % 
 
 %% Prepare input for Figure  4.22
+[n,p]=size(X);
 bdp=outOPT.bdp;
 rhofunc=outOPT.rhofunc;
 TTS=[bdp' zeros(length(bdp),p+1)];

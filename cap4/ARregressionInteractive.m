@@ -7,7 +7,7 @@ y=multiple_regression(:,4);
 X=multiple_regression(:,1:3);
 prin=0;
 
-%% Create Figure 4.14
+%% Create Figure 4.12
 % datatooltip which monitors bsb
 % LMS using 1000 subsamples
 [out]=LXS(y,X,'nsamp',1000,'msg',0);

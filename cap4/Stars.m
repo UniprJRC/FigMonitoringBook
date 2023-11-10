@@ -1,5 +1,4 @@
 %% Stars data
-% This file creates Figures 3.1-3.5, 3.8 and 3.9
 % Figures 4.1-4.4 FS analysis
 % Figure 4.9 scatterplot and fitted regression lines
 % Figures 4.10-4.11 Monitoring plots based on S and MM
@@ -42,6 +41,7 @@ if prin==1
     % print to postscript
     print -depsc figs\STdetails.eps;
 end
+
 %% Create Figure 4.3
 plots=struct;
 plots.conflev=[0.01 0.5 0.99 0.999 0.9999 0.99999];

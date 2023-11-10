@@ -29,7 +29,7 @@ if prin==1
 end
 
 
-%% Huber rho function for two values of c.
+%% Plot of Huber rho function for two values of c - Fig. 2.6.
 figure
 x=-3:0.001:3;
 yc=0.1;
