@@ -1,4 +1,4 @@
-%% Surgical Unit 
+%% Surgical Unit
 % This file creates Figures 4.30-4.33
 
 close all;
@@ -10,25 +10,28 @@ X=hospitalFS(:,1:4);
 n=length(y);
 prin=0;
 
-%% 
+%% Prepare input for Figure 4.30
 % LMS using all  subsamples (very lengthy)
-nsamp=0
-[outLXS]=LXS(y,X,'nsamp',nsamp);
+computeLMSusingAllSubsets=false;
+if computeLMSusingAllSubsets ==true
+    nsamp=0;
+    [outLXS]=LXS(y,X,'nsamp',nsamp);
+else
+    % best out of 111,469,176 subsets
+    outLXS=struct;
+    outLXS.bs= [ 3   11   20   23   74];
+end
 
-%{
-% best out of 111,469,176 subsets
- outLXS.bs= [ 3   11   20   23   74];
-%}
-
-%% SP mdr in normal coordinates
-% best susbet out of all 111,469,176 subsets
-outLXS.bs= [ 3   11   20   23   74];
 p=size(X,2)+1;
 
-outMDR=FSRmdr(y,X,outLXS.bs);
-[MDRinv] = FSRinvmdr(outMDR,p);
-outFS.mdr=MDRinv(:,[1 3]);
-mdrplot(outFS,'ncoord',true,'quant',[0.1 0.5 0.99 0.999 0.9999]);
+outFS=FSReda(y,X,outLXS.bs);
+
+% Tranform minimum deletion residual from standard coordinates to normal
+% coordinates
+outFS1=FSRinvmdr(outFS,p);
+
+%% Create Figure 4.30
+mdrplot(outFS1,'ncoord',true,'quant',[0.1 0.5 0.99 0.999 0.9999]);
 
 if prin==1
     % print to postscript
@@ -36,9 +39,15 @@ if prin==1
 end
 
 %% SP Data Automatic outlier detection
-%{
-outLXS.bs= [ 3   11   20   23   74];
-[out]=FSR(y,X,'lms',outLXS.bs);
+startJustSearchin1000Subsets=true;
+if startJustSearchin1000Subsets ==true
+    out=FSR(y,X);
+else
+    outLXS=struct;
+    outLXS.bs= [ 3   11   20   23   74];
+    [out]=FSR(y,X,'lms',outLXS.bs);
+end
+disp(out)
 prin=0;
 if prin==1
     % print to postscript
@@ -50,7 +59,6 @@ end
 %% Create Figure 4.31
 % SP data Monitoring of prop of units in bsb and tstat
 figure
-n=length(y);
 nr=1;
 nc=2;
 Prop=[(p+1:n)' zeros(n-p,1)];
@@ -97,10 +105,16 @@ if prin==1
     print -depsc SPtmonitor.eps;
 end
 
-
-%% Create Figure 4.32
+%% Create Figure 4.32 (with overlapping labels)
 % Forward Search Monitoring of traditional tstat
-close all
+[outFS]=FSReda(y,X,outLXS.bs,'init',p+1,'tstat','trad');
+fanplotFS(outFS,'ylimy',[-5 300],'tag','ploverl');
+title('Figure 4.32 (with overlapping labels)')
+set(gcf,"Name",'Figure 4.32 (with overlapping labels)')
+
+%% Create Figure 4.32 (without overlapping labels)
+% Forward Search Monitoring of traditional tstat
+figure
 [outFS]=FSReda(y,X,outLXS.bs,'init',p+1,'tstat','trad');
 hold('on');
 col=repmat({'m';'k';'g';'b';'c'},3,1);
@@ -133,7 +147,7 @@ if prin==1
     print -depsc SPtmonitortrad.eps;
 end
 
-%% Create Figure 4.33 
+%% Create Figure 4.33
 % SP data Forward Search Monitoring of added tstat
 figure
 [out]=FSRaddt(y,X,'plots',1,'nameX',{'X1','X2','X3' 'X4'},'lwdenv',2,'lwdt',2);
