@@ -9,7 +9,7 @@ X=bank_data{:,1:end-1};
 prin=0;
 
 %% Create Figure 4.34
-[outLXS]=LXS(y,X,'nsamp',10000);
+[outLXS]=LXS(y,X,'nsamp',20000);
 outFSeda=FSReda(y,X,outLXS.bs,'init',round(length(y)*0.25));
 % Just plotting part
 % end
@@ -84,49 +84,11 @@ sgtitle('Figure 4.38')
 set(gcf,"Name",'Figure 4.38')
 
 %% Prepare input for Figure 4.39
-bdp=0.5:-0.01:0.01;
-TTS=[bdp' zeros(length(bdp),p+1)];
-TTS1=TTS;
-
-rhofunc='bisquare';
-for j=1:length(bdp)
-    [out]=Sreg(y,X,'rhofunc',rhofunc,'bdp',bdp(j),'conflev',1-0.01/n);
-    [covrobS]=RobCov(X,out.residuals,out.scale,'rhofunc',rhofunc,'bdp',bdp(j));
-    tstatS=out.beta./sqrt(diag(covrobS.covrob));
-    tstatS1=out.beta./sqrt(diag(covrobS.covrob));
-    TTS(j,2:end)=tstatS';
-    TTS1(j,2:end)=tstatS1';
-end
+out=Sregeda(y,X,'covrob',5);
 
 %% Create Figure 4.39
-% ROBUST T STAT S estimators (using covrob1)
-%
-figure;
-ini=n-length(bdp)+1;
-xaxis = ini:n;
-lwd=1;
-quant=norminv(0.975);
-for j=3:p+2
-    subplot(4,4,j-2)
-    plot(xaxis',TTS1(:,j),'LineWidth',lwd);
-    % plot(xaxis',TTS1(:,j));
-    xlim([ini-4 n])
-    ylim([floor(min([-3;TTS1(:,j)])) ceil(max([3;TTS1(:,j)]))])
-    set(gca,'FontSize',14)
+fanplotFS(out,'multiPanel',true)
 
-    xtick=get(gca,'Xtick');
-    newlabel=num2str(bdp(xtick-ini+1)');
-    set(gca,'Xtick',xtick,'Xticklabel',newlabel)
-    text(0.1,0.8,['t_{' num2str(j-2) '}'],'Units','normalized','FontSize',14)
-    yline([-quant quant],'color','r')
-    if j<=11
-        set(gca,'XTickLabel','')
-    end
-    if j>11
-        xlabel('bdp')
-    end
-
-end
 sgtitle('Figure 4.39')
 set(gcf,"Name",'Figure 4.39')
 
@@ -135,26 +97,9 @@ if prin==1
     print -depsc figs\StstatBD.eps;
 end
 
-%% Prepare input for Figure 4.40
-% Monitoring of tstat from FS
-figure
-quant=norminv(0.975);
+%% Create Figure 4.40
 
-for j=3:p+2
-    subplot(4,4,j-2)
-    plot(outFSeda.Tols(:,1),outFSeda.Tols(:,j),'LineWidth',lwd)
-    text(0.1,0.8,['t_{' num2str(j-2) '}'],'Units','normalized','FontSize',14)
-    yline([-quant quant],'color','r')
-    xlim([1000 n+1])
-    xline(1694)
-    if j<=11
-        set(gca,'XTickLabel','')
-    end
-    if j>11
-        xlabel('Subset size m')
-    end
-end
-xlabel('Subset size m')
+fanplotFS(outFSeda,'multiPanel',true,'addxline',1694,'xlimx',[1000 n+1])
 sgtitle('Figure 4.40')
 set(gcf,"Name",'Figure 4.40')
 
@@ -164,6 +109,7 @@ figure
 outADDt=FSRaddt(y,X,'plots',1);
 sgtitle('Figure 4.41')
 set(gcf,"Name",'Figure 4.41')
+xline(1694)
 
 %% Prepare input for Figure 4.42
 [outFSauto]=FSR(y,X,'plots',0);
