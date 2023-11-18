@@ -1,6 +1,6 @@
 %% Data reading
 
-XX=load('fetus.txt');
+XX=load('mandible.txt');
 % week length
 % Define X and y
 X=XX(:,1);
