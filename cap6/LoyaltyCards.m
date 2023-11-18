@@ -1,5 +1,7 @@
-%% Surgical Unit
-% This file creates Figures 6.2-6.6
+%% Loyalty cards data
+% This file creates Figures 6.2-6.6 
+% Note that: Figures 6.15-6.16 are created by file LoyaltyCardsBICplots.m
+
 
 %% LD (Loyalty cards data)
 load('loyalty.txt');
@@ -8,7 +10,7 @@ X=loyalty(:,1:3);
 n=length(y);
 prin=0;
 
-%% Prapare input for Figure 6.2
+%% Prepare input for Figure 6.2
 %la=[-1:0.1:1];
 la=0:0.1:1;
 [outFSRfan]=FSRfan(y,X,'plots',1,'init',round(n*0.3),'nsamp',10000,'la',la,'msg',0);
@@ -89,4 +91,8 @@ plot(outEDA.Bols(end-rr:end,1), outEDA.Bols(end-rr:end,3),'.','color','r', 'Mark
 xlabel('Subset size m');
 title('Figure 6.6')
 set(gcf,"Name",'Figure 6.6')
+
+%% Create Figure 6.15
+
+%% Create Figure 6.16
 
