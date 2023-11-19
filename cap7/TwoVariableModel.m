@@ -1,6 +1,6 @@
 %% This file creates Figures 7.6-7.9
 % Generate the data 
-% Two variable model (section 7.10.2)
+% Two variable model (section 7.5.2)
 rng(30)
 x2 = (0:0.01:1.5)';
 n=length(x2);
