@@ -79,14 +79,14 @@ ytheoz=zscore(ytheo(ind));
 [ytraz,mu,sig]=zscore(ytra(ind));
 [ytrajust1z,mujust1,sigjust1]=zscore(ytrajust1(ind));
 
-plot(ysor,ytraz,'o',ysor,ytheoz,'--')
+plot(ysor,ytraz,'o',ysor,ytheoz,'-')
 hold('on')
 plot(ystand(Listout),(ytra(Listout)-mu)/sig,'o','Color','r','MarkerFaceColor','r')
 xlabel('y standardized')
 ylabel('yt(all variables)')
 
 subplot(2,2,2)
-plot(ysor,ytrajust1z,'o',ysor,ytheoz,'x')
+plot(ysor,ytrajust1z,'o',ysor,ytheoz,'-')
 hold('on')
 plot(ystand(Listoutjust1),(ytra(Listoutjust1)-mujust1)/sigjust1,'o','Color','r','MarkerFaceColor','r')
 xlabel('y standardized')
