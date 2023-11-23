@@ -128,6 +128,11 @@ line(xL,[s02 s02],'Color','r','LineWidth',lwd);
 line([dout; dout],[ylimL; ylimU],'Color','r','LineWidth',lwd);
 xlabel('Subset size m','FontSize',FontSize);
 
+if prin==1
+    % print to postscript
+    print -depsc h2.eps;
+end
+
 set(gcf,'Name', 'Figure 8.2');
 sgtitle('Figure 8.2')
 

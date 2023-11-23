@@ -43,9 +43,16 @@ set(gcf,"Name",'Figure 4.35')
 
 
 %% Create Figure 4.36
-group=ones(n,1);
-group(Un6Largest)=2;
+group=repelem("Unbrushed units",n,1);
+group(Un6Largest)="Brushed units";
+group=cellstr(group);
 yXplot(y,X,group);
+if prin==1
+    % print to postscript
+    print -depsc BDyXbrush.eps
+end
+
+
 sgtitle('Figure 4.36')
 set(gcf,"Name",'Figure 4.36')
 

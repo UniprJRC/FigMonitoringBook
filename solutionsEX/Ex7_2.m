@@ -93,7 +93,7 @@ if prin==1
 end
 
 
-%% Preapre the input for Create Figure A.39
+%% Prepare the input for Figure A.39
 % Transformation
 ytra=normYJpn(y, [], [1, 0], 'inverse',false, 'Jacobian', false);
 out=FSR(ytra,X,'plots',0);
@@ -254,7 +254,7 @@ xlabel('Fitted values')
 
 if prin==1
     % print to postscript
-    print -depsc figs\NP3.eps;
+    print -depsc NP3.eps;
 end
 sgtitle('Figure A.42 ')
 set(gcf,"Name",'Figure A.42')

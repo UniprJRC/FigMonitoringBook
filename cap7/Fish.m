@@ -79,22 +79,24 @@ ytheoz=zscore(ytheo(ind));
 [ytraz,mu,sig]=zscore(ytra(ind));
 [ytrajust1z,mujust1,sigjust1]=zscore(ytrajust1(ind));
 
-plot(ysor,ytraz,'o',ysor,ytheoz,'-')
+plot(ysor,ytraz,'o')
 hold('on')
+plot(ysor,ytheoz,'-','LineWidth',2)
 plot(ystand(Listout),(ytra(Listout)-mu)/sig,'o','Color','r','MarkerFaceColor','r')
 xlabel('y standardized')
 ylabel('yt(all variables)')
 
 subplot(2,2,2)
-plot(ysor,ytrajust1z,'o',ysor,ytheoz,'-')
+plot(ysor,ytrajust1z,'o')
 hold('on')
+    plot(ysor,ytheoz,'-','LineWidth',2)
 plot(ystand(Listoutjust1),(ytra(Listoutjust1)-mujust1)/sigjust1,'o','Color','r','MarkerFaceColor','r')
 xlabel('y standardized')
 ylabel('yt(just one expl. variable)')
 
 if prin==1
     % print to postscript
-    print -depsc figs\F4.eps;
+    print -depsc F4.eps;
 end
 
 sgtitle('Figure 7.19')

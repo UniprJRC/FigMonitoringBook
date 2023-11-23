@@ -50,8 +50,8 @@ title('Figure 8.8 (left panel)')
 % frequentist Forward Search, 1st year
 [out02]=FSR(y02,X02,'nsamp',nsamp,'plots',1,'msg',0,'init',round(n02*3/4),'bonflev',bonflev);
 
- fig=findobj(0,'tag','fsr_yXplot');
- close(fig)
+fig=findobj(0,'tag','fsr_yXplot');
+close(fig)
 
 fig=findobj(0,'tag','pl_fsr');
 figure(fig(1))
@@ -122,7 +122,7 @@ X02gi=[ones(n02gi,1) X02(u02gi,:)];
 % y02gi = y vector referred to good + intermediate units
 y02gi=y02(u02gi);
 
- 
+
 % bayes = structure which contains prior information to be used in year
 % 2003
 bayes=struct;
@@ -138,8 +138,8 @@ bayes.R=R;
 out03=FSRB(y03,X03,'bayes',bayes,'msg',0,'plots',1, ...
     'init',round(n03/2),'bonflev',bonflevB,'tag','fsrB2003');
 
- fig=findobj(0,'tag','fsr_yXplot');
- close(fig)
+fig=findobj(0,'tag','fsr_yXplot');
+close(fig)
 
 fig=findobj(0,'tag','fsrB2003');
 figure(fig(1))
@@ -223,8 +223,8 @@ bayes.tau0=tau0;
 out04=FSRB(y04,X04,'bayes',bayes,'msg',0,'plots',1,'init',round(n04/2), ...
     'bonflev',bonflevB,'tag','fsrB2004');
 
- fig=findobj(0,'tag','fsr_yXplot');
- close(fig)
+fig=findobj(0,'tag','fsr_yXplot');
+close(fig)
 
 fig=findobj(0,'tag','fsrB2004');
 figure(fig(1))
@@ -284,7 +284,7 @@ title('Right panel of Figure 8.11')
 % residuals=y04-[ones(n04,1) X04]*out04freq.beta;
 % boomin300=seq04(abs(residuals)<300);
 % uo4i=intersect(out04freq.outliers,boomin300);
-% 
+%
 % u04g=setdiff(seq04,out04freq.outliers);
 % % u04g=setdiff(good04,u04i);
 % u04o=setdiff(out04freq.outliers,uo4i);
@@ -295,13 +295,13 @@ title('Right panel of Figure 8.11')
 % hold('on')
 % % units below the treshold, plotted as (X)
 % plot(X04(uo4i)',y04(uo4i)','Marker','X','MarkerSize',9,'LineWidth',2,'LineStyle','none','Color','m')
-% 
+%
 % % outliers, plotted as (O)
 % plot(X04(u04o)',y04(u04o)','Marker','o','LineStyle','none','Color','r')
 % set(gca,'FontSize',14)
 % xlabel('QUANTITY in tons')
 % ylabel('VALUE in 1000 euro')
-% 
+%
 % if prin==1
 %     print -depsc figs\FSfreq2004.eps;
 % end
