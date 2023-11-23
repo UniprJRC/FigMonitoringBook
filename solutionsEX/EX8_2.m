@@ -24,7 +24,7 @@ pl_fsr=findobj(0, 'type', 'figure','tag','pl_yX');
 set(gcf,'Name', 'Figure A.45');
 title('Figure A.45')
 
-outl=[outH.ListOut];
+outl=outH.ListOut;
 bsb=1:n;
 bsb(outl)=[];
 
