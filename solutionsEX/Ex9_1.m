@@ -1,4 +1,4 @@
-%% This file creates Figure A.57, A.57 and Table A.20
+%% This file creates Figure A.56, A.57 and Table A.20
 
 % Load Ozone data (reduced data)
 X=load('ozone.txt');
