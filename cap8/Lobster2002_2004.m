@@ -270,9 +270,14 @@ plot(X04(u04o)',y04(u04o)','Marker','o','LineStyle','none','Color','r')
 set(gca,'FontSize',14)
 xlabel('Quantity in tons')
 ylabel('Value in 1000 euro')
+
+if prin==1
+    print -depsc FSres2004.eps;
+end
+xlim([0 350])
+
 set(gcf,'Name', 'Right panel of Figure 8.11');
 title('Right panel of Figure 8.11')
-
 
 % %% Frequentist Forward Search, 3rd year with 3 symbols
 % n04=length(y04);
@@ -302,6 +307,4 @@ title('Right panel of Figure 8.11')
 % xlabel('QUANTITY in tons')
 % ylabel('VALUE in 1000 euro')
 %
-% if prin==1
-%     print -depsc figs\FSfreq2004.eps;
-% end
+
