@@ -262,7 +262,7 @@ end
 %% Prepare the input for Figure 10.16
 % FS monitoring of residuals in the transformed scale
 % Use LTS as a starting point
-outLXS=LXS(ytra,X,'nsamp',50000,'lms',0);
+outLXS=LXS(ytra,X,'nsamp',50000,'lms',0,'conflev',0.975);
 outFS=FSReda(ytra,X,outLXS.bs);
 
 %%  Create Figure 10.17

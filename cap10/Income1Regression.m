@@ -25,7 +25,7 @@ FontSize=14;
 
 %% Show the yX plot
 yXplot(yt,Xt);
-sgtitle('Figure 10.1')
+sgtitle('Figure 10.1','tag','yXplotIntro')
 set(gcf,"Name",'Figure 10.1')
 prin=1;
 if prin==1
@@ -58,7 +58,7 @@ end
 
 %% Automatic choice of the transformation
 [out]=fanBIC(outFSRfan);
-title('Figure 10.2 (right-hand panel)')
+sgtitle('Figure 10.2 (right-hand panel)')
 set(gcf,"Name",'Figure 10.2 (right-hand panel)')
 
 if prin==1
@@ -67,7 +67,7 @@ if prin==1
 end
 
 
-%% FSR y in trasformed scale (Figure 10.3)
+%% FSR y in transformed scale (Figure 10.3)
 % figure
 ytra=y.^0.5;
 outf=FSR(ytra,X);

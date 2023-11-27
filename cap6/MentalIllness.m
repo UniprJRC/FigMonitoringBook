@@ -1,5 +1,6 @@
+%% Mental Illness data
+% This file creates Figure 6.7
 
-%% illness x07
 clearvars;close all;
 load('illnessx07.txt');
 y=illnessx07(:,4);
@@ -8,8 +9,8 @@ X=illnessx07(:,2:3);
 prin=0;
 
 
-%% Compare LM and GLM predictions
-close all
+%% Create Figure  
+% Compare LM and GLM predictions
 logy=log(y);
 MLfit_LM = fitlm(X,logy);
 ypredLM=predict(MLfit_LM,X,'Simultaneous',true);
@@ -22,7 +23,6 @@ ypredGLM=predict(MLfit_GLM,X,'Simultaneous',true);
 plot(exp(ypredLM),ypredGLM,'o')
 xlabel('LM predictions')
 ylabel(['GLM predictions \lambda=' num2str(la)])
-% refline
 
 subplot(2,2,2)
 la=0;
@@ -33,8 +33,11 @@ plot(exp(ypredLM),ypredGLM,'o')
 xlabel('LM predictions')
 ylabel(['GLM predictions \lambda=' num2str(la)])
 refline
+
+sgtitle('Figure 6.7')
+set(gcf,"Name",'Figure 6.7')
+
 if prin==1
     % print to postscript
   print -depsc figs\I3.eps;
 end
-
