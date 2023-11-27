@@ -1,6 +1,6 @@
 %% This file is referred to dataset Customer Loyalty
 % It creates Figures 10.22 ---- 10.36
-% and Tables 10.5 ----- 10.7
+% and Tables 10.5 ----- 10.6
 % Figures 10.22 and 10.24 are created in a non interactive way.
 % In order to create them interactively, please use file
 % CustomerLoyaltyInteractive.m
