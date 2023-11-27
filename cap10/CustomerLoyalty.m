@@ -8,13 +8,15 @@
 
 
 %% Data loading
-
+close all
+clear
 load ConsLoyaltyRet.mat
 Xytable=ConsLoyaltyRet(:,2:end);
 nameXy=Xytable.Properties.VariableNames;
 nameX=nameXy(1:end-1);
 X=Xytable{:,1:end-1};
 y=Xytable{:,end};
+ytra=sqrt(y);
 n=length(y);
 
 %% yXplot (Created not interactively)
@@ -22,6 +24,7 @@ group=ones(n,1);
 group([7:9 13 17 21 22 41])=2;
 [H,AX,BigAx]=yXplot(Xytable(:,end),Xytable(:,1:end-1),'group',group);
 add2yX(H,AX,BigAx,'labeladd','1')
+drawnow
 prin=0;
 if prin==1
     % print to postscript
@@ -42,6 +45,7 @@ disp(mdl)
 
 
 %% Create Figure 10.23: qqplots
+figure
 h1=subplot(2,1,1);
 res=mdl.Residuals{:,3};
 qqplotFS(res,'X',X,'plots',1,'h',h1,'conflev',0.95);
@@ -57,9 +61,9 @@ end
 
 sgtitle('Figure 10.23')
 fig=findobj(0,'tag','pl_resfwd');
+drawnow
 
-
-%% Create Figure 10.26 (NOT INTERACTIVE)
+%% Create Figure 10.24 (NOT INTERACTIVE)
 % In order to create it interactively see file CustomerLoyaltyInteractive.m
 
 % LMS using 1000 subsamples
@@ -74,7 +78,7 @@ fground=struct;
 fground.funit=[7:9 13 17 21 22 41];
 fground.Color={'r'};
 fground.LineWidth=2;
-resfwdplot(outFS,'fground',fground); % ,'bground',bground)
+resfwdplot(outFS,'fground',fground,'tag','plfwdresini'); % ,'bground',bground)
 
 if prin==1
     % print to postscript
@@ -82,16 +86,11 @@ if prin==1
     print -depsc figs\regf5.eps;
 end
 
-%% Interactive part
-databrush=struct;
-databrush.Label='on'; % Write labels of trajectories while selecting
-databrush.RemoveLabels='off'; % Do not remove labels after selection
-databrush.selectionmode='Rect'; % Rectangular selection
-databrush.labeladd='1';
-resfwdplot(outFS,'databrush',databrush,'datatooltip',0)
+title('Figure 10.24')
+set(gcf,"Name",'Figure 10.24')
+drawnow
 
-
-%% Create Figure 10.25
+%% Create Figure 10.25: monitoring six added variable t stats
 %  Automatic outlier detection
 % 28 outliers found
 out=FSR(y,X,'plots',0);
@@ -102,10 +101,10 @@ disp(out.ListOut)
 outADDt=FSRaddt(y,X,'plots',0);
 
 
-fanplotFS(outADDt,'highlight',out.outliers,'ylimy',[-15 20])
+fanplotFS(outADDt,'highlight',out.outliers,'ylimy',[-15 20],'tag','1025')
 title('Figure 10.25')
 set(gcf,"Name",'Figure 10.25')
-
+drawnow
 if prin==1
     % print to postscript
     print -depsc figs\regf6.eps;
@@ -124,109 +123,59 @@ if prin==1
 end
 title('Figure 10.26')
 set(gcf,"Name",'Figure 10.26')
+drawnow
 
 %% Table 10.6
 % This table will be created later in the file
 
 
-%% Units highlighting in the different trajectories using fanBIC
-Highl=NaN(1000,5);
-la=[-1 -0.5 0 0.5 1];
-seq=1:n;
-for j=1:length(la)
 
-    oultlj=seq(outBIC.BBla(:,j)<2);
-    Highl(1:length(oultlj),j)=oultlj;
-end
+%% Create Figure 10.29  
+% Analysis in the sqrt scale
+outsqrty=FSR(ytra,X);
 
-close all
-fanplot(outFSRfan,'highlight',Highl,'ylimy',[-8 35])
-title('')
-
-if prin==1
-    % print to postscript
-    print -depsc figs\transf1.eps;
-end
-
-
-%% Units highlighting in the different trajectories using FSR
-Highl=NaN(1000,5);
-la=[-1 -0.5 0 0.5 1];
-
-for j=1:length(la)
-    if abs(la(j))>1e-06
-        outlaj=FSR(y.^la(j),X,'init',round(n/2));
-    else
-        outlaj=FSR(log(y),X,'init',round(n/2));
-    end
-    oultlj=outlaj.outliers;
-    Highl(1:length(oultlj),j)=oultlj;
-end
-
-close all
-fanplot(outFSRfan,'highlight',Highl,'ylimy',[-8 35])
-title('')
-
-if prin==1
-    % print to postscript
-    print -depsc figs\transf1.eps;
-end
-
-
-%%  Analysis in the sqrt scale
-outsqrty=FSR(sqrt(y),X);
+pl_fsr=findobj(0, 'type', 'figure','tag','pl_fsr');
+close(pl_fsr(end))
+pl_yXplot=findobj(0, 'type', 'figure','tag','fsr_yXplot');
+figure(pl_yXplot(end))
+sgtitle('Figure 10.29')
+set(gcf,"Name",'Figure 10.29')
 
 if prin==1
     % print to postscript
     print -depsc figs\transf4bis.eps;
 end
-fitlm(X,sqrt(y),'Exclude',outsqrty.ListOut,'VarNames',nameXy)
-
-%%  Analysis in the sqrt scale fitlm excluding outliers
-% Many untis are declared as outliers
-mdl=fitlm(X,sqrt(y),'Exclude',outsqrty.outliers,'VarNames',nameXy);
 
 
-%% Analysis in sqrt scale: Plot residuals
-close all
-subplot(2,2,1)
-histfit(mdl.Residuals{:,3},[],'kernel')
-subplot(2,2,2)
-plotResiduals(mdl,'fitted','ResidualType','standardized')
+%% Create Figure 10.27
+mdlysqrt=fitlm(X,ytra,'Exclude',outsqrty.ListOut,'VarNames',nameXy);
 
-if prin==1
-    % print to postscript
-    print -depsc figs\transf3.eps;
-end
-
-
-%% Analysis in sqrt scale qqplots
-close all
+figure
+% Analysis in sqrt scale qqplots
 h1=subplot(2,1,1);
-res=mdl.Residuals{:,3};
+res=mdlysqrt.Residuals{:,3};
 qqplotFS(res,'X',X,'plots',1,'h',h1);
 % title('qqplot of stud. res.')
 title('')
 subplot(2,1,2)
-plotResiduals(mdl,'symmetry','ResidualType','standardized')
+plotResiduals(mdlysqrt,'symmetry','ResidualType','standardized')
 title('')
+drawnow
+sgtitle('Figure 10.27')
+set(gcf,"Name",'Figure 10.27')
+drawnow
 if prin==1
     % print to postscript
     print -depsc figs\transf4.eps;
 end
 
 
-%% Analysis in sqrt scale FS res
+%% Create Figure 10.28
+% Analysis in sqrt scale FS res
 % LMS using 100000 subsamples
-[outLXS]=LXS(sqrt(y),X,'nsamp',100000,'lms',2);
+[outLXS]=LXS(ytra,X,'nsamp',100000,'lms',2);
 % Forward Search
-[out]=FSReda(sqrt(y),X,outLXS.bs);
-
-standard=struct;
-standard.Color={'g'};
-standard.LineWidth=1;
-standard.SizeAxesNum=9;
-standard.SizeAxesLab=10;
+[out]=FSReda(ytra,X,outLXS.bs);
 
 % Options for the trajectories in foreground
 fground=struct;
@@ -234,51 +183,69 @@ fground.Color={'r'};
 fground.LineWidth=2;
 fground.funit=outsqrty.outliers;
 fground.flabstep='';
-% Options for the trajectories in background
-bgroud=struct;
-bground.bthresh=4;
-bground.bstyle='greysh';
 
-% resfwdplot(out,'standard',standard,'fground',fground) % ,'bground',bground);
+resfwdplot(out,'fground',fground,'tag','pl_ysqrt');
+drawnow
+title('Figure 10.28')
+set(gcf,"Name",'Figure 10.28')
 
-resfwdplot(out,'fground',fground) % ,'bground',bground);
-
+drawnow
 if prin==1
     % print to postscript
     print -depsc figs\transf5.eps;
 end
 
-%% Non parametric transformation
+
+
+%% Create Figure 10.30 and 10.31
+% Non parametric transformation
 outAV=avas(y,X);
 aceplot(outAV,'VarNames',nameXy,'notitle',true)
+pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
+figure(pl_ty(1))
+sgtitle('Figure 10.30')
+set(gcf,"Name",'Figure 10.30')
 
+pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
+figure(pl_tX(1))
+sgtitle('Figure 10.31')
+set(gcf,"Name",'Figure 10.31')
+drawnow
 if prin==1
     % print to postscript
     print -depsc figs\AV1.eps;
     print -depsc figs\AV2.eps;
 end
 
+%% Create Table 10.5
+mdlAVAS=fitlm(outAV.tX,outAV.ty,'Exclude','','VarNames',nameXy);
+disp('Table 10.5')
+disp(mdlAVAS)
 
-fitlm(outAV.tX,outAV.ty,'Exclude','','VarNames',nameXy)
+%% Prepare input for Figures 10.32 and 10.33
+% RAVAS model selection with no constraint in X
+disp('Note that automatic model selection in this case might take some minutes')
+outMS=avasms(y,X,'plots',0);
+% outrobAV=avas(y,X,'orderR2',true,'rob',true,'scail',true)
 
-%% RAVAS model selection with no constraint in X
-outMS=avasms(y,X)
-outrobAV=avas(y,X,'orderR2',true,'rob',true,'scail',true)
-%% Stabilità dopo arrotondamento
-rng(100)
-ndec=20;
-y1=round(y,ndec);
-X1=round(X,ndec);
-outrobAV=avas(y1,X1,'orderR2',true,'rob',true,'scail',true)
-length(outrobAV.outliers)
-aceplot(outrobAV)
-%%
-avasmsplot(outMS)
+
+%% Create Figures 10.32 and 10.33 
+% avasmsplot(outMS)
 
 j=1;
 outj=outMS{j,"Out"};
 outrobAV=outj{:};
 aceplot(outrobAV,'VarNames',nameX,'notitle',true)
+
+pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
+figure(pl_ty(1))
+sgtitle('Figure 10.32')
+set(gcf,"Name",'Figure 10.32')
+
+pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
+figure(pl_tX(1))
+sgtitle('Figure 10.33')
+set(gcf,"Name",'Figure 10.33')
 
 if prin==1
     % print to postscript
@@ -287,30 +254,65 @@ if prin==1
 end
 
 %%
-outlierfromFSR=true;
-if outlierfromFSR==true
-    outfrom=outTRA.outliers;
-else
-    outfrom=outrobAV.outliers;
+% outlierfromFSR=false;
+% if outlierfromFSR==true
+%     outfromRAVAS=outsqrty.outliers;
+% else
+    outfromRAVAS=outrobAV.outliers;
+% end
+
+%% Create Table 10.6
+% mdl  = fit in original scale (all the observations)
+% mdlysqrt = fit in the sqrt scale (after deleting the outliers)
+% mdlAVAS = fit based on AVAS
+% mdlRAVAS = fit based on best model after excluding the outliers
+% find F value
+
+mdlRAVAS=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outfromRAVAS,'VarNames',nameXy);
+
+Original=[mdl.Coefficients{:,'tStat'}; mdl.NumObservations; mdl.Rsquared.Adjusted];
+Square_root=[mdlysqrt.Coefficients{:,'tStat'}; mdlysqrt.NumObservations; mdlysqrt.Rsquared.Adjusted];
+Avas=[mdlAVAS.Coefficients{:,'tStat'}; mdlAVAS.NumObservations; mdlAVAS.Rsquared.Adjusted];
+Ravas=[mdlRAVAS.Coefficients{:,'tStat'}; mdlRAVAS.NumObservations; mdlRAVAS.Rsquared.Adjusted];
+TBL=table(Original,Square_root,Avas,Ravas);
+
+disp('Table 10.6')
+varn=["Original" "Square-root" "AVAS" "RAVAS"];
+rown=[string(mdl.CoefficientNames)'; "Observations m*"; "Adjusted R2"];
+TBL.Properties.RowNames=rown;
+TBL.Properties.VariableNames=varn;
+disp(TBL)
+
+%% Create Figure 10.34
+figure
+goodFromRAVAS=setdiff(1:n,outfromRAVAS);
+Xg=X(goodFromRAVAS,:);
+
+resg=mdlRAVAS.Residuals{goodFromRAVAS,3};
+h1=subplot(2,1,1);
+qqplotFS(resg,'X',Xg,'plots',1,'h',h1,'conflev',0.95);
+title('qqplot of stud. res.')
+title('')
+subplot(2,1,2)
+plotResiduals(mdlRAVAS,'symmetry')
+title('')
+
+if prin==1
+    % print to postscript
+    print -depsc figs\AV6.eps;
 end
 
-% find F value
-mdlrobAV=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outfrom,'VarNames',nameXy)
+sgtitle('Figure 10.34')
+set(gcf,"Name",'Figure 10.34')
+drawnow
 
-group=ones(length(y),1);
-group(outfrom)=2;
-yXplot(outrobAV.ty,outrobAV.tX,'nameX',nameX,'group',group)
-
-
-%% robAVAS scale: plot residuals
-close all
-j=3;
+%% Create Figure 10.35
+figure
 subplot(2,2,1)
-histfit(mdlrobAV.Residuals{:,j},[])
+histfit(mdlRAVAS.Residuals{:,j},[])
 
 subplot(2,2,2)
-histfit(mdlrobAV.Residuals{:,j},[],'kernel')
-% plotResiduals(mdlrobAV,'fitted')
+histfit(mdlRAVAS.Residuals{:,j},[],'kernel')
 
 if prin==1
     % print to postscript
@@ -318,50 +320,29 @@ if prin==1
 end
 
 
-%% robAVAS scale f4 qqplots
-
-good=setdiff(1:n,outfrom);
-Xg=X(good,:);
-
-resg=mdlrobAV.Residuals{good,3};
-close all
-h1=subplot(2,1,1);
-qqplotFS(resg,'X',Xg,'plots',1,'h',h1,'conflev',0.95);
-title('qqplot of stud. res.')
-title('')
-subplot(2,1,2)
-plotResiduals(mdlrobAV,'symmetry')
-title('')
-if prin==1
-    % print to postscript
-    print -depsc figs\AV6.eps;
-end
+sgtitle('Figure 10.35')
+set(gcf,"Name",'Figure 10.35')
+drawnow
 
 
-%% FS final plots
+%% Prepare input for Figure 10.36
+outFinal=FSR(outrobAV.ty,outrobAV.tX,'plots',0);
 % LMS using 100000 subsamples
-[outLXSav]=LXS(outrobAV.ty,outrobAV.tX,'nsamp',100000,'lms',2);
+[outLXSav]=LXS(outrobAV.ty,outrobAV.tX,'nsamp',10000,'lms',2);
 % Forward Search
 [outFS]=FSReda(outrobAV.ty,outrobAV.tX,outLXSav.bs);
 
-% standard=struct;
-% standard.Color={'g'};
-% standard.LineWidth=1;
-% standard.SizeAxesNum=9;
-% standard.SizeAxesLab=10;
-
+%% Create Figure 10.36
 % Options for the trajectories in foreground
 fground=struct;
 fground.Color={'r'};
 fground.LineWidth=2;
-fground.funit=outsqrty.outliers;
+fground.funit=outFinal.outliers;
 fground.flabstep='';
 % Options for the trajectories in background
 bgroud=struct;
 bground.bthresh=4;
 bground.bstyle='greysh';
-
-% resfwdplot(out,'standard',standard,'fground',fground) % ,'bground',bground);
 
 resfwdplot(outFS,'fground',fground,'datatooltip','') % ,'bground',bground);
 
@@ -371,24 +352,5 @@ if prin==1
 end
 
 
-% stepwise su outrobAV
-stepwiselm(outrobAV.tX,outrobAV.ty,'VarNames',nameXy,'Exclude',outrobAV.outliers)
-
-%% Confirmation with FSR
-outTRA=FSR(outrobAV.ty,outrobAV.tX,'nameX',nameX);
-
-% Options for the trajectories in foreground
-fground=struct;
-fground.Color={'r'};
-fground.LineWidth=2;
-fground.funit=outTRA.outliers;
-fground.flabstep='';
-% Options for the trajectories in background
-bgroud=struct;
-bground.bthresh=4;
-bground.bstyle='greysh';
-
-% resfwdplot(out,'standard',standard,'fground',fground) % ,'bground',bground);
-
-resfwdplot(outFS,'fground',fground) % ,'bground',bground);
-
+title('Figure 10.36')
+set(gcf,"Name",'Figure 10.36')
