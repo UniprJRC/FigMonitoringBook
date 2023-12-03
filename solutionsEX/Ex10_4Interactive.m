@@ -1,4 +1,4 @@
-%% This file creates Figures A.78 and A.79 
+%% This file creates Figures A.79 and A.80 
 % All the other figures for dataset autompg 
 % are created by file Ex10_4.m
 
@@ -28,7 +28,7 @@ prin=0;
 
 %% Create Figures A.78 and A.79 
 % Monitoring of residuals FSReda and brushing
-[outLXS]=LXS(ytra,Xs,'nsamp',50000);
+[outLXS]=LXS(ytra,Xs,'nsamp',10000);
 % Forward Search
 [out]=FSReda(ytra,Xs,outLXS.bs);
 
@@ -42,11 +42,11 @@ databrush.labeladd='1';
 % Construct the xlabel and ylabel for the yXplot which shows the brushed
 % units
 nameX=string(nameXycat(selvar));
-namey=string(nameXycat(end));
-namey="g("+namey+")";
+namey='-(mpg^{-0.5})';
 
 resfwdplot(out,'databrush',databrush,'fground',fground,'datatooltip','', ...
     'nameX',nameX,'namey',namey)
+%%
 fig=findobj(0,'tag','pl_yX');
 figure(fig)
 sgtitle('Figure similar to bottom panel of Figure 8.78 or Figure A.79: It depends on your brushing')
@@ -57,9 +57,9 @@ title('Figure similar to top panel of Figure 8.78 or Figure A.79','It depends on
 if prin==1
     % print to postscript
     print -depsc figs\MPGbrushres1.eps;
-    print -depsc figs\MPGbrushyX1.eps;
+    print -depsc MPGbrushyX1.eps;
     print -depsc figs\MPGbrushres2.eps;
-    print -depsc figs\MPGbrushyX2.eps;
+    print -depsc MPGbrushyX2.eps;
 end
 
 

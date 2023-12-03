@@ -1,4 +1,4 @@
-%% This file Creates Figures A.66-A.69
+%% This file Creates Figures A.67-A.70
 % Analysis of heart rate data
 
 Y=load('ms212.txt');
@@ -13,7 +13,7 @@ Run=dummyvar(Y(:,8));
 
 X=[Y(:,1:3) Gender(:,1:end-1)  Smoke(:,1:end-1) Alcohol(:,1:end-1) Exercise(:,1:end-1) Run(:,1:end-1)];
 
-%% Create left panel of Figure A.66
+%% Create left panel of Figure A.67
 la=[0.5 0.6 0.7 0.8];
 out=FSRfan(y,X,'family','YJ','plots',1,'init',round(n/2),'la',la,'tag','plini');
 title('')
@@ -23,10 +23,10 @@ if prin==1
     print -depsc figs\x1L.eps;
 end
 
-title('Figure A.66 (left panel)')
-set(gcf,"Name",'Figure A.66 (left panel)')
+title('Figure A.67 (left panel)')
+set(gcf,"Name",'Figure A.67 (left panel)')
 
-%% Create right panel of Figure A.66
+%% Create right panel of Figure A.67
 % Fan plot positive and negative la=0.7
 la=[0.5 0.6 0.7 0.8];
 
@@ -37,36 +37,36 @@ if prin==1
     print -depsc figs\x1R.eps;
 end
 
-title('Figure A.66 (right panel)')
-set(gcf,"Name",'Figure A.66 (right panel)')
+title('Figure A.67 (right panel)')
+set(gcf,"Name",'Figure A.67 (right panel)')
 
 
-%% Create Figure A.67
+%% Create Figure A.68
 figure
 la=0.7;
 ytra=normYJ(y,[],la,'inverse',false);
 
-subplot(2,2,1)
+h1=subplot(2,2,1);
 outlmori=fitlm(X(:,9),y);
-qqplot(outlmori.Residuals{:,3})
-title('')
+qqplotFS(outlmori.Residuals{:,3},'X',X,'plots',1,'h',h1,'conflev',0.95);
 
-subplot(2,2,2)
+title('')
+h2=subplot(2,2,2);
 outlmtra=fitlm(X(:,9),ytra);
-qqplot(outlmtra.Residuals{:,3})
+qqplotFS(outlmtra.Residuals{:,3},'X',X,'plots',1,'h',h2,'conflev',0.95);
 title('')
 
 if prin==1
     % print to postscript
-    print -depsc figs\x2.eps;
+    print -depsc x2.eps;
 end
 
-sgtitle('Figure A.67')
-set(gcf,"Name",'Figure A.67')
+sgtitle('Figure A.68')
+set(gcf,"Name",'Figure A.68')
 
 
 
-%% Create Figure A.68
+%% Create Figure A.69
 figure
 subplot(2,2,1)
 boxplot(y,X(:,9))
@@ -77,11 +77,11 @@ if prin==1
     print -depsc figs\x3.eps;
 end
 
-sgtitle('Figure A.68')
-set(gcf,"Name",'Figure A.68')
+sgtitle('Figure A.69')
+set(gcf,"Name",'Figure A.69')
 
 
-%% Create Figure A.69
+%% Create Figure A.70
 % X4 MMreg
 figure
 h1=subplot(2,1,1);
@@ -101,6 +101,8 @@ if prin==1
     print -depsc figs\x4.eps;
 end
 
-sgtitle('Figure A.69')
-set(gcf,"Name",'Figure A.69')
+sgtitle('Figure A.70')
+set(gcf,"Name",'Figure A.70')
+
+
 
