@@ -6,32 +6,27 @@
 Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2023), Applied Robust Statistics through the Monitoring Approach, Heidelberg: Springer Nature.
 
 # Abstract
-TODO
+ Robust statistical methods  provide understanding of suitable models for data that are contaminated by systematic or random departures. A discussion of the `The Grand Plan' for robust statistics provides a historical context. We start robust data analysis with an introduction to estimates of location, introducing the ideas of breakdown point \bds, the proportion of outlying observations that a particular robust analysis can be expected to adjust for, and of the asymptotic relative efficiency \efs, how much information is lost by the robust procedure if the data are not contaminated. As one measure increases, the other decreases. We also introduce robust estimates of scale. In the traditional robust approach, analyses are usually made for one value of \bd or \efs.  Our book focuses on the monitoring approach to robust statistics in which analyses are performed over a range of values of \bd and \efs.  For some simple examples, including the transformation of income data, we compare the information obtained from the traditional static and the monitoring approaches, the latter providing extra insights into the data. The Grand Plan for the wider application  of robust procedures can be realised through the Monitoring Approach, leading to appreciably more effective  data analyses.
 
-# MATLAB Code
-
-
-
-# Section 1.3 
-
-Figure 1.1. MAD: Empirical and asymptotic consistency factor under the hypothesis of normality.
-The decreasing curve represents the reciprocal of the average value of the MAD across 100000
-simulations 
-[Code](https://github.com/UniprJRC/FigMonitoringBook/blob/main/cap1/MADsmallsample.m).
+# MATLAB Code to reproduce Figures and Tables in this Chapter
 
 
-# Section 1.4 and 1.5
 
- **Univariate income data from the United States Census Bureau**
+**Income1Univariate.m**
 
-Figures 1.2, 1.3., Table 1.1, 1.2,  Figure 1.4 and Figure 1.5
- [Code](https://github.com/UniprJRC/FigMonitoringBook/blob/main/cap1/Income1main.m).
+This file is referred to dataset Income1.
+Univariate analysis of the response for dataset Income1 
+It creates Figures 1.2 - 1.5
+and Tables 1.1, 1.2 
 
- **Univariate income data from a municipality in north of Italy**
 
+**Income2Univariate.m**
 
- Exercise 1.4, Table 1.3, 1.4 and Figure 1.6 
- [Code](https://github.com/UniprJRC/FigMonitoringBook/blob/main/cap1/Income2main.m).
+This file is referred to dataset Income2.
+Univariate analysis of the response for dataset Income2 
+It creates Figure 1.6
+and Tables 1.3, 1.4 
+
 
 
 
@@ -41,23 +36,7 @@ Figures 1.2, 1.3., Table 1.1, 1.2,  Figure 1.4 and Figure 1.5
 
 ---------------------------
 
- OLD TO DELETE 
-
-Fig. 1.2. Univariate income data from the United States Census Bureau: histogram and boxplot;
-positive skewness is evident in both panels  [Code](https://github.com/UniprJRC/FSDApapers/blob/main/ARC2021/ChenLockhartStephensFigures.m).
-
-Fig. 1.3. Univariate income data from United States Census Bureau: boxplots for four values of 𝜆
-using the normalized Box Cox power transformation after preliminary rescaling of the data to a
-maximum value of one [Code](https://github.com/UniprJRC/FSDApapers/blob/main/ARC2021/JohnDraperFigures.m).
-
-Fig. 1.4. Univariate income data from the United States Census Bureau: monitoring the truncated
-mean as a function of the trimming proportion 𝛼 [Code](https://github.com/UniprJRC/FSDApapers/blob/main/ARC2021/PoisonDataFigures.m).
-
-Fig. 1.5. Univariate income data from the United States Census Bureau: monitoring plot of the
-score test statistics for five values of 𝜆 as a function of the subset size 𝑚 [Code](https://github.com/UniprJRC/FSDApapers/blob/main/ARC2021/PoisonDataFigures.m).
-
-Fig. 1.6. Univariate income data from a municipality in north of Italy: monitoring plot of the score
-test statistics for four values of 𝜆 as a function of the subset size 𝑚 [Code](https://github.com/UniprJRC/FSDApapers/blob/main/ARC2021/PoisonDataFigures.m).
+ 
 
 
 
