@@ -6,6 +6,7 @@
 
 %% Data loading
 clear
+close all
 load Income1
 
 % y  in array format
@@ -17,10 +18,11 @@ yt=Income1(:,end);
 n=length(y);
 one=ones(n,1);
 
-close all
-FontSize=14;
 
-%% Create figure histbox (Figure 1.2)
+FontSize=14;
+prin=0;
+
+%% Create Figure 1.2
 % histogram and boxplot; positive
 % skewness is evident in both panels.
 subplot(1,2,1)
@@ -30,16 +32,16 @@ ylabel('Frequencies','FontSize',FontSize)
 subplot(1,2,2)
 boxplot(y,'Labels',{''})
 ylabel('Income','FontSize',FontSize)
-sgtitle('Figure 1.2')
-set(gcf,"Name",'Figure 1.2')
-prin=0;
 if prin==1
     % print to postscript
     print -depsc histbox.eps;
 end
+sgtitle('Figure 1.2')
+set(gcf,"Name",'Figure 1.2')
 
-%% Create Figure 1.3: boxplots for four value of lambda
-% boxla: boxplots for four values of 𝜆 using the
+%% Create Figure 1.3
+% Boxplots for four value of lambda
+% Boxplots for four values of 𝜆 using the
 % normalized Box Cox power transformation after preliminary rescaling of the data to a maximum
 % value of one.
 yl1=-1;
@@ -69,17 +71,17 @@ ytra=normBoxCox(yrs,1,-0.5,'Jacobian',true);
 boxplot(ytra,'Labels',{''})
 title('$\lambda=-0.5$','Interpreter','latex','FontSize',FontSize)
 ylim([yl1 yl2])
-sgtitle('Figure 1.3')
-set(gcf,"Name",'Figure 1.3')
 
-prin=0;
 if prin==1
     % print to postscript
     print -depsc boxla.eps;
 end
 
-%% Analysis of the score test
-% Table 1.1
+sgtitle('Figure 1.3')
+set(gcf,"Name",'Figure 1.3')
+
+%% Create Table 1.1 
+% Analysis of the score test
 la=[-1, -0.5, 0, 0.5, 1];
 out=Score(y,one, 'la', la,'intercept',false);
 
@@ -93,7 +95,8 @@ format bank
 disp("Table 1.1")
 disp(ScoreT)
 
-%% Descriptive statistics
+%% Create Table 1.2 
+% Descriptive statistics
 % Table 1.2
 ysor=sort(y);
 
@@ -127,7 +130,8 @@ LOCt=array2table(LOC,'RowNames',rn,'VariableNames',rc);
 disp("Table 1.2")
 disp(LOCt)
 
-%% Trimmed mean monitoring (Figure 1.4)
+%% Prepare input for Figure 1.4
+% Trimmed mean monitoring 
 alphaAll=(0:0.01:0.5)';
 lalphaAll=length(alphaAll);
 meanTru=zeros(lalphaAll,1);
@@ -139,8 +143,8 @@ for i=1:lalphaAll
     % meanTru1(i)=trimmean(y,100*alphaAll(i));
 end
 
-%% Create figure which monitors the trimmed mean (Fig 1.4)
-% trimmean.eps
+%% Create Figure 1.4
+% Monitoring of the trimmed mean 
 figure
 plot(alphaAll,meanTru)
 xlabel('\alpha','FontSize',FontSize)
@@ -154,48 +158,27 @@ text(0.45,meany-1000,"$\hat \mu = \overline y_n$",'Interpreter','latex','FontSiz
 text(0.15,mediany+300,"Me",'Interpreter','latex','FontSize',FontSize)
 
 set(gca,"XDir","reverse")
-title('Figure 1.4')
-set(gcf,"Name",'Figure 1.4')
 
-prin=0;
 if prin==1
     % print to postscript
     print -depsc trimmeanIncome1.eps;
 end
 
+title('Figure 1.4')
+set(gcf,"Name",'Figure 1.4')
+
 
 %% Create Figure 1.5 fanplot
 % Fanplot using just the intercept
 outFSRfanUNI=FSRfan(y,one,'intercept',0,'ylimy',[-24 26],'nsamp',0);
-title('Figure 1.5')
-set(gcf,"Name",'Figure 1.5')
 
-prin=0;
 if prin==1
     % print to postscript
     print -depsc fanIncome1.eps;
 end
 
-%% Exercise 1.1
-
-y15=y(1:15);
-
-n15=length(y15);
-alphaAll=[0.05 0.10]';
-lalphaAll=length(alphaAll);
-meanTru=zeros(lalphaAll,1);
-ysor=sort(y15);
-for i=1:lalphaAll
-    m=floor((n15-1)*alphaAll(i));
-    meanTru(i)=mean(ysor(m+1:n15-m));
-    % meanTru1(i)=trimmean(y,100*alphaAll(i));
-end
-
-disp("Trimmed mean alpha=0.05")
-disp(meanTru(1))
-
-disp("Trimmed mean alpha=0.10")
-disp(meanTru(2))
+title('Figure 1.5')
+set(gcf,"Name",'Figure 1.5')
 
 %% Visual display of the trimmed mean calling GUItrimmedmean
 % Note that given that GUItrimmean trims alpha72 from both tails it is
