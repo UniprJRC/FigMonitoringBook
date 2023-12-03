@@ -70,10 +70,12 @@ end
 
 
 %% Prepare input for Figures 4.16-4.18
-outPD=Sregeda(y,X,'plots',0,'rhofunc','mdpd');
-outOPT=Sregeda(y,X,'plots',0,'rhofunc','optimal');
-outHA=Sregeda(y,X,'plots',0,'rhofunc','hampel');
-outHYP=Sregeda(y,X,'plots',0,'rhofunc','hyperbolic');
+disp('Monitoring S regression estimators')
+outPD=Sregeda(y,X,'plots',0,'rhofunc','mdpd','msg',0);
+outOPT=Sregeda(y,X,'plots',0,'rhofunc','optimal','covrob',0,'msg',0);
+outHA=Sregeda(y,X,'plots',0,'rhofunc','hampel','msg',0);
+outHYP=Sregeda(y,X,'plots',0,'rhofunc','hyperbolic','msg',0);
+outOPT1=Sregeda(y,X,'plots',0,'rhofunc','optimal','covrob',1,'msg',0);
 
 fground=struct;
 sel=[ 9 21 30 31 38 47    3 11 14 24 27 36 42 50 43  7 39 ]';
@@ -178,112 +180,16 @@ resfwdplot(outFS,'fground',fground,'tag','pl_FS', ...
 sgtitle('Figure 4.21')
 set(gcf,"Name",'Figure 4.21')
 
-%% Prepare input for Figure 4.22
-% Monitoring of t stat (S estimation with  optimal rho)
-% 
-% 
-% [n,p]=size(X);
-% bdp=0.5:-0.01:0.01;
-% RES=zeros(n,length(bdp));
-% TTS=[bdp' zeros(length(bdp),p+1)];
-% TTS1=TTS;
-% 
-% rhofunc='optimal';
-% 
-% for j=1:length(bdp)
-%     [out]=Sreg(y,X,'rhofunc',rhofunc,'bdp',bdp(j));
-%     % RES(:,j)=out.residuals;
-% 
-%     [outCOV]=RobCov(X,out.residuals,out.scale,'rhofunc',rhofunc,'bdp',bdp(j));
-%     covrobS=outCOV.covrob;
-%     covrobS1=outCOV.covrob1;
-%     tstatS=out.beta./sqrt(diag(covrobS));
-%     tstatS1=out.beta./sqrt(diag(covrobS1));
-%     TTS(j,2:end)=tstatS';
-%     TTS1(j,2:end)=tstatS1';
-% end
-% 
+%% Create Figure 4.22
+fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0');
+title('Figure 4.22 (top panel)')
+set(gcf,"Name",'Figure 4.22 (top panel)')
 
-%% Prepare input for Figure  4.22
-[n,p]=size(X);
-bdp=outOPT.bdp;
-rhofunc=outOPT.rhofunc;
-TTS=[bdp' zeros(length(bdp),p+1)];
-TTS1=TTS;
-
-for j=1:length(bdp)
-    [outCOV]=RobCov(X,outOPT.RES(:,j),outOPT.Scale(j),'rhofunc',rhofunc,'bdp',bdp(j));
-    covrobS=outCOV.covrob;
-    covrobS1=outCOV.covrob1;
-    tstatS=outOPT.Beta(:,j)./sqrt(diag(covrobS));
-    tstatS1=outOPT.Beta(:,j)./sqrt(diag(covrobS1));
-    TTS(j,2:end)=tstatS';
-    TTS1(j,2:end)=tstatS1';
-end
+fanplotFS(outOPT1,'conflev',0.95,'tag','plrobcopv1');
+title('Figure 4.22 (bottom panel)')
+set(gcf,"Name",'Figure 4.22 (bottom panel)')
 
 
-%%  ROBUST T STAT S estimators just plotting part
-ini=n-length(bdp)+1;
-xaxis = ini:n;
-cylim=false;
-kk=30;
-lwd=3;
-figure
-subplot(2,1,1)
-hold('on');
-LineStyl={'-', '--', '-.', ':'};
-
-quant=norminv(0.975);
-v=[-40 100];
-lwdenv=2;
-line([v(1),v(2)],[quant,quant],'color','r','LineWidth',lwdenv);
-line([v(1),v(2)],[-quant,-quant],'color','r','LineWidth',lwdenv);
-
-for j=3:p+2
-    plot(xaxis,TTS(:,j),'LineWidth',lwd,'LineStyle',LineStyl{j-2}) % ,'Color','b');
-    tj=['t_' num2str(j-2)];
-    text(xaxis(1),TTS(1,j),tj,'FontSize',16)
-end
-xlim([ini n])
-xtick=get(gca,'Xtick');
-newlabel=num2str(bdp(xtick-ini+1)');
-set(gca,'Xtick',xtick,'Xticklabel',newlabel)
-
-title(['Traditional S  t-stat ' rhofunc ' rho function '],'FontSize',14);
-xlabel('bdp')
-if cylim == true
-    ylim([-kk kk])
-end
-
-
-subplot(2,1,2)
-hold('on');
-v=[-40 100];
-lwdenv=2;
-line([v(1),v(2)],[quant,quant],'color','r','LineWidth',lwdenv);
-line([v(1),v(2)],[-quant,-quant],'color','r','LineWidth',lwdenv);
-
-for j=3:p+2
-    plot(xaxis,TTS1(:,j),'LineWidth',lwd,'LineStyle',LineStyl{j-2});
-    
-    tj=['t_' num2str(j-2)];
-    text(xaxis(1),TTS1(1,j),tj,'FontSize',16)
-end
-
-xlim([ini n])
-xtick=get(gca,'Xtick');
-newlabel=num2str(bdp(xtick-ini+1)');
-set(gca,'Xtick',xtick,'Xticklabel',newlabel)
-
-title(['Modified S  t-stat ' rhofunc ' rho function '],'FontSize',14);
-xlabel('bdp')
-if cylim == true
-    ylim([-kk kk])
-end
-sgtitle('Figure 4.22')
-set(gcf,"Name",'Figure 4.22')
-
-prin=0;
 if prin==1
     % print to postscript
     print -depsc figs\StstatAR.eps;
