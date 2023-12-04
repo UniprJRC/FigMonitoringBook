@@ -1,7 +1,7 @@
 # FigMonitoringBook
 A GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach"
 
-
+[![View FSDA -  Flexible Statistics Data Analysis toolbox on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://it.mathworks.com/matlabcentral/fileexchange/72999-fsda-flexible-statistics-data-analysis-toolbox)
 
 
 **Here you can find 3 examples related to 3 datasets that are runnable straight in MATLAB Online**
@@ -14,8 +14,8 @@ Clicking on ipynb it is possible to see the preview of the output these files ge
 | Income2  | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap1/Income2main.m) | [[ipynb](/AnalysisByDataset/Income2.ipynb)] 
 | Multiple regression data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/ARdata.m) | [[ipynb](/cap4/ARregression.ipynb)] 
 
-Introduction and the Grand Plan .  [[dir](./cap1)] [[ipynb](./AnalysisByDataset/Income2.ipynb)] [[nbviewer](http://nbviewer.ipython.org/github.com/UniprJRC/FigMonitoringBook/blob/tree/master/AnalysisByDataset/Income2.ipynb)]
 
+# Table of Contents and Code Notebooks
 <br>
 
 
