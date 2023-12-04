@@ -26,9 +26,9 @@ Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2023), Appl
 
 | Dataset    |  Script  | Jupiter notebook
 |---|---|---|
-| Multiple regression data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/ARdata.m) | [[ipynb](/cap4/ARregression.ipynb)] 
+| Multiple regression data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/ARregression.m) | [[ipynb](/cap4/ARregression.ipynb)] 
 | Bank  data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Bank.m) | [[ipynb](/cap4/Bank.ipynb)] 
-| Hawkins data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/ARdata.m) | [[ipynb](/cap4/Hawkins.ipynb)] 
+| Hawkins data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Hawkins.m) | [[ipynb](/cap4/Hawkins.ipynb)] 
 | Stars data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Stars.m) | [[ipynb](/cap4/Stars.ipynb)]
 | Surgical unit data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/SurgicalUnit.m) | [[ipynb](/cap4/SurgicalUnit.ipynb)]
 | Wool data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Wool.m) | [[ipynb](/cap4/Wool.ipynb)]
