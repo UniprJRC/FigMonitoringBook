@@ -29,6 +29,9 @@ set(gcf,"Name",'Figure 4.1')
 %% Create Figure 4.2
 % Automatic outlier detection process
 [out]=FSR(y,X,'plots',1);
+pl_yX=findobj(0, 'type', 'figure','tag','fsr_yXplot');
+close(pl_yX(end))
+
 pl_fsr=findobj(0, 'type', 'figure','tag','pl_fsr');
 figure(pl_fsr(end))
 xlabel('Subset size m')
@@ -43,19 +46,20 @@ if prin==1
 end
 
 %% Create Figure 4.3
+quaunt=[0.01 0.5 0.99 0.999 0.9999 0.99999];
 plots=struct;
-plots.conflev=[0.01 0.5 0.99 0.999 0.9999 0.99999];
+plots.conflev=quant;
 plots.LineWidth=2;
 plots.LineWidthEnv=2;
 MDRinv=FSRinvmdr(out.mdr,size(X,2)+1,'plots',plots);
 xlim([3 length(y)])
-title('Figure 4.3')
-set(gcf,"Name",'Figure 4.3')
 
 if prin==1
     % print to postscript
     print -depsc figs\STdetailsNC.eps;
 end
+title('Figure 4.3')
+set(gcf,"Name",'Figure 4.3')
 
 %% Create Figure 4.4
 % Resuperimposing envelopes using mdr coordinates and normal
@@ -85,13 +89,13 @@ for jn0=n0
     title(['Resuperimposed envelope n*=' num2str(jn0)]);
 end
 
-sgtitle('Figure 4.4')
-set(gcf,"Name",'Figure 4.4')
 
 if prin==1
     % print to postscript
     print -depsc STresuperNC.eps;
 end
+sgtitle('Figure 4.4')
+set(gcf,"Name",'Figure 4.4')
 
 %% Create Figure 4.9
 % Compare different fits
@@ -168,7 +172,7 @@ end
 
 %% Create Figure 4.10
 % Monitoring S residuals 
-[outS]=Sregeda(y,X);
+[outS]=Sregeda(y,X,'msg',0);
 sel=[11 20 30 34  7 9]';
 fground.LineStyle={'-.','-.','-.','-.','--','--'};
 fground.Color={'r';'r';'r';'r';'k';'k'};
@@ -180,13 +184,13 @@ standard.laby='S residuals bisquare \rho function';
 resfwdplot(outS,'standard',standard,'fground',fground, ...
     'corres',true,'tag','Sres');
 
-sgtitle('Figure 4.10')
-set(gcf,"Name",'Figure 4.10')
 
 if prin==1
     % print to postscript
     print -depsc figs\Sres.eps;
 end
+sgtitle('Figure 4.10')
+set(gcf,"Name",'Figure 4.10')
 
 %% Create Figure 4.11
 % Monitoring MM residuals 
@@ -202,12 +206,13 @@ fground.FontSize=12;
 standard.laby='MM residuals bisquare \rho function';
 resfwdplot(outMM,'standard',standard,'fground',fground, ...
     'corres',true,'tag','MMres');
-sgtitle('Figure 4.11')
-set(gcf,"Name",'Figure 4.11')
 
 prin=0;
 if prin==1
     % print to postscript
     print -depsc figs\MMres.eps;
 end
+
+sgtitle('Figure 4.11')
+set(gcf,"Name",'Figure 4.11')
 
