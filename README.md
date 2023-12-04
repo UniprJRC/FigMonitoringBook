@@ -28,6 +28,6 @@ Introduction and the Grand Plan .  [[dir](./cap1)] [[ipynb](./AnalysisByDataset/
 6.  Transformations  [[open dir](/cap6/README.md)]  
 7.  Non-parametric Regression  [[open dir](/cap7/README.md)]  
 8.   Extensions of the Multiple Regression Model   [[open dir](/cap8/README.md)]  
-9.    Model selection    [[open dir](/cap9/README.md)
-10.   Some Robust Data Analyses    [[open dir](/cap10/README.md)
+9.    Model selection    [[open dir](/cap9/README.md)]
+10.   Some Robust Data Analyses    [[open dir](/cap10/README.md)]
  
