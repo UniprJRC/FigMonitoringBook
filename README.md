@@ -1,8 +1,5 @@
-# FigMonitoringBook
-A GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach"
-
-[![View FSDA -  Flexible Statistics Data Analysis toolbox on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://it.mathworks.com/matlabcentral/fileexchange/72999-fsda-flexible-statistics-data-analysis-toolbox)
-
+# Applied Robust Statistics through the Monitoring Approach
+GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach"
 
 **Here you can find 3 examples related to 3 datasets that are runnable straight in MATLAB Online**
 Clicking on ipynb it is possible to see the preview of the output these files generate 
@@ -22,7 +19,6 @@ Clicking on ipynb it is possible to see the preview of the output these files ge
 1. Introduction and the Grand Plan  [[open dir](/cap1/README.md)]  
 2. Introduction to M-Estimation for Univariate Samples[[open dir](/cap2/README.md)]  
 3. Robust Estimators in Multiple Regression  [[open dir](/cap3/README.md)]  
-4. The Monitoring Approach in Multiple Regression [[open dir](/cap3/README.md)]  
 4. The Monitoring Approach in Multiple Regression [[open dir](/cap4/README.md)]  
 5.  Practical Comparison of the Different Estimators [[open dir](/cap5/README.md)]  
 6.  Transformations  [[open dir](/cap6/README.md)]  
@@ -31,3 +27,28 @@ Clicking on ipynb it is possible to see the preview of the output these files ge
 9.    Model selection    [[open dir](/cap9/README.md)]
 10.   Some Robust Data Analyses    [[open dir](/cap10/README.md)]
  
+# Links
+$$
+Springer Verlag
+$$
+$$
+Amazon
+$$
+
+
+
+
+    @book{ARCPT2024,  
+    address = {, UK},  
+    author = {Atkinson, A. C. and Riani, M. and Corbellini, A. and Perrotta, D. and Todorov, V},  
+    isbn = {XXX-XXXXXX},   
+    publisher = {Heidelberg: Springer Nature},  
+    title = {{Applied Robust Statistics through the Monitoring Approach}},  
+    year = {2024}  
+    }
+
+
+
+# Coding Environment
+
+ [![View FSDA -  Flexible Statistics Data Analysis toolbox on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://it.mathworks.com/matlabcentral/fileexchange/72999-fsda-flexible-statistics-data-analysis-toolbox)
