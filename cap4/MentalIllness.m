@@ -21,7 +21,7 @@ RES=zeros(n,lbdp);
 
 Xwithintercept=[ones(n,1) X];
 for j=1:lbdp
-    [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',100000);
+    [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',0,'msg',0);
     
     hh=out.h;
     if hh<n
