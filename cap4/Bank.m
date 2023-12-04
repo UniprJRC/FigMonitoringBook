@@ -23,6 +23,9 @@ if prin==1
     print -depsc BDfsrmdr.eps;
 end
 
+title('Figure 4.34')
+set(gcf,"Name",'Figure 4.34')
+
 
 %% Create Figure 4.35
 % Monitoring scaled residuals and highlight the 6 largest residuals
@@ -40,13 +43,13 @@ resfwdplot(outFSeda,'fground',fground,'bground',bground)
 
 title('Figure 4.35')
 set(gcf,"Name",'Figure 4.35')
-
+drawnow
 
 %% Create Figure 4.36
 group=repelem("Unbrushed units",n,1);
 group(Un6Largest)="Brushed units";
 group=cellstr(group);
-yXplot(y,X,group);
+yXplot(y,X,'group',group);
 if prin==1
     % print to postscript
     print -depsc BDyXbrush.eps
@@ -61,13 +64,13 @@ set(gcf,"Name",'Figure 4.36')
 
 %% Prepare input for Figures 4.37 and 4.38
 % Analysis with S estimators (used differnt rhofunc)
-
+disp('Monitoring S estimators')
 % rhofunc='optimal';
 rhofunc='bisquare';
-outsTB=Sregeda(y,X,'rhofunc',rhofunc);
+outsTB=Sregeda(y,X,'rhofunc',rhofunc,'msg',false);
 
 rhofunc='mdpd';
-outsPD=Sregeda(y,X,'rhofunc',rhofunc);
+outsPD=Sregeda(y,X,'rhofunc',rhofunc,'msg',false);
 
 sel=Un6Largest';
 fground=struct;
@@ -90,11 +93,8 @@ resfwdplot(outsPD,'fground',fground,'bground','','corres',true,'tag','plresPD');
 sgtitle('Figure 4.38')
 set(gcf,"Name",'Figure 4.38')
 
-%% Prepare input for Figure 4.39
-out=Sregeda(y,X,'covrob',5);
-
 %% Create Figure 4.39
-fanplotFS(out,'multiPanel',true)
+fanplotFS(outsTB,'multiPanel',true,'tag','pl_tstat');
 
 sgtitle('Figure 4.39')
 set(gcf,"Name",'Figure 4.39')
@@ -106,19 +106,21 @@ end
 
 %% Create Figure 4.40
 
-fanplotFS(outFSeda,'multiPanel',true,'addxline',1694,'xlimx',[1000 n+1])
+fanplotFS(outFSeda,'multiPanel',true,'addxline',1694,'xlimx',[1000 n+1]);
 sgtitle('Figure 4.40')
 set(gcf,"Name",'Figure 4.40')
 
 %% Create Figure 4.41
 % Monitoring of added tstat
+disp('Monitoring added t stat')
 figure
-outADDt=FSRaddt(y,X,'plots',1);
+outADDt=FSRaddt(y,X,'plots',1,'msg',0);
 sgtitle('Figure 4.41')
 set(gcf,"Name",'Figure 4.41')
 xline(1694)
 
 %% Prepare input for Figure 4.42
+disp('Automatic outlier detection')
 [outFSauto]=FSR(y,X,'plots',0);
 seq=1:n;
 outliers=outFSauto.outliers;

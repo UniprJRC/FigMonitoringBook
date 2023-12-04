@@ -46,9 +46,9 @@ if prin==1
 end
 
 %% Create Figure 4.3
-quaunt=[0.01 0.5 0.99 0.999 0.9999 0.99999];
+quan=[0.01 0.5 0.99 0.999 0.9999 0.99999];
 plots=struct;
-plots.conflev=quant;
+plots.conflev=quan;
 plots.LineWidth=2;
 plots.LineWidthEnv=2;
 MDRinv=FSRinvmdr(out.mdr,size(X,2)+1,'plots',plots);
@@ -66,8 +66,7 @@ set(gcf,"Name",'Figure 4.3')
 % coordinates at particular steps
 
 n0=[42 43 44];
-quantplo=[0.01 0.5 0.99 0.999 0.9999 0.99999];
-ninv=norminv(quantplo);
+ninv=norminv(quan);
 lwdenv=2;
 supn0=max(n0);
 
@@ -84,7 +83,7 @@ for jn0=n0
     xlim([0 supn0])
     v=axis;
     line(v(1:2)',[ninv;ninv],'color','g','LineWidth',lwdenv,'LineStyle','--','Tag','env');
-    text(v(1)*ones(length(quantplo),1),ninv',strcat(num2str(100*quantplo'),'%'));
+    text(v(1)*ones(length(quan),1),ninv',strcat(num2str(100*quan'),'%'));
     line(MDRinv(:,1),norminv(MDRinv(:,2)),'LineWidth',2)
     title(['Resuperimposed envelope n*=' num2str(jn0)]);
 end

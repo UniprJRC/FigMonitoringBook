@@ -38,22 +38,26 @@ if prin==1
     print -depsc SPmdrncoord.eps;
 end
 
-%% SP Data Automatic outlier detection
+title('Figure 4.30')
+set(gcf,"Name",'Figure 4.30')
+
+
+%% Create Figure  
+% Automatic outlier detection
 startJustSearchin1000Subsets=true;
 if startJustSearchin1000Subsets ==true
-    out=FSR(y,X);
+    out=FSR(y,X,'plots',0);
 else
     outLXS=struct;
     outLXS.bs= [ 3   11   20   23   74];
-    [out]=FSR(y,X,'lms',outLXS.bs);
+    [out]=FSR(y,X,'lms',outLXS.bs,'plots',0);
 end
 disp(out)
-prin=0;
 if prin==1
     % print to postscript
     print -depsc SPfsr.eps;
 end
-%}
+
 
 
 %% Create Figure 4.31
@@ -69,83 +73,37 @@ for j=1:size(BB,2)
     Prop(j,2)=sum(bj<=54)/length(bj);
 end
 
-subplot(nr,nc,1)
+% subplot(nr,nc,1)
 plot(Prop(:,1),Prop(:,2),'LineWidth',2)
 xlabel('Subset size')
 
-subplot(nr,nc,2)
+title('Figure 4.31 (left panel)')
+set(gcf,"Name",'Figure 4.31 (left panel)')
+
+%% Create Figure 4.31 right panel
 % Forward Search
 [outFS]=FSReda(y,X,outLXS.bs,'init',p+1);
-hold('on');
-col=repmat({'m';'k';'g';'b';'c'},3,1);
-linst=repmat({'-';'--';':';'-.';'--';':'},3,1);
 
-for j=3:size(X,2)+2
-    plot(outFS.Tols(:,1),outFS.Tols(:,j),'LineWidth',2,'Color',col{j-2},'LineStyle',linst{j-2})
-    % tj=['t_' num2str(j-2)];
-    tj=[num2str(j-2)];
-    text(outFS.Tols(2,1)-5.2,outFS.Tols(2,j),tj,'FontSize',16)
-    text(outFS.Tols(end,1)+2.2,outFS.Tols(end,j),tj,'FontSize',16)
-
-end
-
-quant=norminv(0.95);
-v=axis;
-lwdenv=1;
-line([v(1),v(2)],[quant,quant],'color','r','LineWidth',lwdenv);
-line([v(1),v(2)],[-quant,-quant],'color','r','LineWidth',lwdenv);
-% plot(out.Tols(end-6:end-1,1),out.Tols(end-6:end-1,3),'LineWidth',4,'color','r')
-% title('Monitoring of t-stat','FontSize',14);
-xlabel('Subset size m');
-sgtitle('Figure 4.31')
-set(gcf,"Name",'Figure 4.31')
+fanplotFS(outFS,'conflev',0.95,'flabstep',40);
 
 if prin==1
     % print to postscript
     print -depsc SPtmonitor.eps;
 end
+title('Figure 4.31 (right panel)')
+set(gcf,"Name",'Figure 4.31 (right panel)')
 
 %% Create Figure 4.32 (with overlapping labels)
 % Forward Search Monitoring of traditional tstat
 [outFS]=FSReda(y,X,outLXS.bs,'init',p+1,'tstat','trad');
-fanplotFS(outFS,'ylimy',[-5 300],'tag','ploverl');
-title('Figure 4.32 (with overlapping labels)')
-set(gcf,"Name",'Figure 4.32 (with overlapping labels)')
-
-%% Create Figure 4.32 (without overlapping labels)
-% Forward Search Monitoring of traditional tstat
-figure
-[outFS]=FSReda(y,X,outLXS.bs,'init',p+1,'tstat','trad');
-hold('on');
-col=repmat({'m';'k';'g';'b';'c'},3,1);
-linst=repmat({'-';'--';':';'-.';'--';':'},3,1);
-
-for j=3:size(X,2)+2
-    plot(outFS.Tols(:,1),outFS.Tols(:,j),'LineWidth',2,'Color',col{j-2},'LineStyle',linst{j-2})
-    % tj=['t_' num2str(j-2)];
-    tj=[num2str(j-2)];
-    text(outFS.Tols(2,1)-5.2,outFS.Tols(2,j),tj,'FontSize',16)
-    text(outFS.Tols(end,1)+2.2,outFS.Tols(end,j),tj,'FontSize',16)
-
-end
-
-quant=norminv(0.95);
-v=axis;
-lwdenv=1;
-line([v(1),v(2)],[quant,quant],'color','r','LineWidth',lwdenv);
-line([v(1),v(2)],[-quant,-quant],'color','r','LineWidth',lwdenv);
-% plot(out.Tols(end-6:end-1,1),out.Tols(end-6:end-1,3),'LineWidth',4,'color','r')
-% title('Monitoring of t-stat','FontSize',14);
-xlabel('Subset size m');
-ylim([-5 300])
-
-title('Figure 4.32')
-set(gcf,"Name",'Figure 4.32')
+fanplotFS(outFS,'ylimy',[-5 300],'tag','ploverl','xlimx',[5 120],'flabstep',40);
 
 if prin==1
     % print to postscript
     print -depsc SPtmonitortrad.eps;
 end
+title('Figure 4.32')
+set(gcf,"Name",'Figure 4.32')
 
 %% Create Figure 4.33
 % SP data Forward Search Monitoring of added tstat

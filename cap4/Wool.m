@@ -18,14 +18,15 @@ plots.LineWidthEnv=2;
 plots.Tag='ploriy';
 MDRinv=FSRinvmdr(out.mdr,size(X,2)+1,'plots',plots);
 xlim([3 length(y)])
-sgtitle('Figure 4.5')
-set(gcf,"Name",'Figure 4.5')
 
 
 if prin==1
     % print to postscript
     print -depsc figs\WDdetailsNC.eps;
 end
+
+sgtitle('Figure 4.5')
+set(gcf,"Name",'Figure 4.5')
 
 %% Create Figure 4.6
 % Comparison of resuperimposing envelopes using mdr in normal
@@ -54,8 +55,6 @@ for jn0=n0
     title(['Resuperimposed envelope n*=' num2str(jn0)]);
 end
 
-sgtitle('Figure 4.6')
-set(gcf,"Name",'Figure 4.6')
 
 
 if prin==1
@@ -63,8 +62,11 @@ if prin==1
     print -depsc WDresuperNC.eps;
 end
 
+sgtitle('Figure 4.6')
+set(gcf,"Name",'Figure 4.6')
+
 %% Create Figure 4.7
-[out]=FSR(y,X,'nsamp',0,'plots',0);
+[out]=FSR(y,X,'nsamp',50000,'plots',0);
 group=ones(length(y),1);
 group(out.ListOut)=2;
 plo=struct;
@@ -74,14 +76,16 @@ plo.labeladd = '1';
 plo.namey='y';
 plo.nameX={'X1' 'X2' 'X3'};
 yXplot(y,X,group,plo);
+legend off
 
-sgtitle('Figure 4.7')
-set(gcf,"Name",'Figure 4.7')
 
 if prin==1
     % print to postscript
-    print -depsc figs\wdscaFSR.eps;
+    print -depsc wdscaFSR.eps;
 end
+
+sgtitle('Figure 4.7')
+set(gcf,"Name",'Figure 4.7')
 
 %% Create Figure 4.8
 % log wool data, mdrplot in normal coordinates 
@@ -89,10 +93,11 @@ end
 [mdrquant] = FSRinvmdr(abs(outT.mdr),4,'plots',1);
 ylim([-3 3])
 xlim([6 27])
-sgtitle('Figure 4.8')
-set(gcf,"Name",'Figure 4.8')
 
-if prin==11
+if prin==1
     % print to postscript
     print -depsc figs\wdmdrlogyNC.eps;
 end
+
+sgtitle('Figure 4.8')
+set(gcf,"Name",'Figure 4.8')
