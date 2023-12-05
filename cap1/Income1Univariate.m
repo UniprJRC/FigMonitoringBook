@@ -40,8 +40,7 @@ sgtitle('Figure 1.2')
 set(gcf,"Name",'Figure 1.2')
 
 %% Create Figure 1.3
-% Boxplots for four value of lambda
-% Boxplots for four values of 𝜆 using the
+% Boxplots for four value of lambda using the
 % normalized Box Cox power transformation after preliminary rescaling of the data to a maximum
 % value of one.
 yl1=-1;
