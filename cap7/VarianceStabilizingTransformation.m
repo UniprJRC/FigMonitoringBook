@@ -1,4 +1,4 @@
-%% This figure creates Figures 7.1-7.3
+%% This file creates Figures 7.1-7.3
 clear
 close all
 load wsctsub.mat

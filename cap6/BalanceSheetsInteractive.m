@@ -1,6 +1,6 @@
-%% Investment Funds data
+%% Balance sheets data
 
-% This file creates Figure 6.12-6.13 and Table 6.2
+% This file creates Figure 6.14
 XX=load('BalanceSheets.txt');
 % Define X and y
 y=XX(:,6);
