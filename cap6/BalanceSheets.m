@@ -1,4 +1,4 @@
-%% Investment Funds data
+%% Balance sheets data
 
 % This file creates Figure 6.12-6.13 and Table 6.2
 XX=load('BalanceSheets.txt');
@@ -6,7 +6,7 @@ XX=load('BalanceSheets.txt');
 y=XX(:,6);
 X=XX(:,1:5);
 prin=0;
-outtra=FSR(ytra,X,'plots',0);
+outtra=FSR(y,X,'plots',0);
 p=size(X,2)+1;
 
 %% Create Figure 6.12 (top panel)
