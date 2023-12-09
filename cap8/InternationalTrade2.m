@@ -81,3 +81,5 @@ if prin==1
 end
 set(gcf,'Name', 'Bottom panel of Figure 8.18');
 title('Figure 8.18 (bottom panel)')
+
+%InsideREADME
