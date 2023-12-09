@@ -99,4 +99,3 @@ if prin==1
     % print to postscript
     print -depsc fatilr_MM_mon.eps;
 end
-

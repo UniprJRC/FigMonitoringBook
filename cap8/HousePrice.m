@@ -1,6 +1,7 @@
+%% Windsor House Price data.
+% This file creates Figures 8.1-8.7.
 
-%% This file creates Figures 8.1-8.7
-% Windsor House Price data
+%% Beginning of code
 load hprice.txt;
 
 % setup parameters

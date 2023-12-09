@@ -1,5 +1,8 @@
-%% This file creates Figures 8.16 and 8.18
-% File which create Figure 8.17 is called InterenationalTrade2Interactive.m
+%% Heteroskedasticity: International Trade Data 1.
+% This file creates Figures 8.16 and 8.18.
+% File which creates Figure 8.17 is called InterenationalTrade2Interactive.m
+
+%% Beginning of code
 load inttrade2.mat
 % This dataset refers to 0307491800
 X=inttrade2{:,1};

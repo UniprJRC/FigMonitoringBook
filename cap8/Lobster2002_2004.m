@@ -1,10 +1,10 @@
-%% This file creates Figures 8.8-8.11
-% Fishery dataset years 2002-2004
+%% This file creates Figures 8.8-8.11.
+% Fishery dataset years 2002-2004.
 
 %% Data loading
+close all
 % nsamp is the number of subsamples to use in the frequentist analysis of first
 % year, in order to find initial subset using LMS.
-close all
 nsamp=3000;
 % threshold to be used to increase susbet of good units
 threshold=300;
@@ -308,3 +308,4 @@ title('Right panel of Figure 8.11')
 % ylabel('VALUE in 1000 euro')
 %
 
+%InsideREADME  
