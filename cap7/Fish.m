@@ -1,5 +1,8 @@
-%% This file creates Figures 7.16-7.19
-% Analysis of fish data
+%% Analysis of fish data.
+% This file creates Figures 7.16-7.19.
+
+
+%% Beginning of code.
 % https://www.kaggle.com/aungpyaeap/fish-market
 
 clear
@@ -106,3 +109,5 @@ set(gcf,"Name",'Figure 7.19')
 outJust1=fitlm(X(:,1),ytheo,'Exclude',41);
 disp('Value of R2 in the model which just includes one expl. var.')
 disp(outJust1.Rsquared)
+
+%InsideREADME 

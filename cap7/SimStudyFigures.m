@@ -1,3 +1,6 @@
+%% Simulation study to compare RAVAS with AVAS
+% This file creates Figures 7.25 and 7.26.
+
 %% Create one panel one row of Figure 7.25 and one panel of Figure 7.26
 % Choose number of simulations (nsimul), sample size (n) and numnber of
 % explanatory variables.
@@ -73,8 +76,8 @@ for lshift=LSHIFT
 
         y=exp(y);
 
-        % group=ones(n,1); 
-        % group(1:nout)=2; 
+        % group=ones(n,1);
+        % group(1:nout)=2;
         % yXplot(y,X,'group',group)
 
         % Traditional AVAS
@@ -155,18 +158,16 @@ title(['n=' num2str(n)  ' p=' num2str(p1+1)  ' nsimul=' num2str(nsimul)])
 
 %% Average number of iterations to convergence
 figure
- plot(LSHIFT',Niter(:,1),'-',LSHIFT',Niter(:,2),'--','LineWidth',lwd)
- xlabel('Shift contamination')
- ylabel('Average number of iterations')
+plot(LSHIFT',Niter(:,1),'-',LSHIFT',Niter(:,2),'--','LineWidth',lwd)
+xlabel('Shift contamination')
+ylabel('Average number of iterations')
 title(['n=' num2str(n)  ' p=' num2str(p1+1)  ' nsimul=' num2str(nsimul)])
 
+if prin==1
+    % print to postscript
+    print -depsc figs\avNUMit.eps;
 
+end
 
-% 
-% prin=0;
-% if prin==1
-%     % print to postscript
-%     print -depsc figs\avNUMit.eps;
-% 
-% end
+%InsideREADME
 
