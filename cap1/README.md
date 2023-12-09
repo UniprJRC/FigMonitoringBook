@@ -13,20 +13,4 @@ Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2023), Appl
 
 
 
-| Dataset    |  Script  | Jupiter notebook
-|---|---|---|
-| Multiple regression data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/ARregression.m) | [[ipynb](/cap4/ARregression.ipynb)] 
-| Bank  data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Bank.m) | [[ipynb](/cap4/Bank.ipynb)] 
-| Hawkins data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Hawkins.m) | [[ipynb](/cap4/Hawkins.ipynb)] 
-| Stars data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Stars.m) | [[ipynb](/cap4/Stars.ipynb)]
-| Surgical unit data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/SurgicalUnit.m) | [[ipynb](/cap4/SurgicalUnit.ipynb)]
-| Wool data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Wool.m) | [[ipynb](/cap4/Wool.ipynb)]
-| Bic monitoring (Mental illness data) |[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/MnetalIllness.m) | [[ipynb](/cap4/MentalIllness.ipynb)] 
-
-
-
------------------
-
-------------
-
----------------------------
+| Dataset | Description | Script | Jupiter notebook |  |---|---|---|---|  |Income1Univariate.m|Univariate analysis of the response for dataset Income1. It creates Figures 1.2 ----- 1.5 and Tables 1.1, 1.2|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap1/Income1Univariate.m)| [[ipynb](Income1Univariate.ipynb)]|Income2Univariate.m|Univariate analysis of the response for dataset Income2. It creates Figure 1.6 and Tables 1.3, 1.4|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap1/Income2Univariate.m)| [[ipynb](Income2Univariate.ipynb)]|MADsmallsample.m|This file creates Figure 1.1|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap1/MADsmallsample.m)| [[ipynb](MADsmallsample.ipynb)]
