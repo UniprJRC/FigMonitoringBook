@@ -1,5 +1,5 @@
 
-%% Body measurements to predict percentage of body fat in males 
+%% Body measurements to predict percentage of body fat in males.
 % This file creates Figures A.53-A.56
 
 %% Data loading 
@@ -12,7 +12,7 @@ X = fatilr(:,1:9);
 
 conflev=[0.95 0.99];
 
-prin=1;
+prin=0;
 
 %% Create Figure A.53
 figure;
@@ -32,6 +32,10 @@ if prin==1
     % print to postscript
     print -depsc fatilr_S.eps;
 end
+
+sgtitle('Figure A.53')
+set(gcf,"Name",'Figure A.53')
+
 
 %% Create Figure A.54
 % MM estimators with 2 values of efficiency
@@ -53,11 +57,16 @@ if prin==1
     print -depsc fatilr_MM.eps;
 end
 
+sgtitle('Figure A.54')
+set(gcf,"Name",'Figure A.54')
+drawnow
+
 %% Create Figures A.55 and A.56
 % Forward search
 % Signal is in step m=250
 [out]=LXS(y,X,'nsamp',1000);
-fsout=FSR(y, X);
+fsout=FSR(y, X,'plots',0);
+disp(fsout)
 
 %% Create Figure A.55 
 % Monitoring S estimtes
@@ -66,7 +75,7 @@ fground = struct;
 fground.Color={'r'};
 fground.flabstep = '';
 fground.fthresh=2.0;
-resfwdplot(out, 'fground', fground, 'datatooltip','', 'corres', 1);
+resfwdplot(out, 'fground', fground, 'datatooltip','', 'corres', 1,'tag','pl_Sres');
 ylabel('Scaled S residuals');
 xlabel('bdp');
 
@@ -75,16 +84,12 @@ if prin==1
     print -depsc fatilr_S_mon.eps;
 end
 
+sgtitle('Figure A.55')
+set(gcf,"Name",'Figure A.55')
+drawnow
 
 %% Create Fig. A.56
 % Monitoring MM estimtes
-clearvars;close all;
-load ('fatilr.txt');
-
-y = fatilr(:,10);
-X = fatilr(:,1:9);
-
-prin=1;
 
 [out]=MMregeda(y,X);
 fground = struct;
@@ -99,3 +104,6 @@ if prin==1
     % print to postscript
     print -depsc fatilr_MM_mon.eps;
 end
+
+sgtitle('Figure A.56')
+set(gcf,"Name",'Figure A.56')
