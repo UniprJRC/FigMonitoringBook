@@ -1,5 +1,7 @@
 %% Create Figures 2.16 and 2.17
 % Compare IF of different location estimators (use bdp=0.5 or eff=0.95)
+
+%% Beginning of code
 close all
 clear
 FontSize=14;
@@ -169,3 +171,4 @@ if prin==1
     print -depsc IFloceff095.eps;
 end
 
+%InsideREADME   

@@ -1,5 +1,7 @@
 %% Create Figures 2.18 and 2.19
-% Compare IF of different scale estimators (use bdp=0.5 or eff=0.95)
+% Compare IF of different scale estimators (use bdp=0.5 or eff=0.95).
+
+%% Beginning of code
 close all
 clear
 FontSize=14;
@@ -191,3 +193,5 @@ namRow=["Median" "MADn" "Tukey biweight" "Hampel" "Hyperboloc" "Optimal" "Power 
 namCol=["bdp=0.5" "eff=0.95"];
 GESbdpeff=array2table([GESscabdp050All GESscaeff095All],"RowNames",namRow,"VariableNames",namCol);
 disp(GESbdpeff)
+
+%InsideREADME   

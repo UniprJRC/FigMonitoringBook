@@ -1,5 +1,5 @@
-%% Details of Huber link for different values of c
-% Creates Figures 2.5 and 2.6
+%% Details of Huber link for different values of c.
+% Creates Figures 2.5 and 2.6.
 
 %% Plot Huber rho function. Figure 2.5
 close all
@@ -96,3 +96,5 @@ if prin==1
     % print to postscript
     print -depsc rhoHU1.eps;
 end
+
+%InsideREADME 

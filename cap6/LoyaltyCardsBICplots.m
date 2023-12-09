@@ -1,6 +1,6 @@
-%% Loyalty cards data
-% This file creates Figures 6.15-6.16 
-% Note that Figures 6.2-6.6 are created by file LoyaltyCards.m
+%% Loyalty cards data.
+% This file creates Figures 6.15-6.16.  
+% Note that Figures 6.2-6.6 are created by file LoyaltyCards.m.
 
 
 %% LD (Loyalty cards data)
@@ -37,3 +37,4 @@ if prin==1
     print -depsc figs\L1.eps
 end
 
+%InsideREADME   

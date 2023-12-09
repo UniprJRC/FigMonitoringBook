@@ -1,7 +1,7 @@
 %% Details of hyperbolic link for different values of c
 % Creates Figure 2.9
 
-% Plot of rho function.
+%% Plot of rho function.
 close all
 yl=0.25;
 lw=2;
@@ -139,3 +139,5 @@ if prin==1
     % print to postscript
     print -depsc rhoHYP.eps;
 end
+
+%InsideREADME 

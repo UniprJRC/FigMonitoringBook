@@ -71,3 +71,5 @@ if prin==1
     % print to postscript
     print -depsc SC.eps;
 end
+
+%InsideREADME 

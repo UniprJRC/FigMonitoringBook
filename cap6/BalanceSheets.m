@@ -1,6 +1,7 @@
-%% Balance sheets data
+%% Balance sheets data.
+% This file creates Figure 6.12-6.13 and Table 6.2.
 
-% This file creates Figure 6.12-6.13 and Table 6.2
+%% Beginning of code
 XX=load('BalanceSheets.txt');
 % Define X and y
 y=XX(:,6);
@@ -74,4 +75,4 @@ dataT=array2table(data,"RowNames",namrow,"VariableNames",namcol);
 disp('Table 6.2')
 disp(dataT)
 
-
+%InsideREADME  

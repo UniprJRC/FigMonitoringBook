@@ -1,5 +1,7 @@
-%% This file creates Figure 6.17
-% Mandible Length data
+%% Mandible Length data.
+% This file creates Figure 6.17.
+
+%% Beginning of code
 load mandible.mat
 % Define X and y
 X=mandible{:,1};
@@ -62,3 +64,5 @@ if prin==1
     % print to postscript
     print -depsc figsBS\ML1.eps;
 end
+
+%InsideREADME   

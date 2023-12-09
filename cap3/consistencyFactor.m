@@ -1,5 +1,7 @@
-%% Create Figure 3.6, 3.7, Table 3.2 and 3.3
+%% Consistency factor, break down point and efficiency. 
+% Create Figure 3.6, 3.7, Table 3.2 and 3.3
 
+%%
 % lwd = LineWidth
 lwd=3;
 % fs = FontSize
@@ -123,3 +125,5 @@ disp("Table 3.3")
 varNames=["Asymptotic efficiency at the normal model" "Consistency factor c" "Efficiency eff"];
 T33=array2table(TBinputeff,"VariableNames",varNames);
 disp(T33)
+
+%InsideREADME 

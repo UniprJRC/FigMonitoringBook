@@ -1,7 +1,7 @@
 %% Create Figure 2.3 
 % Compute empirical and theoretical ARE(Me, Mean) 
-% under the normal distribution and the Student t
-% Initial part of Section 2.1.2
+% under the normal distribution and the Student t.
+% Initial part of Section 2.1.2.
 % For the final part of Section 2.1.2 see file areVarComparison.m
 close all
 
@@ -125,3 +125,5 @@ if prin==1
     % print to postscript
     print -depsc AREstudT.eps;
 end
+
+%InsideREADME   

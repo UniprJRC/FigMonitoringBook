@@ -24,20 +24,5 @@ Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2023), Appl
 
 
 
-| Dataset    |  Script  | Jupiter notebook
-|---|---|---|
-| Multiple regression data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/ARregression.m) | [[ipynb](/cap4/ARregression.ipynb)] 
-| Bank  data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Bank.m) | [[ipynb](/cap4/Bank.ipynb)] 
-| Hawkins data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Hawkins.m) | [[ipynb](/cap4/Hawkins.ipynb)] 
-| Stars data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Stars.m) | [[ipynb](/cap4/Stars.ipynb)]
-| Surgical unit data | [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/SurgicalUnit.m) | [[ipynb](/cap4/SurgicalUnit.ipynb)]
-| Wool data| [![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Wool.m) | [[ipynb](/cap4/Wool.ipynb)]
-| Bic monitoring (Mental illness data) |[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/MnetalIllness.m) | [[ipynb](/cap4/MentalIllness.ipynb)] 
 
-
-
------------------
-
-------------
-
----------------------------
+| FileName | Description | Open in MATLAB on line | Jupiter notebook |  |---|---|---|---|  |MentalIllness.m|Contaminated illness data. This file creates Figure 4.33.|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/MentalIllness.m)| [[ipynb](MentalIllness.ipynb)]|Stars.m|Stars data. Figures 4.1-4.4 FS analysis. Figure 4.9 scatterplot and fitted regression lines. Figures 4.10-4.11 Monitoring plots based on S and MM.|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Stars.m)| [[ipynb](Stars.ipynb)]|SurgicalUnit.m|Surgical Unit. This file creates Figures 4.30-4.33.|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/SurgicalUnit.m)| [[ipynb](SurgicalUnit.ipynb)]|Wool.m|Wool data. This file creates Figures 4.5-4.8.|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=/cap4/Wool.m)| [[ipynb](Wool.ipynb)]

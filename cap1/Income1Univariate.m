@@ -1,7 +1,7 @@
 %% This file is referred to dataset Income1
 % Univariate analysis of the response for dataset Income1. 
 % It creates Figures 1.2 ----- 1.5
-% and Tables 1.1, 1.2 
+% and Tables 1.1, 1.2. 
 
 
 %% Data loading

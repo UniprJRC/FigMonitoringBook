@@ -1,8 +1,9 @@
-%% Breakdown point and efficiency for PD link.
-% Create Figure 2.13
-% Create: Power divergence: breakdown point and efficiency as functions of 𝛼.
-%Analysis of breakdown point and asymptotic efficiency
-%at the normal distribution as a function of alpha in regression.
+%% Breakdown point and efficiency for PD link. Create Figure 2.13
+% Power divergence: breakdown point and efficiency as functions of 𝛼.
+% Analysis of breakdown point and asymptotic efficiency
+% at the normal distribution as a function of alpha in regression.
+
+%% Beginning of code
 c=0.01:0.01:3;
 
 bdp=zeros(length(c), 1);
@@ -29,3 +30,5 @@ end
 
 sgtitle('Figure 2.13')
 set(gcf,"Name",'Figure 2.13')
+
+%InsideREADME 

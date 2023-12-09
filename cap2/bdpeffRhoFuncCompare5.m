@@ -1,4 +1,5 @@
 % Create Figures 2.14 and 2.15
+% Comparison of rho functions in terms of bdp.
 
 %%  Prepare the input for Figure 2.14
 bdp=0.01:0.01:0.5;
@@ -188,3 +189,4 @@ if prin==1
     print -depsc figs\MD4bis.eps;
 end
 
+%InsideREADME   

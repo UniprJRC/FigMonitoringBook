@@ -1,5 +1,7 @@
 %% Create Figures 2.20 and 2.21
 % Compare derivatives of psi functions (use bdp=0.5 or eff=0.95)
+
+%% Beginning of code
 close all 
 clear
 
@@ -223,3 +225,5 @@ namCol=["bdp=0.5" "eff=0.95"];
 AreasT=array2table([areasbdp050' areaseff095'],'RowNames',nam,'VariableNames',namCol);
 disp("Table 2.2 (+ Huber) ")
 disp(AreasT)
+
+%InsideREADME  

@@ -1,5 +1,7 @@
-%% Wool data
-% This file creates Figures 4.5-4.8
+%% Wool data.
+% This file creates Figures 4.5-4.8.
+
+%% Beginning of code.
 clear
 close all
 load('wool.txt','wool');
@@ -101,3 +103,5 @@ end
 
 sgtitle('Figure 4.8')
 set(gcf,"Name",'Figure 4.8')
+
+%InsideREADME 

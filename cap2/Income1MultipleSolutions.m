@@ -1,5 +1,7 @@
 %% Create Figure 2.28
 % Example to show the issue of multiple solutions problem with redescending psi functions
+
+%% Beginning of code
 close all
 load Income1;
 y=Income1{:,"HTOTVAL"};
@@ -51,3 +53,5 @@ if prin==1
     % print to postscript
     print -depsc multsol.eps;
 end
+
+%InsideREADME 

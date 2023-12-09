@@ -1,13 +1,15 @@
 %% Create Figure 2.4 
-% VARIANCE COMPARISON UNDER THE CONTAMINATION MODEL
+% Variance comparison under the contamination model.
 % Compute the variance of the sample mean and of the sample median (multiplied by 
-% n) under the contamination model $F_\epsilon$ (not all measurements are equally 
-% precise) 
+% n) under the contamination model (not all measurements are equally 
+% precise).
 
-close all
+%% General settings 
 tau=(1:0.001:10)';
 lwd=3;
 FontSize=14;
+
+%% Create plots
 subplot(2,2,1)
 eps=0.05;
 nvarmean=(1-eps)+eps*(tau.^2);
@@ -42,3 +44,5 @@ if prin==1
     % print to postscript
     print -depsc AREcont.eps;
 end
+
+%InsideREADME   
