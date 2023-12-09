@@ -1,14 +1,21 @@
-%% Fig. 8.35
-%% VT: (Transformed Fish Morphology data): S estimators with 2 values of bdp
+%% Transformed Fish Morphology data.
+% This file creates Figures  8.35-8.38
+
+%% Beginning of code
 load ('fishmilr.txt');
 size(fishmilr)
 
 y = fishmilr(:,10);
 X = fishmilr(:,1:9);
 
-prin=1;
+prin=0;
 
 conflev=[0.95 0.99];
+
+
+%% Create Figure 8.35
+% S estimators with 2 values of bdp
+
 % Note that the pattern of residuals changes completely
 % Using bdp=0.5 the outliers are correctly found, on the other hand using
 % bdp=0.25 the masking effect is clear
@@ -30,19 +37,13 @@ if prin==1
     print -depsc fishmilr_S.eps;
 end
 
-%% Fig. 8.36
-%% VT: (Transformed Fish Morphology data): MM estimators with 2 values of efficiency
-clearvars;close all;
-load ('fishmilr.txt');
-size(fishmilr)
+sgtitle('Figure 8.35')
+set(gcf,"Name",'Figure 8.35')
+drawnow
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
-
-prin=1;
-
+%% Create Figure 8.36
+% MM estimators with 2 values of efficiency
 % MMreg using two different level of efficiency
-conflev=[0.95 0.99];
 % Note that the pattern of residuals changes completely
 % Using eff=0.90 the outliers are correctly found, on the other hand using
 % eff=0.95 the masking effect is clear
@@ -62,34 +63,22 @@ if prin==1
     print -depsc fishmilr_MM.eps;
 end
 
-%% Fig. 8.37
-%% VT: (Transformed Fish Morphology data): Forward search
-clearvars;close all;
-load ('fishmilr.txt');
-size(fishmilr)
+sgtitle('Figure 8.36')
+set(gcf,"Name",'Figure 8.36')
+drawnow
+%% Forward search
+% No signal during the search
+fsout=FSR(y, X,'plots',0);
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
+%% Create Figure  8.37
+% Monitoring S estimates
 
-%% No signal during the search
-[out]=LXS(y,X,'nsamp',1000);
-fsout=FSR(y, X);
-
-%% VT: (Transformed Fish Morphology data): Monitoring S estimtes
-clearvars;close all;
-load ('fishmilr.txt');
-
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
-
-prin=1;
-
-[out]=Sregeda(y,X);
+[out]=Sregeda(y,X,'msg',0);
 fground = struct;
 fground.Color={'r'};
 fground.flabstep = '';
 fground.fthresh=2.0;
-resfwdplot(out, 'fground', fground, 'datatooltip','', 'corres', 1);
+resfwdplot(out, 'fground', fground, 'datatooltip','', 'corres', 1,'tag','pl_Sres');
 ylabel('Scaled S residuals');
 xlabel('bdp');
 
@@ -97,17 +86,12 @@ if prin==1
     % print to postscript
     print -depsc fishmilr_S_mon.eps;
 end
+sgtitle('Figure 8.37')
+set(gcf,"Name",'Figure 8.37')
+drawnow
 
-%% Fig. 8.38
-%% VT: (Transformed Fish Morphology data): Monitoring MM estimtes
-clearvars;close all;
-load ('fishmilr.txt');
-
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
-
-prin=1;
-
+%% Create Figure 8.38
+% Monitoring MM estimtes
 [out]=MMregeda(y,X);
 fground = struct;
 fground.Color={'r'};
@@ -121,4 +105,7 @@ if prin==1
     % print to postscript
     print -depsc fishmilr_MM_mon.eps;
 end
+
+sgtitle('Figure 8.38')
+set(gcf,"Name",'Figure 8.38')
 
