@@ -1,5 +1,10 @@
-%% Equality of the truncated mean in a folded normal distribution
-% to the MAD ina  standard normal distribution
+%% Exercise 3.11
+%
+% Equality of the truncated mean in a folded normal distribution
+% to the MAD in a  standard normal distribution
+
+%% Beginning of code
+
 c=sqrt(-2*log((2-sqrt(2*pi)*norminv(3/4))/2));
 
 % Application of Equation (A.30)

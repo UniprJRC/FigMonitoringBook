@@ -1,6 +1,9 @@
-%% This file creates Figure A.56, A.57 and Table A.20
+%% Exercise 9.1
+%
+% Analysis of the reduced logged ozone data using RAVAS
+% This file creates Figures A.56, A.57 and Table A.20
 
-% Load Ozone data (reduced data)
+%% Load Ozone data (reduced data)
 X=load('ozone.txt');
 % Transform the response using logs
 X(:,end)=log(X(:,end));
@@ -52,3 +55,5 @@ end
 outLM=fitlm(outm.tX,outm.ty,'Exclude',outm.outliers,'VarNames',nameXy);
 disp("Table A.20")
 disp(outLM)
+
+%InsideREADME 

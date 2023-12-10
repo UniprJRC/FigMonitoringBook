@@ -1,4 +1,9 @@
-%% First truncated moment in folded normal distribution
+%% Exercise 3.10.
+%
+% First truncated moment in folded normal distribution.
+%
+
+%% Beginning of code
 
 % Check the simplification in equation A.30
 c=2.5; b=1.2; 
@@ -8,4 +13,4 @@ m1chk=2*(normpdf(b)-normpdf(c));
 
 assert(abs(m1-m1chk)<eps,"Simplification not correct");
 
-
+%InsideREADME 

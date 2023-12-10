@@ -1,5 +1,9 @@
-clear
-%% This file creates Figures A.48 and A.49
+%% Exercise 8.3
+%
+% Analysis of ad additional dataset.
+% This file creates  Figures A.48 and A.49
+
+%% Beginning of code
 load inttrade3.mat
 % This dataset refers to 'POD_0307591000_SN_IT'
 X=inttrade3.Weight;
@@ -71,3 +75,4 @@ end
 set(gcf,'Name', 'Figure A.49 (right panel)');
 title('Figure A.49 (right panel)')
 
+%InsideREADME 

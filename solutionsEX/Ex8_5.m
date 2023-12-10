@@ -1,6 +1,7 @@
-
-%% Body measurements to predict percentage of body fat in males.
-% This file creates Figures A.53-A.56
+%% Exercise 8.5
+%
+% Analysis of body measurements to predict percentage of body fat in males.
+% This file creates Figures A.53-A.56.
 
 %% Data loading 
 % S estimators with 2 values of bdp
@@ -107,3 +108,5 @@ end
 
 sgtitle('Figure A.56')
 set(gcf,"Name",'Figure A.56')
+
+%InsideREADME 

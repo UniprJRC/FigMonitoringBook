@@ -1,6 +1,9 @@
-%% This file Creates Figures A.67-A.70
+%% Exercise 10.1
+%
 % Analysis of heart rate data
+% This file creates Figures  A.67-A.70
 
+%% Data loading
 Y=load('ms212.txt');
 y=Y(:,10)-Y(:,9);
 n=length(y);
@@ -105,4 +108,4 @@ sgtitle('Figure A.70')
 set(gcf,"Name",'Figure A.70')
 
 
-
+%InsideREADME 

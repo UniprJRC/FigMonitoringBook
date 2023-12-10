@@ -1,5 +1,10 @@
-%% Balance sheets data
+%% Exercise 6.3.
+%
 % Further analysis of the Balance sheets data: 
+% This file creates Figure A.18
+
+%% Balance sheets data
+% 
 XX=load('BalanceSheets.txt');
 % Define X and y
 y=XX(:,6);
@@ -32,3 +37,5 @@ if prin==1
     % print to postscript
     print -depsc BS3groups.eps;
 end
+
+%InsideREADME 

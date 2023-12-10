@@ -1,6 +1,9 @@
-%% This file creates Figures A.21-A.23 and Tables A.8-A.10
+%% Exercise 6.5
+%
+% Score test and fan plot 1.
+% This file creates Figures A.21-A.23 and Tables A.8-A.10.
 
-% D1 Data loading
+%% D1 Data loading
 XX=load('D1.txt');
 X=XX(:,1:end-1);
 y=XX(:,end);
@@ -84,3 +87,5 @@ out1=fanBICpn(outFSRfanpn,'plots',0);
 disp('Best value of lambda from the automatic procedure')
 disp(["laP" "laN"])
 disp(out1.labestBIC);
+
+%InsideREADME 

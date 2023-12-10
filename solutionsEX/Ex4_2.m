@@ -1,3 +1,8 @@
+%% Exercise 4.2
+%
+% Hawkins data:  brushing residuals from monitoring S residuals
+% This file creates Figures A.7--A.9
+
 %% Hawkins data: 
 % brushing residuals from monitoring S residuals
 close all;
@@ -47,3 +52,5 @@ if prin==1
     print -depsc HDtbexemdr.eps;
     print -depsc HDtbexeyXplot.eps;
 end
+
+%InsideREADME 

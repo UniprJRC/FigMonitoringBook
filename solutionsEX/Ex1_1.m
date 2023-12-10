@@ -1,3 +1,7 @@
+%% Exercise 1.1.
+%
+% Trimmed means.
+
 %% Data loading
 clear
 load Income1
@@ -24,3 +28,5 @@ disp(meanTru(1))
 
 disp("Trimmed mean alpha=0.10")
 disp(meanTru(2))
+
+%InsideREADME 

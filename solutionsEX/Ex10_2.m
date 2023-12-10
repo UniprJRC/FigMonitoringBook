@@ -1,5 +1,9 @@
-%%  This file creates Figure A.70 
-% Data loading
+%% Exercise 10.2
+%
+% Additional analysis of the customer loyalty data.
+%  This file creates Figure A.70 
+
+%% Data loading
 
 load ConsLoyaltyRet.mat
 Xytable=ConsLoyaltyRet(:,2:end);
@@ -22,3 +26,5 @@ set(gcf,"Name",'A.70')
 disp('Proportion of observations included in the regression analysis')
 disp('of the square root transformation')
 disp(outBIC.mmstop(end-1,2)/n)
+
+%InsideREADME 

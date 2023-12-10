@@ -1,6 +1,10 @@
-%% Comparison of the distribution of squared deletion residuals
-% and squared studentized residuals
+%% Exercise 3.8
+%
+% Comparison of the distribution of squared deletion residuals
+% and squared studentized residuals.
+% This file creates Figure A.4.
 
+%% Beginning of code
 close all
 prin=0;
 
@@ -25,3 +29,5 @@ if prin==1
     % print to postscript
     print -depsc compBetaF.eps;
 end
+
+%InsideREADME 

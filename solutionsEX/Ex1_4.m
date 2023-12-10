@@ -1,3 +1,7 @@
+%% Exercise 1.4
+%
+% Univariate analysis
+
 %% Data loading
 clear
 close all
@@ -111,3 +115,5 @@ if prin==1
     % print to postscript
     print -depsc inc2f1.eps;
 end
+
+%InsideREADME 

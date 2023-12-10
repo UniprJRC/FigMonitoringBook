@@ -1,5 +1,9 @@
+%% Exercise 8.2
+%
+% Differences and similarities between HAR and ART heteroskedasticity.
+% This file creates Figures 8.45-8.46.
 
-%% This file creates Figures 8.45-8.46
+%% Beginning of code
 load inttrade1.mat
 % This dataset refers to 'POD_4801000000_CH_IT
 X=inttrade1.Weight;
@@ -49,4 +53,4 @@ end
 set(gcf,'Name', 'Figure A.46');
 title('Figure A.46')
 
-
+%InsideREADME 

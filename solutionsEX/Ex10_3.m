@@ -1,3 +1,9 @@
+%% Exercise 10.3
+%
+% Analysis of the modified customer loyalty data in the square-root scale.
+%  This file creates Figures A.70-A.73 
+% 
+%% Beginning of code
 close all
 clear
 load ConsLoyaltyRet.mat
@@ -78,3 +84,5 @@ if prin==1
 end
 title('Figure A.73')
 set(gcf,"Name",'Figure A.73')
+
+%InsideREADME 
