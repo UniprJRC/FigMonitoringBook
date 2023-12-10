@@ -1,7 +1,6 @@
 %% Stars data.
-% Figures 4.1-4.4 FS analysis.
-% Figure 4.9 scatterplot and fitted regression lines.
-% Figures 4.10-4.11 Monitoring plots based on S and MM.
+%
+% This file creates Figures 4.1-4.4, 4.9-4.11
 
 %% Beginning of code
 clearvars;
