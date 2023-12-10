@@ -1,7 +1,7 @@
-%% This file is referred to dataset Income2
-% Regression analysis of dataset Income2 
-% It creates Figures 10.12 ---- 10.21
-% and Tables 10.2 ----- 10.4
+%% Regression analysis of dataset Income2. 
+%
+% This file creates Figures 10.12-10.21
+% and Tables 10.2-10.4.
 
 
 %% Data loading
@@ -266,3 +266,4 @@ mdlAVAtra=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outrobAV.outliers);
 disp('Table 10.4')
 disp(mdlAVAtra)
 
+%InsideREADME 
