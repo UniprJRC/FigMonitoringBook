@@ -1,4 +1,5 @@
-%% Analysis of fish data.
+%% Fish data.
+%
 % This file creates Figures 7.16-7.19.
 
 
