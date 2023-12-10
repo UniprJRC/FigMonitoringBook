@@ -1,5 +1,6 @@
 %% Details of Huber link for different values of c. 
-% Creates Figure 2.7.
+% 
+% This file creates Figure 2.7.
 
 %% Plot of rho function.
 FontSize=10;

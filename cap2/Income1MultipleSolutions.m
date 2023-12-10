@@ -1,5 +1,6 @@
-%% Create Figure 2.28
-% Example to show the issue of multiple solutions problem with redescending psi functions
+%% Example to show the issue of multiple solutions problem with redescending psi functions.
+%
+% This file creates Figure 2.28.
 
 %% Beginning of code
 close all

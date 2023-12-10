@@ -1,10 +1,10 @@
-%% Create Figure 2.4 
-% Variance comparison under the contamination model.
-% Compute the variance of the sample mean and of the sample median (multiplied by 
-% n) under the contamination model (not all measurements are equally 
-% precise).
+%% Variance comparison under the contamination model.
+% This file creates Figure 2.4.
 
 %% General settings 
+% Computes the variance of the sample mean and of the sample median
+% (multiplied by n) under the contamination model (not all measurements are
+% equally precise). 
 tau=(1:0.001:10)';
 lwd=3;
 FontSize=14;

@@ -1,5 +1,6 @@
-%% Compare weight functions using bdp=0.5 or eff=0.95
-% Creates Figure 2.11 and 2.11
+%% Compare weight functions using bdp=0.5 or eff=0.95.
+%
+% This file creates Figure 2.11 and 2.12.
 
 %% In the first case we use bdp=0.5 (Figure 2.11)
 prin=0;

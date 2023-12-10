@@ -1,5 +1,6 @@
-%% Details of TB link for different values of c
-% Creates Figure 2.8
+%% Details of TB link for different values of c.
+%
+% This file creates Figure 2.8.
 
 %% Plot of rho function.
 close all

@@ -1,5 +1,6 @@
-% Create Figures 2.14 and 2.15
-% Comparison of rho functions in terms of bdp.
+%% Comparison of rho functions in terms of bdp.
+%
+% This file creates Figures 2.14 and 2.15.
 
 %%  Prepare the input for Figure 2.14
 bdp=0.01:0.01:0.5;

@@ -1,5 +1,6 @@
-%% Details of PD link for different values of alpha
-% Creates Figure 2.10
+%% Details of PD link for different values of alpha.
+%
+% This file creates Figure 2.10.
 
 %% Plot of rho function. PD
 close all

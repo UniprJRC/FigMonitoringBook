@@ -1,5 +1,6 @@
-%% Create Figures 2.18 and 2.19
-% Compare IF of different scale estimators (use bdp=0.5 or eff=0.95).
+%% Compare IF of different scale estimators (use bdp=0.5 or eff=0.95).
+%
+% This file creates Figures 2.18 and 2.19.
 
 %% Beginning of code
 close all

@@ -1,5 +1,6 @@
 %% Details of Huber link for different values of c.
-% Creates Figures 2.5 and 2.6.
+%
+% This file creates Figures 2.5 and 2.6.
 
 %% Plot Huber rho function. Figure 2.5
 close all

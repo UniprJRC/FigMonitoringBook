@@ -1,5 +1,6 @@
-%% Create Figures 2.16 and 2.17
-% Compare IF of different location estimators (use bdp=0.5 or eff=0.95)
+%% Compare IF of different location estimators (use bdp=0.5 or eff=0.95).
+%
+% This file creates Figures 2.16 and 2.17.
 
 %% Beginning of code
 close all

@@ -1,5 +1,6 @@
-%% Create Figure 2.2.
-% Influence Function at N(0,1) for different estimators.
+%% Influence Function at N(0,1) for different estimators.
+%
+% This file creates Figure 2.2.
 
 %% Create input for Figure 2.2
 close all

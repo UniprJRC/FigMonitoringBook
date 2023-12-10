@@ -1,5 +1,6 @@
-%% Create Figures 2.20 and 2.21
-% Compare derivatives of psi functions (use bdp=0.5 or eff=0.95)
+%% Compare derivatives of psi functions (use bdp=0.5 or eff=0.95).
+%
+% This file creates Figures 2.20 and 2.21.
 
 %% Beginning of code
 close all 
