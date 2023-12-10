@@ -1,4 +1,4 @@
-# Chapter 4 The Monitoring Approach in Multiple Regression
+# Chapter 3 Robust Estimators in Multiple Regression
 
 
 ---
