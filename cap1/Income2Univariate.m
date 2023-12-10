@@ -1,6 +1,6 @@
-%% This file is referred to dataset Income2
-% Univariate analysis of the response for dataset Income2.
-% It creates Figure 1.6
+%% Univariate analysis of the response for dataset Income2.
+%
+% This file creates Figure 1.6
 % and Tables 1.3, 1.4 
 
 %% Data loading
