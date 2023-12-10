@@ -1,5 +1,6 @@
 %% Consistency factor, break down point and efficiency. 
-% Create Figure 3.6, 3.7, Table 3.2 and 3.3
+% 
+% This file createa Figure 3.6, 3.7, Table 3.2 and 3.3.
 
 %%
 % lwd = LineWidth
