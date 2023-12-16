@@ -1,7 +1,7 @@
 %% Exercise 10.3
-%
 % Analysis of the modified customer loyalty data in the square-root scale.
-%  This file creates Figures A.70-A.73 
+%
+% This file creates Figures A.70-A.73 
 % 
 %% Beginning of code
 close all

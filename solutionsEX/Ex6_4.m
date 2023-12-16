@@ -1,6 +1,5 @@
-%% Exercise 6.4
+%% Exercise 6.4: Transformed data and F test.
 %
-% Transformed data and $F$ test
 % This file creates Figures A.19 and A.20
 
 %% Beginning of code

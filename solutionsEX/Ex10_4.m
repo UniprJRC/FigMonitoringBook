@@ -1,6 +1,6 @@
 %% Exercise 10.4
 %
-% Analysis of tje auto mpg data.
+% Analysis of the auto mpg data.
 % This file creates Figures A.74-A.83
 % and Tables A.21-A.23
 
