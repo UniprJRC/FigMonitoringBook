@@ -9,6 +9,7 @@ X=XX(:,1:5);
 prin=0;
 outtra=FSR(y,X,'plots',0);
 p=size(X,2)+1;
+n=length(y);
 
 %% Create Figure 6.12 (top panel)
 ylimy=20;
