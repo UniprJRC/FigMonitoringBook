@@ -1,4 +1,3 @@
-
 %% Exercise 3.8. 
 % 
 % Comparison of the distribution of squared deletion residuals
