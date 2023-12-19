@@ -7,7 +7,6 @@ XX=load('BalanceSheets.txt');
 y=XX(:,6);
 X=XX(:,1:5);
 prin=0;
-outtra=FSR(y,X,'plots',0);
 p=size(X,2)+1;
 n=length(y);
 
@@ -55,7 +54,7 @@ end
 mdl=fitlm(X,y);
 StoreFandR2=[mdl.ModelFitVsNullModel.Fstat;  mdl.Rsquared.Adjusted];
 
-
+outtra=FSR(ytra,X,'plots',0);
 mdltra=fitlm(X,ytra,'Exclude',outtra.outliers);
 StoreFandR2tra=[mdltra.ModelFitVsNullModel.Fstat;  mdltra.Rsquared.Adjusted];
 

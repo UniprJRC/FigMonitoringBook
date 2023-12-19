@@ -1,6 +1,8 @@
-%% Exercise 3.8: Comparison of the distribution of squared deletion residuals
+
+%% Exercise 3.8. 
+% 
+% Comparison of the distribution of squared deletion residuals
 % and squared studentized residuals.
-%
 % This file creates Figure A.4.
 
 %% Beginning of code
