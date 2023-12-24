@@ -4,18 +4,18 @@
 % This file creates Figures A.53-A.56.
 
 %% Data loading 
-% S estimators with 2 values of bdp
-load("fatilr.txt")
-size(fatilr)
+load fat
+fatsel=fat{:,["neck" "chest" "abdomen" "hip" "thigh" "knee" "ankle" "bicep" "forearm" "wrist"]};
+X=pivotCoord(fatsel);
 
-y = fatilr(:,10);
-X = fatilr(:,1:9);
+body_fat=fat.body_fat;
+y=log(body_fat./(100-body_fat));
 
 conflev=[0.95 0.99];
-
 prin=0;
 
 %% Create Figure A.53
+% S estimators with 2 values of bdp
 figure;
 h1=subplot(2,1,1);
 bdp=0.25;
