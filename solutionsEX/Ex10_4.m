@@ -1,7 +1,7 @@
 %% Exercise 10.4
 %
 % Analysis of the auto mpg data.
-% This file creates Figures A.74-A.83
+% This file creates Figures A.75-A.84
 % and Tables A.21-A.23
 
 %% Data loading 

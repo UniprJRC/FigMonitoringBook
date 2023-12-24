@@ -1,7 +1,7 @@
 %% Exercise 9.1
 %
-% Analysis of the reduced logged ozone data using RAVAS
-% This file creates Figures A.56, A.57 and Table A.20
+% Analysis of the reduced logged ozone data using RAVAS.
+% This file creates Figures A.57, A.58 and Table A.20
 
 %% Load Ozone data (reduced data)
 X=load('ozone.txt');
@@ -23,23 +23,23 @@ nameXy(1)="Time";
 
 prin=0;
 
-%% Prepare input for Figures A.56 and A.57
+%% Prepare input for Figures A.57 and A.58
 out=avasms(y,Xsel,'plots',0);
 j=1;
 outjm=out{j,"Out"};
 outm=outjm{:};
 
-%% Create Figures A.56 and A.57
+%% Create Figures A.57 and A.58
 aceplot(outm,'VarNames',nameXy)
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
-sgtitle('Figure A.56')
-set(gcf,"Name",'Figure A.56')
+sgtitle('Figure A.57')
+set(gcf,"Name",'Figure A.57')
 
 pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
 figure(pl_tX(1))
-sgtitle('Figure A.57')
-set(gcf,"Name",'Figure A.57')
+sgtitle('Figure A.58')
+set(gcf,"Name",'Figure A.58')
 
 
 disp("number of outliers found")
@@ -48,7 +48,7 @@ disp(length(outm.outliers))
 if prin==1
     % print to postscript
     print -depsc ozoneredRAVAS.eps;
-      print -depsc ozoneredRAVAStX.eps;
+    print -depsc ozoneredRAVAStX.eps;
 end
 
 %% Create Table A.20
@@ -56,4 +56,4 @@ outLM=fitlm(outm.tX,outm.ty,'Exclude',outm.outliers,'VarNames',nameXy);
 disp("Table A.20")
 disp(outLM)
 
-%InsideREADME 
+%InsideREADME
