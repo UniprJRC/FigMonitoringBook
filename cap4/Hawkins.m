@@ -1,6 +1,8 @@
 %% Hawkins data
 % This file creates Figure 4.23 
 % and Figures 4.27-4.29
+
+%% Data loading
 close all;
 load('hawkins.txt');
 y=hawkins(:,9);
@@ -47,13 +49,13 @@ resfwdplot(outTB,'tag','pl_TBori');
 title('Figure 4.28 (left panel)')
 set(gcf,"Name",'Figure 4.28 (left panel)')
 
-%% Create Figure 28 right panel
+%% Create Figure 4.28 right panel
 resfwdplot(outTB,'tag','pl_PDori');
 
 title('Figure 4.28 (right panel)')
 set(gcf,"Name",'Figure 4.28 (right panel)')
 
-%% Create Figure 29 left panel
+%% Create Figure 4.29 left panel
 resfwdplot(outTB,'tag','pl_TBzoom');
 yl=5;
 ylim([-yl yl])
