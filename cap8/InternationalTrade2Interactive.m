@@ -1,5 +1,9 @@
 %% This file creates Figure 8.17
-% The file which creates Figures 8.16 and 8.18 is called InterenationalTrade2.m
+%
+% The file which creates Figures 8.16 and 8.18 is called
+% InternationalTrade2.m
+
+%% Beginning of code
 close all
 load inttrade2.mat
 % This dataset refers to 0307491800

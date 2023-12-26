@@ -88,7 +88,7 @@ nsamp=20000;
 out = tclustregIC(y,X,'whichIC',typeIC,'alphaLik',alphaLik,'alphaX',alphaX, ...
     'kk',1:5,'nsamp',nsamp,'intercept',0,'plots',0);
 % Show the elbow plot
-tclustICplot(out,'whichIC',typeIC);
+tclustICplot(out,'whichIC',typeIC,'datatooltip','');
 if prin==1
     % print to postscript
     print -depsc figures\C2a.eps;
