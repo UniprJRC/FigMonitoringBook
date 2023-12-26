@@ -1,6 +1,9 @@
-%% Figure 8.23: random starts on facemasks data
-%352 imports of FFP2 and FFP3 masks (product 6307909810) into the European
-%Union extracted in a day of November. Product 6212200000.
+%% This file creates Figures 8.19-8.20, 8.22, 8.26-8.28.
+% 
+% 352 imports of FFP2 and FFP3 masks (product 6307909810) into the European
+% Union extracted in a day of November.
+
+%% Data loading
 
 load facemasks.mat
 y=facemasks.V;
@@ -93,7 +96,7 @@ end
 h_MIXMIX=findobj(0,'Tag','pl_IC_MIXMIX');
 figure(h_MIXMIX(end))
 set(gcf,'Name', 'Left panel of Figure 8.26');
-sgtitle('Left panel of Figure 8.26')
+title('Left panel of Figure 8.26')
 drawnow
 
 
@@ -113,13 +116,13 @@ set(gcf,'Name', 'Right panel of Figure 8.26');
 title('Right panel of Figure 8.26')
 
 
-%% Prepare input for upper panel of Figure 8.27
+%% Prepare input for Figure 8.27
 rng(1)
 alphaLik = (0.10:-0.01:0)' ;
 alphaX = 0;
 nsamp=50000; 
 
-% Prepare input for lower panel of Figure 8.27
+% Prepare input for upper panel of Figure 8.27
 % rng(100)
 k=3;
 restrfact =128;
@@ -216,8 +219,8 @@ if prin==1
     % print to postscript
     print -depsc figures\C4a.eps;
 end
-set(gcf,'Name', 'Figure 8.28');
-sgtitle('Figure 8.28')
+set(gcf,'Name', 'Left panel of Figure 8.28');
+sgtitle('Left panel of Figure 8.28')
 
 
 %% Create right panel of Figure 8.28
@@ -237,8 +240,8 @@ if prin==1
     print -depsc figures\C4b.eps;
 end
 
-set(gcf,'Name', 'Figure 8.29');
-sgtitle('Figure 8.29')
+set(gcf,'Name', 'Right panel of Figure 8.28');
+sgtitle('Right panel of Figure 8.28')
 
 
 %% Create tables with coefficients and sample sizes
