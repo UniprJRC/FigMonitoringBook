@@ -1,5 +1,7 @@
 %% Bank data
-% This file creates Figure 4.35 and 4.36  
+% This file creates Figure 4.35 and 4.36.
+
+%% Data loading
 load bank_data.mat
 y=bank_data{:,end};
 X=bank_data{:,1:end-1};
