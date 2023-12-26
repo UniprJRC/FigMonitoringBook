@@ -1,5 +1,7 @@
 %% AR regression data
 % This file creates Figures 4.15-4.22
+
+%% Data loading
 close all;
 load('multiple_regression.txt');
 y=multiple_regression(:,4);
