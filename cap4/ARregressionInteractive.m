@@ -2,6 +2,7 @@
 % This file creates Figures 4.12-4.14
 % Note that this file needs interactivity
 
+%% Data loading
 load('multiple_regression.txt');
 y=multiple_regression(:,4);
 X=multiple_regression(:,1:3);

@@ -1,5 +1,7 @@
 %% Bank data
-% This file creates Figure 4.34-4.42
+% This file creates Figure 4.34-4.42.
+
+%% Data loading
 clear
 close all
 load bank_data.mat
