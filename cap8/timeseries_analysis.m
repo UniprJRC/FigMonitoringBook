@@ -137,3 +137,4 @@ figure(aa(end))
 title('Figure 8.32 (right panel)')
 set(gcf,"Name",'Figure 8.32 (right panel)')
 
+%InsideREADME 

@@ -279,33 +279,6 @@ xlim([0 350])
 set(gcf,'Name', 'Right panel of Figure 8.11');
 title('Right panel of Figure 8.11')
 
-% %% Frequentist Forward Search, 3rd year with 3 symbols
-% n04=length(y04);
-% seq04=1:n04;
-% out04freq=FSR(y04,X04,'nsamp',nsamp,'plots',1,'msg',0,'init',round(n04/2),'bonflev',bonflev);
-% xlabel('QUANTITY in tons')
-% ylabel('VALUE in 1000 euro')
-% title('Frequentist - 2004');
-% residuals=y04-[ones(n04,1) X04]*out04freq.beta;
-% boomin300=seq04(abs(residuals)<300);
-% uo4i=intersect(out04freq.outliers,boomin300);
-%
-% u04g=setdiff(seq04,out04freq.outliers);
-% % u04g=setdiff(good04,u04i);
-% u04o=setdiff(out04freq.outliers,uo4i);
-% %% plotting section
-% hold('off')
-% % good units, plotted as (+)
-% plot(X04(u04g)',y04(u04g)','Marker','+','LineStyle','none','Color','b')
-% hold('on')
-% % units below the treshold, plotted as (X)
-% plot(X04(uo4i)',y04(uo4i)','Marker','X','MarkerSize',9,'LineWidth',2,'LineStyle','none','Color','m')
-%
-% % outliers, plotted as (O)
-% plot(X04(u04o)',y04(u04o)','Marker','o','LineStyle','none','Color','r')
-% set(gca,'FontSize',14)
-% xlabel('QUANTITY in tons')
-% ylabel('VALUE in 1000 euro')
-%
+
 
 %InsideREADME  
