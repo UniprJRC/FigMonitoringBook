@@ -150,3 +150,5 @@ Xout(:,3)=Xout(:,3)+1e-08*randn(length(outliers),1);
 yXplot(yout,Xout,'plo',plo,'tag','yXout');
 sgtitle('Figure 4.42 (right hand panel)')
 set(gcf,"Name",'Figure 4.42 (right hand panel)')
+
+%InsideREADME

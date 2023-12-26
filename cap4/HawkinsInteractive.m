@@ -42,3 +42,5 @@ if prin==1
     print -depsc HD4a.eps;
     print -depsc HD4b.eps;
 end
+
+%InsideREADME

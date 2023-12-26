@@ -100,3 +100,5 @@ if prin==1
     print -depsc AR3D.eps;
     print -depsc AR3Drot.eps;
 end
+
+%InsideREADME
