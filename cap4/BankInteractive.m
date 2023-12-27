@@ -1,5 +1,7 @@
 %% Bank data
-% This file creates Figure 4.35 and 4.36  
+% This file creates Figure 4.35 and 4.36.
+
+%% Data loading
 load bank_data.mat
 y=bank_data{:,end};
 X=bank_data{:,1:end-1};
@@ -25,3 +27,4 @@ fig=findobj(0,'tag','pl_yX');
 figure(fig)
 sgtitle('Figure similar to 4.36', 'It depends on your brushing')
 
+%InsideREADME

@@ -1,5 +1,9 @@
+%% Exercise 7.1
+%
+% New updated transformed values in AVAS
+% This file creates Figure A.35 and Table A.17 
 
-%% Create Figure 7.27 
+%% Beginning of code
 prin=0;
 
 divisor=9.5;
@@ -63,3 +67,5 @@ if prin==1
     % print to postscript
     print -depsc ctsub.eps;
 end
+
+%InsideREADME 

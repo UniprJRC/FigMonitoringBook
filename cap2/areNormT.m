@@ -1,12 +1,14 @@
-%% Create Figure 2.3 
-% Compute empirical and theoretical ARE(Me, Mean) 
-% under the normal distribution and the Student t
-% Initial part of Section 2.1.2
-% For the final part of Section 2.1.2 see file areVarComparison.m
-close all
+%% Compute empirical and theoretical ARE(Me, Mean) under the normal distribution and the Student t.
+%
+% This file creates Figure 2.3. 
+%
+
 
 %% Theoretical ARE(Me, Mean) when the data are from the Normal distribution
 % Var(sample mean)/Var(sample median)
+% Initial part of Section 2.1.2.
+% For the final part of Section 2.1.2 see file areVarComparison.m.
+close all
 varmedian=1/(2*normpdf(0))^2;
 varmean=1;
 VarRatio=varmean/varmedian;
@@ -125,3 +127,5 @@ if prin==1
     % print to postscript
     print -depsc AREstudT.eps;
 end
+
+%InsideREADME   

@@ -1,5 +1,7 @@
-% This file creates Figure 4.33
-% CONTAMINATED ILLNESS DATA
+%% Contaminated illness data.
+% This file creates Figure 4.33.
+
+%% Beginning of code
 load('illnessx07.txt');
 y=illnessx07(:,4);
 X=illnessx07(:,2:3);
@@ -102,3 +104,4 @@ end
 sgtitle('Figure 4.43')
 set(gcf,"Name",'Figure 4.43')
 
+%InsideREADME 

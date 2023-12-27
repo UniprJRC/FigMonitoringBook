@@ -1,5 +1,6 @@
-%% Create Figure 2.1
-% Sensistivity curve for the Income data
+%% Sensistivity curve for the Income data.
+%
+% This file creates Figure 2.1.
 
 %% Create input for Figure 2.1
 % Load the data
@@ -71,3 +72,5 @@ if prin==1
     % print to postscript
     print -depsc SC.eps;
 end
+
+%InsideREADME 

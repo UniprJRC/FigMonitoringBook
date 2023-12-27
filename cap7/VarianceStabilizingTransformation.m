@@ -1,4 +1,7 @@
-%% This file creates Figures 7.1-7.3
+%% Variance stabilizing transformation.
+% This file creates Figures 7.1-7.3.
+
+%% Beginning of code
 clear
 close all
 load wsctsub.mat
@@ -135,8 +138,10 @@ text(ty(5),vbar+0.2,'$\overline{v}$','FontSize',16,'Interpreter','latex')
 title('Figure 7.3')
 set(gcf,"Name",'Figure 7.3')
 
-prin=0;
 if prin==1
     % print to postscript
     print -depsc ctsubthat5.eps;
 end
+
+
+%InsideREADME 

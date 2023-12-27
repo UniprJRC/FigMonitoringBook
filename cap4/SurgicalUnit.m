@@ -1,6 +1,8 @@
-%% Surgical Unit
-% This file creates Figures 4.30-4.33
+%% Surgical Unit data.
+%
+% This file creates Figures 4.30-4.33.
 
+%% Beginning of code
 close all;
 clearvars;
 load('hospitalFS.txt');
@@ -118,4 +120,4 @@ if prin==1
 end
 
 
-
+%InsideREADME 

@@ -1,6 +1,7 @@
-%% Mental Illness data
-% This file creates Figure 6.7
+%% Mental Illness data.
+% This file creates Figure 6.7.
 
+%% Beginning of code
 clearvars;close all;
 load('illnessx07.txt');
 y=illnessx07(:,4);
@@ -41,3 +42,5 @@ if prin==1
     % print to postscript
   print -depsc figs\I3.eps;
 end
+
+%InsideREADME   

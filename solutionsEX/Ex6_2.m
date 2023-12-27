@@ -1,6 +1,9 @@
-%% Confidence interval for transformation parameter lambda
-% Create Figure A.17
+%% Exercise 6.2.
+%
+% Confidence interval for transformation parameter lambda.
+% This file creates Figure A.17
 
+%% Beginning of code
 prin=0;
 %  Confidence interval for lambda
 nr=2;
@@ -32,3 +35,4 @@ end
 sgtitle('Figure A.17')
 set(gcf,"Name",'Figure A.17')
 
+%InsideREADME 

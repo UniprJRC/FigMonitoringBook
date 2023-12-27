@@ -1,6 +1,9 @@
-%% Surgical Unit data: 
-% Analysis to test difference between two groups
+%% Exercise 4.3
+%
+% Surgical Unit data: Analysis to test difference between two groups
 % This file creates Figures A.10-A.12 and Table A.6
+
+%% Beginning of code
 close all;
 y=hospitalFS(:,5);
 X=hospitalFS(:,1:4);
@@ -30,3 +33,5 @@ if prin==1
     print -depsc SPaddvarDUM.eps;
 end
 
+
+%InsideREADME 

@@ -1,3 +1,9 @@
+%% Exercise 4.1
+%
+% AR data: standard static way of data analysis (non-robust and robust)
+% This file creates Figure A.5-A.6
+% and Tables A.3-A.5
+
 %% MR (Multiple regression data): Forward EDA datatooltip which monitors bsb
 load('multiple_regression.txt');
 y=multiple_regression(:,4);
@@ -61,3 +67,5 @@ if prin==1
     % print to postscript
     print -depsc ARresMMaspd.eps;
 end
+
+%InsideREADME 

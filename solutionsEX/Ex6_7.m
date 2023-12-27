@@ -1,6 +1,10 @@
-%% This file creates Figures A.30-A.34 and Tables A.14-A.16
+%% Exercise 6.7
+%
+% Score test and fan plot 3.
+%
+% This file creates Figures A.30-A.34 and Tables A.14-A.16
 
-% D3 Data loading
+%% D3 Data loading
 XX=load('D3.txt');
 X=XX(:,1:end-1);
 y=XX(:,end);
@@ -138,3 +142,4 @@ disp('Table A.16: ANOVA in the transformed scale for y')
 outTRA=fitlm(X,ytra);
 disp(outTRA)
 
+%InsideREADME 

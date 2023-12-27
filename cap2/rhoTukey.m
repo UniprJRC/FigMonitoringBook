@@ -1,8 +1,10 @@
-%% Details of TB link for different values of c
-% Creates Figure 2.8
+%% Details of TB link for different values of c.
+%
+% This file creates Figure 2.8.
 
-% Plot of rho function.
+%% Plot of rho function.
 close all
+prin=0;
 c=4.6851;
 subplot(2,2,1)
 hold('on')
@@ -84,3 +86,5 @@ if prin==1
     % print to postscript
     print -depsc rhoTB.eps;
 end
+
+%InsideREADME 

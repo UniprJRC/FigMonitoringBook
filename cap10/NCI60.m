@@ -1,6 +1,10 @@
-%% This file creates Figures  10.47-10.62
-% and Tables 10.8-10.10
-close all
+%% NCI 60 Cancer Cell Panel Data.
+%
+% This file creates Figures  10.47-10.62
+% and Tables 10.8-10.10.
+
+%% Beginning of code
+close al
 clear
 % Data from national cancer institute
 load nci60
@@ -144,7 +148,7 @@ set(gcf,"Name",'Figure 10.52')
 % pos and neg for 0.75
 lasel=0.75;
 ylimy1=5;
-outpn=FSRfan(y,X,'nsamp',100000,'la',lasel,'family','YJpn','plots',1,'init',round(nini)); %#ok<NASGU>
+outpn=FSRfan(y,X,'nsamp',100000,'la',lasel,'family','YJpn','plots',1,'init',round(nini)); 
 title('')
 if prin==1
     % print to postscript
@@ -309,3 +313,5 @@ if prin==1
 end
 sgtitle('Figure 10.62')
 set(gcf,"Name",'Figure 10.62')
+
+%InsideREADME 

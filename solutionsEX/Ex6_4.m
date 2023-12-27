@@ -1,4 +1,9 @@
-%% This file creates Figures A.19 and A.20
+%% Exercise 6.4.
+% 
+% Transformed data and F test.
+% This file creates Figures A.19 and A.20
+
+%% Beginning of code
 % Balance sheets data
 XX=load('BalanceSheets.txt');
 % Define X and y
@@ -99,3 +104,5 @@ if prin==1
     % print to postscript
     print -depsc BSqqplots.eps;
 end
+
+%InsideREADME 

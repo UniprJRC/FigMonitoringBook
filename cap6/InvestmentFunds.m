@@ -1,6 +1,7 @@
-%% Investment Funds data
+%% Investment Funds data.
+% This file creates Figures 6.8-6.13 and Table 6.1.
 
-% This file creates Figures 6.8-6.13 and Table 6.1
+%% Beginning of code
 FondiInv=load('fondi_large.txt');
 
 y=FondiInv(:,2);
@@ -117,3 +118,5 @@ nameRows=["F2,306" "R2adj"];
 nameCols=["laP=1,laN=1" "laP=1,laN=0.5" "laP=1,laN=0.25" "laP=1,laN=0"];
 FandR2t=array2table(FandR2,'RowNames',nameRows,'VariableNames',nameCols);
 disp(FandR2t)
+
+%InsideREADME  

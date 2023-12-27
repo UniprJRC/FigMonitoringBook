@@ -1,0 +1,14 @@
+name: Check Markdown links
+
+on: push
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-verbose-mode: 'no' # do not show detailed http status
+        use-quiet-mode: 'yes'  # show only broken links
+        file-extension: '.m'   # also search broken links in .m files

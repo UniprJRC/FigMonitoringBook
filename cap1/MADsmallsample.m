@@ -56,3 +56,5 @@ if prin==1
     % print to postscript
     print -depsc simMAD.eps;
 end
+
+%InsideREADME

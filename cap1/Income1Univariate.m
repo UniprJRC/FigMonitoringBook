@@ -1,7 +1,7 @@
-%% This file is referred to dataset Income1
-% Univariate analysis of the response for dataset Income1 
-% It creates Figures 1.2 ----- 1.5
-% and Tables 1.1, 1.2 
+%% Univariate analysis of the response for dataset Income1. 
+%
+% This file creates Figures 1.2 ----- 1.5
+% and Tables 1.1, 1.2. 
 
 
 %% Data loading
@@ -40,8 +40,7 @@ sgtitle('Figure 1.2')
 set(gcf,"Name",'Figure 1.2')
 
 %% Create Figure 1.3
-% Boxplots for four value of lambda
-% Boxplots for four values of 𝜆 using the
+% Boxplots for four value of lambda using the
 % normalized Box Cox power transformation after preliminary rescaling of the data to a maximum
 % value of one.
 yl1=-1;
@@ -188,3 +187,5 @@ set(gcf,"Name",'Figure 1.5')
     disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
     disp(outTRI.trimmedmean)
 %}
+
+%InsideREADME

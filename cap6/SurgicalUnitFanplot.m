@@ -1,5 +1,5 @@
-%% Surgical Unit
-% This file creates Figure 6.1
+%% Surgical Unit data.
+% This file creates Figure 6.1.
 
 %% Preapare input for Figure 6.1
 close all;
@@ -24,3 +24,4 @@ if prin==1
     print -depsc figs\H1.eps
 end
 
+%InsideREADME   

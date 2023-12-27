@@ -1,3 +1,9 @@
+%% Exercise 10.3
+% Analysis of the modified customer loyalty data in the square-root scale.
+%
+% This file creates Figures A.72-A.74 
+% 
+%% Beginning of code
 close all
 clear
 load ConsLoyaltyRet.mat
@@ -17,15 +23,7 @@ Xytable{ss,end}= Xytable{ss,end}-kk;
 sqy=sqrt(y);
 prin=0;
 
-%% Create Figure A.70
-outFSRfan=FSRfan(y,X,'plots',0);
-% Best automatic value of lambda is 0.5
-outBIC=fanBIC(outFSRfan);
-sgtitle('Figure A.70')
-set(gcf,"Name",'Figure A.70')
-
-
-%% Create Figure A.71 
+%% Create Figure A.72 
 % Monitoring of res in sqrt scale
 % LMS
 [outLXSsq]=LXS(sqy,X,'nsamp',50000);
@@ -38,11 +36,11 @@ if prin==1
     % print to postscript
     print -depsc modCLmonressqrt.eps;
 end
-title('Figure A.71')
-set(gcf,"Name",'Figure A.71')
+title('Figure A.72')
+set(gcf,"Name",'Figure A.72')
 drawnow
 
-%% Create Figure A.72 
+%% Create Figure A.73 
 % FSR in sqrt scale
 outsqrty=FSR(sqy,X,'plots',0);
 
@@ -63,18 +61,20 @@ if prin==1
     % print to postscript
     print -depsc figs\modCL8.eps;
 end
-sgtitle('Figure A.72')
-set(gcf,"Name",'Figure A.72')
+sgtitle('Figure A.73')
+set(gcf,"Name",'Figure A.73')
 drawnow
 
-%%  Create Figure A.73
+%%  Create Figure A.74
 % FSRaddt in the model without the interactions sqrt scale
 outADDt=FSRaddt(sqy,X,'plots',0);
-fanplotFS(outADDt,'highlight',outsqrty.outliers)
+fanplotFS(outADDt,'highlight',outsqrty.outliers);
 title('')
 if prin==1
     % print to postscript
     print -depsc modCL6sqrt.eps;
 end
-title('Figure A.73')
-set(gcf,"Name",'Figure A.73')
+title('Figure A.74')
+set(gcf,"Name",'Figure A.74')
+
+%InsideREADME 

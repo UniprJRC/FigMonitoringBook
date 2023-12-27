@@ -1,13 +1,14 @@
-%% Balance sheets data
+%% Balance sheets data.
+% This file creates Figure 6.12-6.13 and Table 6.2.
 
-% This file creates Figure 6.12-6.13 and Table 6.2
+%% Beginning of code
 XX=load('BalanceSheets.txt');
 % Define X and y
 y=XX(:,6);
 X=XX(:,1:5);
 prin=0;
-outtra=FSR(y,X,'plots',0);
 p=size(X,2)+1;
+n=length(y);
 
 %% Create Figure 6.12 (top panel)
 ylimy=20;
@@ -53,7 +54,7 @@ end
 mdl=fitlm(X,y);
 StoreFandR2=[mdl.ModelFitVsNullModel.Fstat;  mdl.Rsquared.Adjusted];
 
-
+outtra=FSR(ytra,X,'plots',0);
 mdltra=fitlm(X,ytra,'Exclude',outtra.outliers);
 StoreFandR2tra=[mdltra.ModelFitVsNullModel.Fstat;  mdltra.Rsquared.Adjusted];
 
@@ -74,4 +75,4 @@ dataT=array2table(data,"RowNames",namrow,"VariableNames",namcol);
 disp('Table 6.2')
 disp(dataT)
 
-
+%InsideREADME  

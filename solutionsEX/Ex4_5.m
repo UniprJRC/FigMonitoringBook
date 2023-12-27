@@ -1,5 +1,9 @@
-%% Create Figure A,13
-% Hawkins data: BIC monitoring 
+%% Exercise 4.5
+%
+% Hawkins data: BIC monitoring.
+% This file creates Figure A.13
+
+%% Beginning of code
 load('hawkins.txt');
 y=hawkins(:,9);
 X=hawkins(:,1:8);
@@ -91,3 +95,8 @@ if prin==1
     print -depsc Hbic.eps;
     
 end
+
+% title('Figure 4.43')
+% set(gcf,"Name",'Figure A.19')
+
+%InsideREADME 

@@ -1,6 +1,6 @@
-%% This file is referred to dataset Income1
-% Regression analysis of dataset income1 
-% It creates Figures 10.1 ---- 10.11
+% Regression analysis of dataset Income1. 
+%
+% This file creates Figures 10.1-10.11
 % and Table 10.1
 
 
@@ -388,5 +388,5 @@ if prin==1
     print -depsc inc1f11.eps;
 end
 
-
+%InsideREADME 
 

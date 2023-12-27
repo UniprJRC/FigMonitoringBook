@@ -1,4 +1,6 @@
-%% This file creates Figures 9.1 and 9.2
+%% Ozone data (reduced and full).
+%
+% This file creates Figures 9.1 and 9.2
 
 %% cdsplot with all default options.
 % Load Ozone data (reduced data)
@@ -50,4 +52,4 @@ title('Figure 9.2')
 % cdsplot(outms,'laboutl',1);
 % cdsplot(outms,'cpbrush',1,'laboutl',1);
 
-
+%InsideREADME 

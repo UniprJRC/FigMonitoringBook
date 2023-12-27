@@ -1,5 +1,7 @@
 %% Bank data
-% This file creates Figure 4.34-4.42
+% This file creates Figure 4.34-4.42.
+
+%% Data loading
 clear
 close all
 load bank_data.mat
@@ -150,3 +152,5 @@ Xout(:,3)=Xout(:,3)+1e-08*randn(length(outliers),1);
 yXplot(yout,Xout,'plo',plo,'tag','yXout');
 sgtitle('Figure 4.42 (right hand panel)')
 set(gcf,"Name",'Figure 4.42 (right hand panel)')
+
+%InsideREADME

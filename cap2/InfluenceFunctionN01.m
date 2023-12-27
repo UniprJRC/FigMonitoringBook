@@ -1,8 +1,9 @@
-%% Create Figure 2.2
-% INFLUENCE FUNCTION at N(0,1)
-close all
+%% Influence Function at N(0,1) for different estimators.
+%
+% This file creates Figure 2.2.
 
 %% Create input for Figure 2.2
+close all
 % Show the IF at N(0,1) for mean, median and trimmed mean
 % Suppose mu=0;
 y=(-3:0.01:3)';
@@ -35,3 +36,5 @@ if prin==1
     % print to postscript
     print -depsc IF.eps;
 end
+
+%InsideREADME 

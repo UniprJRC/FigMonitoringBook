@@ -1,4 +1,7 @@
-%%  Marketing data
+%% Internet Marketing Data 
+% This file creates Figures 7.20-7.24
+
+%% Beginning of code
 % https://www.kaggle.com/fayejavad/marketing-linear-multiple-regression
 clear
 close all
@@ -120,3 +123,5 @@ end
 
 sgtitle('Figure 7.24')
 set(gcf,"Name",'Figure 7.24')
+
+%InsideREADME 

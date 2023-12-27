@@ -1,8 +1,10 @@
-%% AR data
-% This function creates Figures 3.1-3.5, 3.8 and 3.9
-% Figures 3.1-3.5 Traditional non robust analysis
-% Figures 3.8-3.9 Traditional robust analysis based on S and MM estimators
+%% AR data.
+% This function creates Figures 3.1-3.5, 3.8 and 3.9.
+% Figures 3.1-3.5: traditional non robust analysis.
+% Figures 3.8-3.9: traditional robust analysis based on S and MM
+% estimators.
 
+%% Beginning of code.
 close all
 load('multiple_regression.txt');
 y=multiple_regression(:,4);
@@ -175,4 +177,4 @@ if prin==1
     print -depsc ARtradrobMM.eps;
 end
 
-
+%InsideREADME 

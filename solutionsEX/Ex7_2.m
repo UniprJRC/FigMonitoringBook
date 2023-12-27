@@ -1,5 +1,9 @@
-%% Figure 7: preparatory part contamination
-% This file creates Figures 7.28,
+%% Exercise 7.2
+%
+% Augmented Investment Funds data.
+% This file creates Figure A.36-A.43 and Table A.17 
+
+%% Initial part 
 load InvFundsExt.mat
 y=InvFundsExt{:,end};
 X=InvFundsExt{:,[1 2]};
@@ -9,16 +13,6 @@ prin=0;
 nameXy=InvFundsExt.Properties.VariableNames;
 
 
-%% Create Figure 7.28 
-% yXplot
-yXplot(y,X);
-sgtitle('Figure 7.28')
-set(gcf,"Name",'Figure 7.28')
-
-
-if prin==1
-    print -depsc figs\NPyXplot.eps
-end
 
 %% Create Figure A.36 (left panel)
 % fanplot just one lambda
@@ -282,3 +276,5 @@ end
 disp('Table A.19: ANOVA in the transformed RAVAS scale')
 outF=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outrobAV.outliers,'VarNames',nameXy);
 disp(outF)
+
+%InsideREADME 

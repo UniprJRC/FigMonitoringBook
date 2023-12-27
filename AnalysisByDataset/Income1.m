@@ -1,5 +1,5 @@
 %% This file is referred to dataset Income1
-% Creates all Figures and tables associated with dataset Income1
+% Creates all Figures and tables associated with dataset Income1,
 % See Table A.2 in Appendix A to see where this dataset has been used
 % inside the book
 
@@ -688,4 +688,4 @@ if prin==1
     print -depsc inc1f11.eps;
 end
 
-
+%InsideREADME

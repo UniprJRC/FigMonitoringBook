@@ -1,6 +1,9 @@
-%% This file creates Figures A.24-A.29 and Tables A.11-A.14
+%% Exercise 6.6
+%
+% Score test and fan plot 2.
+% This file creates Figures A.24-A.29 and Tables A.11-A.14
 
-% D2 Data loading
+%% D2 Data loading
 XX=load('D2.txt');
 X=XX(:,1:end-1);
 y=XX(:,end);
@@ -128,3 +131,5 @@ if prin==1
     print -depsc figs\D2autopnAGI.eps;
     print -depsc figs\D2autopnR2.eps;
 end
+
+%InsideREADME 

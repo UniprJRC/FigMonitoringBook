@@ -1,6 +1,7 @@
+%% Windsor House Price data.
+% This file creates Figures 8.1-8.7.
 
-%% This file creates Figures 8.1-8.7
-% Windsor House Price data
+%% Beginning of code
 load hprice.txt;
 
 % setup parameters
@@ -307,9 +308,11 @@ set(gcf,'Name', 'Figure 8.5');
 sgtitle('Figure 8.5')
 
 
-%% Create Figure 
+%% Create Figure
 n0=2500;
 bayes.n0=n0;
 outBA1=FSRB(y,X,'bayes',bayes, 'plots',1,'xlim',[280 n]);
 
-  %   mdrB=FSRBmdr(y,X,beta0, R, tau0, n0,'init',20,'plots',1,'quant');
+%   mdrB=FSRBmdr(y,X,beta0, R, tau0, n0,'init',20,'plots',1,'quant');
+
+%InsideREADME

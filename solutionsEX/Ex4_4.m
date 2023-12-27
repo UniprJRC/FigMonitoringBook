@@ -1,5 +1,10 @@
+%% Exercise 4.4
+%
+% Surgical Unit data: traditional robust analysis
+% This file creates Figures A.11-A.12 
+
 %% Surgical Unit data: 
-% Traditional robust analysis
+% 
 close all;
 y=hospitalFS(:,5);
 X=hospitalFS(:,1:4);
@@ -55,3 +60,6 @@ if prin==1
     % print to postscript
     print -depsc SPStwobdpPD.eps;
 end
+
+
+%InsideREADME 

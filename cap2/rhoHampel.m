@@ -1,7 +1,8 @@
-%% Details of Huber link for different values of c
-% Creates Figure 2.7
+%% Details of Huber link for different values of c. 
+% 
+% This file creates Figure 2.7.
 
-% Plot of rho function.
+%% Plot of rho function.
 FontSize=10;
 FontSizelab=9;
 
@@ -138,3 +139,5 @@ if prin==1
     % print to postscript
     print -depsc rhoHA.eps;
 end
+
+%InsideREADME 

@@ -1,5 +1,7 @@
-%% This file creates Figures 7.4 and 7.5
-% Generate the data 
+%% Example 1 (Section 7.5.1).
+% This file creates Figures 7.4 and 7.5
+
+%% Generate the data 
 % Ex1 (seven outliers).
 rng('default')
 rng(1000)

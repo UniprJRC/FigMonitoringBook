@@ -1,7 +1,9 @@
-%% This file is referred to dataset Customer Loyalty
-% It creates Figures 10.37 ---- 10.46
-% and Table 10.7
+% Modified Customer Loyalty data.
+%
+% This file creates Figures 10.37-10.46
+% and Table 10.7.
 
+%% Beginning of code
 close all
 clear
 load ConsLoyaltyRet.mat
@@ -179,5 +181,5 @@ if prin==1
 end
 
 
-
+%InsideREADME 
 

@@ -92,7 +92,7 @@ xlabel('Subset size m');
 title('Figure 6.6')
 set(gcf,"Name",'Figure 6.6')
 
-%% Create Figure 6.15
+%% Figure 6.15 and Figure 6.16 
+% See file LoyaltyCardsBICplots.m
 
-%% Create Figure 6.16
-
+%InsideREADME   

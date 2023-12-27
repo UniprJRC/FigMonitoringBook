@@ -1,5 +1,9 @@
-%%  This file creates Figure A.70 
-% Data loading
+%% Exercise 10.2
+%
+% Additional analysis of the customer loyalty data.
+%  This file creates Figure A.1 
+
+%% Data loading
 
 load ConsLoyaltyRet.mat
 Xytable=ConsLoyaltyRet(:,2:end);
@@ -17,8 +21,10 @@ if prin==1
     print -depsc figs\transf2.eps;
 end
 
-title('Figure A.70')
-set(gcf,"Name",'A.70')
+title('Figure A.71')
+set(gcf,"Name",'A.71')
 disp('Proportion of observations included in the regression analysis')
 disp('of the square root transformation')
 disp(outBIC.mmstop(end-1,2)/n)
+
+%InsideREADME 

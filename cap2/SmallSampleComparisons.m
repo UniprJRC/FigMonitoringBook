@@ -1,5 +1,8 @@
-%% This file creates Figures 2.22 - 2.27
-% Small sample comparison of different link functions
+%% Small sample comparison of different link functions
+%
+% This file creates Figures 2.22 - 2.27.
+
+%% Beginning of code
 clear 
 close all
 % addcaption = boolean which enables to print the caption of the plots

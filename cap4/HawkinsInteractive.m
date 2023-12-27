@@ -1,6 +1,10 @@
-%% Hawkins data
-% This file creates Figures 4.24-4.26
-% Note that this file needs interactivity
+%% Hawkins data (interactive part).
+%
+% This file creates Figures 4.24-4.26.
+%
+% Note that this file needs interactivity.
+
+%% Data loading
 
 load('hawkins.txt');
 y=hawkins(:,9);
@@ -42,3 +46,5 @@ if prin==1
     print -depsc HD4a.eps;
     print -depsc HD4b.eps;
 end
+
+%InsideREADME

@@ -1,5 +1,7 @@
 %% AR regression data
 % This file creates Figures 4.15-4.22
+
+%% Data loading
 close all;
 load('multiple_regression.txt');
 y=multiple_regression(:,4);
@@ -181,16 +183,15 @@ sgtitle('Figure 4.21')
 set(gcf,"Name",'Figure 4.21')
 
 %% Create Figure 4.22
-subplot(2,1,1)
+% top panel
 fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0');
 title('')
-subplot(2,1,2);
-fanplotFS(outOPT1,'conflev',0.95,'tag','plrobcopv1');
-title('')
-
 title('Figure 4.22 (top panel)')
 set(gcf,"Name",'Figure 4.22 (top panel)')
 
+% bottom panel
+fanplotFS(outOPT1,'conflev',0.95,'tag','plrobcopv1');
+title('')
 title('Figure 4.22 (bottom panel)')
 set(gcf,"Name",'Figure 4.22 (bottom panel)')
 
@@ -199,3 +200,5 @@ if prin==1
     % print to postscript
     print -depsc StstatAR.eps;
 end
+
+%InsideREADME

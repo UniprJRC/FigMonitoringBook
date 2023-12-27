@@ -1,3 +1,7 @@
+%% Exercise 1.4
+%
+% Univariate analysis
+
 %% Data loading
 clear
 close all
@@ -6,6 +10,7 @@ y=Income2{:,"Income"};
 
 % y and X in table format
 yt=Income2(:,end);
+Xt=Income2(:,1:end-1);
 
 n=length(y);
 one=ones(n,1);
@@ -111,3 +116,5 @@ if prin==1
     % print to postscript
     print -depsc inc2f1.eps;
 end
+
+%InsideREADME 

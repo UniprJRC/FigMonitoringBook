@@ -1,8 +1,10 @@
-%% Details of PD link for different values of alpha
-% Creates Figure 2.10
+%% Details of PD link for different values of alpha.
+%
+% This file creates Figure 2.10.
 
-% Plot of rho function. PD
+%% Plot of rho function. PD
 close all
+prin=0;
 c=0.2245;
 subplot(2,2,1)
 hold('on')
@@ -60,3 +62,5 @@ if prin==1
     % print to postscript
     print -depsc rhoPD.eps;
 end
+
+%InsideREADME 
