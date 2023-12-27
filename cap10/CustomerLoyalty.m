@@ -1,4 +1,4 @@
-%% Customer Loyalty data
+%% Customer Loyalty data (interactive part).
 %
 % This file creates Figures 10.22-10.36
 % and Tables 10.5-10.6. 
