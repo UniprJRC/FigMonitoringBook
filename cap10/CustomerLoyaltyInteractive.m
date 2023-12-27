@@ -55,3 +55,5 @@ if prin==1
     print -depsc figs\regf4.eps;
     print -depsc figs\regf5.eps;
 end
+
+%InsideREADME 
