@@ -4,8 +4,6 @@
 
 
 %% Beginning of code.
-% https://www.kaggle.com/aungpyaeap/fish-market
-
 clear
 close all
 prin=0;
