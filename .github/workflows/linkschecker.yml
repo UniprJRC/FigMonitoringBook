@@ -11,3 +11,4 @@ jobs:
       with:
         use-verbose-mode: 'no' # do not show detailed http status
         use-quiet-mode: 'yes'  # show only broken links
+        file-extension: '.m'   # also search broken links in .m files
