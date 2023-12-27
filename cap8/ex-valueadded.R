@@ -331,7 +331,7 @@ ternary <- function(x, name = colnames(x), text = NULL, grid = TRUE, gridCol = g
 
 ##  y1ilr <- rrcov3way:::.ilrV(y1)
 y1ilr <- robCompositions::pivotCoord(y1)
-plot(mcd <- CovMcd(y1ilr, nsamp="deterministic"), which="tolEllipse", class=TRUE, labs=rownames(y1))
+plot(mcd <- CovMcd(y1ilr, nsamp="deterministic"), which="tolEllipse", class=TRUE, labs=paste0("     ", rownames(y1)))
 if(prin)
     savePlot(type="pdf", file="mva-mcd.pdf")
 
