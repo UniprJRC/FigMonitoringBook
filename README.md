@@ -16,7 +16,7 @@ Clicking on ipynb it is possible to see the preview of the output these files ge
 <br>
 
 
-1. Introduction and the Grand Plan  [[open dir](/cap1/README.md)]  
+1. Introduction and the Grand Plan  [[open dir](cap1/README.md)]  
 2. Introduction to M-Estimation for Univariate Samples[[open dir](/cap2/README.md)]  
 3. Robust Estimators in Multiple Regression  [[open dir](/cap3/README.md)]  
 4. The Monitoring Approach in Multiple Regression [[open dir](/cap4/README.md)]  
