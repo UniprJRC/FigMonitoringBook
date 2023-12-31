@@ -2,16 +2,18 @@
 GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach" Heidelberg: Springer Nature. by 
 Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), 
 
-# Table of Contents and Code Notebooks
-<br>
 
 All the figures and tables in the books can be reproduced.
 For each Chapter each .m file can be run in MATLAB on line click on the Run in MATLAB on line button.
 Moreover each .m file has the corresponding .ipynb file where 
 it is possible to see the preview of the output the .m file generates.
+
 All the README.m files in each Chapter have been automatically created  
 by FSDA function [[m2ipynb](http://rosa.unipr.it/FSDA/m2ipynb.html)]   
 
+
+# Table of Contents and Code Notebooks
+<br>
 
 1. Introduction and the Grand Plan  [[open dir](cap1/README.md)]  
 2. Introduction to M-Estimation for Univariate Samples[[open dir](cap2/README.md)]  
