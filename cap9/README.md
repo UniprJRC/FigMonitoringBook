@@ -2,7 +2,7 @@
 
 
 ---
-Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2023), Applied Robust Statistics through the Monitoring Approach, Heidelberg: Springer Nature.
+Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), Applied Robust Statistics through the Monitoring Approach, Heidelberg: Springer Nature.
 
 # Abstract
  This chapter considers the choice of explanatory variables to include in the linear predictor $x^T\beta$. We start with models for all of which $p$, the dimension of $\beta$, is $ < n.$ The problem arises specifically when some variables are nearly collinear when the significance of a variable in the model may depend strongly on what other  variables are included. Section 9.3.1 derives Mallow's $C_p$  from Akaike's AIC; models with more parameters are penalized. Robustness is provided by the generalized candlestick plot, illustrated by three data analyses. For the rest of the chapter we take $n < p.$
