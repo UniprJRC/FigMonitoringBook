@@ -2,23 +2,12 @@
 GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach" Heidelberg: Springer Nature. by 
 Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), 
 
-**Here you can find 3 examples related to 3 datasets that are runnable straight in MATLAB Online**
-Clicking on ipynb it is possible to see the preview of the output these files generate 
-
-
-| FileName | Description | Open in MATLAB on line | Jupiter notebook | 
- |---|---|---|---| 
- |ARregressionData.m|This file is referred to dataset AR regression data<br/> Creates all Figures and tables associated with dataset AR regression data. See Table A.2 in Appendix A to see where this dataset has been used inside the book|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=AnalysisByDataset//ARregressionData.m)| [[ipynb](ARregressionData.ipynb)]
-|Income1.m|This file is referred to dataset Income1<br/> Creates all Figures and tables associated with dataset Income1, See Table A.2 in Appendix A to see where this dataset has been used inside the book|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=AnalysisByDataset//Income1.m)| [[ipynb](Income1.ipynb)]
-|Income2.m|This file is referred to dataset Income2<br/> Creates all Figures and tables associated with dataset Income2 See Table A.2 in Appendix A to see where this dataset has been used inside the book|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=AnalysisByDataset//Income2.m)| [[ipynb](Income2.ipynb)]
-
-
 # Table of Contents and Code Notebooks
 <br>
 
 All the figures and tables in the books can be reproduced.
-For each Chapter each .m file can be run in MATLAB on line click on the button
-and has the corresponding .ipynb file where 
+For each Chapter each .m file can be run in MATLAB on line click on the Run in MATLAB on line button.
+Moreover each .m file has the corresponding .ipynb file where 
 it is possible to see the preview of the output the .m file generates.
 All the README.m files in each Chapter have been automatically created  
 by FSDA function [[m2ipynb](http://rosa.unipr.it/FSDA/m2ipynb.html)]   
