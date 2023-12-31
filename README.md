@@ -16,6 +16,13 @@ Clicking on ipynb it is possible to see the preview of the output these files ge
 # Table of Contents and Code Notebooks
 <br>
 
+All the figures and tables in the books can be reproduced.
+For each Chapter each .m file can be run in MATLAB on line click on the button
+and has the corresponding .ipynb file where 
+it is possible to see the preview of the output the .m file generates.
+All the README.m files in each Chapter have been automatically created  
+by FSDA function [[m2ipynb](http://rosa.unipr.it/FSDA/m2ipynb.html)]   
+
 
 1. Introduction and the Grand Plan  [[open dir](cap1/README.md)]  
 2. Introduction to M-Estimation for Univariate Samples[[open dir](cap2/README.md)]  
@@ -28,6 +35,13 @@ Clicking on ipynb it is possible to see the preview of the output these files ge
 9.    Model selection    [[open dir](cap9/README.md)]
 10.   Some Robust Data Analyses    [[open dir](cap10/README.md)]
  
+# Code by dataset
+In the book there are datasets which are used in different Chapters.
+Here you can find the link to the folder which contains the 
+complete analysis of these datasets
+
+  Analysis by dataset    [[open dir](AnalysisByDataset/README.md)]
+
 # Links
 $$
 Springer Verlag
