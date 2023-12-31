@@ -1,5 +1,6 @@
 # Applied Robust Statistics through the Monitoring Approach
-GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach"
+GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach" Heidelberg: Springer Nature. by 
+Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), 
 
 **Here you can find 3 examples related to 3 datasets that are runnable straight in MATLAB Online**
 Clicking on ipynb it is possible to see the preview of the output these files generate 

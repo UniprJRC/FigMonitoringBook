@@ -40,7 +40,7 @@ if prin==1
 end
 
 %% Create Figure 1.3: boxplots for four value of lambda
-% boxla: boxplots for four values of 𝜆 using the
+% boxla: boxplots for four values of lambda using the
 % normalized Box Cox power transformation after preliminary rescaling of the data to a maximum
 % value of one.
 yl1=-1;
@@ -198,13 +198,11 @@ disp("Trimmed mean alpha=0.10")
 disp(meanTru(2))
 
 %% Visual display of the trimmed mean calling GUItrimmedmean
-% Note that given that GUItrimmean trims alpha72 from both tails it is
+% Note that given that GUItrimmean trims alpha/2 from both tails it is
 % necessary to use (2*alpha)*100=20 to have the 10 per cent trimmed mean
-%{
-    outTRI=GUItrimmean(y15,20);
-    disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
-    disp(outTRI.trimmedmean)
-%}
+outTRI=GUItrimmean(y15,20);
+disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
+disp(outTRI.trimmedmean)
 
 %% Chapter 2: create input for Figure 2.1
 % SC for mean, median and trimmed mean
@@ -273,7 +271,7 @@ if prin==1
 end
 
 %% Chapter 2: create input for Figure 2.28
-% Use contaminated income data 
+% Use contaminated income data
 y20=[y(1:20); 600000; 575000; 590000];
 
 % Compute MADn;
