@@ -3,6 +3,8 @@ GitHub repo of the forthcoming book "Applied Robust Statistics through the Monit
 Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), 
 
 
+**Reproducible Research (run in MATLAB on line or see Jupyter notebook file with attached output)**
+
 All the figures and tables in the books can be reproduced.
 For each Chapter each .m file can be run in MATLAB on line click on the Run in MATLAB on line button.
 Moreover each .m file has the corresponding .ipynb file where 
@@ -45,7 +47,7 @@ $$
 
 
     @book{ARCPT2024,  
-    address = {, UK},  
+    address = {UK},  
     author = {Atkinson, A. C. and Riani, M. and Corbellini, A. and Perrotta, D. and Todorov, V},  
     isbn = {XXX-XXXXXX},   
     publisher = {Heidelberg: Springer Nature},  
