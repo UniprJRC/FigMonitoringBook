@@ -1,8 +1,9 @@
-%% Exercise 8.4 
+%% Exercise 8.4
 %
 % Analysis of transformed Airline data.
 % This file creates Figures A.50-52
 
+prin=0;
 
 %% Data loading
 % the original airline data (not contaminated)
@@ -25,17 +26,24 @@ Y=(airlines(:));
 % the model
 model           = struct;
 model.trend     = 1;     % linear trend
-model.seasonal  = 102;   % two harmonics with time varying seasonality           
+model.seasonal  = 102;   % two harmonics with time varying seasonality
 model.s         = 12;    % monthly time series
 model.lshift    = 0;     % no level shift
 
 % Default h is round(nT*0.75), i.e 25% breakdown point
 outLTS102 = LTSts(Y,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
-titl = {'model parameters for Airline data:' , 'A=1, B=2, G=1, $\delta_1=0$'};
+titl = {'Model parameters for Airline data:' , 'A=1, B=2, G=1, $\delta_1=0$'};
 title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
 
-sgtitle('Figure A.50')
-set(gcf,"Name",'Figure A.50')
+
+if prin==1
+    % print to postscript
+    print -depsc ch8_problem5_102.eps;
+else
+    sgtitle('Figure A.50')
+    set(gcf,"Name",'Figure A.50')
+end
+
 
 %%  Create Figure A.51
 % quadratic grow of amplitude
@@ -44,8 +52,14 @@ outLTS202 = LTSts(Y,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults'
 titl = {'model parameters for Airline data:' , 'A=1, B=2, G=2, $\delta_1=0$'};
 title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
 
-sgtitle('Figure A.51')
-set(gcf,"Name",'Figure A.51')
+if prin==1
+    % print to postscript
+    print -depsc ch8_problem5_202.eps;
+else
+    sgtitle('Figure A.51')
+    set(gcf,"Name",'Figure A.51')
+end
+
 
 
 %% Create Figure A.52 (left panel)
@@ -53,21 +67,30 @@ set(gcf,"Name",'Figure A.51')
 model.seasonal  = 102;
 Ylog = log(Y);
 outLTSlog102 = LTSts(Ylog,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
-titl = {'model parameters for log-transformed Airline data:' , 'A=1, B=2, G=1, $\delta_1=0$'};
+titl = {'Model parameters for log-transformed Airline data:' , 'A=1, B=2, G=1, $\delta_1=0$'};
 title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
 
-sgtitle('Figure A.52 (left panel)')
-set(gcf,"Name",'Figure A.52 (left panel)')
-
+if prin==1
+    % print to postscript
+    print -depsc ch8_problem5_log102;
+else
+    sgtitle('Figure A.52 (left panel)')
+    set(gcf,"Name",'Figure A.52 (left panel)')
+end
 
 %% Create Figure A.52 (right panel)
 % No grow of amplitude
 model.seasonal  = 2;
 outLTSlog2 = LTSts(Ylog,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
-titl = {'model parameters for log-transformed Airline data:' , 'A=1, B=2, G=0, $\delta_1=0$'};
+titl = {'Model parameters for log-transformed Airline data:' , 'A=1, B=2, G=0, $\delta_1=0$'};
 title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
 
-sgtitle('Figure A.52 (right panel)')
-set(gcf,"Name",'Figure A.52 (right panel)')
+if prin==1
+    % print to postscript
+    print -depsc ch8_problem5_log2
+else
+    sgtitle('Figure A.52 (right panel)')
+    set(gcf,"Name",'Figure A.52 (right panel)')
+end
 
-%InsideREADME 
+%InsideREADME

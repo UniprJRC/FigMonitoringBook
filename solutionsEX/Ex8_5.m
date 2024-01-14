@@ -3,7 +3,7 @@
 % Analysis of body measurements to predict percentage of body fat in males.
 % This file creates Figures A.53-A.56.
 
-%% Data loading 
+%% Data loading
 load fat
 fatsel=fat{:,["neck" "chest" "abdomen" "hip" "thigh" "knee" "ankle" "bicep" "forearm" "wrist"]};
 X=pivotCoord(fatsel);
@@ -69,7 +69,7 @@ drawnow
 fsout=FSR(y, X,'plots',0);
 disp(fsout)
 
-%% Create Figure A.55 
+%% Create Figure A.55
 % Monitoring S estimtes
 [out]=Sregeda(y,X,'msg',0);
 fground = struct;
@@ -109,4 +109,4 @@ end
 sgtitle('Figure A.56')
 set(gcf,"Name",'Figure A.56')
 
-%InsideREADME 
+%InsideREADME

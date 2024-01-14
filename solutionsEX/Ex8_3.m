@@ -70,9 +70,9 @@ ylabel('Value')
 xlim([min(X) max(X)])
 if prin==1
     print -depsc P30homobands.eps;
+else
+    set(gcf,'Name', 'Figure A.49 (right panel)');
+    title('Figure A.49 (right panel)')
 end
 
-set(gcf,'Name', 'Figure A.49 (right panel)');
-title('Figure A.49 (right panel)')
-
-%InsideREADME 
+%InsideREADME
