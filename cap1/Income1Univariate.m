@@ -183,6 +183,7 @@ set(gcf,"Name",'Figure 1.5')
 % Note that given that GUItrimmean trims alpha72 from both tails it is
 % necessary to use (2*alpha)*100=20 to have the 10 per cent trimmed mean
 %{
+    y15=y(1:15);
     outTRI=GUItrimmean(y15,20);
     disp("Trimmed mean alpha=0.10 using call to GUItrimmean")
     disp(outTRI.trimmedmean)
