@@ -2,7 +2,7 @@
 % This file creates Figures 7.25 and 7.26.
 
 %% Create one panel one row of Figure 7.25 and one panel of Figure 7.26
-% Choose number of simulations (nsimul), sample size (n) and numnber of
+% Choose number of simulations (nsimul), sample size (n) and number of
 % explanatory variables.
 nsimul=100;
 n=200;
