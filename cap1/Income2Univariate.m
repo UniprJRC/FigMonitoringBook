@@ -35,8 +35,9 @@ format bank
 disp('Table 1.3')
 disp(ScoreT)
 
-%% Compute statistics in the original and transformed scale
-% Table 1.4 with lambda=1, lambda=-1 or lambda=-1.5
+%% Create Table 1.4
+% Compute statistics in the original and transformed scale
+%  with lambda=1, lambda=-1 or lambda=-1.5
 
 ysor=sort(y);
 
