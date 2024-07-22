@@ -1,5 +1,5 @@
-%% Consistency factor, break down point and efficiency. 
-% 
+%% Consistency factor, break down point and efficiency.
+%
 % This file createa Figure 3.6, 3.7, Table 3.2 and 3.3.
 
 %%
@@ -41,14 +41,16 @@ xlabel('Breakdown point (bdp)','FontSize',fs)
 ylabel('Efficiency (eff)','FontSize',fs')
 set(gca,'FontSize',fs)
 
-sgtitle('Figure 3.6')
-set(gcf,"Name",'Figure 3.6')
 
 
 if prin==1
     % print to postscript
     print -depsc TBrhox.eps;
+else
+    sgtitle('Figure 3.6')
+    set(gcf,"Name",'Figure 3.6')
 end
+
 
 %% Create Figure 3.7
 % eff varies: compute consistency factor c and e bdp
@@ -80,12 +82,13 @@ xlabel('Efficiency (eff)','FontSize',fs)
 ylabel('Breakdown point (bdp)','FontSize',fs')
 set(gca,'FontSize',fs)
 
-sgtitle('Figure 3.7')
-set(gcf,"Name",'Figure 3.7')
 
 if prin==1
     % print to postscript
     print -depsc TBeffx.eps;
+else
+    sgtitle('Figure 3.7')
+    set(gcf,"Name",'Figure 3.7')
 end
 
 %%  Create Tables 3.2 and 3.3
@@ -127,4 +130,4 @@ varNames=["Asymptotic efficiency at the normal model" "Consistency factor c" "Ef
 T33=array2table(TBinputeff,"VariableNames",varNames);
 disp(T33)
 
-%InsideREADME 
+%InsideREADME

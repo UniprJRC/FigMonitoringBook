@@ -16,21 +16,24 @@ n=length(y);
 %% Create Figure 3.1
 % outLS=fitlm(X,y);
 yXplot(y,X);
-sgtitle('Figure 3.1')
-set(gcf,"Name",'Figure 3.1')
 
 if prin==1
     % print to postscript
     print -depsc AR1.eps;
+else
+    sgtitle('Figure 3.1')
+    set(gcf,"Name",'Figure 3.1')
 end
 
 
 
-%% Create Figure 3.2
+%% Traditional ANOVA table
 
 outLS=fitlm(X,y);
 disp('Traditional ANOVA table based on all the observations')
 disp(outLS)
+
+%% Create Figure 3.2
 figure
 conflev=[0.95 0.99 1-0.05/n];
 yl=3.5;
@@ -43,12 +46,13 @@ resindexplot(outLS.Residuals{:,4},'h',h2,'conflev',conflev,'numlab',{1})
 title('')
 ylim([-yl yl])
 
-sgtitle('Figure 3.2')
-set(gcf,"Name",'Figure 3.2')
 
 if prin==1
     % print to postscript
     print -depsc AR2.eps;
+else
+    sgtitle('Figure 3.2')
+    set(gcf,"Name",'Figure 3.2')
 end
 
 %% ANOVA table after removing 43
@@ -78,12 +82,13 @@ text(outLM.Fitted(sel)+0.5,res(sel),num2str(sel))
 xlabel('Fitted values')
 ylabel('Residuals')
 
-sgtitle('Figure 3.3')
-set(gcf,"Name",'Figure 3.3')
 
 if prin==1
     % print to postscript
     print -depsc AR3.eps;
+else
+    sgtitle('Figure 3.3')
+    set(gcf,"Name",'Figure 3.3')
 end
 
 
@@ -100,12 +105,13 @@ SizeAxesNum=10;
 outADD=addt(y,X(:,2:3),X(:,1),'plots',1,'units',[9 21 30 31 38 47]','textlab','y','FontSize',fsiztitl,'SizeAxesNum',SizeAxesNum);
 ylim([-2.6 2.6])
 
-sgtitle('Figure 3.4')
-set(gcf,"Name",'Figure 3.4')
 
 if prin==1
     % print to postscript
     print -depsc AR4.eps;
+else
+    sgtitle('Figure 3.4')
+    set(gcf,"Name",'Figure 3.4')
 end
 
 %% Create Figure 3.5
@@ -114,15 +120,16 @@ figure;
 out43=addt(y,X(:,2:3),X(:,1),'plots',1,'units',43','textlab','y','FontSize',fsiztitl,'SizeAxesNum',SizeAxesNum);
 text(-1.5,-2.3,'43','FontSize',12)
 ylim([-2.6 2.6])
-sgtitle('Figure 3.5')
-set(gcf,"Name",'Figure 3.5')
 
 if prin==1
     % print to postscript
     print -depsc AR5.eps;
+else
+    sgtitle('Figure 3.5')
+    set(gcf,"Name",'Figure 3.5')
 end
 
-%% Create Figure 3.8 
+%% Create Figure 3.8
 % Traditional robust analysis based on S estimators
 % S estimators with 2 values of breakdown point
 
@@ -142,15 +149,16 @@ bdp=0.5;
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{6});
 ylabel(['Breakdown point =' num2str(bdp)])
 
-sgtitle('Figure 3.8')
-set(gcf,"Name",'Figure 3.8')
 
 if prin==1
     % print to postscript
     print -depsc ARtradrobS.eps;
+else
+    sgtitle('Figure 3.8')
+    set(gcf,"Name",'Figure 3.8')
 end
 
-%% Create Figure 3.9 
+%% Create Figure 3.9
 %% MR: (Multiple regression data): MM estimators with 2 values of efficiency
 
 % MMreg using two different level of efficiency
@@ -169,12 +177,13 @@ eff=0.95;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{4});
 ylabel(['Eff.=' num2str(eff)])
-sgtitle('Figure 3.9')
-set(gcf,"Name",'Figure 3.9')
 
 if prin==1
     % print to postscript
     print -depsc ARtradrobMM.eps;
+else
+    sgtitle('Figure 3.9')
+    set(gcf,"Name",'Figure 3.9')
 end
 
-%InsideREADME 
+%InsideREADME
