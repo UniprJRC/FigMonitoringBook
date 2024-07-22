@@ -1,4 +1,4 @@
-%% Analysis of consistency factor (small sample and asymptotic for MAD)
+%% Analysis of consistency factor (small sample and asymptotic for MAD).
 % This file creates  Figure 1.1
 
 %% Empirical consisteny factor for MAD when n=5

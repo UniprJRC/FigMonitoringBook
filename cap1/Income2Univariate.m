@@ -20,8 +20,8 @@ one=ones(n,1);
 % prin =
 prin=0;
 
-%% Analysis of the score test
-% Table 1.3
+%% Create Table 1.3
+% Analysis of the score test
 la=[-2  -1.5 -1 -0.5 0 1];
 out=Score(y,one, 'la',la);
 disp([la' out.Score])
