@@ -25,7 +25,7 @@ MADall=NaN(maxnn-minnn+1,1);
 
 for i=nn
     MAD=zeros(nsimul,1);
-    
+
     parfor j=1:nsimul
         % x=randn(i,1);
         MAD(j)=mad(randn(i,1),1);
@@ -48,13 +48,15 @@ xlabel('Sample size')
 yline(1/norminv(0.75))
 xlim([minnn maxnn])
 ylabel('Empirical consistency factor')
-title('Figure 1.1')
-set(gcf,'Name','Figure 1.1')
 
 prin=0;
 if prin==1
     % print to postscript
     print -depsc simMAD.eps;
+else
+    title('Figure 1.1')
+    set(gcf,'Name','Figure 1.1')
+
 end
 
 %InsideREADME

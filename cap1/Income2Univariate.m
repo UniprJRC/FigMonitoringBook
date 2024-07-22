@@ -1,7 +1,7 @@
 %% Univariate analysis of the response for dataset Income2.
 %
 % This file creates Figure 1.6
-% and Tables 1.3, 1.4 
+% and Tables 1.3, 1.4
 
 %% Data loading
 clear
@@ -17,7 +17,7 @@ Xytable=Income2;
 
 n=length(y);
 one=ones(n,1);
-% prin = 
+% prin =
 prin=0;
 
 %% Analysis of the score test
@@ -26,11 +26,11 @@ la=[-2  -1.5 -1 -0.5 0 1];
 out=Score(y,one, 'la',la);
 disp([la' out.Score])
 
-Score=out.Score;
+Score1=out.Score;
 rownam=["-2" "-1.5" "Inverse" "Reciprocal square root" "Logarithmic" "None"];
 colnam=["lambda" "Score test"];
 
-ScoreT=array2table([la' Score],"RowNames",rownam,"VariableNames",colnam);
+ScoreT=array2table([la' Score1],"RowNames",rownam,"VariableNames",colnam);
 format bank
 disp('Table 1.3')
 disp(ScoreT)
@@ -91,14 +91,15 @@ disp(LOCt)
 %% Create Figure 1.6 fanplot
 % Fanplot using just the intercept
 outFSRfanUNI=FSRfan(y,one,'intercept',0,'la',[-2 -1.5 -1 -0.5],'tag','fanplotnoExpl');
-title('Figure 1.6')
 if prin==1
     % print to postscript
     print -depsc fanIncome2.eps;
+else
+    title('Figure 1.6')
 end
 
 
-%InsideREADME   
+%InsideREADME
 
 
 

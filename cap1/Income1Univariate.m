@@ -1,7 +1,7 @@
-%% Univariate analysis of the response for dataset Income1. 
+%% Univariate analysis of the response for dataset Income1.
 %
 % This file creates Figures 1.2 ----- 1.5
-% and Tables 1.1, 1.2. 
+% and Tables 1.1, 1.2.
 
 
 %% Data loading
@@ -35,9 +35,10 @@ ylabel('Income','FontSize',FontSize)
 if prin==1
     % print to postscript
     print -depsc histbox.eps;
+else
+    sgtitle('Figure 1.2')
+    set(gcf,"Name",'Figure 1.2')
 end
-sgtitle('Figure 1.2')
-set(gcf,"Name",'Figure 1.2')
 
 %% Create Figure 1.3
 % Boxplots for four value of lambda using the
@@ -74,27 +75,28 @@ ylim([yl1 yl2])
 if prin==1
     % print to postscript
     print -depsc boxla.eps;
+else
+    sgtitle('Figure 1.3')
+    set(gcf,"Name",'Figure 1.3')
 end
 
-sgtitle('Figure 1.3')
-set(gcf,"Name",'Figure 1.3')
 
-%% Create Table 1.1 
+%% Create Table 1.1
 % Analysis of the score test
 la=[-1, -0.5, 0, 0.5, 1];
 out=Score(y,one, 'la', la,'intercept',false);
 
 
-Score=out.Score;
+Score1=out.Score;
 rownam=["Inverse" "Reciprocal square root" "Logarithmic" "Square root" "None"];
 colnam=["lambda" "Score test"];
 
-ScoreT=array2table([la' Score],"RowNames",rownam,"VariableNames",colnam);
+ScoreT=array2table([la' Score1],"RowNames",rownam,"VariableNames",colnam);
 format bank
 disp("Table 1.1")
 disp(ScoreT)
 
-%% Create Table 1.2 
+%% Create Table 1.2
 % Descriptive statistics
 % Table 1.2
 ysor=sort(y);
@@ -130,7 +132,7 @@ disp("Table 1.2")
 disp(LOCt)
 
 %% Prepare input for Figure 1.4
-% Trimmed mean monitoring 
+% Trimmed mean monitoring
 alphaAll=(0:0.01:0.5)';
 lalphaAll=length(alphaAll);
 meanTru=zeros(lalphaAll,1);
@@ -143,7 +145,7 @@ for i=1:lalphaAll
 end
 
 %% Create Figure 1.4
-% Monitoring of the trimmed mean 
+% Monitoring of the trimmed mean
 figure
 plot(alphaAll,meanTru)
 xlabel('\alpha','FontSize',FontSize)
@@ -154,17 +156,19 @@ yline(meany)
 yline(mediany)
 ylabel('$\overline y_\alpha$','Interpreter','latex','FontSize',FontSize)
 text(0.45,meany-1000,"$\hat \mu = \overline y_n$",'Interpreter','latex','FontSize',FontSize)
-text(0.15,mediany+300,"Me",'Interpreter','latex','FontSize',FontSize)
+text(0.15,mediany+600,"med",'Interpreter','latex','FontSize',FontSize)
 
 set(gca,"XDir","reverse")
 
 if prin==1
     % print to postscript
     print -depsc trimmeanIncome1.eps;
+else
+    title('Figure 1.4')
+    set(gcf,"Name",'Figure 1.4')
+
 end
 
-title('Figure 1.4')
-set(gcf,"Name",'Figure 1.4')
 
 
 %% Create Figure 1.5 fanplot
@@ -174,10 +178,12 @@ outFSRfanUNI=FSRfan(y,one,'intercept',0,'ylimy',[-24 26],'nsamp',0);
 if prin==1
     % print to postscript
     print -depsc fanIncome1.eps;
+else
+    title('Figure 1.5')
+    set(gcf,"Name",'Figure 1.5')
+
 end
 
-title('Figure 1.5')
-set(gcf,"Name",'Figure 1.5')
 
 %% Visual display of the trimmed mean calling GUItrimmedmean
 % Note that given that GUItrimmean trims alpha72 from both tails it is
