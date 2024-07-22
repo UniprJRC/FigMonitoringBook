@@ -79,12 +79,13 @@ text(c,-kk,{'$c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','le
 
 text(-c,kk,{'$-c$'},'Interpreter','latex','FontSize',14,'HorizontalAlignment','right')
 
-sgtitle('Figure 2.8')
-set(gcf,"Name",'Figure 2.8')
 
 if prin==1
     % print to postscript
     print -depsc rhoTB.eps;
+else
+    sgtitle('Figure 2.8')
+    set(gcf,"Name",'Figure 2.8')
 end
 
-%InsideREADME 
+%InsideREADME

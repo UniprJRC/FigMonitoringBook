@@ -4,7 +4,7 @@
 
 %%  Prepare the input for Figure 2.14
 bdp=0.01:0.01:0.5;
-tol=1e-8;
+tol=1e-3;
 
 EFF=zeros(length(bdp),5);
 for j=1:length(bdp)
@@ -62,7 +62,7 @@ col={'b';'r';'k';'g';'m'};
 plot1=plot(bdp,EFF,'LineWidth',lwd);
 set(plot1,{'LineStyle'},slintyp)
 set(plot1,{'Color'},col)
-xlabel('Break down point')
+xlabel('Breakdown point')
 ylabel('Efficiency')
 legend({'TB','HA', 'OPT', 'PD' 'HYP'})
 
@@ -80,10 +80,11 @@ box on
 prin=0;
 if prin==1
     % print to postscript
-    print -depsc figs\MD4.eps;
+    print -depsc MD4.eps;
+else
+    sgtitle('Figure 2.14')
+    set(gcf,"Name",'Figure 2.14')
 end
-sgtitle('Figure 2.14')
-set(gcf,"Name",'Figure 2.14')
 
 
 %%  Prepare input for Figure 2.15
@@ -149,7 +150,7 @@ plot(bdp,EFF(:,2),'LineWidth',lwd,'Color','r','LineStyle','--');
 legend({'$c_1=2 \; c_2=4 \; c_3=8$', '$c_1=1.5 \; c_2=3.5 \; c_3=8$'},...
     'Interpreter','latex','FontSize',14)
 
-xlabel('Break down point')
+xlabel('Breakdown point')
 ylabel('Efficiency')
 ylim([0.26 1.01])
 axes('Position',[.18 .2 .16 .25])
@@ -169,7 +170,7 @@ plot(bdp,EFF(:,5),'LineWidth',lwd,'Color','k','LineStyle',':');
 legend({'$k=4$', '$k=4.5$', '$k=6$'},...
     'Interpreter','latex','FontSize',14)
 
-xlabel('Break down point')
+xlabel('Breakdown point')
 ylabel('Efficiency')
 ylim([0.26 1.01])
 
@@ -181,13 +182,15 @@ plot(bdp',EFF(:,5),'LineWidth',lwd,'Color','k','LineStyle',':');
 xlim([0.4 0.5])
 ylim([0.28 0.42])
 
-sgtitle('Figure 2.15')
-set(gcf,"Name",'Figure 2.15')
-
 prin=0;
 if prin==1
     % print to postscript
-    print -depsc figs\MD4bis.eps;
+    print -depsc MD4bis.eps;
+else
+    sgtitle('Figure 2.15')
+    set(gcf,"Name",'Figure 2.15')
 end
 
-%InsideREADME   
+
+
+%InsideREADME

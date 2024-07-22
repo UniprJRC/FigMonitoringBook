@@ -20,6 +20,8 @@ dd=100;
 
 prin=0;
 
+format short
+
 %%  Prepare input for Figure 2.18
 % Compare IF of different scale estimators (use bdp=0.5)
 bdp=0.5;
@@ -78,19 +80,20 @@ plot(x,y,'LineWidth',LineWidth,'LineStyle',linst{6})
 ylim1=-1.5;
 ylim2=1.5;
 ylim([ylim1 ylim2])
-legend(["TB" "HA"  "HYP"  "OPT" "PD" "MADn"],'Location','best','AutoUpdate','off')
+legend(["TB" "HA"  "HYP"  "OPT" "PD" "MADN"],'Location','best','AutoUpdate','off')
 
 % Table 2.1, column 4
 GESscabdp050=max([y ifTB ifHA ifHYP ifOPT ifPD])';
 
 xlim([xlim1 xlim2])
 yline(0)
-title('Figure 2.18')
-set(gcf,"Name",'Figure 2.18')
 
 if prin==1
     % print to postscript
     print -depsc IFscalebdp05.eps;
+else
+    title('Figure 2.18')
+    set(gcf,"Name",'Figure 2.18')
 end
 
 
@@ -182,10 +185,11 @@ yline(0)
 if prin==1
     % print to postscript
     print -depsc IFscaleeff095.eps;
+else
+    title('Figure 2.19')
+    set(gcf,"Name",'Figure 2.19')
 end
 
-title('Figure 2.19')
-set(gcf,"Name",'Figure 2.19')
 
 disp('Columns 3 and 4 of Table 2.1')
 GESscabdp050All=[NaN; GESscabdp050];
@@ -195,4 +199,4 @@ namCol=["bdp=0.5" "eff=0.95"];
 GESbdpeff=array2table([GESscabdp050All GESscaeff095All],"RowNames",namRow,"VariableNames",namCol);
 disp(GESbdpeff)
 
-%InsideREADME   
+%InsideREADME

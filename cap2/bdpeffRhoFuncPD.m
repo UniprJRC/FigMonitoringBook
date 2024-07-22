@@ -1,5 +1,5 @@
-%% Breakdown point and efficiency for PD link. 
-% 
+%% Breakdown point and efficiency for PD link.
+%
 % This file creates Figure 2.13.
 
 %% Beginning of code
@@ -28,9 +28,10 @@ prin=0;
 if prin==1
     % print to postscript
     print -depsc figs\MD3.eps;
+else
+    sgtitle('Figure 2.13')
+    set(gcf,"Name",'Figure 2.13')
 end
 
-sgtitle('Figure 2.13')
-set(gcf,"Name",'Figure 2.13')
 
-%InsideREADME 
+%InsideREADME

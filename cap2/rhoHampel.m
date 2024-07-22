@@ -1,10 +1,11 @@
-%% Details of Huber link for different values of c. 
-% 
+%% Details of Huber link for different values of c.
+%
 % This file creates Figure 2.7.
 
 %% Plot of rho function.
 FontSize=10;
 FontSizelab=9;
+shortlabely=true;
 
 close all
 a=2;
@@ -18,7 +19,12 @@ rhoHA=HArho(x,1);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoHA,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
-ylabel('$\rho(u,c=1,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
+if shortlabely ==true
+    ylabel('$\rho(u,1,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
+else
+    ylabel('$\rho(u,c=1,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
+end
+
 stem(a,a^2/2,'LineWidth',1,'LineStyle',':','Color','r')
 stem(b,a*b-a^2/2,'LineWidth',1,'LineStyle',':','Color','r')
 stem(-a,a^2/2,'LineWidth',1,'LineStyle',':','Color','r')
@@ -42,8 +48,11 @@ psiHA=HApsi(x,1);
 % psiHA=psiHA/maxrho;
 plot(x,psiHA,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
-ylabel('$\psi(u,c=1,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
-
+if shortlabely ==true
+    ylabel('$\psi(u,1,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
+else
+    ylabel('$\psi(u,c=1,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
+end
 stem(a,a,'LineWidth',1,'LineStyle',':','Color','r')
 stem(b,a,'LineWidth',1,'LineStyle',':','Color','r')
 stem(-a,-a,'LineWidth',1,'LineStyle',':','Color','r')
@@ -76,7 +85,11 @@ maxrho=max(rhoHA);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoHA,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
-ylabel('$\rho(u,c=0.1981,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
+if shortlabely ==true
+    ylabel('$\rho(u,0.1981,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
+else
+    ylabel('$\rho(u,c=0.1981,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
+end
 a=a*cc;
 b=b*cc;
 c=c*cc;
@@ -93,11 +106,11 @@ stem(-c,a*b -0.5*a^2+(c-b)*a/2,'LineWidth',1,'LineStyle',':','Color','r')
 % text(a,kk,{'$c_1$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','left')
 % text(b,kk,{'$c_2$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','left')
 % text(c,kk,{'$c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','left')
-% 
+%
 % text(-a,kk,{'$-c_1$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','right')
 % text(-b,kk,{'$-c_2$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','right')
 % text(-c,kk,{'$-c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','right')
-% 
+%
 kk=0.02;
 text(c,kk,{'$c \times  c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','left')
 text(-c,kk,{'$-c \times c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','right')
@@ -115,8 +128,12 @@ psiHA=HApsi(x,[cc,a,b,c]);
 
 plot(x,psiHA,'LineWidth',2)
 xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
-ylabel(' Hampel $\psi(u,[2,4,8]) $','Interpreter','Latex')
-ylabel('$\psi(u,c=0.1981,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
+
+if shortlabely ==true
+    ylabel('$\psi(u,0.1981,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
+else
+    ylabel('$\psi(u,c=0.1981,c_1=2, c_2=4, c_3=8) $','Interpreter','Latex','FontSize',FontSizelab)
+end
 stem(cc*a,cc*a,'LineWidth',1,'LineStyle',':','Color','r')
 stem(cc*b,cc*a,'LineWidth',1,'LineStyle',':','Color','r')
 stem(-cc*a,-cc*a,'LineWidth',1,'LineStyle',':','Color','r')
@@ -126,18 +143,19 @@ stem(cc*c,0,'LineWidth',1,'LineStyle',':','Color','r')
 
 
 ax=axis;
- ylim([ax(3)-0.001 ax(4)+0.001])
+ylim([ax(3)-0.001 ax(4)+0.001])
 kk=0.03;
- text(cc*c,kk,{'$c \times c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','left')
+text(cc*c,kk,{'$c \times c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','left')
 text(-cc*c,kk,{'$-c \times c_3$'},'Interpreter','latex','FontSize',FontSize,'HorizontalAlignment','right')
 
-sgtitle('Figure 2.7')
-set(gcf,"Name",'Figure 2.7')
 
 prin=0;
 if prin==1
     % print to postscript
     print -depsc rhoHA.eps;
+else
+    sgtitle('Figure 2.7')
+    set(gcf,"Name",'Figure 2.7')
 end
 
-%InsideREADME 
+%InsideREADME

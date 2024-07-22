@@ -3,7 +3,7 @@
 % This file creates Figures 2.22 - 2.27.
 
 %% Beginning of code
-clear 
+clear
 close all
 % addcaption = boolean which enables to print the caption of the plots
 addcaption=false;
@@ -194,16 +194,17 @@ if addcaption ==true
     end
 
 end
-sgtitle('Figure 2.22')
-set(gcf,"Name",'Figure 2.22')
 
 if prin==1
     % print to postscript
     print -depsc rhobdp0.eps;
+else
+    sgtitle('Figure 2.22')
+    set(gcf,"Name",'Figure 2.22')
 end
 
 
-%% Create Figure 2.23 
+%% Create Figure 2.23
 % Difference between point mass and shift contamination
 % 200 samples of 200 observations generated from $\mathcal{N}(5,2)$. 30 per
 % cent contamination.  Estimates of scale as in Figure~\ref{cap2:rhobdp0}.
@@ -336,23 +337,24 @@ if addcaption ==true
             ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
     end
 end
-sgtitle('Figure 2.23')
-set(gcf,"Name",'Figure 2.23')
 
 if prin==1
     % print to postscript
     print -depsc rhoPMLS.eps;
+else
+    sgtitle('Figure 2.23')
+    set(gcf,"Name",'Figure 2.23')
 end
 
 
-%% Create Figure 2.24 
+%% Create Figure 2.24
 % Differences between using or not true scale
 % 200 samples of 200 observations generated from $\mathcal{N}(5,2)$. 30 per
 % cent shift contamination.  Boxplots of location estimates as in
 % Figure~\ref{cap2:rhobdp0}.
 %  Left-hand panel:  $\sigma$ = 2. Right-hand panel: $\sigma$ estimated
 %  with MADN
- 
+
 truescale=2;
 trueloc=5;
 shiftcontamination =0;
@@ -407,26 +409,26 @@ hold('on')
 
 
 if useboxplot==true
-boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
+    boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
 else
-ls={'-' '--' ':' '-.' '-'};
-for i=1:5
-    plot(1:nsimul,Loc(:,i),ls{i},'LineWidth',2)
-end
-yline(trueloc)
+    ls={'-' '--' ':' '-.' '-'};
+    for i=1:5
+        plot(1:nsimul,Loc(:,i),ls{i},'LineWidth',2)
+    end
+    yline(trueloc)
 
-legend(["TB" "PD" "HA" "OPT" "HYP"],'Location','best')
-xlabel('Index of simulation')
+    legend(["TB" "PD" "HA" "OPT" "HYP"],'Location','best')
+    xlabel('Index of simulation')
 end
 
 if addcaption == true
 
-if fraccontamination==0
-    title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
-else
-    title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
-end
+    if fraccontamination==0
+        title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
+    else
+        title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
+    end
 end
 ylim([yl1 yl2])
 yline(trueloc)
@@ -469,26 +471,26 @@ end
 
 
 if useboxplot==true
-boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
+    boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
 else
-ls={'-' '--' ':' '-.' '-'};
-for i=1:5
-    plot(1:nsimul,Loc(:,i),ls{i},'LineWidth',2)
-end
-yline(trueloc)
+    ls={'-' '--' ':' '-.' '-'};
+    for i=1:5
+        plot(1:nsimul,Loc(:,i),ls{i},'LineWidth',2)
+    end
+    yline(trueloc)
 
-legend(["TB" "PD" "HA" "OPT" "HYP"],'Location','best')
-xlabel('Index of simulation')
+    legend(["TB" "PD" "HA" "OPT" "HYP"],'Location','best')
+    xlabel('Index of simulation')
 
 end
 
 if addcaption == true
-if fraccontamination==0
-    title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
-else
-    title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
-end
+    if fraccontamination==0
+        title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
+    else
+        title(['n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
+    end
 end
 ylim([yl1 yl2])
 
@@ -496,13 +498,15 @@ yline(trueloc)
 if prin==1
     % print to postscript
     print -depsc rhoUsetruesigma.eps;
+else
+    sgtitle('Figure 2.24')
+    set(gcf,"Name",'Figure 2.24')
 end
 
-sgtitle('Figure 2.24')
-set(gcf,"Name",'Figure 2.24')
+
 
 %% Create Figure 2.25
-% Simultaneous estimation of mu and sigma 
+% Simultaneous estimation of mu and sigma
 % All the tuning constants set for bdp=0.5
 % bdp=0.5;
 
@@ -557,39 +561,39 @@ subplot(2,1,1)
 
 boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
 
-xlabel('Index of simulation')
 yline(trueloc)
 
 if addcaption==true
-if fraccontamination==0
-    title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
-else
-    title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift)])
-end
+    if fraccontamination==0
+        title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
+    else
+        title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift)])
+    end
 end
 
 subplot(2,1,2)
 boxplot(Sca,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
 
-xlabel('Index of simulation')
 yline(truescale)
 
 if addcaption==true
-if fraccontamination==0
-    title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
-else
-    title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift) ])
+    if fraccontamination==0
+        title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
+    else
+        title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift) ])
+    end
 end
-end
-sgtitle('Figure 2.25')
-set(gcf,"Name",'Figure 2.25')
 
 if prin==1
     % print to postscript
     print -depsc rhoSimEstbdp05.eps;
+else
+    sgtitle('Figure 2.25')
+    set(gcf,"Name",'Figure 2.25')
 end
+
 
 %% Create Figure 2.26
 % Now repeat using bdp=0.2
@@ -686,42 +690,42 @@ end
 figure
 subplot(2,1,1)
 boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
-xlabel('Index of simulation')
 
 yline(trueloc)
 
 if addcaption ==true
-if fraccontamination==0
-    title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
-else
-    title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift)])
-end
+    if fraccontamination==0
+        title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
+    else
+        title(['bdp=' num2str(bdp) ' Estimate of loc. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift)])
+    end
 end
 
 subplot(2,1,2)
 boxplot(Sca,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
 
-xlabel('Index of simulation')
 
 yline(truescale)
 
 if addcaption ==true
-if fraccontamination==0
-    title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
-else
-    title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift) ])
-end
+    if fraccontamination==0
+        title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination)])
+    else
+        title(['bdp=' num2str(bdp) ' Estimate of scale. n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift) ])
+    end
 end
 
-sgtitle('Figure 2.26')
-set(gcf,"Name",'Figure 2.26')
 
 if prin==1
     % print to postscript
     print -depsc rhoSimEstbdp02.eps;
+else
+    sgtitle('Figure 2.26')
+    set(gcf,"Name",'Figure 2.26')
 end
+
 
 %% Create Figure 2.27
 % Back to sigma fixed in the iterative procedure (importance of correct bdp)
@@ -825,12 +829,12 @@ hold('on')
 
 boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
 if addcaption ==true
-if fraccontamination==0
-    title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
-else
-    title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
-end
+    if fraccontamination==0
+        title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
+    else
+        title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
+    end
 end
 
 ylim([yl1 yl2])
@@ -923,20 +927,22 @@ end
 
 boxplot(Loc,'Labels',["TB" "PD" "HA" "OPT" "HYP"])
 if addcaption ==true
-if fraccontamination==0
-    title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
-else
-    title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
-        ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
-end
+    if fraccontamination==0
+        title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination) ' usetruescale=' num2str(usetruescale)])
+    else
+        title(['bdp= ' num2str(bdp) ' n=' num2str(n) ' fraccont=' num2str(fraccontamination), ' shiftcont=' num2str(shiftcontamination) ...
+            ' shift=' num2str(shift) ' usetruescale=' num2str(usetruescale)])
+    end
 end
 ylim([yl1 yl2])
 yline(trueloc)
 
-sgtitle('Figure 2.27')
-set(gcf,"Name",'Figure 2.27')
 
 if prin==1
     % print to postscript
     print -depsc rhoDiffbdpsKnown.eps;
+else
+    sgtitle('Figure 2.27')
+    set(gcf,"Name",'Figure 2.27')
 end
+

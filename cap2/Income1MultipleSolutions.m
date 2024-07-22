@@ -6,7 +6,7 @@
 close all
 load Income1;
 y=Income1{:,"HTOTVAL"};
-% Use contaminated income data 
+% Use contaminated income data
 y20=[y(1:20); 600000; 575000; 590000];
 prin=0;
 
@@ -37,7 +37,7 @@ for i=1:length(mu)
 end
 
 %% Create Figure 2.28
-Link={'Huber', 'Hampel', 'Tukey', 'Hyperbolic' 'Optimal' 'Power divergence'} ;
+Link={'HU', 'HA', 'TB', 'HYP' 'OPT' 'PD'} ;
 for i=1:6
     subplot(2,3,i)
     plot(mu',avePSI(:,i),'LineWidth',2,'Color','k')
@@ -47,12 +47,13 @@ for i=1:6
     xlabel('$\mu$','FontSize',14,'Interpreter','Latex')
     ylabel('$\overline \psi \left( \frac{ y -\mu}{\hat \sigma} \right)$','FontSize',14,'Interpreter','Latex')
 end
-sgtitle('Figure 2.28')
-set(gcf,"Name",'Figure 2.28')
 
 if prin==1
     % print to postscript
     print -depsc multsol.eps;
+else
+    sgtitle('Figure 2.28')
+    set(gcf,"Name",'Figure 2.28')
 end
 
-%InsideREADME 
+%InsideREADME

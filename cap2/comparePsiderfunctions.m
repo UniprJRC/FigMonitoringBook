@@ -1,6 +1,6 @@
 %% Compare derivatives of psi functions (use bdp=0.5 or eff=0.95).
 %
-% This file creates Figures 2.20 and 2.21.
+% This file creates Figures 2.20 and 2.21 and Table 2.2
 
 %% Beginning of code
 close all 
@@ -219,6 +219,7 @@ if prin==1
 end
 
 %% Create Table 2.2
+
 disp("Compute values of area")
 nam=["Huber" "Hampel" "Tukey Biweight" "Hyperbolic" "Optimal" "Power Divergence"];
 namCol=["bdp=0.5" "eff=0.95"];

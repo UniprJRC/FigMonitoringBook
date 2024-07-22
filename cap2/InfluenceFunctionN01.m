@@ -27,7 +27,7 @@ hold('on')
 plot(y,IFmean,'Color','r','LineStyle','-','LineWidth',LineWidth)
 plot(y,IFmedian,'Color','b','LineStyle','-.','LineWidth',LineWidth)
 plot(y,IFyalpha,'Color','k','LineStyle','--','LineWidth',LineWidth)
-legend({'IF$_{\overline y}$' 'IF$_{\mbox{Me}}$' 'IF$_{\overline y_{0.1}}$'},'FontSize',20,'Location','southeast','Interpreter','latex')
+legend({'IF$_{\overline y}$' 'IF$_{\mbox{med}}$' 'IF$_{\overline y_{0.1}}$'},'FontSize',20,'Location','southeast','Interpreter','latex')
 xlabel('$\it y$','FontSize',FontSize,'Interpreter','latex')
 ylabel('IF','FontSize',FontSize,'Interpreter','latex')
 
@@ -35,6 +35,10 @@ prin=0;
 if prin==1
     % print to postscript
     print -depsc IF.eps;
+else
+    title('Figure 2.2')
+    set(gcf,"Name",'Figure 2.2')
+
 end
 
-%InsideREADME 
+%InsideREADME

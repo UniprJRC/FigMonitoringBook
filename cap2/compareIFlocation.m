@@ -19,6 +19,8 @@ x=(-7:0.001:7)';
 xlim1=min(x);
 xlim2=max(x);
 
+format short
+
 %%  Prepare input for Figure 2.16
 
 % Fix bdp to 0.5
@@ -68,7 +70,7 @@ xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 y= sqrt(2*pi)*sign(x)/2;
 plot(x,y,'LineWidth',LineWidth,'LineStyle',linst{6})
 ylim([ylim1 ylim2])
-legend(["TB" "HA"  "HYP"  "OPT" "PD" "Me"],'Location','best','AutoUpdate','off')
+legend(["TB" "HA"  "HYP"  "OPT" "PD" "med"],'Location','best','AutoUpdate','off')
 
 % Table 2.1, column 2
 GESlocbdp050=max([y ifTB ifHA ifHYP ifOPT ifPD])';
@@ -76,14 +78,16 @@ GESlocbdp050=max([y ifTB ifHA ifHYP ifOPT ifPD])';
 
 xlim([xlim1 xlim2])
 yline(0)
-title('Figure 2.16')
-set(gcf,"Name",'Figure 2.16')
 
 prin=0;
 if prin==1
     % print to postscript
     print -depsc IFlocbdp05.eps;
+else
+    title('Figure 2.16')
+    set(gcf,"Name",'Figure 2.16')
 end
+
 
 %%  Prepare input for Figure 2.17
 
@@ -155,8 +159,6 @@ GESloceff095=max([ifTB ifHA ifHYP ifOPT ifPD])';
 
 xlim([xlim1 xlim2])
 yline(0)
-title('Figure 2.17')
-set(gcf,"Name",'Figure 2.17')
 
 disp('First two columns of Table 2.1')
 namRow=["Median" "MADn" "Tukey biweight" "Hampel" "Hyperboloc" "Optimal" "Power divergence"];
@@ -170,6 +172,9 @@ disp(GESbdpeff)
 if prin==1
     % print to postscript
     print -depsc IFloceff095.eps;
+else
+    title('Figure 2.17')
+    set(gcf,"Name",'Figure 2.17')
 end
 
-%InsideREADME   
+%InsideREADME

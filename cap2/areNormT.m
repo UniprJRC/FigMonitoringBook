@@ -1,10 +1,10 @@
-%% Compute empirical and theoretical ARE(Me, Mean) under the normal distribution and the Student t.
+%% Compute empirical and theoretical ARE(med, Mean) under the normal distribution and the Student t.
 %
-% This file creates Figure 2.3. 
+% This file creates Figure 2.3.
 %
 
 
-%% Theoretical ARE(Me, Mean) when the data are from the Normal distribution
+%% Theoretical ARE(med, Mean) when the data are from the Normal distribution
 % Var(sample mean)/Var(sample median)
 % Initial part of Section 2.1.2.
 % For the final part of Section 2.1.2 see file areVarComparison.m.
@@ -12,9 +12,9 @@ close all
 varmedian=1/(2*normpdf(0))^2;
 varmean=1;
 VarRatio=varmean/varmedian;
-disp(['Theoretical ARE(Me,mean) under the normal distribution='  num2str(VarRatio)] )
+disp(['Theoretical ARE(med,mean) under the normal distribution='  num2str(VarRatio)] )
 
-%% Empirical ARE(Me, Mean) when the data are from the Normal distribution
+%% Empirical ARE(med, Mean) when the data are from the Normal distribution
 % This section is not mentioned in the book
 n=10000000;
 nsimul=100; % Increare nsimul if you like greater precision
@@ -27,13 +27,13 @@ parfor j=1:nsimul
     mediandistr(j)=median(y);
 end
 
-disp('Empirical ARE(Me, Mean) under the normal distribution=')
+disp('Empirical ARE(med, Mean) under the normal distribution=')
 disp([num2str(nsimul) ' simulations using n=' num2str(n)])
 disp(var(meandistr)/var(mediandistr))
 
 
 
-%% Empirical ARE(Me,mean) under the Student t_5
+%% Empirical ARE(med,mean) under the Student t_5
 % This section is not mentioned in the book
 n=100;
 nsimul=1000;
@@ -48,7 +48,7 @@ for j=1:nsimul
     mediandistr(j)=median(y);
 end
 
-disp(['Empirical ARE(Me, Mean) under t' num2str(nu)])
+disp(['Empirical ARE(med, Mean) under t' num2str(nu)])
 disp([num2str(nsimul) ' simulations using n=' num2str(n)])
 disp(var(meandistr)/var(mediandistr))
 
@@ -82,11 +82,11 @@ plot(nuall,smooth(VarRatioE),'LineWidth',ld)
 hline=refline(0,1);
 hline.Color = 'r';
 xlabel('Degrees of freedom of Student $t$','FontSize',fs-2,'Interpreter','latex')
-ylabel('Empirical ARE(Me,$\overline y$)','Interpreter','latex','FontSize',fs)
+ylabel('Empirical ARE(med,$\overline y$)','Interpreter','latex','FontSize',fs)
 title('Figure not given in the book')
 
 
-%% Create input for Figure 2.3 
+%% Create input for Figure 2.3
 % Theoretical ARE curve as function of degrees of freedom
 % Var(sample mean)/Var(sample median)
 % nu = degrees of freedom of Student T
@@ -109,23 +109,27 @@ plot(nuall,VarRatioT,'b', 'LineWidth',ld)
 hline=refline(0,1);
 hline.Color = 'r';
 xlabel('Degrees of freedom of Student $t$','FontSize',fs-2,'Interpreter','latex')
-ylabel('ARE(Me,$\overline y$)','Interpreter','latex','FontSize',fs)
-title('Figure 2.3')
-set(gcf,"Name",'Figure 2.3')
-
-%% ARE for selected degrees of freedom
-nusel=3:5; % degrees of freedom selected
-[~,posnusel]=intersect(nuall,nusel);
-VarRatioTsel=flip(VarRatioT(posnusel));
-rownam="t_"+nusel+" ARE(Me,mean)";
-VarRatioTselt=array2table(VarRatioTsel',"RowNames",rownam, ...
-    "VariableNames","ARE for selected degrees of freedom");
-disp(VarRatioTselt)
+ylabel('ARE(med,$\overline y$)','Interpreter','latex','FontSize',fs)
 
 prin=0;
 if prin==1
     % print to postscript
     print -depsc AREstudT.eps;
+else
+    title('Figure 2.3')
+    set(gcf,"Name",'Figure 2.3')
 end
 
-%InsideREADME   
+
+%% ARE for selected degrees of freedom: numbers before (2.14)
+nusel=5:-1:3; % degrees of freedom selected
+[~,posnusel]=intersect(nuall,nusel);
+VarRatioTsel=100*flip(VarRatioT(posnusel));
+rownam="t_"+nusel+" ARE(med,mean)";
+VarRatioTselt=array2table(VarRatioTsel',"RowNames",rownam, ...
+    "VariableNames","ARE for selected degrees of freedom");
+format bank
+disp(VarRatioTselt)
+
+
+%InsideREADME

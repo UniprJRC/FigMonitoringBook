@@ -65,12 +65,13 @@ ax=axis;
 yline(0,'LineStyle',':','LineWidth',1)
 % add legend
 legend({'$\overline y$' '$Me$' '$\overline y_{0.1}$'},'FontSize',20,'Location','southeast','Interpreter','latex')
-title('Figure 2.1')
-set(gcf,"Name",'Figure 2.1')
 prin=0;
 if prin==1
     % print to postscript
     print -depsc SC.eps;
+else
+    title('Figure 2.1')
+    set(gcf,"Name",'Figure 2.1')
 end
 
-%InsideREADME 
+%InsideREADME

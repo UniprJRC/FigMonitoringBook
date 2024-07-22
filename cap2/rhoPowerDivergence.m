@@ -55,12 +55,13 @@ ax=axis;
 kk=0.05;
 ylim([ax(3)-0.1 ax(4)+0.1])
 
-sgtitle('Figure 2.10')
-set(gcf,"Name",'Figure 2.10')
 
 if prin==1
     % print to postscript
     print -depsc rhoPD.eps;
+else
+    sgtitle('Figure 2.10')
+    set(gcf,"Name",'Figure 2.10')
 end
 
-%InsideREADME 
+%InsideREADME

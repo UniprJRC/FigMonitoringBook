@@ -72,12 +72,13 @@ xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 title('Power divergence','FontSize',FontSizetitl)
 ylim([ylim1 ylim2])
 xlim([xlim1 xlim2])
-sgtitle('Figure 2.11')
-set(gcf,"Name",'Figure 2.11')
 
 if prin==1
     % print to postscript
     print -depsc MD2bdp.eps;
+else
+    sgtitle('Figure 2.11')
+    set(gcf,"Name",'Figure 2.11')
 end
 
 
@@ -151,12 +152,14 @@ xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 title('Power divergence','FontSize',FontSizetitl)
 ylim([ylim1 ylim2])
 xlim([xlim1 xlim2])
-sgtitle('Figure 2.12')
-set(gcf,"Name",'Figure 2.12')
 
 if prin==1
     % print to postscript
     print -depsc MD2.eps;
+else
+    sgtitle('Figure 2.12')
+    set(gcf,"Name",'Figure 2.12')
 end
 
-%InsideREADME 
+
+%InsideREADME
