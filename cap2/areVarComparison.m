@@ -20,11 +20,11 @@ plot(tau,nvarmean,'r-','LineWidth',lwd)
 plot(tau,nvarMe,'b-.','LineWidth',lwd)
 xlabel('\tau','FontSize',FontSize)
 set(gca,'FontSize',FontSize)
-if ispc
-    title('\epsilon=0.05','FontSize',FontSize)
-else
-    title('\varepsilon=0.05','FontSize',FontSize)
-end
+% if ispc
+%     title('\epsilon=0.05','FontSize',FontSize)
+% else
+%     title('\varepsilon=0.05','FontSize',FontSize)
+% end
 xlim([tau(1) tau(end)])
 ylim([1 11])
 
@@ -37,11 +37,11 @@ plot(tau,nvarmean1,'r-','LineWidth',lwd)
 plot(tau,nvarMe1,'b-.','LineWidth',lwd)
 xlabel('\tau','FontSize',FontSize)
 set(gca,'FontSize',FontSize)
-if ispc
-    title('\epsilon=0.10','FontSize',FontSize)
-else
-    title('\varepsilon=0.10','FontSize',FontSize)
-end
+% if ispc
+%     title('\epsilon=0.10','FontSize',FontSize)
+% else
+%     title('\varepsilon=0.10','FontSize',FontSize)
+% end
 
 xlim([tau(1) tau(end)])
 ylim([1 11])
@@ -54,7 +54,7 @@ if prin==1
     % print to postscript
     print -depsc AREcont.eps;
 else
-        set(gcf,"Name",'Figure 2.4')
+    set(gcf,"Name",'Figure 2.4')
 end
 
 %InsideREADME

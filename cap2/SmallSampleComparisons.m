@@ -508,7 +508,6 @@ end
 %% Create Figure 2.25
 % Simultaneous estimation of mu and sigma
 % All the tuning constants set for bdp=0.5
-% bdp=0.5;
 
 % Simulation study
 % 200 samples of 200 observations generated from $\mathcal{N}(5,2)$. 10 per

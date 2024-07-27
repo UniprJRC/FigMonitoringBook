@@ -64,7 +64,7 @@ ax=axis;
 % add an horizontal line passing through 0
 yline(0,'LineStyle',':','LineWidth',1)
 % add legend
-legend({'$\overline y$' '$Me$' '$\overline y_{0.1}$'},'FontSize',20,'Location','southeast','Interpreter','latex')
+legend({'$\overline y$' 'med' '$\overline y_{0.1}$'},'FontSize',20,'Location','southeast','Interpreter','latex')
 prin=0;
 if prin==1
     % print to postscript
