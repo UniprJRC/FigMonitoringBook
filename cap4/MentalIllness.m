@@ -1,5 +1,5 @@
 %% Contaminated illness data.
-% This file creates Figure 4.33.
+% This file creates Figure 4.43.
 
 %% Beginning of code
 load('illnessx07.txt');
@@ -24,7 +24,7 @@ RES=zeros(n,lbdp);
 Xwithintercept=[ones(n,1) X];
 for j=1:lbdp
     [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',0,'msg',0);
-    
+
     hh=out.h;
     if hh<n
         resj=(y-Xwithintercept*out.beta).*(out.weights);
@@ -32,7 +32,7 @@ for j=1:lbdp
         % Apply Tallis consistency factor
         vt = norminv(0.5*(1+hh/n));
         factor = 1/(1-2*(n/hh)*vt.*normpdf(vt));
-        RSS=factor*resj'*(resj); 
+        RSS=factor*resj'*(resj);
         BIClxs(j,2)=-n*log(RSS/hh)-logn*(p+n-hh);
     else
         beta=Xwithintercept\y;
@@ -40,7 +40,7 @@ for j=1:lbdp
         RSS=res'*res;
         BIClxs(j,2)=-n*log(RSS/hh)-logn*p;
     end
-    
+
 end
 
 %% Create Figure 4.43
@@ -48,7 +48,7 @@ figure
 % BIC with LTS
 subplot(2,2,1)
 plot(BIClxs(:,1),BIClxs(:,2))
-xlabel('Break down point')
+xlabel('Breakdown point')
 ylabel('BIC')
 [~,indmax]=max(BIClxs(:,2));
 ylim([min(BIClxs(:,2)) max(BIClxs(:,2))])
@@ -79,7 +79,7 @@ for j=2:size(BB,2)
     else
         RSS=resj'*resj;
     end
-        BICfs(j-1,2)=-n*log(RSS/hh)-logn*(p+n-hh);
+    BICfs(j-1,2)=-n*log(RSS/hh)-logn*(p+n-hh);
 end
 
 % Plot BIC FOR FS
@@ -97,11 +97,12 @@ ylim([min(BICfs(:,2)) max(BICfs(:,2))])
 
 if prin==1
     % print to postscript
-    print -depsc figs\CI1.eps;
-    
+    print -depsc CI1.eps;
+else
+    sgtitle('Figure 4.43')
+    set(gcf,"Name",'Figure 4.43')
+
 end
 
-sgtitle('Figure 4.43')
-set(gcf,"Name",'Figure 4.43')
 
-%InsideREADME 
+%InsideREADME

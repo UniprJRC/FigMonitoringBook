@@ -1,5 +1,5 @@
 %% Hawkins data
-% This file creates Figure 4.23 
+% This file creates Figure 4.23
 % and Figures 4.27-4.29
 
 %% Data loading
@@ -17,10 +17,11 @@ yXplot(y,X);
 if prin==1
     % print to postscript
     print -depsc HDyXplot.eps;
+else
+    sgtitle('Figure 4.23')
+    set(gcf,"Name",'Figure 4.23')
 end
 
-sgtitle('Figure 4.23')
-set(gcf,"Name",'Figure 4.23')
 
 %% Create Figure 4.27
 out=FSR(y,X,'plots',0);
@@ -31,10 +32,11 @@ yXplot(y(goodOBS),X(goodOBS,:),'tag','pl_goodobs')
 if prin==1
     % print to postscript
     print -depsc HDyXplotgood.eps;
+else
+    sgtitle('Figure 4.27')
+    set(gcf,"Name",'Figure 4.27')
 end
 
-sgtitle('Figure 4.27')
-set(gcf,"Name",'Figure 4.27')
 drawnow
 
 %% Prepare input for Figures 4.28 and 4.29
@@ -44,39 +46,56 @@ outPD=Sregeda(y,X,'plots',0,'rhofunc','mdpd','msg',0);
 outTB=Sregeda(y,X,'plots',0,'rhofunc','bisquare','msg',0);
 
 %% Create Figure 28 left panel
-resfwdplot(outTB,'tag','pl_TBori');
+resfwdplot(outTB,'tag','pl_TBori','datatooltip','');
+ylim([-830 830])
 
-title('Figure 4.28 (left panel)')
-set(gcf,"Name",'Figure 4.28 (left panel)')
+
+if prin==1
+    % print to postscript
+    print -depsc HDtblink.eps
+else
+    title('Figure 4.28 (left panel)')
+    set(gcf,"Name",'Figure 4.28 (left panel)')
+end
+
 
 %% Create Figure 4.28 right panel
-resfwdplot(outTB,'tag','pl_PDori');
+resfwdplot(outPD,'tag','pl_PDori','datatooltip','');
+ylim([-830 830])
 
-title('Figure 4.28 (right panel)')
-set(gcf,"Name",'Figure 4.28 (right panel)')
+if prin==1
+    % print to postscript
+    print -depsc HDpdlink.eps
+else
+    title('Figure 4.28 (right panel)')
+    set(gcf,"Name",'Figure 4.28 (right panel)')
+end
+
 
 %% Create Figure 4.29 left panel
-resfwdplot(outTB,'tag','pl_TBzoom');
-yl=5;
-ylim([-yl yl])
-title('Figure 4.29 (left panel)')
-set(gcf,"Name",'Figure 4.28 (left panel)')
-
-%% Create Figure 29 right panel
-resfwdplot(outTB,'tag','pl_PDzoom');
-title('Figure 4.29 (right panel)')
-set(gcf,"Name",'Figure 4.29 (right panel)')
+resfwdplot(outTB,'tag','pl_TBzoom','datatooltip','');
 yl=5;
 ylim([-yl yl])
 
 if prin==1
     % print to postscript
-    print -depsc HDtblink.eps;
-    print -depsc HDtblinkZ.eps;
+    print -depsc HDtblinkZ.eps
+else
+    title('Figure 4.29 (left panel)')
+    set(gcf,"Name",'Figure 4.28 (left panel)')
 
-    print -depsc HDpdlink.eps;
+end
+
+%% Create Figure 29 right panel
+resfwdplot(outPD,'tag','pl_PDzoom','datatooltip','');
+yl=5;
+ylim([-yl yl])
+
+if prin==1
     print -depsc HDpdlinkZ.eps;
-
+else
+    title('Figure 4.29 (right panel)')
+    set(gcf,"Name",'Figure 4.29 (right panel)')
 end
 
 %InsideREADME

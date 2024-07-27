@@ -9,7 +9,7 @@ y=wool(:,4);
 X=wool(:,1:3);
 prin=0;
 
-%% Create Figure 4.5 
+%% Create Figure 4.5
 % Dtails of the outlier detection procedure based on FS
 [out]=FSR(y,X,'plots',0,'nsamp',0);
 
@@ -25,10 +25,11 @@ xlim([3 length(y)])
 if prin==1
     % print to postscript
     print -depsc figs\WDdetailsNC.eps;
+else
+    sgtitle('Figure 4.5')
+    set(gcf,"Name",'Figure 4.5')
 end
 
-sgtitle('Figure 4.5')
-set(gcf,"Name",'Figure 4.5')
 
 %% Create Figure 4.6
 % Comparison of resuperimposing envelopes using mdr in normal
@@ -62,10 +63,11 @@ end
 if prin==1
     % print to postscript
     print -depsc WDresuperNC.eps;
+else
+    sgtitle('Figure 4.6')
+    set(gcf,"Name",'Figure 4.6')
 end
 
-sgtitle('Figure 4.6')
-set(gcf,"Name",'Figure 4.6')
 
 %% Create Figure 4.7
 [out]=FSR(y,X,'nsamp',50000,'plots',0);
@@ -84,13 +86,14 @@ legend off
 if prin==1
     % print to postscript
     print -depsc wdscaFSR.eps;
+else
+    sgtitle('Figure 4.7')
+    set(gcf,"Name",'Figure 4.7')
 end
 
-sgtitle('Figure 4.7')
-set(gcf,"Name",'Figure 4.7')
 
 %% Create Figure 4.8
-% log wool data, mdrplot in normal coordinates 
+% log wool data, mdrplot in normal coordinates
 [outT]=FSR(log(y),X,'nsamp',0,'plots',0);
 [mdrquant] = FSRinvmdr(abs(outT.mdr),4,'plots',1);
 ylim([-3 3])
@@ -99,9 +102,10 @@ xlim([6 27])
 if prin==1
     % print to postscript
     print -depsc figs\wdmdrlogyNC.eps;
+else
+    sgtitle('Figure 4.8')
+    set(gcf,"Name",'Figure 4.8')
 end
 
-sgtitle('Figure 4.8')
-set(gcf,"Name",'Figure 4.8')
 
-%InsideREADME 
+%InsideREADME

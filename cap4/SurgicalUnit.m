@@ -38,13 +38,14 @@ mdrplot(outFS1,'ncoord',true,'quant',[0.1 0.5 0.99 0.999 0.9999]);
 if prin==1
     % print to postscript
     print -depsc SPmdrncoord.eps;
+else
+    title('Figure 4.30')
+    set(gcf,"Name",'Figure 4.30')
 end
 
-title('Figure 4.30')
-set(gcf,"Name",'Figure 4.30')
 
 
-%% Create Figure  
+%% Create Figure
 % Automatic outlier detection
 startJustSearchin1000Subsets=true;
 if startJustSearchin1000Subsets ==true
@@ -55,11 +56,6 @@ else
     [out]=FSR(y,X,'lms',outLXS.bs,'plots',0);
 end
 disp(out)
-if prin==1
-    % print to postscript
-    print -depsc SPfsr.eps;
-end
-
 
 
 %% Create Figure 4.31
@@ -79,21 +75,25 @@ end
 plot(Prop(:,1),Prop(:,2),'LineWidth',2)
 xlabel('Subset size')
 
-title('Figure 4.31 (left panel)')
-set(gcf,"Name",'Figure 4.31 (left panel)')
+if prin==1
+    print -depsc  SPtmonitor.eps
+else
+    title('Figure 4.31 (left panel)')
+    set(gcf,"Name",'Figure 4.31 (left panel)')
+end
 
 %% Create Figure 4.31 right panel
 % Forward Search
 [outFS]=FSReda(y,X,outLXS.bs,'init',p+1);
-
 fanplotFS(outFS,'conflev',0.95,'flabstep',40);
 
 if prin==1
     % print to postscript
     print -depsc SPtmonitor.eps;
+else
+    title('Figure 4.31 (right panel)')
+    set(gcf,"Name",'Figure 4.31 (right panel)')
 end
-title('Figure 4.31 (right panel)')
-set(gcf,"Name",'Figure 4.31 (right panel)')
 
 %% Create Figure 4.32 (with overlapping labels)
 % Forward Search Monitoring of traditional tstat
@@ -103,21 +103,23 @@ fanplotFS(outFS,'ylimy',[-5 300],'tag','ploverl','xlimx',[5 120],'flabstep',40);
 if prin==1
     % print to postscript
     print -depsc SPtmonitortrad.eps;
+else
+    title('Figure 4.32')
+    set(gcf,"Name",'Figure 4.32')
 end
-title('Figure 4.32')
-set(gcf,"Name",'Figure 4.32')
 
 %% Create Figure 4.33
 % SP data Forward Search Monitoring of added tstat
 figure
 [out]=FSRaddt(y,X,'plots',1,'nameX',{'X1','X2','X3' 'X4'},'lwdenv',2,'lwdt',2);
-title('Figure 4.33')
-set(gcf,"Name",'Figure 4.33')
 
 if prin==1
     % print to postscript
     print -depsc SPtmonitoradd.eps;
+else
+    title('Figure 4.33')
+    set(gcf,"Name",'Figure 4.33')
 end
 
 
-%InsideREADME 
+%InsideREADME

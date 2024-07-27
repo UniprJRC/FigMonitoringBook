@@ -29,11 +29,17 @@ databrush.RemoveLabels='off'; % Do not remove labels after selection
 mdrplot(out,'ylimy',[1 8])
 resfwdplot(out,'databrush',databrush,'datatooltip','');
 fig=findobj(0,'tag','pl_mdr');
-figure(fig)
-title('Figure similar to bottom panel of 4.24 or 4.25 or 4.26','It depends on your brushing')
-fig=findobj(0,'tag','pl_resfwd');
-figure(fig)
-title('Figure similar to top panel of 4.24 or 4.25 or 4.26', 'It depends on your brushing')
+try
+    figure(fig)
+    title('Figure similar to bottom panel of 4.24 or 4.25 or 4.26','It depends on your brushing')
+catch
+end
+try
+    fig=findobj(0,'tag','pl_resfwd');
+    figure(fig)
+    title('Figure similar to top panel of 4.24 or 4.25 or 4.26', 'It depends on your brushing')
+catch
+end
 
 if prin==1
     % print to postscript

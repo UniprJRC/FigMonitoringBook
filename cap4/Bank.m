@@ -23,10 +23,11 @@ set(gca,'FontSize',14)
 if prin==1
     % print to postscript
     print -depsc BDfsrmdr.eps;
+else
+    title('Figure 4.34')
+    set(gcf,"Name",'Figure 4.34')
 end
 
-title('Figure 4.34')
-set(gcf,"Name",'Figure 4.34')
 
 
 %% Create Figure 4.35
@@ -43,8 +44,14 @@ bground=struct;
 bground.bthresh=-Inf;
 resfwdplot(outFSeda,'fground',fground,'bground',bground)
 
-title('Figure 4.35')
-set(gcf,"Name",'Figure 4.35')
+if prin==1
+    % print to postscript
+    print -depsc BDmonres.eps;
+else
+
+    title('Figure 4.35')
+    set(gcf,"Name",'Figure 4.35')
+end
 drawnow
 
 %% Create Figure 4.36
@@ -55,21 +62,22 @@ yXplot(y,X,'group',group);
 if prin==1
     % print to postscript
     print -depsc BDyXbrush.eps
+else
+    sgtitle('Figure 4.36')
+    set(gcf,"Name",'Figure 4.36')
 end
 
 
-sgtitle('Figure 4.36')
-set(gcf,"Name",'Figure 4.36')
 
 % REMARK: in this file Figures 4.35 and 4.36 are not created interactively.
 % In order to create them using brushing, please see file BankInteractive.m
 
 %% Prepare input for Figures 4.37 and 4.38
-% Analysis with S estimators (used differnt rhofunc)
+% Analysis with S estimators (used different rhofunc)
 disp('Monitoring S estimators')
 % rhofunc='optimal';
 rhofunc='bisquare';
-outsTB=Sregeda(y,X,'rhofunc',rhofunc,'msg',false);
+outsTB=Sregeda(y,X,'rhofunc',rhofunc,'msg',true);
 
 rhofunc='mdpd';
 outsPD=Sregeda(y,X,'rhofunc',rhofunc,'msg',false);
@@ -87,39 +95,58 @@ fground.LineStyle=LineStyle;
 
 %% Create Figure 4.37
 resfwdplot(outsTB,'fground',fground,'bground','','corres',true,'tag','plresTB');
-sgtitle('Figure 4.37')
-set(gcf,"Name",'Figure 4.37')
+if prin==1
+    print -depsc  BDSresTB.eps
+else
+    sgtitle('Figure 4.37')
+    set(gcf,"Name",'Figure 4.37')
+end
 
 %% Create Figure 4.38
 resfwdplot(outsPD,'fground',fground,'bground','','corres',true,'tag','plresPD');
-sgtitle('Figure 4.38')
-set(gcf,"Name",'Figure 4.38')
+if prin ==1
+    print -depsc  BDSresPD.eps
+else
+    sgtitle('Figure 4.38')
+    set(gcf,"Name",'Figure 4.38')
+end
 
 %% Create Figure 4.39
 fanplotFS(outsTB,'multiPanel',true,'tag','pl_tstat');
 
-sgtitle('Figure 4.39')
-set(gcf,"Name",'Figure 4.39')
 
 if prin==1
     % print to postscript
     print -depsc figs\StstatBD.eps;
+else
+    sgtitle('Figure 4.39')
+    set(gcf,"Name",'Figure 4.39')
 end
 
 %% Create Figure 4.40
 
 fanplotFS(outFSeda,'multiPanel',true,'addxline',1694,'xlimx',[1000 n+1]);
-sgtitle('Figure 4.40')
-set(gcf,"Name",'Figure 4.40')
+if prin==1
+    print -depsc  BDtstat.eps
+else
+    sgtitle('Figure 4.40')
+    set(gcf,"Name",'Figure 4.40')
+end
 
 %% Create Figure 4.41
 % Monitoring of added tstat
 disp('Monitoring added t stat')
 figure
 outADDt=FSRaddt(y,X,'plots',1,'msg',0);
-sgtitle('Figure 4.41')
-set(gcf,"Name",'Figure 4.41')
 xline(1694)
+
+if prin==1
+    print -depsc  BDtmonitoradd.eps
+else
+    sgtitle('Figure 4.41')
+    set(gcf,"Name",'Figure 4.41')
+end
+
 
 %% Prepare input for Figure 4.42
 disp('Automatic outlier detection')
@@ -138,8 +165,11 @@ plo.namey='y';
 plo.sym='+';
 plo.clr='b';
 yXplot(y(good),X(good,:),'plo',plo,'tag','yXgood');
-sgtitle('Figure 4.42 (left hand panel)')
-set(gcf,"Name",'Figure 4.42 (left hand panel)')
+if prin==1
+else
+    sgtitle('Figure 4.42 (left hand panel)')
+    set(gcf,"Name",'Figure 4.42 (left hand panel)')
+end
 
 %% Create right-hand panel of Figure 4.42
 plo.sym='o';
@@ -150,7 +180,11 @@ yout=y(outliers);
 % thinks it is an intercept which does not have to be shown
 Xout(:,3)=Xout(:,3)+1e-08*randn(length(outliers),1);
 yXplot(yout,Xout,'plo',plo,'tag','yXout');
-sgtitle('Figure 4.42 (right hand panel)')
-set(gcf,"Name",'Figure 4.42 (right hand panel)')
+if prin ==1
+    print -depsc  FSyXBD.eps
+else
+    sgtitle('Figure 4.42 (right hand panel)')
+    set(gcf,"Name",'Figure 4.42 (right hand panel)')
+end
 
 %InsideREADME

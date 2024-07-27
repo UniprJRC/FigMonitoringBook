@@ -16,7 +16,7 @@ outEDA=FSReda(y,X,outLXS.bs,'init',round(length(y)*0.25));
 % Brush from the monitoring residual plot
 mdrplot(outEDA);
 resfwdplot(outEDA,'databrush',1);
-
+try
 fig=findobj(0,'tag','pl_mdr');
 figure(fig)
 title('Figure not given in the book')
@@ -26,5 +26,6 @@ title('Figure similar to 4.35', 'It depends on your brushing')
 fig=findobj(0,'tag','pl_yX');
 figure(fig)
 sgtitle('Figure similar to 4.36', 'It depends on your brushing')
-
+catch
+end
 %InsideREADME

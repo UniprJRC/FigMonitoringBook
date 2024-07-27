@@ -25,7 +25,7 @@ plot(out.Tols(:,1),out.Tols(:,3:end),'LineWidth',3)
 for j=3:5
     tj=['t_' num2str(j-2)];
     text(out.Tols(1,1)-1.2,out.Tols(1,j),tj,'FontSize',16)
-    
+
 end
 
 quant=norminv(0.95);
@@ -35,7 +35,7 @@ line([v(1),v(2)],[quant,quant],'color','g','LineWidth',lwdenv);
 line([v(1),v(2)],[-quant,-quant],'color','g','LineWidth',lwdenv);
 % plot(out.Tols(end-6:end-1,1),out.Tols(end-6:end-1,3),'LineWidth',4,'color','r')
 if showtit==true
-title('Monitoring of t-stat','FontSize',14);
+    title('Monitoring of t-stat','FontSize',14);
 end
 xlabel('Subset size m');
 
@@ -50,7 +50,7 @@ line([v(1),v(2)],[quant,quant],'color','g','LineWidth',lwdenv);
 line([v(1),v(2)],[-quant,-quant],'color','g','LineWidth',lwdenv);
 plot(out.Tols(end-6:end-1,1),out.Tols(end-6:end-1,3),'LineWidth',4,'color','r')
 if showtit==true
-title('Monitoring of t-stat for first variable');
+    title('Monitoring of t-stat for first variable');
 end
 xlabel('Subset size m');
 plot(out.Tols(end-7:end-6,1),out.Tols(end-7:end-6,3),'LineWidth',4,'color','b')
@@ -62,12 +62,13 @@ text(out.Tols(end-1,1),out.Tols(end-1,3)+0.9,'43','FontSize',12);
 text(53,1,'9, 21, 30, 31, 38, 47','FontSize',12,'Rotation',-25);
 xlim([40 60])
 
-sgtitle('Figure 4.15')
-set(gcf,"Name",'Figure 4.15')
 
 if prin==1
     % print to postscript
     print -depsc ARtmonitor.eps;
+else
+    sgtitle('Figure 4.15')
+    set(gcf,"Name",'Figure 4.15')
 end
 
 
@@ -97,36 +98,48 @@ standard.ylim=[-3 7];
 standard.laby='S residuals optimal \rho function';
 resfwdplot(outOPT,'fground',fground,'tag','pl_OPT', ...
     'corres',true,'standard',standard);
-sgtitle('Figure 4.16')
-set(gcf,"Name",'Figure 4.16')
-
+if prin==1
+    print -depsc SresAR.eps.eps;
+else
+    sgtitle('Figure 4.16')
+    set(gcf,"Name",'Figure 4.16')
+end
 
 %% Create left-hand panel of Figure 4.17
 standard.laby='S residuals Hampel \rho function';
 resfwdplot(outHA,'fground',fground,'tag','pl_HA', ...
     'corres',false,'standard',standard);
-title('Figure 4.17 (left-hand panel)')
-set(gcf,"Name",'Figure 4.17 (left-hand panel)')
+if prin==1
+    print -depsc  SresHA.eps
+else
+    title('Figure 4.17 (left-hand panel)')
+    set(gcf,"Name",'Figure 4.17 (left-hand panel)')
+end
 
 %% Create right-hand panel of Figure 4.17
 standard.laby='S residuals hyperbolic \rho function';
 resfwdplot(outHYP,'fground',fground,'tag','pl_HYP', ...
     'corres',false,'standard',standard);
-title('Figure 4.17 (right-hand panel)')
-set(gcf,"Name",'Figure 4.17 (right-hand panel)')
-
+if prin==1
+    print -depsc  SresHY.eps
+else
+    title('Figure 4.17 (right-hand panel)')
+    set(gcf,"Name",'Figure 4.17 (right-hand panel)')
+end
 
 %% Create Figure 4.18
 standard.laby='S residuals PD \rho function';
 resfwdplot(outPD,'fground',fground,'tag','pl_PD', ...
-    'corres',false,'standard',standard);
-title('Figure 4.18')
-set(gcf,"Name",'Figure 4.18')
+    'corres',false,'standard',standard,'datatooltip','');
 
 if prin==1
     % print to postscript
     print -depsc ARmonPD.eps;
+else
+    title('Figure 4.18')
+    set(gcf,"Name",'Figure 4.18')
 end
+
 
 %% Prepare input for Figures 4.19 and 4.20
 bdp=0.5:-0.01:0.01;
@@ -135,10 +148,10 @@ nsamp=20000;
 RESLMS=zeros(n,length(bdp));
 
 for j=1:length(bdp)
-% Store LTS residuals
+    % Store LTS residuals
     [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',nsamp);
     RESLTS(:,j)=out.residuals;
-    
+
     % Store LMS residuals
     [outLMS]=LXS(y,X,'bdp',bdp(j),'nsamp',nsamp);
     RESLMS(:,j)=outLMS.residuals;
@@ -158,16 +171,24 @@ standard.laby='LTS residuals';
 standard.ylim=[-4 8];
 resfwdplot(outLTS,'fground',fground,'tag','pl_LTS', ...
     'corres',true,'standard',standard);
-sgtitle('Figure 4.19')
-set(gcf,"Name",'Figure 4.19')
+if prin==1
+    print -depsc LTSresAR.eps
+else
+    sgtitle('Figure 4.19')
+    set(gcf,"Name",'Figure 4.19')
+end
 
 %% Create Figure 4.20
 standard.laby='LMS residuals';
 standard.ylim=[-4 8];
 resfwdplot(outLMS,'fground',fground,'tag','pl_LMS', ...
     'corres',true,'standard',standard);
-sgtitle('Figure 4.20')
-set(gcf,"Name",'Figure 4.20')
+if prin==1
+    print -depsc  LMSresAR.eps
+else
+    sgtitle('Figure 4.20')
+    set(gcf,"Name",'Figure 4.20')
+end
 
 %% Create Figure 4.21
 % LMS using 10000 subsamples
@@ -179,26 +200,35 @@ standard.laby='FS residuals';
 standard.ylim=[-3 5];
 resfwdplot(outFS,'fground',fground,'tag','pl_FS', ...
     'corres',true,'standard',standard);
-sgtitle('Figure 4.21')
-set(gcf,"Name",'Figure 4.21')
+if prin==1
+    print -depsc  FSresAR.eps
+else
+    sgtitle('Figure 4.21')
+    set(gcf,"Name",'Figure 4.21')
+end
 
 %% Create Figure 4.22
 % top panel
-fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0');
+h=subplot(2,1,1);
+fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0','hsend',h);
 title('')
-title('Figure 4.22 (top panel)')
-set(gcf,"Name",'Figure 4.22 (top panel)')
-
+if prin ==1
+    print -depsc StstatAR.eps
+else
+    title('Figure 4.22 (top panel)')
+    set(gcf,"Name",'Figure 4.22 (top panel)')
+end
 % bottom panel
 fanplotFS(outOPT1,'conflev',0.95,'tag','plrobcopv1');
 title('')
-title('Figure 4.22 (bottom panel)')
-set(gcf,"Name",'Figure 4.22 (bottom panel)')
-
 
 if prin==1
     % print to postscript
     print -depsc StstatAR.eps;
+else
+    title('Figure 4.22 (bottom panel)')
+    set(gcf,"Name",'Figure 4.22 (bottom panel)')
+
 end
 
 %InsideREADME

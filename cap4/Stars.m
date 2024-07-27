@@ -22,9 +22,12 @@ set(gca,'FontSize',12)
 
 xlabel('Log temperature)')
 ylabel('Log light intensity')
-sgtitle('Figure 4.1')
-set(gcf,"Name",'Figure 4.1')
-
+if prin==1
+    print -depsc fig4:STsca.eps
+else
+    sgtitle('Figure 4.1')
+    set(gcf,"Name",'Figure 4.1')
+end
 
 %% Create Figure 4.2
 % Automatic outlier detection process
@@ -37,12 +40,13 @@ figure(pl_fsr(end))
 xlabel('Subset size m')
 ylabel("MDR in original coordinates")
 
-title('Figure 4.2')
-set(gcf,"Name",'Figure 4.2')
 
 if prin==1
     % print to postscript
-    print -depsc figs\STdetails.eps;
+    print -depsc STdetails.eps;
+else
+    title('Figure 4.2')
+    set(gcf,"Name",'Figure 4.2')
 end
 
 %% Create Figure 4.3
@@ -56,10 +60,11 @@ xlim([3 length(y)])
 
 if prin==1
     % print to postscript
-    print -depsc figs\STdetailsNC.eps;
+    print -depsc STdetailsNC.eps;
+else
+    title('Figure 4.3')
+    set(gcf,"Name",'Figure 4.3')
 end
-title('Figure 4.3')
-set(gcf,"Name",'Figure 4.3')
 
 %% Create Figure 4.4
 % Resuperimposing envelopes using mdr coordinates and normal
@@ -92,9 +97,10 @@ end
 if prin==1
     % print to postscript
     print -depsc STresuperNC.eps;
+else
+    sgtitle('Figure 4.4')
+    set(gcf,"Name",'Figure 4.4')
 end
-sgtitle('Figure 4.4')
-set(gcf,"Name",'Figure 4.4')
 
 %% Create Figure 4.9
 % Compare different fits
@@ -161,16 +167,17 @@ legend('Data','FS','S','MM085','MM095','LTS','LS')
 sel=[ 7 9 11 20 30 34]';
 text(X(sel)+0.05,y(sel),num2str(sel),'FontSize',16)
 
-sgtitle('Figure 4.9')
-set(gcf,"Name",'Figure 4.9')
 
 if prin==1
     % print to postscript
     print -depsc starsdatawithrobfit.eps;
+else
+    sgtitle('Figure 4.9')
+    set(gcf,"Name",'Figure 4.9')
 end
 
 %% Create Figure 4.10
-% Monitoring S residuals 
+% Monitoring S residuals
 [outS]=Sregeda(y,X,'msg',0);
 sel=[11 20 30 34  7 9]';
 fground.LineStyle={'-.','-.','-.','-.','--','--'};
@@ -187,12 +194,14 @@ resfwdplot(outS,'standard',standard,'fground',fground, ...
 if prin==1
     % print to postscript
     print -depsc figs\Sres.eps;
+else
+    sgtitle('Figure 4.10')
+    set(gcf,"Name",'Figure 4.10')
 end
-sgtitle('Figure 4.10')
-set(gcf,"Name",'Figure 4.10')
+
 
 %% Create Figure 4.11
-% Monitoring MM residuals 
+% Monitoring MM residuals
 [outMM]=MMregeda(y,X);
 
 fground=struct;
@@ -210,9 +219,10 @@ prin=0;
 if prin==1
     % print to postscript
     print -depsc figs\MMres.eps;
+else
+    sgtitle('Figure 4.11')
+    set(gcf,"Name",'Figure 4.11')
 end
 
-sgtitle('Figure 4.11')
-set(gcf,"Name",'Figure 4.11')
 
-%InsideREADME 
+%InsideREADME

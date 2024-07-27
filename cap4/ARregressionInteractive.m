@@ -25,13 +25,15 @@ standard.titl='Click inside the plot to show the units inside subset for a given
 
 resfwdplot(out,'datatooltip',datatooltip,'standard',standard)
 
-sgtitle('Figure similar to 4.12 (it depends on your clicks)')
-set(gcf,"Name",'Figure 4.12')
 
 if prin==1
     % print to postscript
     print -depsc ARmonbsb30.eps;
     print -depsc ARmonbsb53.eps;
+else
+    sgtitle('Figure similar to 4.12 (it depends on your clicks)')
+    set(gcf,"Name",'Figure 4.12')
+
 end
 
 
@@ -66,13 +68,14 @@ databrush.RemoveTool='on'; % Remove yellow selection after finishing brushing
 standard=struct;
 standard.titl='Drag with the mouse to select a set of trajectories';
 resfwdplot(out1,'fground',fground,'standard',standard,'databrush',databrush);
-sgtitle('Figure similar to 4.14 bottom (it depends on your brushing)')
-set(gcf,"Name",'Figure 4.14 (bottom)')
 
 if prin==1
     % print to postscript
     print -depsc ARbrush.eps;
     print -depsc ARbrushyX.eps;
+else
+    sgtitle('Figure similar to 4.14 bottom (it depends on your brushing)')
+    set(gcf,"Name",'Figure 4.14 (bottom)')
 end
 
 
@@ -93,13 +96,14 @@ sel1=43;
 scatter3(X(sel1,1),X(sel1,2),y(sel1),'k','MarkerFaceColor','k')
 text(X(sel1,1),X(sel1,2),y(sel1),'43')
 
-title('Figure similar to 4.13 (it depends on your rotation)','Click and drag')
-set(gcf,"Name",'Figure 4.13')
 
 if prin==1
     % print to postscript
     print -depsc AR3D.eps;
     print -depsc AR3Drot.eps;
+else
+    title('Figure similar to 4.13 (it depends on your rotation)','Click and drag')
+    set(gcf,"Name",'Figure 4.13')
 end
 
 %InsideREADME
