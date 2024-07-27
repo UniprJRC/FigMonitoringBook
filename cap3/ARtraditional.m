@@ -16,7 +16,7 @@ n=length(y);
 %% Create Figure 3.1
 % outLS=fitlm(X,y);
 yXplot(y,X);
-
+legend off
 if prin==1
     % print to postscript
     print -depsc AR1.eps;
@@ -80,7 +80,7 @@ plot(outLM.Fitted,res,'o')
 sel=43;
 text(outLM.Fitted(sel)+0.5,res(sel),num2str(sel))
 xlabel('Fitted values')
-ylabel('Residuals')
+ylabel('Studentized residuals')
 
 
 if prin==1
@@ -143,11 +143,13 @@ bdp=0.25;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h1,'conflev',conflev);
 ylabel(['Breakdown point =' num2str(bdp)])
+title('')
 h2=subplot(2,1,2);
 bdp=0.5;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{6});
 ylabel(['Breakdown point =' num2str(bdp)])
+title('')
 
 
 if prin==1
@@ -171,11 +173,13 @@ h1=subplot(2,1,1);
 eff=0.90;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h1,'conflev',conflev,'numlab',{6});
+title('')
 ylabel(['Eff.=' num2str(eff)])
 h2=subplot(2,1,2);
 eff=0.95;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{4});
+title('')
 ylabel(['Eff.=' num2str(eff)])
 
 if prin==1
