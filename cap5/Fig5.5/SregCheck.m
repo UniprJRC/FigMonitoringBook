@@ -284,7 +284,7 @@ function [out , varargout] = SregCheck(y,X,varargin)
 
 nnargin = nargin;
 vvarargin = varargin;
-[y,X,n,p] = chkinputR(y,X,nnargin,vvarargin);
+[y,X,n,p] = aux.chkinputR(y,X,nnargin,vvarargin);
 
 % default value of break down point
 bdpdef=0.5;
@@ -329,7 +329,7 @@ if coder.target('MATLAB')
             error('FSDA:Sreg:WrongInputOpt','Number of supplied options is invalid. Probably values for some parameters are missing.');
         end
         % Check if user options are valid options
-        chkoptions(options,UserOptions)
+        aux.chkoptions(options,UserOptions)
     end
 end
 

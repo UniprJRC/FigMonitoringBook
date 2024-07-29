@@ -12,3 +12,4 @@ Results for small $n$ and moderate $p$ show that the size and power of robust te
 
 
 
+| FileName | Description | Open in MATLAB on line | Jupiter notebook |  |---|---|---|---|  |Effect_Size.m|Size comparison<br/> This file creates Figures 5.5-5.6|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=cap5//Effect_Size.m)| [[ipynb](Effect_Size.ipynb)]|EmpSizeOutliersTest.m|Empirical size of outlier tests,<br/> This file creates Figures 5.1-5.4|[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=UniprJRC/FigMonitoringBook&file=cap5//EmpSizeOutliersTest.m)| [[ipynb](EmpSizeOutliersTest.ipynb)]

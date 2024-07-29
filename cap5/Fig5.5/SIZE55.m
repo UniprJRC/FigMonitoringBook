@@ -5,10 +5,10 @@ rng(state1);
 
 
 % no. of simulations
-nsimul=10000;
+nsimul=1000;
 
 % no. of samples of S estimator in 5.1 to 5.4 is 1000
-nsamp=1000;
+nsamp=10;
 
 
 % no. of variables
