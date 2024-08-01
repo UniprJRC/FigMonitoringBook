@@ -125,7 +125,7 @@ kk=2;
 
 
 % nsimul = total number of simulations which have to be run
-nsimul=100;
+nsimul=2;
 
 % nsamp = number of samples to extract
 nsamp=2000;
@@ -509,12 +509,12 @@ for la=lam;
             
             
             if j==round(nsimul/2)
-                disp(['Simulation nr ' num2str(round(nsimul/2))])
+               % disp(['Simulation nr ' num2str(round(nsimul/2))])
             end
             
         end
     end
-    disp(['Simulations finished for  la=' num2str(la)])
+   % disp(['Simulations finished for  la=' num2str(la)])
     
     
     if ~isempty(intersect(sel,ij))

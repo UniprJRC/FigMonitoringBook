@@ -125,7 +125,7 @@ kk=2;
 
 
 % nsimul = total number of simulations which have to be run
-nsimul=100;
+nsimul=2;
 
 % nsamp = number of samples to extract
 nsamp=2000;
@@ -511,12 +511,12 @@ for la=lam
             
             
             if j==round(nsimul/2)
-                disp(['Simulation nr ' num2str(round(nsimul/2))])
+              %  disp(['Simulation nr ' num2str(round(nsimul/2))])
             end
             
         end
     end
-    disp(['Simulations finished for  la=' num2str(la)])
+  %  disp(['Simulations finished for  la=' num2str(la)])
     
     
     if ~isempty(intersect(sel,ij))
@@ -554,28 +554,28 @@ for la=lam
             end
         else
             
-            for i=1:p
-                subplot(5,p,ijl+i-1)
-                hold('on')
-                plot(Xsimj(1:n1,i),ysimj(1:n1),'o')
-                plot(Xsimj(n1+1:end,i),ysimj(n1+1:end),'r+')
-                % set(gca,'OuterPosition',[0 0 0.2 0.2])
-                if ijl+i-1< 4*p+1
-                    set(gca,'XTicklabel','')
-                end
-                if i==1
-                    ylabel(['\lambda=' num2str(la)])
-                    yl2=ceil(max(ysimj));
-                    yl1=floor(min(ysimj));
-                    ylim([yl1 yl2])
-                    ax=axis;
-                else
-                     set(gca,'YTicklabel','')
-                end
-                
-                xlim([-0.5 6.5]);
-                ylim([-102 237])
-            end
+            % for i=1:p
+            %     subplot(5,p,ijl+i-1)
+            %     hold('on')
+            %     plot(Xsimj(1:n1,i),ysimj(1:n1),'o')
+            %     plot(Xsimj(n1+1:end,i),ysimj(n1+1:end),'r+')
+            %     % set(gca,'OuterPosition',[0 0 0.2 0.2])
+            %     if ijl+i-1< 4*p+1
+            %         set(gca,'XTicklabel','')
+            %     end
+            %     if i==1
+            %         ylabel(['\lambda=' num2str(la)])
+            %         yl2=ceil(max(ysimj));
+            %         yl1=floor(min(ysimj));
+            %         ylim([yl1 yl2])
+            %         ax=axis;
+            %     else
+            %          set(gca,'YTicklabel','')
+            %     end
+            % 
+            %     xlim([-0.5 6.5]);
+            %     ylim([-102 237])
+            % end
             ijl=ijl+p-1;
         end
     end
@@ -928,7 +928,7 @@ disp('-------------------------')
 % title('Simultaneous power')
 
 %% Plot average power (Figure 5.20)
-load sim3
+% load sim3
 figure
 fsizla=18;
 ij=2;

@@ -125,7 +125,7 @@ kk=0;
 
 
 % nsimul = total number of simulations which have to be run
-nsimul=100;
+nsimul=2;
 
 % nsamp = number of samples to extract
 nsamp=2000;
@@ -266,7 +266,8 @@ sel=[1 4 5 7 8 10 11 13 15];
 
 % This is the main loop
 % We are going to store a series of measures for each value of la
-for la=lam;
+% and plot Fig. 5.13
+for la=lam
     
     % mud  = (muout) new centroid  of the ellipsoid which contains the outliers as a
     % function of la. Note that when la=1 then mud coincides with yxmean1
@@ -528,12 +529,12 @@ for la=lam;
             
             
             if j==round(nsimul/2)
-                disp(['Simulation nr ' num2str(round(nsimul/2))])
+               % disp(['Simulation nr ' num2str(round(nsimul/2))])
             end
             
         end
     end
-    disp(['Simulations finished for  la=' num2str(la)])
+   % disp(['Simulations finished for  la=' num2str(la)])
     
     
     if ~isempty(intersect(sel,ij))
@@ -893,28 +894,28 @@ disp('Loop on la finished')
 disp('-------------------------')
 
 
-%% Plot of probability of overlapping
-kk=3;
-figure('Name','Theoretical and empirical probability of overlapping');
-subplot(3,1,1)
-plot(lam,pro,'LineWidth',kk);
-ylabel('Probability of overlapping')
-pval=0;
-if pval==1
-    
-    subplot(3,1,2)
-    plot(lam,mala(:,2),'LineWidth',kk);
-    ylabel('pvalue of Squared MD')
-else
-    
-    subplot(3,1,2)
-    plot(lam,mala(:,1),'LineWidth',kk);
-    ylabel('Squared MD between the two centroids')
-end
-
-subplot(3,1,3)
-plot(lam,frover(:,1),'LineWidth',kk);
-ylabel('Empirical frequencey of overlapping')
+% %% Plot of probability of overlapping
+% kk=3;
+% figure('Name','Theoretical and empirical probability of overlapping');
+% subplot(3,1,1)
+% plot(lam,pro,'LineWidth',kk);
+% ylabel('Probability of overlapping')
+% pval=0;
+% if pval==1
+% 
+%     subplot(3,1,2)
+%     plot(lam,mala(:,2),'LineWidth',kk);
+%     ylabel('pvalue of Squared MD')
+% else
+% 
+%     subplot(3,1,2)
+%     plot(lam,mala(:,1),'LineWidth',kk);
+%     ylabel('Squared MD between the two centroids')
+% end
+% 
+% subplot(3,1,3)
+% plot(lam,frover(:,1),'LineWidth',kk);
+% ylabel('Empirical frequencey of overlapping')
 
 
 %% Plot of probability of overlapping (Figure 5.14)
@@ -972,57 +973,62 @@ end
 %% Plot average power
 
 % genera la Figura 5.17
+
+fontsizetitl=24;
+LineWidth=3;
+col=repmat({'b';'b';'r';'r';'k'},3,1);
+
 figure
 fsizla=14;
 ij=2;
 hold('on')
 box('on')
-LineWidth=2;
-plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-','color','k')
-plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-legend('FS','LTS','LTSr','S','MM','Location','Best')
+plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-','color',col{5})
+plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o','color',col{1})
+plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v','color',col{2})
+plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.','color',col{3})
+plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':','color',col{4})
+
+legend('FS','S','MM','LTS','LTSR','Location','Best')
 xlim([lamx(1,1) lamx(end,1)])
 ylabel('Average power','Fontsize',fzizla)
 xlabel('\lambda','Fontsize',fzizla)
 
 %% 2 panels plot average power + empirical frequency of overlapping
-figure('Name','Av power and emp. freq. of overlapping')
-subplot(2,2,1)
-ij=2;
-LineWidth=2;
-hold('on')
-box('on')
-plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-
-xlim([lamx(1,1) lamx(end,1)])
-
-% set(gca,'LineStyleOrder', '-*|:|o')
-fontsizexlab=14;
-fontsizetitl=18;
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-xlabel('lambda','FontSize',fontsizexlab)
-title('Average power','FontSize',fontsizetitl)
-
-subplot(2,2,2)
-plot(lamx(:,1),frover,'b','LineWidth',LineWidth)
-xlabel('lambda','FontSize',fontsizexlab)
-title('Empirical frequency of overlapping','FontSize',fontsizetitl)
-xlim([lamx(1,1) lamx(end,1)])
-
-
-if prin==1
-    % print to postscript
-    % print -depsc figs\sim1avpow.eps;
-    print -depsc figs\sim1avpow.eps;
-    print -depsc figs\sim3avpow.eps;
-end
+% figure('Name','Av power and emp. freq. of overlapping')
+% subplot(2,2,1)
+% ij=2;
+% LineWidth=2;
+% hold('on')
+% box('on')
+% plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% 
+% xlim([lamx(1,1) lamx(end,1)])
+% 
+% % set(gca,'LineStyleOrder', '-*|:|o')
+% fontsizexlab=14;
+% fontsizetitl=18;
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% xlabel('lambda','FontSize',fontsizexlab)
+% title('Average power','FontSize',fontsizetitl)
+% 
+% subplot(2,2,2)
+% plot(lamx(:,1),frover,'b','LineWidth',LineWidth)
+% xlabel('lambda','FontSize',fontsizexlab)
+% title('Empirical frequency of overlapping','FontSize',fontsizetitl)
+% xlim([lamx(1,1) lamx(end,1)])
+% 
+% 
+% if prin==1
+%     % print to postscript
+%     % print -depsc figs\sim1avpow.eps;
+%     print -depsc figs\sim1avpow.eps;
+%     print -depsc figs\sim3avpow.eps;
+% end
 
 %% Plot average power of positive values
 % figure
@@ -1038,166 +1044,166 @@ end
 % title('Average power (divided into positive and negative outliers)')
 
 %% Compare curves of boxplots as a function of overlapping index
-figure('Name','Extremes of the boxplot for beta')
-yl1=min(min([StoFS(:,3:5) StoLT(:,3:5) StoLTr(:,3:5) StoS(:,3:5) StoMM(:,3:5)]));
-yl2=max(max([StoFS(:,3:5) StoLT(:,3:5) StoLTr(:,3:5) StoS(:,3:5) StoMM(:,3:5)]));
-
-% StoFS
-% 3th column = lower value of boxplot for beta
-% 4th column = upper value of boxplot for beta
-% 5th column = median of beta values
-
-ff=5;
-subplot(1,ff,1)
-plot(lamx(:,1),StoFS(:,3:5),'b')
-ylim([yl1 yl2])
-xlim([lamx(1) lamx(end)])
-title('FS')
-
-subplot(1,ff,2)
-plot(lamx(:,1),StoLT(:,3:5),'b')
-title('LTS raw')
-ylim([yl1 yl2])
-xlim([lamx(1) lamx(end)])
-
-subplot(1,ff,3)
-plot(lamx(:,1),StoLTr(:,3:5),'b')
-title('LTS reweighted')
-ylim([yl1 yl2])
-xlim([lamx(1) lamx(end)])
-
-subplot(1,ff,4)
-plot(lamx(:,1),StoS(:,3:5),'b')
-title('S')
-ylim([yl1 yl2])
-xlim([lamx(1) lamx(end)])
-
-subplot(1,ff,5)
-plot(lamx(:,1),StoMM(:,3:5),'b')
-title('MM')
-ylim([yl1 yl2])
-xlim([lamx(1) lamx(end)])
-
-
-%% Compare medians of \hat alpha and \hat \beta from nominal values \alpha and \beta
-figure('Name','Cum sum of deviand medians from noimnal values')
-
-fontsizexlab=14;
-fontsizetitl=18;
-
-% First panel (cumulative sum of absolute deviation from true value of the slope)
-subplot(2,2,1)
-% Second panel (cumulative sum of absolute deviation from true value of the intercept)
-medAA=[median(FSAA)' median(LTAA)' median(LTAAr)' median(SAA)' median(MMAA)'];
-medAA=cumsum(abs(medAA-alpha));
-hold('on')
-box('on')
-plot(lamx(:,1),medAA(:,1),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),medAA(:,2),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),medAA(:,3),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),medAA(:,4),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),medAA(:,5),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-
-title('Sum of abs. deviations from $\alpha_1$','Interpreter','LaTeX','FontSize',fontsizetitl)
-xlabel('lambda','FontSize',fontsizexlab)
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-xlim([lamx(1,1) lamx(end,1)])
-
-subplot(2,2,2)
-ij=5; % 5th column contains information about the slope
-medBB=cumsum(abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij) StoS(:,ij) StoMM(:,ij)]-beta));
-hold('on')
-box('on')
-plot(lamx(:,1),medBB(:,1),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),medBB(:,2),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),medBB(:,3),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),medBB(:,4),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),medBB(:,5),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% figure('Name','Extremes of the boxplot for beta')
+% yl1=min(min([StoFS(:,3:5) StoLT(:,3:5) StoLTr(:,3:5) StoS(:,3:5) StoMM(:,3:5)]));
+% yl2=max(max([StoFS(:,3:5) StoLT(:,3:5) StoLTr(:,3:5) StoS(:,3:5) StoMM(:,3:5)]));
+% 
+% % StoFS
+% % 3th column = lower value of boxplot for beta
+% % 4th column = upper value of boxplot for beta
+% % 5th column = median of beta values
+% 
+% ff=5;
+% subplot(1,ff,1)
+% plot(lamx(:,1),StoFS(:,3:5),'b')
+% ylim([yl1 yl2])
+% xlim([lamx(1) lamx(end)])
+% title('FS')
+% 
+% subplot(1,ff,2)
+% plot(lamx(:,1),StoLT(:,3:5),'b')
+% title('LTS raw')
+% ylim([yl1 yl2])
+% xlim([lamx(1) lamx(end)])
+% 
+% subplot(1,ff,3)
+% plot(lamx(:,1),StoLTr(:,3:5),'b')
+% title('LTS reweighted')
+% ylim([yl1 yl2])
+% xlim([lamx(1) lamx(end)])
+% 
+% subplot(1,ff,4)
+% plot(lamx(:,1),StoS(:,3:5),'b')
+% title('S')
+% ylim([yl1 yl2])
+% xlim([lamx(1) lamx(end)])
+% 
+% subplot(1,ff,5)
+% plot(lamx(:,1),StoMM(:,3:5),'b')
+% title('MM')
+% ylim([yl1 yl2])
+% xlim([lamx(1) lamx(end)])
 
 
-title('Sum of abs. deviations from $\beta_1$','Interpreter','LaTeX','FontSize',fontsizetitl)
-xlabel('lambda','FontSize',fontsizexlab)
-legend('FS','LTS','LTSr','Location','Best')
-xlim([lamx(1,1) lamx(end,1)])
-
-
-if prin==1
-    % print to postscript
-    print -depsc figs\simdevab.eps;
-end
+%% Compare medians of hat alpha and hat \beta from nominal values \alpha and \beta
+% figure('Name','Cum sum of deviand medians from noimnal values')
+% 
+% fontsizexlab=14;
+% fontsizetitl=18;
+% 
+% % First panel (cumulative sum of absolute deviation from true value of the slope)
+% subplot(2,2,1)
+% % Second panel (cumulative sum of absolute deviation from true value of the intercept)
+% medAA=[median(FSAA)' median(LTAA)' median(LTAAr)' median(SAA)' median(MMAA)'];
+% medAA=cumsum(abs(medAA-alpha));
+% hold('on')
+% box('on')
+% plot(lamx(:,1),medAA(:,1),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),medAA(:,2),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),medAA(:,3),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),medAA(:,4),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),medAA(:,5),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% 
+% title('Sum of abs. deviations from $\alpha_1$','Interpreter','LaTeX','FontSize',fontsizetitl)
+% xlabel('lambda','FontSize',fontsizexlab)
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% xlim([lamx(1,1) lamx(end,1)])
+% 
+% subplot(2,2,2)
+% ij=5; % 5th column contains information about the slope
+% medBB=cumsum(abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij) StoS(:,ij) StoMM(:,ij)]-beta));
+% hold('on')
+% box('on')
+% plot(lamx(:,1),medBB(:,1),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),medBB(:,2),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),medBB(:,3),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),medBB(:,4),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),medBB(:,5),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% 
+% 
+% title('Sum of abs. deviations from $\beta_1$','Interpreter','LaTeX','FontSize',fontsizetitl)
+% xlabel('lambda','FontSize',fontsizexlab)
+% legend('FS','LTS','LTSr','Location','Best')
+% xlim([lamx(1,1) lamx(end,1)])
+% 
+% 
+% if prin==1
+%     % print to postscript
+%     print -depsc figs\simdevab.eps;
+% end
 
 
 %% Compare boxplots (slope distribution)
-figure('Name','Boxplots of the slope')
-sel=1:llam;
-yl1=min(min([squeeze(FSBB(:,:,sel)) squeeze(LTBB(:,:,sel)) squeeze(LTBBr(:,:,sel)) squeeze(SBB(:,:,sel)) squeeze(MMBB(:,:,sel))]));
-yl2=max(max([squeeze(FSBB(:,:,sel)) squeeze(LTBB(:,:,sel)) squeeze(LTBBr(:,:,sel)) squeeze(SBB(:,:,sel)) squeeze(MMBB(:,:,sel))]));
-
-% FSBB is a 3 dimensional matrix
-% rows = nsimul
-% columns = number of values of vector beta
-% trd dimension = number of elements of la
-ff=5;
-
-subplot(1,ff,1)
-boxplot(squeeze(FSBB(:,:,sel)),'label',lamxlab)
-v=axis;
-line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
-
-ylim([yl1 yl2])
-title('FS')
-
-subplot(1,ff,2)
-boxplot(squeeze(LTBB(:,:,sel)),'label',lamxlab)
-v=axis;
-line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
-title('LTS raw')
-ylim([yl1 yl2])
-
-subplot(1,ff,3)
-boxplot(squeeze(LTBBr(:,:,sel)),'label',lamxlab)
-v=axis;
-line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
-title('LTS reweighted')
-ylim([yl1 yl2])
-
-subplot(1,ff,4)
-boxplot(squeeze(SBB(:,:,sel)),'label',lamxlab)
-v=axis;
-line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
-title('S')
-ylim([yl1 yl2])
-
-subplot(1,ff,5)
-boxplot(squeeze(MMBB(:,:,sel)),'label',lamxlab)
-v=axis;
-line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
-title('MM')
-ylim([yl1 yl2])
+% figure('Name','Boxplots of the slope')
+% sel=1:llam;
+% yl1=min(min([squeeze(FSBB(:,:,sel)) squeeze(LTBB(:,:,sel)) squeeze(LTBBr(:,:,sel)) squeeze(SBB(:,:,sel)) squeeze(MMBB(:,:,sel))]));
+% yl2=max(max([squeeze(FSBB(:,:,sel)) squeeze(LTBB(:,:,sel)) squeeze(LTBBr(:,:,sel)) squeeze(SBB(:,:,sel)) squeeze(MMBB(:,:,sel))]));
+% 
+% % FSBB is a 3 dimensional matrix
+% % rows = nsimul
+% % columns = number of values of vector beta
+% % trd dimension = number of elements of la
+% ff=5;
+% 
+% subplot(1,ff,1)
+% boxplot(squeeze(FSBB(:,:,sel)),'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
+% 
+% ylim([yl1 yl2])
+% title('FS')
+% 
+% subplot(1,ff,2)
+% boxplot(squeeze(LTBB(:,:,sel)),'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
+% title('LTS raw')
+% ylim([yl1 yl2])
+% 
+% subplot(1,ff,3)
+% boxplot(squeeze(LTBBr(:,:,sel)),'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
+% title('LTS reweighted')
+% ylim([yl1 yl2])
+% 
+% subplot(1,ff,4)
+% boxplot(squeeze(SBB(:,:,sel)),'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
+% title('S')
+% ylim([yl1 yl2])
+% 
+% subplot(1,ff,5)
+% boxplot(squeeze(MMBB(:,:,sel)),'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[beta(1);beta(1)],'LineStyle','-.')
+% title('MM')
+% ylim([yl1 yl2])
 
 
 %% Boxplots side by side for each value of Sto(:,1)
-figure;
-ij=1;
-% Select the element of beta you want to show
-jj=1;
-seli=2:10;
-% seli=10:18;
-% seli=10:17;
-%
-seli=(1:9)+9;
-namx={'FS' 'LTS' 'LTSr' 'S' 'MM'};
-for sel=seli
-    
-    subplot(3,3,ij)
-    ij=ij+1;
-    boxplot([FSBB(:,jj,sel) LTBB(:,jj,sel) LTBBr(:,jj,sel) SBB(:,jj,sel) MMBB(:,jj,sel)],'labels',namx)
-    v=axis;
-    line(v(1:2)',[beta(jj);beta(jj)],'LineStyle','-.')
-    
-    % ylim([2.7 3.3])
-    title(['lam=' num2str(lamx(sel,1))])
-end
+% figure;
+% ij=1;
+% % Select the element of beta you want to show
+% jj=1;
+% seli=2:10;
+% % seli=10:18;
+% % seli=10:17;
+% %
+% seli=(1:9)+9;
+% namx={'FS' 'LTS' 'LTSr' 'S' 'MM'};
+% for sel=seli
+% 
+%     subplot(3,3,ij)
+%     ij=ij+1;
+%     boxplot([FSBB(:,jj,sel) LTBB(:,jj,sel) LTBBr(:,jj,sel) SBB(:,jj,sel) MMBB(:,jj,sel)],'labels',namx)
+%     v=axis;
+%     line(v(1:2)',[beta(jj);beta(jj)],'LineStyle','-.')
+% 
+%     % ylim([2.7 3.3])
+%     title(['lam=' num2str(lamx(sel,1))])
+% end
 
 %% Boxplots side by side with scatters for 3 selected value of Sto(:,1)
 
@@ -1291,165 +1297,165 @@ if prin==1
 end
 
 %% Compare boxplots (alpha distribution)
-figure('Name','boxplot of intercept')
-ff=5;
-
-yl1=min(min([FSAA LTAA LTAAr SAA MMAA]));
-yl2=max(max([FSAA LTAA LTAAr SAA MMAA]));
-
-
-subplot(1,ff,1)
-boxplot(FSAA,'label',lamxlab)
-v=axis;
-
-line(v(1:2)',[alpha;alpha],'LineStyle','-.')
-
-ylim([yl1 yl2])
-title('FS')
-
-subplot(1,ff,2)
-boxplot(LTAA,'label',lamxlab)
-v=axis;
-line(v(1:2)',[alpha;alpha],'LineStyle','-.')
-title('LTS raw')
-ylim([yl1 yl2])
-
-subplot(1,ff,3)
-boxplot(LTAAr,'label',lamxlab)
-v=axis;
-line(v(1:2)',[alpha;alpha],'LineStyle','-.')
-title('LTS reweighted')
-ylim([yl1 yl2])
-
-subplot(1,ff,4)
-boxplot(SAA,'label',lamxlab)
-v=axis;
-line(v(1:2)',[alpha;alpha],'LineStyle','-.')
-title('S')
-ylim([yl1 yl2])
-
-subplot(1,ff,5)
-boxplot(MMAA,'label',lamxlab)
-v=axis;
-line(v(1:2)',[alpha;alpha],'LineStyle','-.')
-title('MM')
-ylim([yl1 yl2])
+% figure('Name','boxplot of intercept')
+% ff=5;
+% 
+% yl1=min(min([FSAA LTAA LTAAr SAA MMAA]));
+% yl2=max(max([FSAA LTAA LTAAr SAA MMAA]));
+% 
+% 
+% subplot(1,ff,1)
+% boxplot(FSAA,'label',lamxlab)
+% v=axis;
+% 
+% line(v(1:2)',[alpha;alpha],'LineStyle','-.')
+% 
+% ylim([yl1 yl2])
+% title('FS')
+% 
+% subplot(1,ff,2)
+% boxplot(LTAA,'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[alpha;alpha],'LineStyle','-.')
+% title('LTS raw')
+% ylim([yl1 yl2])
+% 
+% subplot(1,ff,3)
+% boxplot(LTAAr,'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[alpha;alpha],'LineStyle','-.')
+% title('LTS reweighted')
+% ylim([yl1 yl2])
+% 
+% subplot(1,ff,4)
+% boxplot(SAA,'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[alpha;alpha],'LineStyle','-.')
+% title('S')
+% ylim([yl1 yl2])
+% 
+% subplot(1,ff,5)
+% boxplot(MMAA,'label',lamxlab)
+% v=axis;
+% line(v(1:2)',[alpha;alpha],'LineStyle','-.')
+% title('MM')
+% ylim([yl1 yl2])
 
 
 
 %% Plot bias and variance for alpha
-figure('Name','Bias and variance for alpha and beta')
-ij=6;
-% plot(Sto(:,1),StoFS(:,ij),'-r')
-subplot(2,2,1)
-hold('on')
-box('on')
-plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-title('Squared bias for \hat \alpha')
-
-ij=7;
-subplot(2,2,2)
-
-hold('on')
-box('on')
-plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-title('Empirical variance of \hat \alpha')
-
-
-% Plot bias and variance for beta
-% figure('Name','Bias and variance for beta')
-ij=8;
-% plot(Sto(:,1),StoFS(:,ij),'-r')
-subplot(2,2,3)
-hold('on')
-plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-title('Squared bias for \beta')
-
-ij=9;
-subplot(2,2,4)
-hold('on')
-plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-title('Empirical variance of \beta')
+% figure('Name','Bias and variance for alpha and beta')
+% ij=6;
+% % plot(Sto(:,1),StoFS(:,ij),'-r')
+% subplot(2,2,1)
+% hold('on')
+% box('on')
+% plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% 
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% title('Squared bias for hat \alpha')
+% 
+% ij=7;
+% subplot(2,2,2)
+% 
+% hold('on')
+% box('on')
+% plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% title('Empirical variance of hat \alpha')
+% 
+% 
+% % Plot bias and variance for beta
+% % figure('Name','Bias and variance for beta')
+% ij=8;
+% % plot(Sto(:,1),StoFS(:,ij),'-r')
+% subplot(2,2,3)
+% hold('on')
+% plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% title('Squared bias for \beta')
+% 
+% ij=9;
+% subplot(2,2,4)
+% hold('on')
+% plot(lamx(:,1),StoFS(:,ij),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),StoLT(:,ij),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),StoLTr(:,ij),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),StoS(:,ij),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),StoMM(:,ij),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% 
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% title('Empirical variance of \beta')
 
 
 %% Intercept: compare bias  and variance (cumulative sum)
-figure('Name','Bias and variance for alpha (cumulative sum)')
-ij=6;
-% plot(Sto(:,1),abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij)]-3))
-subplot(2,1,1)
-hold('on')
-plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-
-
-% plot(lamx(:,1),cumsum(abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij)  StoS(:,ij) StoMM(:,ij)])))
-title('Cumulative sum of bias for intercept')
-xlabel('lambda')
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-ij=7;
-subplot(2,1,2)
-hold('on')
-plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-title('Cumulative sum of empirical variance for intercept')
-xlabel('lambda')
-legend('FS','LTS','LTSr','S','MM','Location','Best')
+% figure('Name','Bias and variance for alpha (cumulative sum)')
+% ij=6;
+% % plot(Sto(:,1),abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij)]-3))
+% subplot(2,1,1)
+% hold('on')
+% plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% 
+% 
+% % plot(lamx(:,1),cumsum(abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij)  StoS(:,ij) StoMM(:,ij)])))
+% title('Cumulative sum of bias for intercept')
+% xlabel('lambda')
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% ij=7;
+% subplot(2,1,2)
+% hold('on')
+% plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% title('Cumulative sum of empirical variance for intercept')
+% xlabel('lambda')
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
 
 
 %% Slope: compare bias and variance (cumulative sum)
-figure('Name','Bias and variance for beta (cumulative sum)')
-ij=8;
-% plot(Sto(:,1),abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij)]-3))
-subplot(2,1,1)
-hold('on')
-plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-
-title('Cumulative sum of bias for slope')
-xlabel('lambda')
-legend('FS','LTS','LTSr','S','MM','Location','Best')
-ij=9;
-subplot(2,1,2)
-hold('on')
-plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
-plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
-plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
-plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
-plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
-title('Cumulative sum of empirical variance for slope')
-xlabel('lambda')
-legend('FS','LTS','LTSr','S','MM','Location','Best')
+% figure('Name','Bias and variance for beta (cumulative sum)')
+% ij=8;
+% % plot(Sto(:,1),abs([StoFS(:,ij) StoLT(:,ij) StoLTr(:,ij)]-3))
+% subplot(2,1,1)
+% hold('on')
+% plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% 
+% title('Cumulative sum of bias for slope')
+% xlabel('lambda')
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
+% ij=9;
+% subplot(2,1,2)
+% hold('on')
+% plot(lamx(:,1),cumsum(abs(StoFS(:,ij))),'LineWidth',LineWidth,'LineStyle','-')
+% plot(lamx(:,1),cumsum(abs(StoLT(:,ij))),'LineWidth',LineWidth,'LineStyle','-.')
+% plot(lamx(:,1),cumsum(abs(StoLTr(:,ij))),'LineWidth',LineWidth,'LineStyle',':')
+% plot(lamx(:,1),cumsum(abs(StoS(:,ij))),'LineWidth',LineWidth,'LineStyle','--','Marker','o')
+% plot(lamx(:,1),cumsum(abs(StoMM(:,ij))),'LineWidth',LineWidth,'LineStyle','-','Marker','v')
+% title('Cumulative sum of empirical variance for slope')
+% xlabel('lambda')
+% legend('FS','LTS','LTSr','S','MM','Location','Best')
 
 
 %% Compare bias and variance both for intercept and slope  cum sum and 4 panel plot
@@ -1480,7 +1486,7 @@ plot(lamx(:,1),biasAA(:,2),'LineWidth',LineWidth,'LineStyle','-.', 'Color',col{3
 plot(lamx(:,1),biasAA(:,3),'LineWidth',LineWidth,'LineStyle',':', 'Color',col{4})
 
 
-title('$(\overline{ \hat \alpha} - \alpha)^2$','Interpreter','LaTeX','FontSize',fontsizetitl)
+title('$(\overline{\hat{\alpha}} - \alpha)^2$','Interpreter','LaTeX','FontSize',fontsizetitl)
 %xlabel('lambda','FontSize',fontsizexlab)
 legend('FS','S','MM','LTS','LTSr','Location','Best')
 xlim([xl1 xl2])
@@ -1497,7 +1503,7 @@ plot(lamx(:,1),varAA(:,2),'LineWidth',LineWidth,'LineStyle','-.', 'Color',col{3}
 plot(lamx(:,1),varAA(:,3),'LineWidth',LineWidth,'LineStyle',':', 'Color',col{4})
 
 
-title('var$(\hat \alpha)$','Interpreter','LaTeX','FontSize',fontsizetitl)
+title('var$(\hat{\alpha})$','Interpreter','LaTeX','FontSize',fontsizetitl)
 xlim([xl1 xl2])
 
 
@@ -1515,7 +1521,7 @@ plot(lamx(:,1),biasBB(:,2),'LineWidth',LineWidth,'LineStyle','-.', 'Color',col{3
 plot(lamx(:,1),biasBB(:,3),'LineWidth',LineWidth,'LineStyle',':', 'Color',col{4})
 
 
-title('$(\overline{ \hat \beta} - \beta)^2$','Interpreter','LaTeX','FontSize',fontsizetitl)
+title('$(\overline{\hat{\beta}} - \beta)^2$','Interpreter','LaTeX','FontSize',fontsizetitl)
 %title('Squared bias','Interpreter','LaTeX','FontSize',fontsizetitl)
 
 
@@ -1535,7 +1541,7 @@ plot(lamx(:,1),varBB(:,2),'LineWidth',LineWidth,'LineStyle','-.', 'Color',col{3}
 plot(lamx(:,1),varBB(:,3),'LineWidth',LineWidth,'LineStyle',':', 'Color',col{4})
 
 
-title('var$(\hat \beta)$','Interpreter','LaTeX','FontSize',fontsizetitl)
+title('var$(\hat{\beta})$','Interpreter','LaTeX','FontSize',fontsizetitl)
 xlabel('\lambda','FontSize',fontsizexlab)
 xlim([xl1 xl2])
 

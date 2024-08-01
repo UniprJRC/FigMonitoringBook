@@ -72,7 +72,7 @@ pmy=pmx;
 
 
 % nsimul = total number of simulations which have to be run
-nsimul=100;
+nsimul=2;
 
 % nsamp = number of samples to extract
 nsamp=2000;
@@ -206,7 +206,7 @@ lamxy=zeros(length(pmx)*length(pmy),2);
 
 for jpm=1:length(pmy)
     
-    for ipm=1:length(pmx);
+    for ipm=1:length(pmx)
         
         % variable ij is associated with the rows of matrix lam
         ij=ij+1;
@@ -362,12 +362,12 @@ for jpm=1:length(pmy)
                 
                 
                 if j==round(nsimul/2)
-                    disp(['Simulation nr ' num2str(round(nsimul/2))])
+                  %  disp(['Simulation nr ' num2str(round(nsimul/2))])
                 end
                 
             end
         end
-        disp(['Simulations finished for  point mass x=' num2str(pmx(ipm)) ', y=' num2str(pmy(jpm))])
+       % disp(['Simulations finished for  point mass x=' num2str(pmx(ipm)) ', y=' num2str(pmy(jpm))])
         
         
         if ~isempty(intersect(sel,ij))
@@ -1091,8 +1091,6 @@ disp('-------------------------')
 
 %% Intercept and slope 4 directions: compare MSE (bias+variance) (cumulative sum)
 
- load science_sim1
-
 
 figure('Name','MSE for alpha  and beta (cumulative sum) VER dir')
 % Genera Figura 5.22
@@ -1206,7 +1204,6 @@ end
 
 %% Intercept and slope 4 directions: compare MSE (bias+variance) (cumulative sum)
 % crea la Figure 5.21
-load science_sim12023.mat;
 figure('Name','MSE for alpha  and beta (cumulative sum) HOr dir')
 %LineWidth=2;
 LineWidth=4;

@@ -14,7 +14,7 @@ rng(state1);
 
 
 
-%% Create figure 5.14, 5.15, 5.16, 5.17
+%% Create figures 5.13, 5.14, 5.15, 5.16, 5.17
 close all
 
 newtonsim12023
@@ -22,7 +22,7 @@ newtonsim12023
 
 
 
-%% Create figure 5.19
+%% Create figure 5.18 and 5.19
 
 close all
 
@@ -38,7 +38,7 @@ newtonsim32023
 
 
 
-%% Create figure 5.21, 5.22
+%% Create figure 5.21 and 5.22
 
 close all
 
