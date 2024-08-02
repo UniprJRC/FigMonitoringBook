@@ -1,16 +1,21 @@
 %% Simulation study to compare RAVAS with AVAS
 % This file creates Figures 7.25 and 7.26.
 
-%% Create one panel one row of Figure 7.25 and one panel of Figure 7.26
+%% Create one row of Figure 7.25 and one row of Figure 7.26
 % Choose number of simulations (nsimul), sample size (n) and number of
 % explanatory variables.
 nsimul=100;
+% nsimul=1000;
+% In order to create top row of the figures use
 n=200;
 p1=4;
 prin=0;
-% nsimul=1000;
-%  n=2000;
+% In order to create mid row use
+% n=1000;
 % p1=9;
+% In order to create bottom row use
+% n=10000;
+% p1=19;
 
 msg=0;
 LSHIFT=0:0.5:4;
@@ -41,7 +46,6 @@ ij=0;
 for lshift=LSHIFT
     disp(['Lshift=' num2str(lshift)])
     ij=ij+1;
-    % rng(100)
     outliersAVAS=zeros(nsimul,2);
     outliersAVASnew=outliersAVAS;
     biasAVAS=zeros(nsimul,p1);
@@ -55,7 +59,6 @@ for lshift=LSHIFT
             % Simulated data no correlation between X and y
             y=randn(n,1);
             X=randn(n,p1);
-            % X(outindexes+100,1:2)=X(outindexes+100,1:2)+lshift;
         else
             % %% Simulated data with correlation between X and y
 
@@ -75,10 +78,6 @@ for lshift=LSHIFT
         end
 
         y=exp(y);
-
-        % group=ones(n,1);
-        % group(1:nout)=2;
-        % yXplot(y,X,'group',group)
 
         % Traditional AVAS
         out=avas(y,X,'l',4*ones(size(X,2),1));
@@ -155,8 +154,14 @@ xlabel('Shift contamination')
 ylabel('Average power')
 ylim([0 1])
 title(['n=' num2str(n)  ' p=' num2str(p1+1)  ' nsimul=' num2str(nsimul)])
+if prin==1
+    % print to postscript
+    print -depsc simMSEandAP.eps;
+else
+    set(gcf,"Name",'Figure 7.25')
+end
 
-%% Average number of iterations to convergence
+%% Average number of iterations to convergence (one row of Figure 7.26)
 figure
 plot(LSHIFT',Niter(:,1),'-',LSHIFT',Niter(:,2),'--','LineWidth',lwd)
 xlabel('Shift contamination')
@@ -165,9 +170,11 @@ title(['n=' num2str(n)  ' p=' num2str(p1+1)  ' nsimul=' num2str(nsimul)])
 
 if prin==1
     % print to postscript
-    print -depsc figs\avNUMit.eps;
+    print -depsc avNUMit.eps;
+else
+    set(gcf,"Name",'Figure 7.26')
 
 end
 
-%InsideREADNME
+%InsideREADME
 
