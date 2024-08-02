@@ -1,4 +1,4 @@
-%% Internet Marketing Data 
+%% Internet Marketing Data
 % This file creates Figures 7.20-7.24
 
 %% Beginning of code
@@ -19,18 +19,19 @@ disp(out.ModelFitVsNullModel.Fstat)
 disp('ANOVA table based on untransformed data')
 disp(out)
 
-%% Create Figure 7.20  
+%% Create Figure 7.20
 % all options set to false.
 % Monotonicity of the expl. variables imposed.
 out=avas(y,X,'rob',false,'tyinitial',false,'orderR2',false,...
     'scail',false,'trapezoid',false','l',3*ones(size(X,2),1));
 aceplot(out,'oneplot',true)
-sgtitle('Figure 7.20')
-set(gcf,"Name",'Figure 7.20')
 
 if prin==1
     % print to postscript
-    print -depsc figs\MD1.eps;
+    print -depscMD1.eps;
+else
+    sgtitle('Figure 7.20')
+    set(gcf,"Name",'Figure 7.20')
 end
 
 %% Regression model based on transformed data using all options set to false
@@ -46,12 +47,13 @@ disp(outTRAnoOPT)
 % tyinitial.la=-1:0.5:1;
 outTRAallOPT=avas(y,X,'trapezoid',true,'rob',true,'tyinitial',true,'orderR2',true,'scail',true,'l',3*ones(size(X,2),1));
 aceplot(outTRAallOPT,'oneplot',true)
-sgtitle('Figure 7.21')
-set(gcf,"Name",'Figure 7.21')
 
 if prin==1
     % print to postscript
     print -depsc figs\MD2.eps;
+else
+    sgtitle('Figure 7.21')
+    set(gcf,"Name",'Figure 7.21')
 end
 disp('Number of outliers found')
 disp(length(outTRAallOPT.outliers))
@@ -77,15 +79,16 @@ Xq=[X(:,1:2) X(:,1).^2 X(:,2).^2 X(:,1).*X(:,2)];
 %% Create Figure 7.22
 BigAx=avasmsplot(VALtfin);
 disp(VALtfin)
-title(BigAx,'Figure 7.22')
-set(gcf,"Name",'Figure 7.22')
 
 if prin==1
     % print to postscript
     print -depsc figs\MD3.eps;
+else
+    title(BigAx,'Figure 7.22')
+    set(gcf,"Name",'Figure 7.22')
 end
 
-%%  Create Figure 7.23 
+%%  Create Figure 7.23
 % Show details of best solution,
 j=1;
 outj=VALtfin{j,"Out"};
@@ -95,9 +98,10 @@ aceplot(solj,'oneplot',true,'VarNames',VarNames)
 if prin==1
     % print to postscript
     print -depsc figs\MD4.eps;
+else
+    sgtitle('Figure 7.23')
+    set(gcf,"Name",'Figure 7.23')
 end
-sgtitle('Figure 7.23')
-set(gcf,"Name",'Figure 7.23')
 
 % Regression model on the transformed scale
 outjr=fitlm(solj.tX,solj.ty,'Exclude',solj.outliers,'VarNames',VarNames);
@@ -119,9 +123,10 @@ aceplot(outTRAqNoOpt,'oneplot','','tyFitted',false)
 if prin==1
     % print to postscript
     print -depsc figs\MD5.eps;
+else
+    sgtitle('Figure 7.24')
+    set(gcf,"Name",'Figure 7.24')
 end
 
-sgtitle('Figure 7.24')
-set(gcf,"Name",'Figure 7.24')
 
-%InsideREADME 
+%InsideREADME

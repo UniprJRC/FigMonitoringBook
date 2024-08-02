@@ -31,14 +31,14 @@ set(gcf,"Name",'Figure 7.16')
 
 pl_heatmap=findobj(0, 'type', 'figure','tag', 'pl_heatmap');
 figure(pl_heatmap(1))
-sgtitle('Figure 7.17')
-set(gcf,"Name",'Figure 7.17')
 
 if prin==1
     % print to postscript
     print -depsc figs\F1.eps;
     print -depsc figs\F1bis.eps;
-
+else
+    sgtitle('Figure 7.17')
+    set(gcf,"Name",'Figure 7.17')
 end
 %% Create Figure 7.18 (extract best solution)
 j=1;
@@ -46,14 +46,14 @@ outj=VALtfin{j,"Out"};
 out=outj{:};
 aceplot(out,'tyFitted',false,'oneplot',[])
 
-sgtitle('Figure 7.18')
-set(gcf,"Name",'Figure 7.18')
 
 if prin==1
     % print to postscript
     print -depsc figs\F2.eps;
     %  print -depsc figs\F3.eps;
-
+else
+    sgtitle('Figure 7.18')
+    set(gcf,"Name",'Figure 7.18')
 end
 disp(['Number of outliers by first solution=' num2str(length(out.outliers))])
 
@@ -91,7 +91,7 @@ ylabel('yt(all variables)')
 subplot(2,2,2)
 plot(ysor,ytrajust1z,'o')
 hold('on')
-    plot(ysor,ytheoz,'-','LineWidth',2)
+plot(ysor,ytheoz,'-','LineWidth',2)
 plot(ystand(Listoutjust1),(ytra(Listoutjust1)-mujust1)/sigjust1,'o','Color','r','MarkerFaceColor','r')
 xlabel('y standardized')
 ylabel('yt(just one expl. variable)')
@@ -99,14 +99,15 @@ ylabel('yt(just one expl. variable)')
 if prin==1
     % print to postscript
     print -depsc F4.eps;
+else
+    sgtitle('Figure 7.19')
+    set(gcf,"Name",'Figure 7.19')
 end
 
-sgtitle('Figure 7.19')
-set(gcf,"Name",'Figure 7.19')
 
 % R2 using y^1/3 and deleting obs. 41
 outJust1=fitlm(X(:,1),ytheo,'Exclude',41);
 disp('Value of R2 in the model which just includes one expl. var.')
 disp(outJust1.Rsquared)
 
-%InsideREADME 
+%InsideREADME
