@@ -97,12 +97,13 @@ resg=mdl.Residuals{good,3};
 qqplotFS(resg,'X',Xg,'plots',1,'h',h2,'conflev',0.99);
 title(nameX(j))
 
-sgtitle('Figure A.20')
-set(gcf,"Name",'Figure A.20')
 
 if prin==1
     % print to postscript
     print -depsc BSqqplots.eps;
+else
+sgtitle('Figure A.20')
+set(gcf,"Name",'Figure A.20')
 end
 
 %InsideREADME 

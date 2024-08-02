@@ -38,12 +38,13 @@ h2=subplot(2,1,2);
 resindexplot(outHYP.residuals,'h',h2,'numlab',[2 43 51])
 title('Scaled residuals')
 
-sgtitle('Figure A.5')
-set(gcf,"Name",'Figure A.5')
 
 if prin==1
     % print to postscript
     print -depsc ARweiresMMhyp.eps;
+else
+sgtitle('Figure A.5')
+set(gcf,"Name",'Figure A.5')
 end
 
 %% Create Figure A.6
@@ -59,13 +60,14 @@ h2=subplot(2,1,2);
 resindexplot(outPD.residuals,'h',h2,'numlab',[2 43 51])
 title('Scaled residuals using power divergence')
 
-sgtitle('Figure A.6')
-set(gcf,"Name",'Figure A.6')
 
 
 if prin==1
     % print to postscript
     print -depsc ARresMMaspd.eps;
+else
+sgtitle('Figure A.6')
+set(gcf,"Name",'Figure A.6')
 end
 
 %InsideREADME 

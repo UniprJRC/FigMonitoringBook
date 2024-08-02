@@ -49,7 +49,7 @@ end
 % quadratic grow of amplitude
 model.seasonal  = 202;
 outLTS202 = LTSts(Y,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
-titl = {'model parameters for Airline data:' , 'A=1, B=2, G=2, $\delta_1=0$'};
+titl = {'Model parameters for Airline data:' , 'A=1, B=2, G=2, $\delta_1=0$'};
 title(findobj(gcf,'Tag','LTSts:ts'),titl,'interpreter','LaTeX','FontSize',16);
 
 if prin==1

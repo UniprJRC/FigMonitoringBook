@@ -32,10 +32,11 @@ cascade;
 if prin==1
     % print to postscript
     print -depsc fatilr_S.eps;
+else
+    sgtitle('Figure A.53')
+    set(gcf,"Name",'Figure A.53')
 end
 
-sgtitle('Figure A.53')
-set(gcf,"Name",'Figure A.53')
 
 
 %% Create Figure A.54
@@ -77,17 +78,16 @@ fground.Color={'r'};
 fground.flabstep = '';
 fground.fthresh=2.0;
 resfwdplot(out, 'fground', fground, 'datatooltip','', 'corres', 1,'tag','pl_Sres');
-ylabel('Scaled S residuals');
-xlabel('bdp');
 
 if prin==1
     % print to postscript
     print -depsc fatilr_S_mon.eps;
+else
+    sgtitle('Figure A.55')
+    set(gcf,"Name",'Figure A.55')
+    drawnow
 end
 
-sgtitle('Figure A.55')
-set(gcf,"Name",'Figure A.55')
-drawnow
 
 %% Create Fig. A.56
 % Monitoring MM estimtes
@@ -98,15 +98,14 @@ fground.Color={'r'};
 fground.flabstep = '';
 fground.fthresh=2.0;
 resfwdplot(out, 'fground', fground, 'datatooltip','', 'corres', 1);
-ylabel('Scaled S residuals');
-xlabel('Efficiency');
 
 if prin==1
     % print to postscript
     print -depsc fatilr_MM_mon.eps;
+else
+    sgtitle('Figure A.56')
+    set(gcf,"Name",'Figure A.56')
 end
 
-sgtitle('Figure A.56')
-set(gcf,"Name",'Figure A.56')
 
 %InsideREADME

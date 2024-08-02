@@ -43,18 +43,18 @@ mediany=median(y);
 yline(meany)
 yline(mediany)
 ylabel('$\overline y_\alpha$','Interpreter','latex','FontSize',FontSize)
-text(0.45,meany-60,"$\hat \mu = \overline y_n$",'Interpreter','latex','FontSize',FontSize)
-text(0.15,mediany+60,"Me",'Interpreter','latex','FontSize',FontSize)
+text(0.45,meany-100,"$\hat \mu = \overline y_n$",'Interpreter','latex','FontSize',FontSize)
+text(0.15,mediany+60,"med",'Interpreter','latex','FontSize',FontSize)
 
 set(gca,"XDir","reverse")
-set(gcf,"Name",'Figure A.1')
-title('Figure A.1')
 prin=0;
 if prin==1
     % print to postscript
     print -depsc trimmeanIncome2.eps;
 end
 
+set(gcf,"Name",'Figure A.1')
+title('Figure A.1')
 
 
 %% Create figure A.2.  
@@ -111,10 +111,11 @@ end
 
 %% Figure 10.12 yXplot
 yXplot(yt,Xt);
-sgtitle("Figure 10.12")
 if prin==1
     % print to postscript
     print -depsc inc2f1.eps;
+else
+sgtitle("Figure 10.12")
 end
 
 %InsideREADME 

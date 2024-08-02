@@ -10,14 +10,15 @@ y=XX(:,end);
 n=length(y);
 prin=0;
 
-%% Create Figure A.21  
-% D1 yXplot 
+%% Create Figure A.21
+% D1 yXplot
 yXplot(y,X,'tag','pl_yini');
-sgtitle('Figure A.21')
-set(gcf,"Name",'Figure A.21')
-
 if prin==1
+    legend off
     print -depsc figs\D1yX.eps
+else
+    sgtitle('Figure A.21')
+    set(gcf,"Name",'Figure A.21')
 end
 
 %% Create Table A.8
@@ -39,11 +40,13 @@ disp(ScoreT)
 la=[0 0.25 0.5 1];
 ylimy='';
 out=FSRfan(y,X,'la',la,'family','YJ','plots',1,'init',round(n/2),'ylimy',[-ylimy ylimy],'msg',0);
-title('Figure A.22 (left panel)')
-set(gcf,"Name",'Figure A.22 (left panel)')
 
 if prin==1
     print -depsc figs\D1fan.eps
+else
+    title('Figure A.22 (left panel)')
+    set(gcf,"Name",'Figure A.22 (left panel)')
+
 end
 %%  Create Figure A.22 (right panel)
 % D1 fanplotpn
@@ -59,19 +62,21 @@ if prin==1
     print -depsc figs\D1fanpn.eps
 end
 %% Create Figure A.23
-% yXplot after transforming y  
+% yXplot after transforming y
 labest=0.25;
 ytra=normYJ(y,[],labest,'inverse',false);
 yXplot(ytra,X)
-sgtitle('Figure A.23')
-set(gcf,"Name",'Figure A.23')
 
 if prin==1
-    print -depsc figs\D1ytraX.eps
+    legend off
+    print -depsc D1ytraX.eps
+else
+    sgtitle('Figure A.23')
+    set(gcf,"Name",'Figure A.23')
 end
 
 %%  Create table A.10
-% Anova table after transforming y  
+% Anova table after transforming y
 disp('Table A.10: ANOVA in the transformed scale for y')
 outTRA=fitlm(X,ytra);
 disp(outTRA)
@@ -88,4 +93,4 @@ disp('Best value of lambda from the automatic procedure')
 disp(["laP" "laN"])
 disp(out1.labestBIC);
 
-%InsideREADME 
+%InsideREADME

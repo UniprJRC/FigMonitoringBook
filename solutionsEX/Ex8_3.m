@@ -68,6 +68,7 @@ plot(Xnew,yci,'r','LineWidth',1)
 xlabel('Quantity')
 ylabel('Value')
 xlim([min(X) max(X)])
+box on
 if prin==1
     print -depsc P30homobands.eps;
 else

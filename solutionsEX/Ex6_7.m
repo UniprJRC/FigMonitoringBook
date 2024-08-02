@@ -14,11 +14,13 @@ prin=0;
 %% Create Figure A.30
 % D2 yXplot
 yXplot(y,X,'tag','pl_yini');
-sgtitle('Figure A.30')
-set(gcf,"Name",'Figure A.30')
 
 if prin==1
-    print -depsc figs\D3yX.eps
+    legend off
+    print -depsc D3yX.eps
+else
+sgtitle('Figure A.30')
+set(gcf,"Name",'Figure A.30')
 end
 
 %% Create Table A.14
@@ -41,11 +43,12 @@ la=[0 0.25 0.5 1];
 ylimy='';
 out=FSRfan(y,X,'la',la,'family','YJ','plots',1,'init',round(n/2),'ylimy',[-ylimy ylimy],'msg',0);
 
-title('Figure A.31 (left panel)')
-set(gcf,"Name",'Figure A.31 (left panel)')
 
 if prin==1
     print -depsc figs\D3fan.eps
+else
+title('Figure A.31 (left panel)')
+set(gcf,"Name",'Figure A.31 (left panel)')
 end
 %%  Create Figure A.31 (right panel)
 % D3 fanplotpn
@@ -53,11 +56,12 @@ la=[0 0.25 0.5 1];
 ylimy='';
 out=FSRfan(y,X,'la',la,'family','YJpn','plots',1,'init',round(n/2), ...
     'ylimy',[-ylimy ylimy],'msg',0,'tag','pl_scopn');
-title('Figure A.31 (right panel)')
-set(gcf,"Name",'Figure A.31 (right panel)')
 
 if prin==1
-    print -depsc figs\D3fanpn.eps
+    print -depsc \D3fanpn.eps
+else
+title('Figure A.31 (right panel)')
+set(gcf,"Name",'Figure A.31 (right panel)')
 end
 
 %% Create Figure A.32 and A.33
@@ -127,11 +131,13 @@ end
 group=ones(n,1);
 group(outf.outliers)=2;
 yXplot(ytra,X,'group',group);
-sgtitle('Figure A.34')
-set(gcf,"Name",'Figure A.34')
 
 if prin==1
-    print -depsc figs\D3ytraX.eps
+    legend off
+    print -depsc D3ytraX.eps
+else
+sgtitle('Figure A.34')
+set(gcf,"Name",'Figure A.34')
 end
 
 
