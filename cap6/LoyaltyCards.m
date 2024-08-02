@@ -1,5 +1,6 @@
 %% Loyalty cards data
-% This file creates Figures 6.2-6.6 
+% This file creates Figures 6.2-6.6
+%
 % Note that: Figures 6.15-6.16 are created by file LoyaltyCardsBICplots.m
 
 
@@ -20,14 +21,15 @@ mm=round(n*0.6);
 fanplotFS(outFSRfan,'addxline',mm,'xlimx',[150 520])
 if prin==1
     % print to postscript
-    print -depsc figs\L2a.eps
+    print -depsc L2a.eps
+else
+    title('Figure 6.2')
+    set(gcf,"Name",'Figure 6.2')
 end
 
-title('Figure 6.2')
-set(gcf,"Name",'Figure 6.2')
 
 
-%% Prapare input for Figures 6.3-6.5
+%% Prepare input for Figures 6.3-6.5
 yt=y.^0.4;
 [out]=FSR(yt,X,'plots',0,'init',round(n*0.3),'nsamp',10000);
 outl=out.ListOut;
@@ -43,9 +45,14 @@ hold('on')
 rr=18;
 mdr=abs(outEDA.mdr(:,1:2));
 plot(mdr(end-rr:end,1),mdr(end-rr:end,2),'LineWidth',1.5,'color','r');
+if prin==1
+    % print to postscript
+    print -depsc mdrloyalty04scalev4.eps
+else
 
-title('Figure 6.3')
-set(gcf,"Name",'Figure 6.3')
+    title('Figure 6.3')
+    set(gcf,"Name",'Figure 6.3')
+end
 
 
 %% Create Figure 6.4
@@ -58,21 +65,26 @@ fground=struct;
 fground.funit=outl;
 fground.Color={'r'};
 fground.flabstep='';
-bground=struct;
-bground.bthresh=4;
 bground='';
-resfwdplot(outEDA,'fground',fground,'bground',bground, 'standard', standard);
-title('Figure 6.4')
-set(gcf,"Name",'Figure 6.4')
+resfwdplot(outEDA,'fground',fground,'bground',bground, ...
+    'standard', standard,'datatooltip','');
+if prin==1
+    % print to postscript
+    print -depsc L4.eps
+else
+    title('Figure 6.4')
+    set(gcf,"Name",'Figure 6.4')
+end
 
-%% Crate Figure 6.5:
-% Transformed loyalty cards data: scatterplot against 𝑥1. The 18 outliers detected plotted as
+%% Create Figure 6.5:
+% Transformed loyalty cards data: scatterplot against x1. The 18 outliers detected plotted as
 % red crosses
 figure
 group=ones(length(y),1);
 group(outl)=2;
 gscatter(X(:,1),yt,group,'br','o+',7)
 xlabel('x1=frequency')
+
 ylabel("y=sales^{0.4}")
 legend off
 title('Figure 6.5')
@@ -85,14 +97,18 @@ figure
 j=3;
 plot(outEDA.Bols(:,1),outEDA.Bols(:,3),'LineWidth',2)
 xlim([10 510])
-ylabel('$\hat \beta_{1}$','Interpreter','Latex','FontSize',14)
 hold('on')
 plot(outEDA.Bols(end-rr:end,1), outEDA.Bols(end-rr:end,3),'.','color','r', 'MarkerSize',14);
 xlabel('Subset size m');
-title('Figure 6.6')
-set(gcf,"Name",'Figure 6.6')
+ylabel('$\hat \beta_{1}$','Interpreter','Latex','FontSize',14)
+if prin==1
+    print -depsc L6.eps;
+else
+    title('Figure 6.6')
+    set(gcf,"Name",'Figure 6.6')
+end
 
-%% Figure 6.15 and Figure 6.16 
+%% Figure 6.15 and Figure 6.16
 % See file LoyaltyCardsBICplots.m
 
-%InsideREADME   
+%InsideREADME

@@ -35,3 +35,4 @@ standard=struct;
 standard.xlim=[800 n+1];
 resfwdplot(out,'databrush',databrush,'fground',fground,'standard',standard,'datatooltip','');
 
+%InsideREADME  

@@ -16,12 +16,13 @@ prin=0;
 mm=round(0.6*n);
 fanplotFS(outFSRfan,'conflev',[0.99 0.9999],'addxline',mm)
 
-title('Figure 6.1')
-set(gcf,"Name",'Figure 6.1')
 
 if prin==1
     % print to postscript
     print -depsc figs\H1.eps
+else
+    title('Figure 6.1')
+    set(gcf,"Name",'Figure 6.1')
 end
 
-%InsideREADME   
+%InsideREADME

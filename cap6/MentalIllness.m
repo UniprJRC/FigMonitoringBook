@@ -10,7 +10,7 @@ X=illnessx07(:,2:3);
 prin=0;
 
 
-%% Create Figure  
+%% Create Figure
 % Compare LM and GLM predictions
 logy=log(y);
 MLfit_LM = fitlm(X,logy);
@@ -35,12 +35,13 @@ xlabel('LM predictions')
 ylabel(['GLM predictions \lambda=' num2str(la)])
 refline
 
-sgtitle('Figure 6.7')
-set(gcf,"Name",'Figure 6.7')
 
 if prin==1
     % print to postscript
-  print -depsc figs\I3.eps;
+    print -depsc figs\I3.eps;
+else
+    sgtitle('Figure 6.7')
+    set(gcf,"Name",'Figure 6.7')
 end
 
-%InsideREADME   
+%InsideREADME
