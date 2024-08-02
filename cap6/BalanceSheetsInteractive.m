@@ -1,6 +1,7 @@
 %% Balance sheets data
-
 % This file creates Figure 6.14
+
+%% Beginning of code
 XX=load('BalanceSheets.txt');
 % Define X and y
 y=XX(:,6);

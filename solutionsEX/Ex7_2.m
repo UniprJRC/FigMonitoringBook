@@ -7,6 +7,17 @@
 load InvFundsExt.mat
 y=InvFundsExt{:,end};
 X=InvFundsExt{:,[1 2]};
+
+
+
+yXplot(y,X)
+legend off
+
+if prin==1
+    print -depsc NPyXplot.eps
+end
+
+
 [n,p]=size(X);
 
 prin=0;

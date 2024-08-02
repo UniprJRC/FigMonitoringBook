@@ -1,6 +1,5 @@
 %% Loyalty cards data
-% This file creates Figures 6.2-6.6
-%
+% This file creates Figures 6.2-6.6.
 % Note that: Figures 6.15-6.16 are created by file LoyaltyCardsBICplots.m
 
 
@@ -49,7 +48,6 @@ if prin==1
     % print to postscript
     print -depsc mdrloyalty04scalev4.eps
 else
-
     title('Figure 6.3')
     set(gcf,"Name",'Figure 6.3')
 end
