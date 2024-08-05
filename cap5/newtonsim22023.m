@@ -98,7 +98,7 @@ lam=[-1:0.3:2.6];
 lam=[-1:0.5:2.6];
 lam=[4.5:0.5:7];
 lam=[-3:0.5:4];
-lam=[1.5:0.5:9];
+lam=[1.5 3.5 5.5 7];
 
 
 % Sigmaout = covariance matrix of the outliers
@@ -521,7 +521,7 @@ for la=lam;
         ijl=ijl+1;
         
         if p==1
-            subplot(3,3,ijl)
+            subplot(1,4,ijl)
             
             hold('on')
             plot(Xsimj(1:n1,1),ysimj(1:n1),'o')
@@ -545,7 +545,12 @@ for la=lam;
             plot([aunif;bunif],[yxminya;yxminyb])
             plot([aunif;bunif],[yxmaxya;yxmaxyb])
             ylabel(['\lambda=' num2str(lam(ij))])
-            
+            xlim([0 3.5])
+            ylim([-20 80])
+            daspect([2 15 1])
+            ax=axis;
+            %daspect([1.75 40 1])
+            daspect([10 200 1])
             if prin==1
                 % print to postscript
                 print -depsc figs\sim1sca.eps;
