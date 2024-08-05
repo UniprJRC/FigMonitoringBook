@@ -1,5 +1,5 @@
 %% Power comparison
-% This file creates Figures 5.14, 5.15, 5.16, 5.17, 5.19, 5.20, 5.21, 5.22.
+% This file creates Figures 5.13, 5.14, 5.15, 5.16, 5.17, 5.19, 5.20, 5.21, 5.22.
 %
 %
 
