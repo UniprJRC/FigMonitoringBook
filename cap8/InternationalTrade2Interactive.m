@@ -1,7 +1,6 @@
-%% This file creates Figure 8.17
-%
-% The file which creates Figures 8.16 and 8.18 is called
-% InternationalTrade2.m
+%$ InternationalTrade2.m
+% This file creates Figure 8.17
+% The file which creates Figures 8.16 and 8.18 is called InternationalTrade2.m
 
 %% Beginning of code
 close all
@@ -17,7 +16,7 @@ n=length(y);
 prin=0;
 typeH='art';
 
-%% Prepare input for Figure 8.17 
+%% Prepare input for Figure 8.17
 [outLXS]=LXS(y,X,'nsamp',10000);
 outHEDA=FSRHeda(y,X,Z,outLXS.bs,'init',round(0.75*length(y)),'typeH',typeH);
 
@@ -27,16 +26,23 @@ databrush.labeladd='1';
 databrush.selectionmode='Rect'; % Rectangular selection
 resfwdplot(outHEDA,'databrush',databrush,'datatooltip','')
 
+fig=findobj(0,'tag','pl_resfwd');
+figure(fig)
 if prin==1
     print -depsc P307resfwdbrush.eps;
-    print -depsc P307brushxy.eps;
+else
+    title('Figure similar to top panel of Figure 8.17','It depends on your brushing')
 end
+
 
 fig=findobj(0,'tag','pl_yX');
 figure(fig)
-title('Figure similar to bottom panel of Figure 8.17','It depends on your brushing')
-fig=findobj(0,'tag','pl_resfwd');
-figure(fig)
-title('Figure similar to top panel of Figure 8.17','It depends on your brushing')
+if prin==1
+    print -depsc P307brushxy.eps;
+else
+    title('Figure similar to bottom panel of Figure 8.17','It depends on your brushing')
 
-%InsideREADME  
+end
+
+
+%InsideREADME

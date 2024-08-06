@@ -1,24 +1,37 @@
 %% Transformed Fish Morphology data.
-% This file creates Figures  8.35-8.38
+% This file creates Figures  8.36-8.39
 
 %% Beginning of code
-load ('fishmilr.txt');
-size(fishmilr)
+load FishMorphology.mat
 
-y = fishmilr(:,10);
-X = fishmilr(:,1:9);
+boo=FishMorphology.Habitat==1;
+% Select the rows whose Habitat is 1
+FishMorphology=FishMorphology(boo,:);
+% Extract the 10 variables mentioned in the book
+namX=["Bg", "Bd", "Bcw", "Jw", "Jl", "Bp", "Bac", "Bch", "Fc","Fdw"];
+namy="Mass";
+y=FishMorphology{:,namy};
+Xori=FishMorphology(:,namX);
+% Apply the ilr transformation
+X=pivotCoord(Xori{:,:});
+
+% load ('fishmilr.txt');
+% size(fishmilr)
+% 
+% y = fishmilr(:,10);
+% X = fishmilr(:,1:9);
 
 prin=0;
 
 conflev=[0.95 0.99];
 
 
-%% Create Figure 8.35
+%% Create Figure 8.36
 % S estimators with 2 values of bdp
 
 % Note that the pattern of residuals changes completely
-% Using bdp=0.5 the outliers are correctly found, on the other hand using
-% bdp=0.25 the masking effect is clear
+% Using bdp=0.25 two units are declared as outliers
+% Using bdp 17 units are declared as outliers.
 figure;
 h1=subplot(2,1,1);
 bdp=0.25;
@@ -29,19 +42,20 @@ ylabel(['Breakdown point =' num2str(bdp)])
 h2=subplot(2,1,2);
 bdp=0.5;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
-resindexplot(out,'h',h2,'conflev',conflev,'numlab',{6});
+resindexplot(out,'h',h2,'conflev',conflev,'numlab',{17});
 ylabel(['Breakdown point =' num2str(bdp)])
 cascade;
 if prin==1
     % print to postscript
     print -depsc fishmilr_S.eps;
+else
+    sgtitle('Figure 8.36')
+    set(gcf,"Name",'Figure 8.36')
 end
 
-sgtitle('Figure 8.35')
-set(gcf,"Name",'Figure 8.35')
 drawnow
 
-%% Create Figure 8.36
+%% Create Figure 8.37
 % MM estimators with 2 values of efficiency
 % MMreg using two different level of efficiency
 % Note that the pattern of residuals changes completely
@@ -61,16 +75,14 @@ ylabel(['Eff.=' num2str(eff)])
 if prin==1
     % print to postscript
     print -depsc fishmilr_MM.eps;
+else
+    sgtitle('Figure 8.37')
+    set(gcf,"Name",'Figure 8.37')
 end
 
-sgtitle('Figure 8.36')
-set(gcf,"Name",'Figure 8.36')
 drawnow
-%% Forward search
-% No signal during the search
-fsout=FSR(y, X,'plots',0);
 
-%% Create Figure  8.37
+%% Create Figure  8.38
 % Monitoring S estimates
 
 [out]=Sregeda(y,X,'msg',0);
@@ -85,12 +97,13 @@ xlabel('bdp');
 if prin==1
     % print to postscript
     print -depsc fishmilr_S_mon.eps;
+else
+    sgtitle('Figure 8.38')
+    set(gcf,"Name",'Figure 8.38')
 end
-sgtitle('Figure 8.37')
-set(gcf,"Name",'Figure 8.37')
 drawnow
 
-%% Create Figure 8.38
+%% Create Figure 8.39
 % Monitoring MM estimtes
 [out]=MMregeda(y,X);
 fground = struct;
@@ -104,9 +117,10 @@ xlabel('Efficiency');
 if prin==1
     % print to postscript
     print -depsc fishmilr_MM_mon.eps;
+else
+    sgtitle('Figure 8.39')
+    set(gcf,"Name",'Figure 8.39')
 end
 
-sgtitle('Figure 8.38')
-set(gcf,"Name",'Figure 8.38')
 
 %InsideREADME
