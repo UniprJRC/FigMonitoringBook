@@ -38,12 +38,13 @@ bdp=0.25;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h1,'conflev',conflev);
 ylabel(['Breakdown point =' num2str(bdp)])
-
+title('')
 h2=subplot(2,1,2);
 bdp=0.5;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{17});
 ylabel(['Breakdown point =' num2str(bdp)])
+title('')
 cascade;
 if prin==1
     % print to postscript

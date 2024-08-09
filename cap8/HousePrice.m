@@ -2,6 +2,8 @@
 % This file creates Figures 8.1-8.7.
 
 %% Beginning of code
+prin=0;
+
 load hprice.txt;
 
 % setup parameters
@@ -42,14 +44,23 @@ dout=n-length(outBA.ListOut);
 
 fig=findobj(0,'tag','fsr_yXplot');
 figure(fig(1))
-set(gcf,'Name', 'Figure 8.4');
-sgtitle('Figure 8.4')
+set(gcf,'Tag','fsr_yXplot81')
+
+if prin ==1
+    print -depsc h4.eps;
+else
+    set(gcf,'Name', 'Figure 8.4');
+    sgtitle('Figure 8.4')
+end
 
 fig=findobj(0,'tag','pl_fsr');
 figure(fig(1))
-set(gcf,'Name', 'Figure 8.1');
-title('Figure 8.1')
-
+if prin ==1
+    print -depsc h1.eps;
+else
+    set(gcf,'Name', 'Figure 8.1');
+    title('Figure 8.1')
+end
 
 %% Create Figure 8.2
 % init = initial point to start monitoring
@@ -132,10 +143,11 @@ xlabel('Subset size m','FontSize',FontSize);
 if prin==1
     % print to postscript
     print -depsc h2.eps;
+else
+    set(gcf,'Name', 'Figure 8.2');
+    sgtitle('Figure 8.2')
 end
 
-set(gcf,'Name', 'Figure 8.2');
-sgtitle('Figure 8.2')
 
 
 %% Create Figure 8.3
@@ -173,7 +185,7 @@ for j=1:5
     % entry of the first outlier
     line([dout; dout],[ylimL; ylimU],'Color','r','LineWidth',lwd);
 
-    ylabel(['$\hat{\beta_' num2str(j-1) '}$'],'Interpreter','LaTeX','FontSize',20,'rot',-360);
+    ylabel(['$\hat{\beta}_' num2str(j-1) '$'],'Interpreter','LaTeX','FontSize',20,'rot',-360);
     set(gca,'FontSize',FontSize);
     if j>4
         xlabel('Subset size m','FontSize',FontSize);
@@ -209,24 +221,14 @@ line(xL,[s02 s02],'Color','r','LineWidth',lwd);
 % entry of the first outlier
 line([dout; dout],[ylimL; ylimU],'Color','r','LineWidth',lwd);
 xlabel('Subset size m','FontSize',FontSize);
+if prin ==1
+    print -depsc h3.eps
+else
+    set(gcf,'Name', 'Figure 8.3');
+    sgtitle('Figure 8.3')
+end
 
-set(gcf,'Name', 'Figure 8.3');
-sgtitle('Figure 8.3')
-
-
-%% Create Figure 8.7 (frequentist analysis)
-outFSR=FSR(y,X,'plots',1,'msg',0);
-dout=n-length(outFSR.ListOut);
-
-
-fig=findobj(0,'tag','fsr_yXplot');
-close(fig)
-
-fig=findobj(0,'tag','pl_fsr');
-figure(fig(1))
-set(gcf,'Name', 'Figure 8.7');
-sgtitle('Figure 8.7')
-
+drawnow
 
 %% Create Figure 8.5 (frequentist analysis)
 % Monitoring of 95 per cent and 99 per cent confidence intervals
@@ -245,7 +247,6 @@ nr=3;
 nc=2;
 xlimL=init; % lower value fo xlim
 xlimU=n+1;  % upper value of xlim
-close all
 for j=1:p
     subplot(nr,nc,j);
     hold('on')
@@ -303,16 +304,48 @@ xlabel('Subset size m','FontSize',FontSize);
 % Add multiple title
 disp(['The vertical lines are located in the' ...
     ' step prior to the inclusion of the first outlier'])
+if prin ==1
+    print -depsc h5.eps
+else
+    set(gcf,'Name', 'Figure 8.5');
+    sgtitle('Figure 8.5')
+end
 
-set(gcf,'Name', 'Figure 8.5');
-sgtitle('Figure 8.5')
+drawnow
 
+%% Create Figure 8.6
+figure
+n0=250;
 
-%% Create Figure
-n0=2500;
-bayes.n0=n0;
-outBA1=FSRB(y,X,'bayes',bayes, 'plots',1,'xlim',[280 n]);
+FSRBmdr(y,X,beta0, R, tau0, n0,'init',20,'plots',1);
 
-%   mdrB=FSRBmdr(y,X,beta0, R, tau0, n0,'init',20,'plots',1,'quant');
+if prin ==1
+    print -depsc h6.eps
+else
+    set(gcf,'Name', 'Figure 8.6');
+    title('Figure 8.6')
+end
+drawnow
+%% Create Figure 8.7 (frequentist analysis)
+outFSR=FSR(y,X,'plots',1,'msg',0, 'tag','pl_fsrfreq');
+dout=n-length(outFSR.ListOut);
 
+fig=findobj(0,'tag','fsr_yXplot');
+close(fig)
+
+fig=findobj(0,'tag','pl_fsrfreq');
+figure(fig(1))
+if prin ==1
+    print -depsc  h7.eps
+else
+    set(gcf,'Name', 'Figure 8.7');
+    sgtitle('Figure 8.7')
+end
 %InsideREADME
+
+
+
+
+
+
+

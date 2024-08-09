@@ -1,7 +1,6 @@
-%% This file creates Figures 8.19-8.20, 8.22, 8.26-8.28.
-% 
-% 352 imports of FFP2 and FFP3 masks (product 6307909810) into the European
+% Facemasks: 352 imports of FFP2 and FFP3 masks (product 6307909810) into the European
 % Union extracted in a day of November.
+% This file creates Figures 8.19-8.20, 8.22, 8.26-8.28.
 
 %% Data loading
 
@@ -25,10 +24,11 @@ legend('off')
 if prin==1
     % print to postscript
     print -depsc P6307909810_SP.eps;
+else
+    set(gcf,'Name', 'Figure 8.19');
+    sgtitle('Figure 8.19')
 end
 
-set(gcf,'Name', 'Figure 8.19');
-sgtitle('Figure 8.19')
 drawnow;
 
 %% Create Figure 8.20
@@ -41,9 +41,14 @@ drawnow;
 mdrrsplot(outFM0);
 h_mdrrs=findobj(0,'Tag','pl_mdrrs');
 figure(h_mdrrs(end))
+if prin==1
+    % print to postscript
+    print -depsc P6307909810_SP.eps;
+else
+    set(gcf,'Name', 'Figure 8.20');
+    title('Figure 8.20')
+end
 
-set(gcf,'Name', 'Figure 8.20');
-title('Figure 8.20')
 drawnow;
 
 %% Figures 8.21 and 8.23 are created by facemaskInteractive.m
@@ -75,8 +80,13 @@ xlabel('Subset size m','FontSize',fs);
 ylabel('Fitted slope','FontSize',fs);
 legend('Group 1' , 'Group 2', 'Group 3','FontSize',14)
 
-set(gcf,'Name', 'Figure 8.22');
-title('Figure 8.22')
+if prin==1
+    % print to postscript
+    print -depsc P6307909810_SP.eps;
+else
+    set(gcf,'Name', 'Figure 8.22');
+    title('Figure 8.22')
+end
 
 %% Create left panel of Figure 8.26
 typeIC='MIXMIX';
@@ -89,14 +99,15 @@ out = tclustregIC(y,X,'whichIC',typeIC,'alphaLik',alphaLik,'alphaX',alphaX, ...
     'kk',1:5,'nsamp',nsamp,'intercept',0,'plots',0);
 % Show the elbow plot
 tclustICplot(out,'whichIC',typeIC,'datatooltip','');
-if prin==1
-    % print to postscript
-    print -depsc figures\C2a.eps;
-end
 h_MIXMIX=findobj(0,'Tag','pl_IC_MIXMIX');
 figure(h_MIXMIX(end))
-set(gcf,'Name', 'Left panel of Figure 8.26');
-title('Left panel of Figure 8.26')
+if prin==1
+    % print to postscript
+    print -depsc C2a.eps;
+else
+    set(gcf,'Name', 'Left panel of Figure 8.26');
+    title('Left panel of Figure 8.26')
+end
 drawnow
 
 
@@ -109,18 +120,19 @@ outICsol=tclustICsol(out,'whichIC',typeIC,'SpuriousSolutions',SpuriousSolutions,
 carbikeplot(outICsol,'SpuriousSolutions',SpuriousSolutions);
 if prin==1
     % print to postscript
-    print -depsc figures\C2b.eps;
+    print -depsc C2b.eps;
+else
+    set(gcf,'Name', 'Right panel of Figure 8.26');
+    title('Right panel of Figure 8.26')
 end
 
-set(gcf,'Name', 'Right panel of Figure 8.26');
-title('Right panel of Figure 8.26')
 
 
 %% Prepare input for Figure 8.27
 rng(1)
 alphaLik = (0.10:-0.01:0)' ;
 alphaX = 0;
-nsamp=50000; 
+nsamp=50000;
 
 % Prepare input for upper panel of Figure 8.27
 % rng(100)
@@ -199,11 +211,12 @@ ylim([0 2*10^10])
 
 if prin==1
     % print to postscript
-    print -depsc figures\C3.eps;
+    print -depsc C3.eps;
+else
+    set(gcf,'Name', 'Figure 8.27');
+    sgtitle('Figure 8.27')
 end
 
-set(gcf,'Name', 'Figure 8.27');
-sgtitle('Figure 8.27')
 
 
 %% Create left panel of Figure 8.28
@@ -217,10 +230,11 @@ out3final = tclustreg(y,X,k,restrfact,alpha1,alphaX,'intercept',false,'msg',1,'p
 yXplot(y,X,'group',out3final.idx,'plo',plo,'tag','calk3');
 if prin==1
     % print to postscript
-    print -depsc figures\C4a.eps;
+    print -depsc C4a.eps;
+else
+    set(gcf,'Name', 'Left panel of Figure 8.28');
+    sgtitle('Left panel of Figure 8.28')
 end
-set(gcf,'Name', 'Left panel of Figure 8.28');
-sgtitle('Left panel of Figure 8.28')
 
 
 %% Create right panel of Figure 8.28
@@ -237,7 +251,7 @@ out4final = tclustreg(y,X,k,restrfact,alpha1,alphaX,'intercept',false,'msg',1,'p
 yXplot(y,X,'group',out4final.idx,'plo',plo,'tag','calk4');
 if prin==1
     % print to postscript
-    print -depsc figures\C4b.eps;
+    print -depsc C4b.eps;
 end
 
 set(gcf,'Name', 'Right panel of Figure 8.28');
@@ -297,4 +311,4 @@ end
 %     R2all(:,j)=sort(R2all(:,j),'descend');
 % end
 
-%InsideREADME 
+%InsideREADME

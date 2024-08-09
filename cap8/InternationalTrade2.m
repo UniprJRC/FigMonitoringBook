@@ -22,10 +22,11 @@ ylabel('Value')
 xlabel('Weight')
 if prin==1
     print -depsc P307scatter.eps;
+else
+    set(gcf,'Name', 'Figure 8.16');
+    title('Figure 8.16')
 end
 
-set(gcf,'Name', 'Figure 8.16');
-title('Figure 8.16')
 
 
 
@@ -51,9 +52,10 @@ xlim([0 0.17])
 ylim([-5000 140000])
 if prin==1
     print -depsc P307bandsHhar.eps;
+else
+    set(gcf,'Name', 'Top panel of Figure 8.18');
+    title('Figure 8.18 (top panel)')
 end
-set(gcf,'Name', 'Top panel of Figure 8.18');
-title('Figure 8.18 (top panel)')
 
 
 %% Create bottom panel of Figure 8.18
@@ -78,8 +80,9 @@ xlim([0 0.17])
 ylim([-5000 140000])
 if prin==1
     print -depsc P307bandsHzoom.eps;
+else
+    set(gcf,'Name', 'Bottom panel of Figure 8.18');
+    title('Figure 8.18 (bottom panel)')
 end
-set(gcf,'Name', 'Bottom panel of Figure 8.18');
-title('Figure 8.18 (bottom panel)')
 
 %InsideREADME

@@ -1,6 +1,7 @@
-%% This file creates Figures 8.30-8.32.
-%
-% Robust monitoring of time seris 
+%% Robust monitoring of time series
+% This file creates Figures 8.30-8.32.
+
+%% Beginning of code
 close all; clear;
 rng(12345);
 
@@ -43,9 +44,12 @@ plot(airlines,'Linewidth',1.5);
 xlabel('Month index, from 1949 to 1960','FontSize',18);
 ylabel('Thousands of passengers','FontSize',18);
 set(gca,'FontSize',18)
-
-set(gcf,'Name', 'Figure 8.30 (left panel)');
-title('Figure 8.30 (left panel)')
+if prin ==1
+    print -depsc ch8_ts_airline
+else
+    set(gcf,'Name', 'Figure 8.30 (left panel)');
+    title('Figure 8.30 (left panel)')
+end
 
 
 %% Create right panel of Figure 8.30
@@ -66,11 +70,14 @@ xlabel('Month index, from 1949 to 1960','FontSize',18);
 ylabel('Thousands of passengers','FontSize',18);
 set(gca,'FontSize',18)
 
-set(gcf,'Name', 'Figure 8.30 (right panel)');
-title('Figure 8.30 (right panel)')
+if prin ==1
+    print -depsc ch8_ts_airline_LScont
+else
+    set(gcf,'Name', 'Figure 8.30 (right panel)');
+    title('Figure 8.30 (right panel)')
+end
 
-
-%% Preapre input for Figure 8.31 
+%% Preapre input for Figure 8.31
 % the model
 model           = struct;
 model.trend     = 1;
@@ -88,16 +95,24 @@ nT = length(Y);
 % This corresponds to a 25% breakdown point.
 outLTS = LTSts(Y,'model',model,'plots',1,'conflev',0.99,'msg',0,'dispresults',true);
 title(findobj(gcf,'Tag','LTSts:ts'),[titl ' - LTS with conflev=0.99 and bdp=25%'] );
-set(gcf,'Name', 'Figure 8.31 (top left panel)');
-sgtitle('Figure 8.31 (top left panel)')
+if prin ==1
+    print -depsc ch8_ts_airline_LTS
+else
+    set(gcf,'Name', 'Figure 8.31 (top left panel)');
+    sgtitle('Figure 8.31 (top left panel)')
+end
 drawnow
 
 %% Create top right panel of Figure 8.31
 % this is LTsts with 5% bdp
 outLTS05 = LTSts(Y,'model',model,'plots',1,'bdp',0.05,'conflev',0.99,'msg',0,'dispresults',true);
 title(findobj(gcf,'Tag','LTSts:ts'),[titl ' - LTS with conflev=0.99 and bdp=5%'] );
-set(gcf,'Name', 'Figure 8.31 (top right panel)');
-sgtitle('Figure 8.31 (top right panel)')
+if prin ==1
+    print -depsc ch8_ts_airline_LTS_bdp05.eps
+else
+    set(gcf,'Name', 'Figure 8.31 (top right panel)');
+    sgtitle('Figure 8.31 (top right panel)')
+end
 drawnow
 
 
@@ -107,16 +122,23 @@ drawnow
 % the wedgeplot with the time series, the detected outliers and level shift
 wedgeplot(outLTS,'titl',titl);
 xlim([0,150])
-title('Figure 8.31 (bottom left panel)')
-set(gcf,"Name",'Figure 8.31 (bottom left panel)')
+if prin ==1
+    print -depsc ch8_ts_airline_LTS_wedge.eps
+else
+    title('Figure 8.31 (bottom left panel)')
+    set(gcf,"Name",'Figure 8.31 (bottom left panel)')
+end
 
 %% Create bottom right panel of  Figure 8.31
 % the wedgeplot with the time series, the detected outliers and level shift
 wedgeplot(outLTS05,'titl',titl);
 xlim([0,150])
-
-title('Figure 8.31 (bottom right panel)')
-set(gcf,"Name",'Figure 8.31 (bottom right panel)')
+if prin ==1
+    print -depsc ch8_ts_airline_LTS_wedge_bdp05.eps
+else
+    title('Figure 8.31 (bottom right panel)')
+    set(gcf,"Name",'Figure 8.31 (bottom right panel)')
+end
 
 %% Create Figure 8.32
 % FS with default 0.99 conflev
@@ -128,13 +150,19 @@ close(pl_yX)
 
 plres=findobj(0, 'type', 'figure','tag','pl_res');
 figure(plres(end))
-sgtitle('Figure 8.32 (left panel)')
-set(gcf,"Name",'Figure 8.32 (left panel)')
-
+if prin ==1
+    print -depsc  ch8_ts_airline_FS.eps
+else
+    sgtitle('Figure 8.32 (left panel)')
+    set(gcf,"Name",'Figure 8.32 (left panel)')
+end
 
 aa=findobj(0, 'type', 'figure','tag','pl_fsr');
 figure(aa(end))
-title('Figure 8.32 (right panel)')
-set(gcf,"Name",'Figure 8.32 (right panel)')
-
-%InsideREADME 
+if prin ==1
+    print -depsc  ch8_ts_airline_FS_mdr.eps
+else
+    title('Figure 8.32 (right panel)')
+    set(gcf,"Name",'Figure 8.32 (right panel)')
+end
+%InsideREADME

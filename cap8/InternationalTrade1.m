@@ -19,9 +19,10 @@ ylabel('Value')
 xlabel('Weight')
 if prin==1
     print -depsc P48scatter.eps;
+else
+    set(gcf,'Name', 'Figure 8.12');
+    title('Figure 8.12')
 end
-set(gcf,'Name', 'Figure 8.12');
-title('Figure 8.12')
 
 
 
@@ -55,9 +56,10 @@ title('\sigma^2')
 xlabel('Subset size m')
 if prin==1
     print -depsc P48param.eps;
+else
+    set(gcf,'Name', 'Figure 8.13');
+    sgtitle('Figure 8.13')
 end
-set(gcf,'Name', 'Figure 8.13');
-sgtitle('Figure 8.13')
 
 
 %% Create Figure 8.14
@@ -65,12 +67,13 @@ sgtitle('Figure 8.13')
 resfwdplot(outHEDA,'datatooltip','')
 if prin==1
     print -depsc P48resfwd.eps;
+else
+    set(gcf,'Name', 'Figure 8.14');
+    title('Figure 8.14')
 end
-set(gcf,'Name', 'Figure 8.14');
-title('Figure 8.14')
 
-%% Prepare input for Figure 8.15 
-% Automatic outlier detection 
+%% Prepare input for Figure 8.15
+% Automatic outlier detection
 bonflev=0.99;
 outH=FSRH(y,X,Z,'init',round(n*0.8),'plots',0,'ylim',[1.6 3], ...
     'typeH',typeH,'bonflev',bonflev);
@@ -91,34 +94,9 @@ if prin==1
     print -depsc P48bandsHhar.eps;
     print -depsc P48bandsH.eps;
     print -depsc P48scatterwithouthar.eps;
+else
+    set(gcf,'Name', 'Figure 8.15');
+    title('Figure 8.15')
 end
-
-set(gcf,'Name', 'Figure 8.15');
-title('Figure 8.15')
-
-
-% %% HOMOSCEDASTIC analysis
-% close all
-% [outLXS]=LXS(y,X,'nsamp',10000,'lms',0);
-% 
-% out.ListOut=outLXS.outliers;
-% mdl = fitlm(X,y,'Exclude',outLXS.ListOut);
-% Xnew=(min(X):(max(X)-min(X))/100:max(X))';
-% [ypred,yci] = predict(mdl,Xnew,'Prediction','observation','alpha',0.01,'Simultaneous','on');
-% hold('on')
-% seq=1:length(y);
-% good=setdiff(seq,out.ListOut);
-% plot(X(good),y(good),'o')
-% plot(X(out.ListOut),y(out.ListOut),'rx','MarkerSize',5)
-% 
-% plot(Xnew,ypred,'k')
-% plot(Xnew,yci,'r','LineWidth',1)
-% ylim([0 5e+04])
-% xlabel('Quantity')
-% ylabel('Value')
-% xlim([min(X) max(X)])
-% if prin==1
-%     print -depsc P48param.eps;
-% end
 
 %InsideREADME
