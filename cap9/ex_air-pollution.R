@@ -19,7 +19,7 @@ library(Sleuth3)    # for the data set
 library(glmnet)
 library(corrplot)   # for the correlation plot
 library(ggplot2)
-library(ggrpel)     # for the labels in the diagnostic plots
+library(ggrepel)     # for the labels in the diagnostic plots
 library(latex2exp)  # for TeX() - Latex in ggplot graphs
 library(viridis)
 
@@ -205,6 +205,7 @@ toc()
 
 ##  elapsed time is 194.630000 seconds 
 
+##==============================================================================
 
 ## Plot CV results for bdp=25% and bdp=50%
 plot(fit25)
@@ -427,31 +428,152 @@ x[,"SO2"] <- log(x[,"SO2"])
 
 tic()
 set.seed(5678)
-fit25 <- pense_cv(x, y, alpha=1, bdp=0.25, cv_k=10, cv_repl=10)
+pense_fit25 <- pense_cv(x, y, alpha=1, bdp=0.25, cv_k=10, cv_repl=10)
 toc()
+
+##  elapsed time is 16.090000 second
 
 tic()
 set.seed(5678)
-fit50 <- pense_cv(x, y, alpha=1, bdp=0.4, cv_k=10, cv_repl=10)
+pense_fit50 <- pense_cv(x, y, alpha=1, bdp=0.4, cv_k=10, cv_repl=10)
 toc()
+
+##  elapsed time is 19.080000 second
 
 ## Plot coefficient path
 cairo_pdf(filename="cap9-air-pollution-pense-25-coef.pdf", width=7.5, height=5)
-plot(fit25, what="coef.path")
+plot(pense_fit25, what="coef.path")
 dev.off()
 
 ## Plot CV results for bdp=25% and bdp=50%
 opar=par(mar=c(5.1, 5.1, 4.1, 2.1))
-plot(fit25, main="CV prediction performance for bdp=0.25", cex=1.4)
-plot(fit50, main="CV prediction performance for bdp=0.40", cex=1.4)
-par(opar)
-
-opar=par(mar=c(5.1, 5.1, 4.1, 2.1))
 cairo_pdf(filename="cap9-air-pollution-pense-25-PE.pdf", width=7.5, height=5)
-plot(fit25, main="CV prediction performance for bdp=0.25", cex=1.4)
+plot(pense_fit25, main="CV prediction performance for bdp=0.25", cex=1.4)
 dev.off()
+
 cairo_pdf(filename="cap9-air-pollution-pense-50-PE.pdf", width=7.5, height=5)
-plot(fit50, main="CV prediction performance for bdp=0.40", cex=1.4)
+plot(pense_fit50, main="CV prediction performance for bdp=0.40", cex=1.4)
 par(opar)
 dev.off()
 
+##==============================================================================
+##
+##  Compare LASSO, Sparse LTS and PENSE
+##
+##==============================================================================
+
+##  lasso_cv
+
+(lambda.min = lasso_cv$lambda.min)
+(lambda.1se = lasso_cv$lambda.1se)
+
+lasso_min = glmnet(x, y, family="gaussian", alpha=1, lambda=lambda.min)
+(lasso_varlist_min <- row.names(lasso_min$beta)[which(lasso_min$beta != 0)])
+length(lasso_varlist_min)
+
+lasso_1se = glmnet(x, y, family="gaussian", alpha=1, lambda=lambda.1se)
+(lasso_varlist_1se <- row.names(lasso_1se$beta)[which(lasso_1se$beta != 0)])
+length(lasso_varlist_1se)
+
+## lts_cv
+(lts25_lambda.min <- fit25$tuning[which.min(fit25$pe$reweighted), 1])      # 0.674232
+(lts25_lambda.1se <- fit25$tuning[fit25$best[1], 1])                       # 1.059507
+
+lts25_min <- sparseLTS(x, y, alpha=0.75, lambda=lts25_lambda.min)
+lts25_min_varlist <- coef(lts25_min)[which(abs(coef(lts25_min)) >= 1e-16)]  # get the beta
+(lts25_min_varlist <- names(lts25_min_varlist[-1]))                         # remove the intercept
+length(lts25_min_varlist)
+
+lts25_1se <- sparseLTS(x, y, alpha=0.75, lambda=lts25_lambda.1se)
+lts25_1se_varlist <- coef(lts25_1se)[which(abs(coef(lts25_1se)) >= 1e-16)]  # get the beta
+(lts25_1se_varlist <- names(lts25_1se_varlist[-1]))                         # remove the intercept
+length(lts25_1se_varlist)
+
+(lts50_lambda.min <- fit50$tuning[which.min(fit50$pe$reweighted), 1])      # 0.2889566
+(lts50_lambda.1se <- fit50$tuning[fit50$best[1], 1])                       # 1.733739
+
+lts50_min <- sparseLTS(x, y, alpha=0.75, lambda=lts50_lambda.min)
+lts50_min_varlist <- coef(lts50_min)[which(abs(coef(lts50_min)) >= 1e-16)]  # get the beta
+(lts50_min_varlist <- names(lts50_min_varlist[-1]))                         # remove the intercept
+length(lts50_min_varlist)
+
+lts50_1se <- sparseLTS(x, y, alpha=0.5, lambda=lts50_lambda.1se)
+lts50_1se_varlist <- coef(lts50_1se)[which(abs(coef(lts50_1se)) >= 1e-16)]  # get the beta
+(lts50_1se_varlist <- names(lts50_1se_varlist[-1]))                         # remove the intercept
+length(lts50_1se_varlist)
+
+## pense_cv
+pense25_min_varlist <- coef(pense_fit25, lambda="min")
+pense25_min_varlist <- pense25_min_varlist[which(abs(pense25_min_varlist) >= 1e-16)]
+(pense25_min_varlist <- pense25_min_varlist[-1])
+length(pense25_min_varlist)
+
+pense25_1se_varlist <- coef(pense_fit25, lambda="se")
+pense25_1se_varlist <- names(pense25_1se_varlist[which(abs(pense25_1se_varlist) >= 1e-16)])
+(pense25_1se_varlist <- pense25_1se_varlist[-1])
+length(pense25_1se_varlist)
+
+pense50_min_varlist <- coef(pense_fit50, lambda="min")
+pense50_min_varlist <- pense50_min_varlist[which(abs(pense50_min_varlist) >= 1e-16)]
+(pense50_min_varlist <- pense50_min_varlist[-1])
+length(pense50_min_varlist)
+
+pense50_1se_varlist <- coef(pense_fit50, lambda="se")
+pense50_1se_varlist <- names(pense50_1se_varlist[which(abs(pense50_1se_varlist) >= 1e-16)])
+(pense50_1se_varlist <- pense50_1se_varlist[-1])
+length(pense50_1se_varlist)
+
+## all 4 variables selected by LASSO are included in the 6 selected by LTS with bdp=0.25
+lasso_varlist_1se 
+lts25_1se_varlist
+which(lasso_varlist_1se %in% lts25_1se_varlist)
+
+## all 4 variables selected by LASSO are included in the 8 selected by LTS with bdp=0.50
+lts50_1se_varlist
+which(lasso_varlist_1se %in% lts50_1se_varlist)
+
+## 5 of the 6 variables selected by LTS with bdp=0.25 are included in the 8 selected by LTS with bdp=0.50
+which(lts25_1se_varlist %in% lts50_1se_varlist)
+
+## all 4 variables selected by LASSO are included in the 7 selected by PENSE with bdp=0.25
+lasso_varlist_1se %in% pense25_1se_varlist
+
+
+## all 6 variables selected by LTS with bdp=0.25 are included in the 7 selected by PENSE with bdp=0.25
+which(lts25_1se_varlist %in% pense25_1se_varlist)
+
+## 6 variables of the 8 selected by LTS with bdp=0.50 are included in the 7 selected by PENSE with bdp=0.25
+which(lts50_1se_varlist %in% pense25_1se_varlist)
+
+##  All 4 variables selected by LASOO, all 6 variables selected by LTS with bdp=0.25 
+##  and all 8 variables selected by LTS with bdp=0.50 are included 
+##  in the 15 selected by PENSE with 0.50
+
+
+## all 4 variables selected by LASSO are included in the 6 selected by LTS with bdp=0.25
+## all 4 variables selected by LASSO are included in the 8 selected by LTS with bdp=0.50
+## all 4 variables selected by LASSO are included in the 7 selected by PENSE with bdp=0.25
+## 5 of the 6 variables selected by LTS with bdp=0.25 are included in the 8 selected by LTS with bdp=0.50
+## all 6 variables selected by LTS with bdp=0.25 are included in the 7 selected by PENSE with bdp=0.25
+## 6 variables of the 8 selected by LTS with bdp=0.50 are included in the 7 selected by PENSE with bdp=0.25
+## PENSE with bdp=0.5 selects all variables
+
+##              LASSO   LTS25   LTS50   PENSE25 PENSE50
+##  Precip        X       X       X        X        X
+##  Humidity                                        X
+##  JanTemp                       X                 X
+##  JulyTemp                                        X
+##  Over65                                          X
+##  House                 X       X        X        X
+##  Educ          X       X       X        X        X
+##  Sound                         X                 X
+##  Density               X                X        X
+##  NonWhite      X       X       X        X        X
+##  WhiteCol                      X        X        X
+##  Poor
+##  HC
+##  NOX
+##  SO2           X       X       X        X        X
+ 
+
+ 
