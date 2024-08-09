@@ -1,6 +1,7 @@
+%% Facemasks data
 % Facemasks: 352 imports of FFP2 and FFP3 masks (product 6307909810) into the European
 % Union extracted in a day of November.
-% This file creates Figures 8.19-8.20, 8.22, 8.26-8.28.
+% This file creates Figures 8.19-8.20, 8.22, 8.26-8.29.
 
 %% Data loading
 
@@ -219,7 +220,7 @@ end
 
 
 
-%% Create left panel of Figure 8.28
+%% Create Figure 8.28
 % Final classification with k=3
 rng(1000)
 k=3;
@@ -232,12 +233,12 @@ if prin==1
     % print to postscript
     print -depsc C4a.eps;
 else
-    set(gcf,'Name', 'Left panel of Figure 8.28');
-    sgtitle('Left panel of Figure 8.28')
+    set(gcf,'Name', 'Figure 8.28');
+    sgtitle('Figure 8.28')
 end
 
 
-%% Create right panel of Figure 8.28
+%% Create Figure 8.29
 % Final classification with k=4;
 rng(2000)
 plo=struct;
@@ -254,8 +255,8 @@ if prin==1
     print -depsc C4b.eps;
 end
 
-set(gcf,'Name', 'Right panel of Figure 8.28');
-sgtitle('Right panel of Figure 8.28')
+set(gcf,'Name', 'Figure 8.29');
+sgtitle('Figure 8.29')
 
 
 %% Create tables with coefficients and sample sizes

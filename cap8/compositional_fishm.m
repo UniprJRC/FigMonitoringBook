@@ -1,11 +1,13 @@
-%% Transformed Fish Morphology data.
+%% Fish Morphology data.
 % This file creates Figures  8.36-8.39
 
 %% Beginning of code
+prin=0;
+
 load FishMorphology.mat
 
-boo=FishMorphology.Habitat==1;
 % Select the rows whose Habitat is 1
+boo=FishMorphology.Habitat==1;
 FishMorphology=FishMorphology(boo,:);
 % Extract the 10 variables mentioned in the book
 namX=["Bg", "Bd", "Bcw", "Jw", "Jl", "Bp", "Bac", "Bch", "Fc","Fdw"];
@@ -15,13 +17,6 @@ Xori=FishMorphology(:,namX);
 % Apply the ilr transformation
 X=pivotCoord(Xori{:,:});
 
-% load ('fishmilr.txt');
-% size(fishmilr)
-% 
-% y = fishmilr(:,10);
-% X = fishmilr(:,1:9);
-
-prin=0;
 
 conflev=[0.95 0.99];
 

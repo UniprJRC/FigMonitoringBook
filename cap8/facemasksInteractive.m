@@ -1,4 +1,5 @@
-%% This file creates Figures 8.21 and 8.23
+%% Facemasks data: interactive part.
+% This file creates Figures 8.21 and 8.23
 
 %% Data  loading
 load facemasks.mat

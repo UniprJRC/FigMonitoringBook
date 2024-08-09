@@ -1,6 +1,6 @@
-%$ InternationalTrade2.m
-% This file creates Figure 8.17
-% The file which creates Figures 8.16 and 8.18 is called InternationalTrade2.m
+%% Heteroskedasticity: International Trade Data 2 (interactive plot).
+% This file creates Figure 8.17.
+% File which creates Figures 8.16 and 8.18 is called InternationalTrade2.m
 
 %% Beginning of code
 close all

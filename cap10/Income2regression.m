@@ -44,10 +44,12 @@ stepwiselm(Xytable)
 %% Create Figure 10.13
 % Analysis using a set of values of lambda
 outFSRfan=FSRfan(y,X,'plots',1,'la',[-2 -1 -0.5 0 0.5 1],'nsamp',10000);
-title('Figure 10.13')
+title('')
 if prin==1
     % print to postscript
     print -depsc inc2f2.eps;
+else
+    title('Figure 10.13')
 end
 
 

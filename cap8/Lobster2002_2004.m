@@ -1,5 +1,5 @@
-%% This file creates Figures 8.8-8.11.
-% Fishery dataset years 2002-2004.
+%% Lobster dataset years 2002-2004.
+% This file creates Figures 8.8-8.11.
 
 %% Data loading
 close all
@@ -41,9 +41,12 @@ prin=0;
 scatter(X02,y02)
 xlabel('Quantity (in tons)');
 ylabel('Value (in 1000 Euro)');
-set(gcf,'Name', 'Figure 8.8 (left panel)');
-title('Figure 8.8 (left panel)')
-
+if prin ==1
+    print -depsc  FSdata2002.eps
+else
+    set(gcf,'Name', 'Figure 8.8 (left panel)');
+    title('Figure 8.8 (left panel)')
+end
 
 %% Create right panel of Figure 8.8
 
@@ -55,9 +58,12 @@ close(fig)
 
 fig=findobj(0,'tag','pl_fsr');
 figure(fig(1))
-set(gcf,'Name', 'Figure 8.8 (right panel)');
-title('Figure 8.8 (right panel)')
-
+if prin ==1
+    print -depsc  FSbonf2002.eps
+else
+    set(gcf,'Name', 'Figure 8.8 (right panel)');
+    title('Figure 8.8 (right panel)')
+end
 
 %% Create Figure 8.9
 % In what follows
@@ -109,8 +115,12 @@ plot(X02(u02o)',y02(u02o)','Marker','o','LineStyle','none','Color','r')
 xlabel('Quantity in tons');
 ylabel('Value in 1000 euro');
 
-set(gcf,'Name', 'Figure 8.9');
-title('Figure 8.9')
+if prin ==1
+    print -depsc  FSres2002.eps
+else
+    set(gcf,'Name', 'Figure 8.9');
+    title('Figure 8.9')
+end
 
 
 %% Create Figure 8.10 (left panel)
@@ -143,8 +153,12 @@ close(fig)
 
 fig=findobj(0,'tag','fsrB2003');
 figure(fig(1))
-set(gcf,'Name', 'Figure 8.10 (left panel)');
-title('Figure 8.10 (left panel)')
+if prin ==1
+    print -depsc  FSbonf2003.eps
+else
+    set(gcf,'Name', 'Figure 8.10 (left panel)');
+    title('Figure 8.10 (left panel)')
+end
 
 %% Create Figure 8.10 (right panel)
 u03g=setdiff(seq03,out03.ListOut);
@@ -187,8 +201,12 @@ xlabel('Quantity in tons')
 ylabel('Value in 1000 euro')
 title('2003');
 
-title('Figure 8.10 (right panel)')
-set(gcf,"Name",'Figure 8.10 (right panel)')
+if prin ==1
+    print -depsc  FSres2003.eps
+else
+    title('Figure 8.10 (right panel)')
+    set(gcf,"Name",'Figure 8.10 (right panel)')
+end
 
 %% Create left panel of Figure 8.11
 % Definition of bayes structure (based on 2002 and 2003)
@@ -228,9 +246,12 @@ close(fig)
 
 fig=findobj(0,'tag','fsrB2004');
 figure(fig(1))
-set(gcf,'Name', 'Left panel of Figure 8.11');
-title('Left panel of Figure 8.11')
-
+if prin==1
+    print -depsc  FSbonf2004.eps
+else
+    set(gcf,'Name', 'Left panel of Figure 8.11');
+    title('Left panel of Figure 8.11')
+end
 
 %% Create right panel of Figure 8.11
 u04g=setdiff(seq04,out04.ListOut);
@@ -270,15 +291,14 @@ plot(X04(u04o)',y04(u04o)','Marker','o','LineStyle','none','Color','r')
 set(gca,'FontSize',14)
 xlabel('Quantity in tons')
 ylabel('Value in 1000 euro')
+xlim([0 350])
 
 if prin==1
     print -depsc FSres2004.eps;
+else
+    set(gcf,'Name', 'Right panel of Figure 8.11');
+    title('Right panel of Figure 8.11')
 end
-xlim([0 350])
-
-set(gcf,'Name', 'Right panel of Figure 8.11');
-title('Right panel of Figure 8.11')
 
 
-
-%InsideREADME  
+%InsideREADME

@@ -3,6 +3,7 @@
 
 %% Beginning of code
 close all; clear;
+prin=0;
 rng(12345);
 
 %% load data
@@ -25,10 +26,6 @@ airlines=(airlines(:));
 
 
 %%  Preapre input for  Figure 8.30
-% Plot cap8fig/ch8_ts_airline and cap8fig/ch8_ts_airline_LScont
-
-% select the airline data
-userdata = 1;
 
 % contaminate the data as done in the book
 airlinesLS=airlines;

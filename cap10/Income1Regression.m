@@ -171,7 +171,7 @@ hold('on')
 % sel1=[];
 scatter3(X(sel1,1),X(sel1,2),ytra(sel1),'k','MarkerFaceColor','k')
 text(X(sel1,1),X(sel1,2),ytra(sel1),num2str(sel1))
-zlabel('$y^{0.5}$','Interpreter','latex')
+zlabel('y^{0.5}','Interpreter','tex')
 if prin==1
     % print to postscript
     print -depsc inc1f7.eps;
