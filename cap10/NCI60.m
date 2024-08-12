@@ -86,7 +86,6 @@ end
 
 %% Create Figure 10.49
 % Monitoring of residuals
-% LMS using nsamp subsamples
 [outLXS]=LXS(y,X,'nsamp',10000);
 % Forward Search
 [outFS]=FSReda(y,X,outLXS.bs);
@@ -213,7 +212,7 @@ close(fig(1))
 
 
 %% Create Table 10.10
-% ANOVA table after removing x3
+% ANOVA table after removing x3 and the 5 outliers
 mdlysel=stepwiselm(X,y,'Exclude',outf.outliers);
 disp('Table 10.10')
 disp(mdlysel)
@@ -221,7 +220,7 @@ disp(mdlysel)
 
 %% Create Figure
 % Robust model selection using Cp
-[Cpms]=FSRms(yg,Xg,'smallpint',3:7);
+[Cpms]=FSRms(yg,Xg,'smallpint',3:7,'nsamp',10000);
 % Candlestick plot
 figure
 cdsplot(Cpms);
