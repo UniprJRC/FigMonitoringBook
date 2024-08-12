@@ -25,7 +25,7 @@ FontSize=14;
 
 %% Create Figure 10.1: yX plot
 yXplot(yt,Xt);
-prin=1;
+prin=0;
 if prin==1
     % print to postscript
     print -depsc inc1f1.eps;
@@ -35,7 +35,7 @@ else
 end
 
 
-%% Analysis using the 5 most common values of lambda
+%% Analysis using the 5 most common values of lambda (not in the book)
 outFSRfan5v=FSRfan(y,X,'plots',1,'tag','best la among 5 most common');
 set(gcf,"Name",'Figure not in the book')
 
@@ -362,13 +362,13 @@ end
 
 
 
-%% Create Prepare input for Figure 10.11
+%% Prepare input for Figure 10.11
 % RAVAS after deleting the outliers and starting in the transformed scale
 critBestSol=struct;
 critBestSol.pvalDW=0.01;
 critBestSol.pvalJB=0.001;
 
-outAVAS=avasms(y,X,'critBestSol',critBestSol);
+outAVAS=avasms(y,X,'critBestSol',critBestSol,'plots',0);
 
 nameX=Xt.Properties.VariableNames;
 j=1;
