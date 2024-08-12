@@ -229,10 +229,6 @@ else
 end
 drawnow
 
-%% Create Table 10.5
-mdlAVAS=fitlm(outAV.tX,outAV.ty,'Exclude','','VarNames',nameXy);
-disp('Table 10.5')
-disp(mdlAVAS)
 
 %% Prepare input for Figures 10.32 and 10.33
 % RAVAS model selection with no constraint in X
@@ -269,13 +265,6 @@ else
     set(gcf,"Name",'Figure 10.33')
 end
 
-%%
-% outlierfromFSR=false;
-% if outlierfromFSR==true
-%     outfromRAVAS=outsqrty.outliers;
-% else
-outfromRAVAS=outrobAV.outliers;
-% end
 
 %% Create Table 10.6
 % mdl  = fit in original scale (all the observations)
@@ -284,6 +273,8 @@ outfromRAVAS=outrobAV.outliers;
 % mdlRAVAS = fit based on best model after excluding the outliers
 % find F value
 
+mdlAVAS=fitlm(outAV.tX,outAV.ty,'Exclude','','VarNames',nameXy);
+outfromRAVAS=outrobAV.outliers;
 mdlRAVAS=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outfromRAVAS,'VarNames',nameXy);
 
 Original=[mdl.Coefficients{:,'tStat'}; mdl.NumObservations; mdl.Rsquared.Adjusted];
