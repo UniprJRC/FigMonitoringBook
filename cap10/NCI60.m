@@ -4,7 +4,7 @@
 % and Tables 10.8-10.10.
 
 %% Beginning of code
-close al
+close all
 clear
 % Data from national cancer institute
 load nci60
@@ -43,14 +43,15 @@ outf=FSR(y,X,'init',round(n*0.7));
 pl_fsr=findobj(0, 'type', 'figure','tag','pl_fsr');
 close(pl_fsr(end))
 
-sgtitle('Figure 10.47')
-set(gcf,"Name",'Figure 10.47')
-drawnow
 
 if prin==1
     % print to postscript
     print -depsc canc1.eps;
+else
+    sgtitle('Figure 10.47')
+    set(gcf,"Name",'Figure 10.47')
 end
+drawnow
 
 
 %% Create Figure 10.48
@@ -74,12 +75,13 @@ yg=y(good);
 resg=mdlyall.Residuals{good,3};
 qqplotFS(resg,'X',Xg,'plots',1,'h',h2,'conflev',conflev);
 
-sgtitle('Figure 10.48')
-set(gcf,"Name",'Figure 10.48')
 
 if prin==1
     % print to postscript
     print -depsc canc2.eps;
+else
+    sgtitle('Figure 10.48')
+    set(gcf,"Name",'Figure 10.48')
 end
 
 %% Create Figure 10.49
@@ -100,9 +102,10 @@ resfwdplot(outFS,'datatooltip','','fground',fground, ...
 if prin==1
     % print to postscript
     print -depsc canc2a.eps;
+else
+    title('Figure 10.49')
+    set(gcf,"Name",'Figure 10.49')
 end
-title('Figure 10.49')
-set(gcf,"Name",'Figure 10.49')
 
 %% Create Figure 10.50
 % FSRaddt in the model without the interactions
@@ -111,10 +114,11 @@ outADDt=FSRaddt(y,X,'plots',1,'nsamp',10000);
 if prin==1
     % print to postscript
     print -depsc canc3.eps;
+else
+    title('Figure 10.50')
+    set(gcf,"Name",'Figure 10.50')
 end
 
-title('Figure 10.50')
-set(gcf,"Name",'Figure 10.50')
 
 
 %% Create Figure 10.51
@@ -125,10 +129,11 @@ FSRaddt(yg,Xg,'plots',1);
 if prin==1
     % print to postscript
     print -depsc canc4.eps;
+else
+    title('Figure 10.51')
+    set(gcf,"Name",'Figure 10.51')
 end
 
-title('Figure 10.51')
-set(gcf,"Name",'Figure 10.51')
 
 %% Create Figure 10.52
 % Transformation
@@ -139,24 +144,26 @@ title('')
 if prin==1
     % print to postscript
     print -depsc canc5.eps;
+else
+    title('Figure 10.52')
+    set(gcf,"Name",'Figure 10.52')
 end
-title('Figure 10.52')
-set(gcf,"Name",'Figure 10.52')
 
 %% Create Figure 10.53
 % Create fanplotori (bottom panel)
 % pos and neg for 0.75
-lasel=0.75;
+lasel=0.9;
 ylimy1=5;
-outpn=FSRfan(y,X,'nsamp',100000,'la',lasel,'family','YJpn','plots',1,'init',round(nini)); 
+outpn=FSRfan(y,X,'nsamp',100000,'la',lasel,'family','YJpn','plots',1,'init',round(nini));
 title('')
 if prin==1
     % print to postscript
     print -depsc canc6.eps;
+else
+    title('Figure 10.53')
+    set(gcf,"Name",'Figure 10.53')
 end
 
-title('Figure 10.53')
-set(gcf,"Name",'Figure 10.53')
 
 
 %% Create Figure 10.54
@@ -169,10 +176,11 @@ labest=outini.labest;
 if prin==1
     % print to postscript
     print -depsc canc7.eps;
+else
+    sgtitle('Figure 10.54')
+    set(gcf,"Name",'Figure 10.54')
 end
 
-sgtitle('Figure 10.54')
-set(gcf,"Name",'Figure 10.54')
 
 
 %% Prepare input for Figure 10.55 (left and right panel)
@@ -180,19 +188,22 @@ set(gcf,"Name",'Figure 10.54')
 
 %% Create Figure 10.55
 out1=fanBICpn(outFSRfanpn);
-if prin==1
-    % print to postscript
-    print -depsc canc8a.eps;
-    print -depsc canc8b.eps;
-end
 
 fig=findobj(0,'tag','pl_BIC');
 figure(fig(1))
-set(gcf,'Name', 'Figure 10.55 (left panel)');
-
+if prin==1
+    % print to postscript
+    print -depsc canc8a.eps;
+else
+    set(gcf,'Name', 'Figure 10.55 (left panel)');
+end
 fig=findobj(0,'tag','pl_AGI');
 figure(fig(1))
-set(gcf,'Name', 'Figure 10.55 (right panel)');
+if prin==1
+    set(gcf,'Name', 'Figure 10.55 (right panel)');
+else
+    print -depsc canc8b.eps;
+end
 
 fig=findobj(0,'tag','pl_nobs');
 close(fig(1))
@@ -208,7 +219,7 @@ disp('Table 10.10')
 disp(mdlysel)
 
 
-%% Create Figure  
+%% Create Figure
 % Robust model selection using Cp
 [Cpms]=FSRms(yg,Xg,'smallpint',3:7);
 % Candlestick plot
@@ -218,28 +229,28 @@ cdsplot(Cpms);
 if prin==1
     % print to postscript
     print -depsc canc9.eps;
+else
+    sgtitle('Figure 10.56')
+    set(gcf,"Name",'Figure 10.56')
 end
-sgtitle('Figure 10.56')
-set(gcf,"Name",'Figure 10.56')
 
 %% Non parametric transformation
 outAV=avas(y,X);
 aceplot(outAV,'VarNames',nameXy)
-if prin==1
-    % print to postscript
-    print -depsc canc10.eps;
-end
 
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
-sgtitle('Figure 10.57')
-set(gcf,"Name",'Figure 10.57')
+if prin==1
+    % print to postscript
+    print -depsc canc10.eps;
+else
+    sgtitle('Figure 10.57')
+    set(gcf,"Name",'Figure 10.57')
+end
 
 pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
 close(pl_tX(1))
 drawnow
-
-
 
 
 %% Create Figures 10.58 and 10.59
@@ -259,21 +270,22 @@ disp(length(outm.outliers))
 
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
-sgtitle('Figure 10.58')
-set(gcf,"Name",'Figure 10.58')
+if prin==1
+    print -depsc canc11.eps;
+else
+    sgtitle('Figure 10.58')
+    set(gcf,"Name",'Figure 10.58')
+end
 
 pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
 figure(pl_tX(1))
-sgtitle('Figure 10.59')
-set(gcf,"Name",'Figure 10.59')
-drawnow
-
 if prin==1
-    % print to postscript
-    print -depsc canc11.eps;
     print -depsc canc12.eps;
+else
+    sgtitle('Figure 10.59')
+    set(gcf,"Name",'Figure 10.59')
 end
-
+drawnow
 
 %% Create Figure 10.60
 % call addition t stat
@@ -284,9 +296,10 @@ outjj=FSRaddt(outm.ty(selRAVAS),outm.tX(selRAVAS,:),'plots',1);
 if prin==1
     % print to postscript
     print -depsc canc13.eps;
+else
+    title('Figure 10.60')
+    set(gcf,"Name",'Figure 10.60')
 end
-title('Figure 10.60')
-set(gcf,"Name",'Figure 10.60')
 
 
 %% Create Figure  10.61
@@ -297,12 +310,12 @@ cdsplot(Cpms1);
 if prin==1
     % print to postscript
     print -depsc canc14.eps;
+else
+    sgtitle('Figure 10.61')
+    set(gcf,"Name",'Figure 10.61')
 end
-sgtitle('Figure 10.61')
-set(gcf,"Name",'Figure 10.61')
 
-%% Create Figure 10.62
-%yXplot
+%% Create Figure 10.62: yXplot
 group=ones(n,1);
 group(outm.outliers)=2;
 %'nameX',nameX,
@@ -310,8 +323,9 @@ yXplot(outm.ty,outm.tX,'group',group,'namey','ty');
 if prin==1
     % print to postscript
     print -depsc canc15.eps;
+else
+    sgtitle('Figure 10.62')
+    set(gcf,"Name",'Figure 10.62')
 end
-sgtitle('Figure 10.62')
-set(gcf,"Name",'Figure 10.62')
 
-%InsideREADME 
+%InsideREADME

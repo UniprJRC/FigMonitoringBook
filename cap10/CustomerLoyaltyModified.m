@@ -22,7 +22,7 @@ y(ss)=y(ss)-kk;
 Xytable{ss,end}= Xytable{ss,end}-kk;
 prin=0;
 
-%% Create Table 10.7 
+%% Create Table 10.7
 % Standard regression with all variables
 mdl=fitlm(Xytable);
 disp('Table 10.7')
@@ -40,9 +40,10 @@ title('')
 if prin==1
     % print to postscript
     print -depsc figs\modCL2.eps;
+else
+    sgtitle('Figure 10.37')
+    set(gcf,"Name",'Figure 10.37')
 end
-sgtitle('Figure 10.37')
-set(gcf,"Name",'Figure 10.37')
 
 drawnow
 
@@ -59,10 +60,11 @@ resfwdplot(out,'datatooltip','')
 if prin==1
     % print to postscript
     print -depsc figs\modCL5.eps;
+else
+    title('Figure 10.40')
+    set(gcf,"Name",'Figure 10.40')
 end
 
-title('Figure 10.40')
-set(gcf,"Name",'Figure 10.40')
 drawnow
 
 %% Prepare input for Figure 10.41
@@ -72,16 +74,17 @@ outFSR=FSR(y,X,'plots',0);
 % FSRaddt in the model without the interactions
 outADDt=FSRaddt(y,X,'plots',0);
 
-%% Create Figure 10.41 
+%% Create Figure 10.41
 fanplotFS(outADDt,'highlight',outFSR.outliers,'tag','pl_fan1');
 title('')
 if prin==1
     % print to postscript
     print -depsc modCL6.eps;
+else
+    title('Figure 10.41')
+    set(gcf,"Name",'Figure 10.41')
 end
 
-title('Figure 10.41')
-set(gcf,"Name",'Figure 10.41')
 
 %% Prepare input for Figure 10.42
 
@@ -98,7 +101,7 @@ for j=1:length(la)
     Highl(1:length(oultlj),j)=oultlj;
 end
 
-%% Create Figure 10.42 
+%% Create Figure 10.42
 % Fanplot with outliers highlighted
 
 fanplotFS(outFSRfan,'highlight',Highl,'ylimy',[-8 35]);
@@ -107,10 +110,11 @@ title('')
 if prin==1
     % print to postscript
     print -depsc figs\modCL7.eps;
+else
+    title('Figure 10.42')
+    set(gcf,"Name",'Figure 10.42')
 end
 
-title('Figure 10.42')
-set(gcf,"Name",'Figure 10.42')
 
 
 
@@ -118,26 +122,31 @@ set(gcf,"Name",'Figure 10.42')
 outAV=avas(y,X);
 aceplot(outAV,'VarNames',nameXy,'notitle',true);
 
+pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
+figure(pl_ty(1))
 if prin==1
     % print to postscript
     print -depsc modCL9.eps;
-    print -depsc figs\modCL10.eps;
+else
+    sgtitle('Figure 10.43')
+    set(gcf,"Name",'Figure 10.43')
 end
-pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
-figure(pl_ty(1))
-sgtitle('Figure 10.43')
-set(gcf,"Name",'Figure 10.43')
 
 pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
 figure(pl_tX(1))
-sgtitle('Figure 10.44')
-set(gcf,"Name",'Figure 10.44')
+if prin ==1
+    print -depsc figs\modCL10.eps;
+else
+    sgtitle('Figure 10.44')
+    set(gcf,"Name",'Figure 10.44')
+end
+
 drawnow
 
 % fitlm(outAV.tX,outAV.ty,'Exclude','','VarNames',nameXy)
 
 
-%% Prepare the input for Figure 10.45 
+%% Prepare the input for Figure 10.45
 % avas model selection with no constraint in X
 disp('Note that automatic model selection in this case might more than one minute')
 outMS=avasms(y,X,'plots',0);
@@ -149,16 +158,16 @@ out=outj{:};
 %% Create Figure 10.45
 aceplot(out,'VarNames',nameXy,'notitle',true)
 
-if prin==1
-    % print to postscript
-    print -depsc modCL11.eps;
-end
 
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
-sgtitle('Figure 10.45')
-set(gcf,"Name",'Figure 10.45')
-
+if prin==1
+    % print to postscript
+    print -depsc modCL11.eps;
+else
+    sgtitle('Figure 10.45')
+    set(gcf,"Name",'Figure 10.45')
+end
 pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
 close(figure(pl_tX(1)))
 
@@ -169,17 +178,18 @@ close(figure(pl_tX(1)))
 group=ones(length(y),1);
 group(out.outliers)=2;
 yXplot(out.ty,out.tX,'nameX',nameX,'group',group)
-sgtitle('Figure 10.46')
-set(gcf,"Name",'Figure 10.46')
-
-%% Confirmation with FSR
-outTRA=FSR(out.ty,out.tX);
-
-if prin==1
-    % print to postscript
+if prin ==1
     print -depsc modCL12.eps;
+else
+
+    sgtitle('Figure 10.46')
+    set(gcf,"Name",'Figure 10.46')
 end
 
+%% Confirmation with FSR
+% outTRA=FSR(out.ty,out.tX);
 
-%InsideREADME 
+
+
+%InsideREADME
 

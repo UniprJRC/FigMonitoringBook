@@ -1,7 +1,7 @@
-%% Customer Loyalty data (interactive part).
+%% Customer Loyalty data
 %
 % This file creates Figures 10.22-10.36
-% and Tables 10.5-10.6. 
+% and Tables 10.5-10.6.
 % Figures 10.22 and 10.24 are created in a non interactive way.
 % In order to create them interactively, please use file
 % CustomerLoyaltyInteractive.m
@@ -20,7 +20,7 @@ y=Xytable{:,end};
 ytra=sqrt(y);
 n=length(y);
 
-%% yXplot (Created not interactively)
+%% Figure 10.22 yXplot (Created not interactively)
 group=ones(n,1);
 group([7:9 13 17 21 22 41])=2;
 [H,AX,BigAx]=yXplot(Xytable(:,end),Xytable(:,1:end-1),'group',group);
@@ -30,9 +30,10 @@ prin=0;
 if prin==1
     % print to postscript
     print -depsc figs\regf1.eps;
+else
+    sgtitle('Figure 10.22')
+    set(gcf,"Name",'Figure 10.22')
 end
-sgtitle('Figure 10.22')
-set(gcf,"Name",'Figure 10.22')
 
 
 
@@ -58,10 +59,11 @@ title('')
 if prin==1
     % print to postscript
     print -depsc figs\regf3.eps;
+else
+    sgtitle('Figure 10.23')
+    fig=findobj(0,'tag','pl_resfwd');
 end
 
-sgtitle('Figure 10.23')
-fig=findobj(0,'tag','pl_resfwd');
 drawnow
 
 %% Create Figure 10.24 (NOT INTERACTIVE)
@@ -85,10 +87,12 @@ if prin==1
     % print to postscript
     print -depsc figs\regf4.eps;
     print -depsc figs\regf5.eps;
+else
+    title('Figure 10.24')
+    set(gcf,"Name",'Figure 10.24')
+
 end
 
-title('Figure 10.24')
-set(gcf,"Name",'Figure 10.24')
 drawnow
 
 %% Create Figure 10.25: monitoring six added variable t stats
@@ -103,16 +107,17 @@ outADDt=FSRaddt(y,X,'plots',0);
 
 
 fanplotFS(outADDt,'highlight',out.outliers,'ylimy',[-15 20],'tag','1025')
-title('Figure 10.25')
-set(gcf,"Name",'Figure 10.25')
-drawnow
 if prin==1
     % print to postscript
     print -depsc figs\regf6.eps;
+else
+    title('Figure 10.25')
+    set(gcf,"Name",'Figure 10.25')
 end
+drawnow
 
 
-%%  Create Figure 10.26 
+%%  Create Figure 10.26
 % Not clear what is the best transformation
 outFSRfan=FSRfan(y,X);
 fanplotFS(outFSRfan,'highlight',out.outliers, ...
@@ -131,7 +136,7 @@ drawnow
 
 
 
-%% Create Figure 10.29  
+%% Create Figure 10.29
 % Analysis in the sqrt scale
 outsqrty=FSR(ytra,X);
 
@@ -139,12 +144,13 @@ pl_fsr=findobj(0, 'type', 'figure','tag','pl_fsr');
 close(pl_fsr(end))
 pl_yXplot=findobj(0, 'type', 'figure','tag','fsr_yXplot');
 figure(pl_yXplot(end))
-sgtitle('Figure 10.29')
-set(gcf,"Name",'Figure 10.29')
 
 if prin==1
     % print to postscript
     print -depsc figs\transf4bis.eps;
+else
+    sgtitle('Figure 10.29')
+    set(gcf,"Name",'Figure 10.29')
 end
 
 
@@ -161,14 +167,14 @@ title('')
 subplot(2,1,2)
 plotResiduals(mdlysqrt,'symmetry','ResidualType','standardized')
 title('')
-drawnow
-sgtitle('Figure 10.27')
-set(gcf,"Name",'Figure 10.27')
-drawnow
 if prin==1
     % print to postscript
     print -depsc figs\transf4.eps;
+else
+    sgtitle('Figure 10.27')
+    set(gcf,"Name",'Figure 10.27')
 end
+drawnow
 
 
 %% Create Figure 10.28
@@ -186,15 +192,15 @@ fground.funit=outsqrty.outliers;
 fground.flabstep='';
 
 resfwdplot(out,'fground',fground,'tag','pl_ysqrt');
-drawnow
-title('Figure 10.28')
-set(gcf,"Name",'Figure 10.28')
 
-drawnow
 if prin==1
     % print to postscript
     print -depsc figs\transf5.eps;
+else
+    title('Figure 10.28')
+    set(gcf,"Name",'Figure 10.28')
 end
+drawnow
 
 
 
@@ -204,19 +210,24 @@ outAV=avas(y,X);
 aceplot(outAV,'VarNames',nameXy,'notitle',true)
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
-sgtitle('Figure 10.30')
-set(gcf,"Name",'Figure 10.30')
-
-pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
-figure(pl_tX(1))
-sgtitle('Figure 10.31')
-set(gcf,"Name",'Figure 10.31')
-drawnow
 if prin==1
     % print to postscript
     print -depsc figs\AV1.eps;
-    print -depsc figs\AV2.eps;
+else
+    sgtitle('Figure 10.30')
+    set(gcf,"Name",'Figure 10.30')
 end
+drawnow
+
+pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
+figure(pl_tX(1))
+if prin==1
+    print -depsc figs\AV2.eps;
+else
+    sgtitle('Figure 10.31')
+    set(gcf,"Name",'Figure 10.31')
+end
+drawnow
 
 %% Create Table 10.5
 mdlAVAS=fitlm(outAV.tX,outAV.ty,'Exclude','','VarNames',nameXy);
@@ -230,7 +241,7 @@ outMS=avasms(y,X,'plots',0);
 % outrobAV=avas(y,X,'orderR2',true,'rob',true,'scail',true)
 
 
-%% Create Figures 10.32 and 10.33 
+%% Create Figures 10.32 and 10.33
 % avasmsplot(outMS)
 
 j=1;
@@ -240,18 +251,22 @@ aceplot(outrobAV,'VarNames',nameX,'notitle',true)
 
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
-sgtitle('Figure 10.32')
-set(gcf,"Name",'Figure 10.32')
-
-pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
-figure(pl_tX(1))
-sgtitle('Figure 10.33')
-set(gcf,"Name",'Figure 10.33')
-
 if prin==1
     % print to postscript
     print -depsc figs\AV3.eps;
+else
+    sgtitle('Figure 10.32')
+    set(gcf,"Name",'Figure 10.32')
+end
+
+pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
+figure(pl_tX(1))
+if prin==1
+    % print to postscript
     print -depsc figs\AV4.eps;
+else
+    sgtitle('Figure 10.33')
+    set(gcf,"Name",'Figure 10.33')
 end
 
 %%
@@ -259,7 +274,7 @@ end
 % if outlierfromFSR==true
 %     outfromRAVAS=outsqrty.outliers;
 % else
-    outfromRAVAS=outrobAV.outliers;
+outfromRAVAS=outrobAV.outliers;
 % end
 
 %% Create Table 10.6
@@ -301,10 +316,11 @@ title('')
 if prin==1
     % print to postscript
     print -depsc figs\AV6.eps;
+else
+    sgtitle('Figure 10.34')
+    set(gcf,"Name",'Figure 10.34')
 end
 
-sgtitle('Figure 10.34')
-set(gcf,"Name",'Figure 10.34')
 drawnow
 
 %% Create Figure 10.35
@@ -318,11 +334,12 @@ histfit(mdlRAVAS.Residuals{:,j},[],'kernel')
 if prin==1
     % print to postscript
     print -depsc figs\AV5.eps;
+else
+    sgtitle('Figure 10.35')
+    set(gcf,"Name",'Figure 10.35')
 end
 
 
-sgtitle('Figure 10.35')
-set(gcf,"Name",'Figure 10.35')
 drawnow
 
 
@@ -350,10 +367,11 @@ resfwdplot(outFS,'fground',fground,'datatooltip','') % ,'bground',bground);
 if prin==1
     % print to postscript
     print -depsc AV8.eps;
+else
+    title('Figure 10.36')
+    set(gcf,"Name",'Figure 10.36')
 end
 
 
-title('Figure 10.36')
-set(gcf,"Name",'Figure 10.36')
 
-%InsideREADME 
+%InsideREADME

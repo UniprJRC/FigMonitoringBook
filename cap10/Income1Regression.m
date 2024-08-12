@@ -1,4 +1,4 @@
-% Regression analysis of dataset Income1. 
+% Regression analysis of dataset Income1.
 %
 % This file creates Figures 10.1-10.11
 % and Table 10.1
@@ -23,14 +23,15 @@ close all
 FontSize=14;
 
 
-%% Show the yX plot
+%% Create Figure 10.1: yX plot
 yXplot(yt,Xt);
-sgtitle('Figure 10.1','tag','yXplotIntro')
-set(gcf,"Name",'Figure 10.1')
 prin=1;
 if prin==1
     % print to postscript
     print -depsc inc1f1.eps;
+else
+    sgtitle('Figure 10.1','tag','yXplotIntro')
+    set(gcf,"Name",'Figure 10.1')
 end
 
 
@@ -45,43 +46,45 @@ disp(['labest=' num2str(out5v.labest)])
 set(gcf,"Name",'Figure not in the book')
 
 
-%%  Analysis using a finer grid of values of lambda
-% figure
+%%  Figure 10.2 left panel: analysis using a finer grid of values of lambda
 outFSRfan=FSRfan(y,X,'la',[0 0.25  0.5 0.75 1],'plots',1,'tag','best la steps of 0.25');
-title('Figure 10.2 (left-hand panel)')
-set(gcf,"Name",'Figure 10.2 (left-hand panel)')
 
 if prin==1
     % print to postscript
     print -depsc inc1f2.eps;
+else
+    title('Figure 10.2 (left-hand panel)')
+    set(gcf,"Name",'Figure 10.2 (left-hand panel)')
 end
 
-%% Automatic choice of the transformation
+%% Figure 10.2 right panel: Automatic choice of the transformation
 [out]=fanBIC(outFSRfan);
-sgtitle('Figure 10.2 (right-hand panel)')
-set(gcf,"Name",'Figure 10.2 (right-hand panel)')
 
 if prin==1
     % print to postscript
     print -depsc inc1f2bic.eps;
+else
+    sgtitle('Figure 10.2 (right-hand panel)')
+    set(gcf,"Name",'Figure 10.2 (right-hand panel)')
 end
 
 
-%% FSR y in transformed scale (Figure 10.3)
+%% Create Figure 10.3: FSR with y in transformed scale
 % figure
 ytra=y.^0.5;
 outf=FSR(ytra,X);
-sgtitle('Figure 10.3')
-set(gcf,"Name",'Figure 10.3')
 
 if prin==1
     % print to postscript
     print -depsc inc1f3.eps;
+else
+    sgtitle('Figure 10.3')
+    set(gcf,"Name",'Figure 10.3')
 end
 
 
 
-%% Plot qqplot of residuals different scales (Figure 10.4)
+%% Create Figure 10.4: qqplot of residuals in different scales
 figure
 nr=1; nc=3;
 h1=subplot(nr,nc,1);
@@ -109,12 +112,13 @@ resg=mdlytraExcludeOutliers.Residuals{good,3};
 qqplotFS(resg,'X',Xg,'plots',1,'h',h3,'conflev',0.99);
 
 title('')
-sgtitle('Figure 10.4')
-set(gcf,"Name",'Figure 10.4')
 
 if prin==1
     % print to postscript
     print -depsc inc1f4.eps;
+else
+    sgtitle('Figure 10.4')
+    set(gcf,"Name",'Figure 10.4')
 end
 
 %% Create Table 10.1
@@ -131,11 +135,12 @@ disp(tstatT)
 %% FSRaddt: create Figure 10.5
 outFSRaddt=FSRaddt(ytra,X);
 fanplot(outFSRaddt);
-title('Figure 10.5')
-set(gcf,"Name",'Figure 10.5')
 if prin==1
     % print to postscript
     print -depsc inc1f5.eps;
+else
+    title('Figure 10.5')
+    set(gcf,"Name",'Figure 10.5')
 end
 
 
@@ -149,12 +154,13 @@ figure
 fground=struct;
 fground.funit=[107 200];
 resfwdplot(outFS,'fground',fground,'datatooltip','','bground','');
-title('Figure 10.6')
-set(gcf,"Name",'Figure 10.6')
 
 if prin==1
     % print to postscript
     print -depsc inc1f6.eps;
+else
+    title('Figure 10.6')
+    set(gcf,"Name",'Figure 10.6')
 end
 
 %% Rotate manually: create Figure 10.7
@@ -175,9 +181,10 @@ zlabel('y^{0.5}','Interpreter','tex')
 if prin==1
     % print to postscript
     print -depsc inc1f7.eps;
+else
+    title('Figure 10.7')
+    set(gcf,"Name",'Figure 10.7')
 end
-title('Figure 10.7')
-set(gcf,"Name",'Figure 10.7')
 
 %% Analysis using heteroskedastic model
 outHET=FSRH(zscore(ytra),zscore(X),2:3,'init',round(n*0.8),'typeH','har','plots',0);
@@ -192,12 +199,13 @@ group([107 200])=3;
 label=string((1:n)');
 add2yX(H,AX,BigAx,'labeladd','1','RowNamesLabels',label)
 legend off
-sgtitle('Figure 10.8')
-set(gcf,"Name",'Figure 10.8')
 
 if prin==1
     % print to postscript
     print -depsc inc1f8.eps;
+else
+    sgtitle('Figure 10.8')
+    set(gcf,"Name",'Figure 10.8')
 end
 
 %% Create Figure 10.9
@@ -269,15 +277,11 @@ xlim([xlimL xlimU]);
 
 xlabel('Subset size m','FontSize',FontSize);
 
-% Add multiple title
-% suplabel(['Income data 1; confidence intervals of the parameters monitored in the interval ['...
-%     num2str(xlimL) ',' num2str(xlimU) ...
-%     ']'],'t');
-sgtitle('Figure 10.9')
-
 if prin==1
     % print to postscript
     print -depsc inc1f9.eps;
+else
+    sgtitle('Figure 10.9')
 end
 
 %% Create Figure 10.10
@@ -348,15 +352,12 @@ xlim([xlimL xlimU]);
 
 xlabel('Subset size m','FontSize',FontSize);
 
-% Add multiple title
-% suplabel(['Income data 1; confidence intervals of the parameters monitored in the interval ['...
-%     num2str(xlimL) ',' num2str(xlimU) ...
-%     ']'],'t');
-sgtitle('Figure 10.10')
 
 if prin==1
     % print to postscript
     print -depsc inc1f10.eps;
+else
+    sgtitle('Figure 10.10')
 end
 
 
@@ -381,12 +382,13 @@ aceplot(outrobAV,'VarNames',nameXy,'notitle',true,'oneplot',true)
 
 
 fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outrobAV.outliers)
-sgtitle('Figure 10.11')
 
 if prin==1
     % print to postscript
     print -depsc inc1f11.eps;
+else
+    sgtitle('Figure 10.11')
 end
 
-%InsideREADME 
+%InsideREADME
 
