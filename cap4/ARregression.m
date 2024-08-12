@@ -210,26 +210,20 @@ end
 %% Create Figure 4.22
 % top panel
 figure
-h=subplot(2,1,1);
-fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0','h',h);
+h1=subplot(2,1,1);
+fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0','h',h1);
 title('')
+
+% bottom panel
+h2=subplot(2,1,2);
+fanplotFS(outOPT1,'conflev',0.95,'tag','plrobcopv1','h',h2);
+title('')
+
 if prin ==1
     print -depsc StstatAR.eps
 else
-    title('Figure 4.22 (top panel)')
-    set(gcf,"Name",'Figure 4.22 (top panel)')
-end
-% bottom panel
-fanplotFS(outOPT1,'conflev',0.95,'tag','plrobcopv1');
-title('')
-
-if prin==1
-    % print to postscript
-    print -depsc StstatAR.eps;
-else
-    title('Figure 4.22 (bottom panel)')
-    set(gcf,"Name",'Figure 4.22 (bottom panel)')
-
+    sgtitle('Figure 4.22')
+    set(gcf,"Name",'Figure 4.22')
 end
 
 %InsideREADME
