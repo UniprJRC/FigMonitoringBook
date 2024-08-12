@@ -149,11 +149,11 @@ RESLMS=zeros(n,length(bdp));
 
 for j=1:length(bdp)
     % Store LTS residuals
-    [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',nsamp);
+    [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',nsamp,'msg',0);
     RESLTS(:,j)=out.residuals;
 
     % Store LMS residuals
-    [outLMS]=LXS(y,X,'bdp',bdp(j),'nsamp',nsamp);
+    [outLMS]=LXS(y,X,'bdp',bdp(j),'nsamp',nsamp,'msg',0);
     RESLMS(:,j)=outLMS.residuals;
 end
 outLTS=struct;
@@ -209,8 +209,9 @@ end
 
 %% Create Figure 4.22
 % top panel
+figure
 h=subplot(2,1,1);
-fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0','hsend',h);
+fanplotFS(outOPT,'conflev',0.95,'tag','plrobcopv0','h',h);
 title('')
 if prin ==1
     print -depsc StstatAR.eps
