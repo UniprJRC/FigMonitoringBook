@@ -102,9 +102,11 @@ out = tclustregIC(y,X,'whichIC',typeIC,'alphaLik',alphaLik,'alphaX',alphaX, ...
 tclustICplot(out,'whichIC',typeIC,'datatooltip','');
 h_MIXMIX=findobj(0,'Tag','pl_IC_MIXMIX');
 figure(h_MIXMIX(end))
+title('')
+box on
 if prin==1
     % print to postscript
-    print -depsc C2a.eps;
+    print -depsc P6307909810_elbow.eps;
 else
     set(gcf,'Name', 'Left panel of Figure 8.26');
     title('Left panel of Figure 8.26')
@@ -121,7 +123,7 @@ outICsol=tclustICsol(out,'whichIC',typeIC,'SpuriousSolutions',SpuriousSolutions,
 carbikeplot(outICsol,'SpuriousSolutions',SpuriousSolutions);
 if prin==1
     % print to postscript
-    print -depsc C2b.eps;
+    print -depsc P6307909810_carbike.eps;
 else
     set(gcf,'Name', 'Right panel of Figure 8.26');
     title('Right panel of Figure 8.26')
@@ -141,7 +143,7 @@ k=3;
 restrfact =128;
 out3 = tclustregeda(y,X,k,restrfact,alphaLik,alphaX,'intercept',false,'msg',1,'plots',0,'mixt',2,'nsamp',nsamp);
 
-rng(1)
+rng(100)
 restrfact =32;
 % Prepare input for lower panel of Figure 8.27
 k=4;
@@ -212,7 +214,7 @@ ylim([0 2*10^10])
 
 if prin==1
     % print to postscript
-    print -depsc C3.eps;
+    print -depsc P6307909810_sigma2.eps;
 else
     set(gcf,'Name', 'Figure 8.27');
     sgtitle('Figure 8.27')

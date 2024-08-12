@@ -3,6 +3,7 @@
 % This file creates Figure  8.34
 
 %% Beginning of code
+prin=0;
 load valueadded.mat
 XX=valueadded(:,[2:4 10]);
 X=XX{:,1:3};
