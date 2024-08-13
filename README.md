@@ -1,5 +1,6 @@
 # Applied Robust Statistics through the Monitoring Approach
-GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach" Heidelberg: Springer Nature. by 
+GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach: 
+Applications in Regression" Heidelberg: Springer Nature. by 
 Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), 
 
 
@@ -27,7 +28,9 @@ by FSDA function [[m2ipynb](http://rosa.unipr.it/FSDA/m2ipynb.html)]
 8.   Extensions of the Multiple Regression Model   [[open dir](cap8/README.md)]  
 9.    Model selection    [[open dir](cap9/README.md)]
 10.   Some Robust Data Analyses    [[open dir](cap10/README.md)]
- 
+
+Appendix.   Solution to the Exercises [[open dir](solutionsEX/README.md)]
+
 # Code by dataset
 In the book there are datasets which are used in different Chapters.
 Here you can find the link to the folder which contains the 
