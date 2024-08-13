@@ -1,6 +1,6 @@
-%% Exercise 6.4.
-% 
-% Transformed data and F test.
+
+%% Transformed data and F test.
+%
 % This file creates Figures A.19 and A.20
 
 %% Beginning of code
@@ -16,7 +16,7 @@ prin=0;
 y0515=normYJpn(y, [], [0.5, 1.5], 'inverse',false, 'Jacobian', false);
 
 
-Y=[y y0515 ]; 
+Y=[y y0515 ];
 
 % Initialize matrix which will contain the unbiased F test
 init=1000;
@@ -24,21 +24,21 @@ FtestUnbiased=[(init:n)' zeros(n-init+1,1)];
 
 for j=1:size(Y,2)
 
-[outINI]=LXS(Y(:,j),X,'nsamp',1000);
-outEDA=FSReda(Y(:,j),X,outINI.bs,'init',init);
+    [outINI]=LXS(Y(:,j),X,'nsamp',1000);
+    outEDA=FSReda(Y(:,j),X,outINI.bs,'init',init);
 
-% Store biased F test in the search 
-BB=outEDA.BB;
-for mm=init:n
-    % Indexes of the units forming subset at step mm
-    bsb=BB(:,mm-init+1);
-    bsb=bsb(~isnan(bsb));
-    Xb=X(bsb,:);
-    yb=Y(bsb,j);
-    % Compute and store F test based on Xb and yb
-    regs=regstats(yb,Xb,"linear","fstat");
-    FtestUnbiased(mm-init+1,j+1)=regs.fstat.f;
-end
+    % Store biased F test in the search
+    BB=outEDA.BB;
+    for mm=init:n
+        % Indexes of the units forming subset at step mm
+        bsb=BB(:,mm-init+1);
+        bsb=bsb(~isnan(bsb));
+        Xb=X(bsb,:);
+        yb=Y(bsb,j);
+        % Compute and store F test based on Xb and yb
+        regs=regstats(yb,Xb,"linear","fstat");
+        FtestUnbiased(mm-init+1,j+1)=regs.fstat.f;
+    end
 end
 
 % Correct the F test
@@ -54,7 +54,7 @@ out=struct;
 out.Tdel=Sco1;
 out.y=y;
 out.X=X;
-nameX=["\lambda_P=1 \lambda_N=1" "\lambda_P=0.5 \lambda_N=1.5"]; 
+nameX=["\lambda_P=1 \lambda_N=1" "\lambda_P=0.5 \lambda_N=1.5"];
 out.la=nameX;
 out.class='FSRaddt';
 
@@ -65,10 +65,11 @@ ylabel('F test')
 if prin==1
     % print to postscript
     print -depsc BSmonitorFtest.eps;
+else
+    title('Figure A.19')
+    set(gcf,"Name",'Figure A.19')
 end
 
-title('Figure A.19')
-set(gcf,"Name",'Figure A.19')
 
 
 %% Prepare the input for Figure A.20
@@ -102,8 +103,8 @@ if prin==1
     % print to postscript
     print -depsc BSqqplots.eps;
 else
-sgtitle('Figure A.20')
-set(gcf,"Name",'Figure A.20')
+    sgtitle('Figure A.20')
+    set(gcf,"Name",'Figure A.20')
 end
 
-%InsideREADME 
+%InsideREADME

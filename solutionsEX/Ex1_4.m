@@ -1,6 +1,7 @@
-%% Exercise 1.4
+%% Univariate analysis
 %
-% Univariate analysis
+% This file creates Figures A.1 and A.2 
+%
 
 %% Data loading
 clear
@@ -27,7 +28,6 @@ for i=1:lalphaAll
     m=floor((n-1)*alphaAll(i));
     meanTru(i)=mean(ysor(m+1:n-m));
     % meanTru1(i)=trimmean(y,100*alphaAll(i));
-
 end
 
 
@@ -51,10 +51,11 @@ prin=0;
 if prin==1
     % print to postscript
     print -depsc trimmeanIncome2.eps;
-end
-
+else
 set(gcf,"Name",'Figure A.1')
 title('Figure A.1')
+end
+
 
 
 %% Create figure A.2.  
@@ -99,23 +100,16 @@ ytra=normBoxCox(yrs,1,-2,'Jacobian',true);
 boxplot(ytra,'Labels',{''})
 title('$\lambda=-2$','Interpreter','latex','FontSize',FontSize)
 ylim([yl1 yl2])
-sgtitle('Figure A.2')
-set(gcf,"Name",'Figure A.2')
 
 prin=0;
 if prin==1
     % print to postscript
     print -depsc boxlaIncome2.eps;
-end
-%  BEGIN OF MULTIVARIATE ANALYSIS
-
-%% Figure 10.12 yXplot
-yXplot(yt,Xt);
-if prin==1
-    % print to postscript
-    print -depsc inc2f1.eps;
 else
-sgtitle("Figure 10.12")
+sgtitle('Figure A.2')
+set(gcf,"Name",'Figure A.2')
 end
+
+
 
 %InsideREADME 

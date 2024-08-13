@@ -1,6 +1,5 @@
-%% Exercise 10.1
+%% Analysis of heart rate data
 %
-% Analysis of heart rate data
 % This file creates Figures  A.67-A.70
 
 %% Data loading
@@ -23,11 +22,12 @@ title('')
 prin=0;
 if prin==1
     % print to postscript
-    print -depsc figs\x1L.eps;
+    print -depsc x1L.eps;
+else
+    title('Figure A.67 (left panel)')
+    set(gcf,"Name",'Figure A.67 (left panel)')
 end
 
-title('Figure A.67 (left panel)')
-set(gcf,"Name",'Figure A.67 (left panel)')
 
 %% Create right panel of Figure A.67
 % Fan plot positive and negative la=0.7
@@ -37,11 +37,12 @@ out=FSRfan(y,X(:,9),'family','YJpn','plots',1,'init',round(n/2),'la',la);
 title('')
 if prin==1
     % print to postscript
-    print -depsc figs\x1R.eps;
+    print -depsc x1R.eps;
+else
+    title('Figure A.67 (right panel)')
+    set(gcf,"Name",'Figure A.67 (right panel)')
 end
 
-title('Figure A.67 (right panel)')
-set(gcf,"Name",'Figure A.67 (right panel)')
 
 
 %% Create Figure A.68
@@ -62,10 +63,11 @@ title('')
 if prin==1
     % print to postscript
     print -depsc x2.eps;
+else
+    sgtitle('Figure A.68')
+    set(gcf,"Name",'Figure A.68')
 end
 
-sgtitle('Figure A.68')
-set(gcf,"Name",'Figure A.68')
 
 
 
@@ -77,11 +79,12 @@ subplot(2,2,2)
 boxplot(ytra,X(:,9))
 if prin==1
     % print to postscript
-    print -depsc figs\x3.eps;
+    print -depsc x3.eps;
+else
+    sgtitle('Figure A.69')
+    set(gcf,"Name",'Figure A.69')
 end
 
-sgtitle('Figure A.69')
-set(gcf,"Name",'Figure A.69')
 
 
 %% Create Figure A.70
@@ -101,11 +104,10 @@ title('')
 
 if prin==1
     % print to postscript
-    print -depsc figs\x4.eps;
+    print -depsc x4.eps;
+else
+    sgtitle('Figure A.70')
+    set(gcf,"Name",'Figure A.70')
 end
 
-sgtitle('Figure A.70')
-set(gcf,"Name",'Figure A.70')
-
-
-%InsideREADME 
+%InsideREADME

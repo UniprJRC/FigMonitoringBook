@@ -1,10 +1,8 @@
-%% Exercise 4.2
-%
-% Hawkins data:  brushing residuals from monitoring S residuals
-% This file creates Figures A.7--A.9
 
-%% Hawkins data: 
-% brushing residuals from monitoring S residuals
+%% Hawkins data:  brushing residuals from monitoring S residuals
+% This file creates Figures A.7--A.9 in an interactive way 
+
+%% Hawkins data loading
 close all;
 load('hawkins.txt');
 y=hawkins(:,9);
@@ -14,12 +12,12 @@ n=length(y);
 prin=0;
 
 %%  Prepare the input for Figures A.7, A.8 and A.9
-% Sregeda with bisquare link brushing
 
 % Perform both the FS and the S residuals monitoring
 [outLXS]=LXS(y,X,'nsamp',10000);
 [outFS]=FSReda(y,X,outLXS.bs);
 
+% Sregeda with bisquare link brushing
 outTB=Sregeda(y,X,'plots',1,'rhofunc','bisquare');
 yl=5;
 ylim([-yl yl])
@@ -51,6 +49,8 @@ if prin==1
     print -depsc HDtbexeres.eps;
     print -depsc HDtbexemdr.eps;
     print -depsc HDtbexeyXplot.eps;
+else
+   % title('Output which depends on your brushing')
 end
 
 %InsideREADME 

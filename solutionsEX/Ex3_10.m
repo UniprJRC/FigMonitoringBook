@@ -1,7 +1,7 @@
-%% Exercise 3.10.
+%% First truncated moment in folded normal distribution.
 %
-% First truncated moment in folded normal distribution.
-%
+% This file solves Exercise 3.10.
+
 
 %% Beginning of code
 

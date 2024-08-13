@@ -1,10 +1,9 @@
-%% Exercise 4.4
+%% Surgical Unit data: traditional robust analysis
 %
-% Surgical Unit data: traditional robust analysis
-% This file creates Figures A.11-A.12 
+% This file creates Figures A.11-A.12
 
-%% Surgical Unit data: 
-% 
+%% Surgical Unit data:
+%
 close all;
 clearvars;close all;
 load('hospitalFS.txt');
@@ -13,7 +12,7 @@ X=hospitalFS(:,1:4);
 
 %% Create Figure A.11
 % TB rho function: analysis using S estimators with 2 values of breakdown
-% point 
+% point
 % Using bdp=0.5 it is clear that the first 54 units have a pattern of residuals
 % which is different from the remaining 54
 
@@ -38,13 +37,13 @@ if prin==1
     % print to postscript
     print -depsc SPStwobdp.eps;
 else
-sgtitle('Figure A.11')
-set(gcf,"Name",'Figure A.11')
+    sgtitle('Figure A.11')
+    set(gcf,"Name",'Figure A.11')
 end
 
 %% Create Figure A.12
 % PD rho function: analysis using S estimators with 2 values of breakdown
-% point 
+% point
 % Using bdp=0.5 it is clear that the first 54 units have a pattern of residuals
 % which is different from the remaining 54
 figure;
@@ -64,10 +63,8 @@ if prin==1
     % print to postscript
     print -depsc SPStwobdpPD.eps;
 else
-sgtitle('Figure A.12')
-set(gcf,"Name",'Figure A.12')
-
+    sgtitle('Figure A.12')
+    set(gcf,"Name",'Figure A.12')
 end
 
-
-%InsideREADME 
+%InsideREADME

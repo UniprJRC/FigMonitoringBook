@@ -1,8 +1,7 @@
-%% Exercise 10.3
-% Analysis of the modified customer loyalty data in the square-root scale.
+%% Analysis of the modified customer loyalty data in the square-root scale.
 %
-% This file creates Figures A.72-A.74 
-% 
+% This file creates Figures A.72-A.74
+%
 %% Beginning of code
 close all
 clear
@@ -23,7 +22,7 @@ Xytable{ss,end}= Xytable{ss,end}-kk;
 sqy=sqrt(y);
 prin=0;
 
-%% Create Figure A.72 
+%% Create Figure A.72
 % Monitoring of res in sqrt scale
 % LMS
 [outLXSsq]=LXS(sqy,X,'nsamp',50000);
@@ -35,12 +34,13 @@ resfwdplot(outsq,'datatooltip','','tag','pl_resfwdini')
 if prin==1
     % print to postscript
     print -depsc modCLmonressqrt.eps;
+else
+    title('Figure A.72')
+    set(gcf,"Name",'Figure A.72')
 end
-title('Figure A.72')
-set(gcf,"Name",'Figure A.72')
 drawnow
 
-%% Create Figure A.73 
+%% Create Figure A.73
 % FSR in sqrt scale
 outsqrty=FSR(sqy,X,'plots',0);
 
@@ -60,9 +60,10 @@ title('')
 if prin==1
     % print to postscript
     print -depsc figs\modCL8.eps;
+else
+    sgtitle('Figure A.73')
+    set(gcf,"Name",'Figure A.73')
 end
-sgtitle('Figure A.73')
-set(gcf,"Name",'Figure A.73')
 drawnow
 
 %%  Create Figure A.74
@@ -73,8 +74,9 @@ title('')
 if prin==1
     % print to postscript
     print -depsc modCL6sqrt.eps;
+else
+    title('Figure A.74')
+    set(gcf,"Name",'Figure A.74')
 end
-title('Figure A.74')
-set(gcf,"Name",'Figure A.74')
 
-%InsideREADME 
+%InsideREADME

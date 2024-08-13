@@ -1,20 +1,20 @@
-%% Exercise 7.2
+%% Augmented Investment Funds data.
 %
-% Augmented Investment Funds data.
-% This file creates Figure A.36-A.43 and Table A.17 
+% This file creates Figure A.36-A.43 and Table A.17
 
-%% Initial part 
+%% Initial part
 load InvFundsExt.mat
 y=InvFundsExt{:,end};
 X=InvFundsExt{:,[1 2]};
-
-
 
 yXplot(y,X)
 legend off
 
 if prin==1
     print -depsc NPyXplot.eps
+else
+    title('Figure A.35')
+    set(gcf,"Name",'Figure A.35')
 end
 
 
@@ -32,14 +32,15 @@ ylimy='';
 out=FSRfan(y,X,'la',la,'family','YJ','plots',1,'init',round(n/3),'ylimy',[-ylimy ylimy],'msg',0);
 title('')
 
-title('Figure A.36 (left panel)')
-set(gcf,"Name",'Figure A.36 (left panel)')
-
 
 % fanplot(out)
 if prin==1
     print -depsc figs\NPfan.eps
+else
+    title('Figure A.36 (left panel)')
+    set(gcf,"Name",'Figure A.36 (left panel)')
 end
+
 %% Create Figure A.36 (right panel)
 % fanplotpn (extended fanplot)
 la=[0.5 0.75 1];
@@ -48,11 +49,12 @@ out=FSRfan(y,X,'la',la,'family','YJpn','plots',1,'init',round(n/2), ...
     'ylimy',[-ylimy ylimy],'msg',0,'tag','plfanpn');
 title('')
 
-title('Figure A.36 (right panel)')
-set(gcf,"Name",'Figure A.36 (right panel)')
 
 if prin==1
     print -depsc figs\NPfanpn.eps
+else
+    title('Figure A.36 (right panel)')
+    set(gcf,"Name",'Figure A.36 (right panel)')
 end
 
 %% Automatic procedure
@@ -68,33 +70,41 @@ labest=outini.labest;
 disp('Best value of lambda (just using one lambda) from the automatic procedure')
 disp(['lambda=' num2str(labest)])
 
-%% Create Figures A.37 and A.38 
+%% Create Figures A.37 and A.38
 % Automatic procedure
 [outFSRfanpn]=FSRfan(y,X,'msg',0,'family','YJpn','la',labest,'plots',0);
 out1=fanBICpn(outFSRfanpn);
 
 fig=findobj(0,'tag','pl_BIC');
 figure(fig(1))
-set(gcf,'Name', 'Figure A.37 (left panel)');
+if prin==1
+    print -depsc figs\NPautopnBIC.eps;
+else
+    set(gcf,'Name', 'Figure A.37 (left panel)');
+end
 
 fig=findobj(0,'tag','pl_AGI');
 figure(fig(1))
-set(gcf,'Name', 'Figure A.37 (right panel)');
+if prin==1
+    print -depsc figs\NPautopnAGI.eps;
+else
+    set(gcf,'Name', 'Figure A.37 (right panel)');
+end
 
 fig=findobj(0,'tag','pl_nobs');
 figure(fig(1))
-set(gcf,'Name', 'Figure A.38 (left panel)');
+if prin==1
+    print -depsc figs\NPautopnh.eps;
+else
+    set(gcf,'Name', 'Figure A.38 (left panel)');
+end
 
 fig=findobj(0,'tag','pl_R2c');
 figure(fig(1))
-set(gcf,'Name', 'Figure A.38 (right panel)');
-
 if prin==1
-    % print to postscript
-    print -depsc figs\NPautopnh.eps;
-    print -depsc figs\NPautopnBIC.eps;
-    print -depsc figs\NPautopnAGI.eps;
     print -depsc figs\NPautopnR2.eps;
+else
+    set(gcf,'Name', 'Figure A.38 (right panel)');
 end
 
 
@@ -104,10 +114,6 @@ ytra=normYJpn(y, [], [1, 0], 'inverse',false, 'Jacobian', false);
 out=FSR(ytra,X,'plots',0);
 disp(['Number of outliers found in the transformed scale=' num2str(length(out.outliers))])
 
-if prin==1
-    % print to postscript
-    print -depsc figs\NPfsr.eps;
-end
 % Find the two groups (good units and outliers)
 seq=1:n;
 outliers=out.outliers;
@@ -120,8 +126,15 @@ group=repelem("Good units",n,1);
 group(outliers)="Outliers";
 group=cellstr(group);
 yXplot(ytra,X,group,'tag','pl_ytra');
-sgtitle('Figure A.39 ')
-set(gcf,"Name",'Figure A.39')
+
+if prin==1
+    % print to postscript
+    print -depsc figs\NPfsr.eps;
+else
+    sgtitle('Figure A.39 ')
+    set(gcf,"Name",'Figure A.39')
+end
+
 
 
 %% Create figure A.40
@@ -141,12 +154,13 @@ outLMytrag=fitlm(Xg,ytrag);
 restra=outLMytrag.Residuals{:,3};
 qqplotFS(restra,'X',Xg,'plots',1,'h',h2);
 
-sgtitle('Figure A.40 ')
-set(gcf,"Name",'Figure A.40')
 
 if prin==1
     % print to postscript
     print -depsc figs\NP1.eps;
+else
+    sgtitle('Figure A.40 ')
+    set(gcf,"Name",'Figure A.40')
 end
 
 
@@ -183,10 +197,11 @@ xlabel('y')
 if prin==1
     % print to postscript
     print -depsc figs\NP2.eps;
+else
+    sgtitle('Figure A.41 ')
+    set(gcf,"Name",'Figure A.41')
 end
 
-sgtitle('Figure A.41 ')
-set(gcf,"Name",'Figure A.41')
 
 
 %% Create Table A.18
@@ -248,7 +263,7 @@ xlabel('Fitted values')
 
 subplot(2,2,2)
 % AVAS
-yhat=sum(outAVASy.tX,2);  
+yhat=sum(outAVASy.tX,2);
 
 res = outAVASy.ty - yhat;
 plot(yhat,res,'o')
@@ -260,9 +275,10 @@ xlabel('Fitted values')
 if prin==1
     % print to postscript
     print -depsc NP3.eps;
+else
+    sgtitle('Figure A.42 ')
+    set(gcf,"Name",'Figure A.42')
 end
-sgtitle('Figure A.42 ')
-set(gcf,"Name",'Figure A.42')
 
 
 %% Create Figure A.43
@@ -275,12 +291,13 @@ outrobAV=outj{:};
 
 nameXy=replace(nameXy,"_", " ");
 aceplot(outrobAV,'VarNames',nameXy,'notitle',true,'oneplot',true)
-sgtitle('Figure A.43')
-set(gcf,"Name",'Figure A.43')
 
 if prin==1
     % print to postscript
     print -depsc figs\NP4.eps;
+else
+    sgtitle('Figure A.43')
+    set(gcf,"Name",'Figure A.43')
 end
 
 %% Create Table A.19
@@ -288,4 +305,4 @@ disp('Table A.19: ANOVA in the transformed RAVAS scale')
 outF=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outrobAV.outliers,'VarNames',nameXy);
 disp(outF)
 
-%InsideREADME 
+%InsideREADME

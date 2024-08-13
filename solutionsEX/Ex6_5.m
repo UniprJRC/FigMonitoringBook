@@ -1,6 +1,5 @@
-%% Exercise 6.5
+%% Score test and fan plot 1.
 %
-% Score test and fan plot 1.
 % This file creates Figures A.21-A.23 and Tables A.8-A.10.
 
 %% D1 Data loading
@@ -46,7 +45,6 @@ if prin==1
 else
     title('Figure A.22 (left panel)')
     set(gcf,"Name",'Figure A.22 (left panel)')
-
 end
 %%  Create Figure A.22 (right panel)
 % D1 fanplotpn
@@ -55,11 +53,12 @@ la=[0 0.25 0.5 1];
 ylimy='';
 out=FSRfan(y,X,'la',la,'family','YJpn','plots',1,'init',round(n/2), ...
     'ylimy',[-ylimy ylimy],'msg',0,'tag','pl_scopn');
-title('Figure A.22 (right panel)')
-set(gcf,"Name",'Figure A.22 (right panel)')
 
 if prin==1
     print -depsc figs\D1fanpn.eps
+else
+    title('Figure A.22 (right panel)')
+    set(gcf,"Name",'Figure A.22 (right panel)')
 end
 %% Create Figure A.23
 % yXplot after transforming y

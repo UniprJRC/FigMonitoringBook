@@ -1,7 +1,6 @@
-%% Exercise 10.2
+%% Additional analysis of the customer loyalty data.
 %
-% Additional analysis of the customer loyalty data.
-%  This file creates Figure A.1 
+%  This file creates Figure A.71
 
 %% Data loading
 
@@ -19,12 +18,13 @@ outBIC=fanBIC(outFSRfan);
 if prin==1
     % print to postscript
     print -depsc figs\transf2.eps;
+else
+    title('Figure A.71')
+    set(gcf,"Name",'A.71')
 end
 
-title('Figure A.71')
-set(gcf,"Name",'A.71')
 disp('Proportion of observations included in the regression analysis')
 disp('of the square root transformation')
 disp(outBIC.mmstop(end-1,2)/n)
 
-%InsideREADME 
+%InsideREADME

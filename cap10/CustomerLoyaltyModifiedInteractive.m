@@ -28,8 +28,8 @@ Xytable{ss,end}= Xytable{ss,end}-kk;
 resfwdplot(out,'databrush',1,'datatooltip',0)
 if prin==1
     % print to postscript
-    print -depsc figs\modCL3.eps;
-    print -depsc figs\modCL4.eps;
+    print -depsc modCL3.eps;
+    print -depsc modCL4.eps;
 end
 
 %InsideREADME 

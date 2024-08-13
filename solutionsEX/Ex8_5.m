@@ -1,6 +1,5 @@
-%% Exercise 8.5
+%% Analysis of body measurements to predict percentage of body fat in males.
 %
-% Analysis of body measurements to predict percentage of body fat in males.
 % This file creates Figures A.53-A.56.
 
 %% Data loading
@@ -57,10 +56,11 @@ ylabel(['Eff.=' num2str(eff)])
 if prin==1
     % print to postscript
     print -depsc fatilr_MM.eps;
-end
-
+else
 sgtitle('Figure A.54')
 set(gcf,"Name",'Figure A.54')
+end
+
 drawnow
 
 %% Create Figures A.55 and A.56

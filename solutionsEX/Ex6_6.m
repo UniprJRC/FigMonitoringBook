@@ -1,6 +1,5 @@
-%% Exercise 6.6
+%% Score test and fan plot 2.
 %
-% Score test and fan plot 2.
 % This file creates Figures A.24-A.29 and Tables A.11-A.14
 
 %% D2 Data loading
@@ -46,7 +45,7 @@ if prin==1
     print -depsc figs\D2fan.eps
 else
     title('Figure A.25 (left panel)')
-set(gcf,"Name",'Figure A.25 (left panel)')
+    set(gcf,"Name",'Figure A.25 (left panel)')
 
 end
 
@@ -58,10 +57,10 @@ out=FSRfan(y,X,'la',la,'family','YJpn','plots',1,'init',round(n/2), ...
     'ylimy',[-ylimy ylimy],'msg',0,'tag','pl_scopn');
 
 if prin==1
-    print -depsc figs\D2fanpn.eps
+    print -depsc D2fanpn.eps
 else
-title('Figure A.25 (right panel)')
-set(gcf,"Name",'Figure A.25 (right panel)')
+    title('Figure A.25 (right panel)')
+    set(gcf,"Name",'Figure A.25 (right panel)')
 end
 
 %% Create Figure A.26
@@ -77,10 +76,10 @@ disp(labest);
 
 if prin==1
     % print to postscript
-    print -depsc figs\D2auto.eps;
+    print -depsc D2auto.eps;
 else
+    sgtitle('Figure A.26')
     set(gcf,"Name",'Figure A.26')
-
 end
 
 %% Prepare input for Figure A.27
@@ -100,8 +99,8 @@ yXplot(ytra,X,'group',group);
 if prin==1
     print -depsc D2ytraX.eps
 else
-sgtitle('Figure A.27')
-set(gcf,"Name",'Figure A.27')
+    sgtitle('Figure A.27')
+    set(gcf,"Name",'Figure A.27')
 end
 
 
@@ -118,26 +117,44 @@ out1=fanBICpn(outFSRfanpn);
 
 fig=findobj(0,'tag','pl_BIC');
 figure(fig(1))
-set(gcf,'Name', 'Figure A.28 (left panel)');
+if prin==1
+    % print to postscript
+    print -depsc D2autopnBIC.eps;
+else
+    sgtitle('Figure A.28 (left panel)')
+    set(gcf,'Name', 'Figure A.28 (left panel)');
+end
 
 fig=findobj(0,'tag','pl_AGI');
 figure(fig(1))
-set(gcf,'Name', 'Figure A.28 (right panel)');
-
-fig=findobj(0,'tag','pl_nobs');
-figure(fig(1))
-set(gcf,'Name', 'Figure A.29 (left panel)');
-
-fig=findobj(0,'tag','pl_R2c');
-figure(fig(1))
-set(gcf,'Name', 'Figure A.29 (right panel)');
 
 if prin==1
     % print to postscript
-    print -depsc figs\D2autopnh.eps;
-    print -depsc figs\D2autopnBIC.eps;
-    print -depsc figs\D2autopnAGI.eps;
-    print -depsc figs\D2autopnR2.eps;
+    print -depsc D2autopnh.eps;
+else
+    sgtitle('Figure A.28 (right panel)')
+    set(gcf,'Name', 'Figure A.28 (right panel)');
 end
 
-%InsideREADME 
+
+fig=findobj(0,'tag','pl_nobs');
+figure(fig(1))
+if prin==1
+    % print to postscript
+    print -depsc D2autopnh.eps;
+else
+    sgtitle('Figure A.29 (left panel)')
+    set(gcf,'Name', 'Figure A.29 (left panel)');
+end
+
+fig=findobj(0,'tag','pl_R2c');
+figure(fig(1))
+
+if prin==1
+    print -depsc D2autopnR2.eps;
+else
+    sgtitle('Figure A.29 (right panel)')
+    set(gcf,'Name', 'Figure A.29 (right panel)');
+end
+
+%InsideREADME

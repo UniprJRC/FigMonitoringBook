@@ -1,7 +1,8 @@
-%% Exercise 3.11
-%
-% Equality of the truncated mean in a folded normal distribution
+%% Equality of the truncated mean in a folded normal distribution
 % to the MAD in a  standard normal distribution
+%
+% This file solves Exercise 3.11
+%
 
 %% Beginning of code
 

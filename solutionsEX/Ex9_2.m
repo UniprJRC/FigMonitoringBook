@@ -1,7 +1,6 @@
-%% Exercise 9.2
+%% Analysis of air pollution and mortality data.
 %
-% Analysis of air pollution and mortality data.
-% This file creates Figures A.59
+% This file creates Figure A.59
 
 %% Load air pollution data 
 load air_pollution.mat
@@ -17,5 +16,12 @@ plo=struct;
 plo.nameYrot=0;
 plo.TickLabels=[]; 
 spmplot(air_pollution,'typespm',typespm,'dispopt',dispopt,'plo',plo);
+
+if prin==1
+    print -depsc cap9-air-pollution-corrplot-m.eps;
+else
+    sgtitle('Figure A.59')
+    set(gcf,"Name",'Figure A.59')
+end
 
 %InsideREADME 

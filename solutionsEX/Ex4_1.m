@@ -1,6 +1,5 @@
-%% Exercise 4.1
-%
-% AR data: standard static way of data analysis (non-robust and robust)
+%% AR data: standard static way of data analysis (non-robust and robust)
+
 % This file creates Figure A.5-A.6
 % and Tables A.3-A.5
 
@@ -31,20 +30,23 @@ outHYP=MMreg(y,X,'rhofunc','hyperbolic','eff',0.95);
 h1=subplot(2,1,1);
 % Show the weights
 resindexplot(outHYP.weights,'ylimy',[0 1],'h',h1,'numlab',[2 43 51])
-title('Weights')
+%title('Weights')
+title('')
 
 h2=subplot(2,1,2);
 % Show the scaled residuals
 resindexplot(outHYP.residuals,'h',h2,'numlab',[2 43 51])
-title('Scaled residuals')
+% title('Scaled residuals')
+title('')
 
 
 if prin==1
     % print to postscript
-    print -depsc ARweiresMMhyp.eps;
+    print -depsc ARweiresMMhyp.eps
 else
-sgtitle('Figure A.5')
+    sgtitle('Figure A.5')
 set(gcf,"Name",'Figure A.5')
+
 end
 
 %% Create Figure A.6
@@ -56,10 +58,11 @@ figure
 h1=subplot(2,1,1);
 resindexplot(outAS.residuals,'h',h1,'numlab',[2 43 51])
 title('Scaled residuals using Andrews'' sine')
+title('')
 h2=subplot(2,1,2);
 resindexplot(outPD.residuals,'h',h2,'numlab',[2 43 51])
 title('Scaled residuals using power divergence')
-
+title('')
 
 
 if prin==1

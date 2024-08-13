@@ -1,7 +1,6 @@
-%% Exercise 7.1
+%% New updated transformed values in AVAS.
 %
-% New updated transformed values in AVAS
-% This file creates Figure A.35 and Table A.17 
+% This file creates Figure A.35 and Table A.17
 
 %% Beginning of code
 prin=0;
@@ -66,6 +65,9 @@ set(gca,"Xtick",'')
 if prin==1
     % print to postscript
     print -depsc ctsub.eps;
+else
+    title("Figure A.35")    
+    set(gcf,"Name",'Figure A.35')
 end
 
-%InsideREADME 
+%InsideREADME

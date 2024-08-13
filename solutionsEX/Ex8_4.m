@@ -1,6 +1,5 @@
-%% Exercise 8.4
-%
-% Analysis of transformed Airline data.
+%% Analysis of transformed Airline data. 
+% 
 % This file creates Figures A.50-52
 
 prin=0;

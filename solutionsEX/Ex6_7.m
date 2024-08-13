@@ -1,6 +1,4 @@
-%% Exercise 6.7
-%
-% Score test and fan plot 3.
+%% Score test and fan plot 3.
 %
 % This file creates Figures A.30-A.34 and Tables A.14-A.16
 
@@ -19,8 +17,8 @@ if prin==1
     legend off
     print -depsc D3yX.eps
 else
-sgtitle('Figure A.30')
-set(gcf,"Name",'Figure A.30')
+    sgtitle('Figure A.30')
+    set(gcf,"Name",'Figure A.30')
 end
 
 %% Create Table A.14
@@ -47,8 +45,8 @@ out=FSRfan(y,X,'la',la,'family','YJ','plots',1,'init',round(n/2),'ylimy',[-ylimy
 if prin==1
     print -depsc figs\D3fan.eps
 else
-title('Figure A.31 (left panel)')
-set(gcf,"Name",'Figure A.31 (left panel)')
+    title('Figure A.31 (left panel)')
+    set(gcf,"Name",'Figure A.31 (left panel)')
 end
 %%  Create Figure A.31 (right panel)
 % D3 fanplotpn
@@ -60,8 +58,8 @@ out=FSRfan(y,X,'la',la,'family','YJpn','plots',1,'init',round(n/2), ...
 if prin==1
     print -depsc \D3fanpn.eps
 else
-title('Figure A.31 (right panel)')
-set(gcf,"Name",'Figure A.31 (right panel)')
+    title('Figure A.31 (right panel)')
+    set(gcf,"Name",'Figure A.31 (right panel)')
 end
 
 %% Create Figure A.32 and A.33
@@ -105,11 +103,11 @@ if prin==1
     print -depsc figs\D3autopnBIC.eps;
     print -depsc figs\D3autopnAGI.eps;
     print -depsc figs\D3autopnR2.eps;
-    
+
 end
 
 %% Prepare input for Figure A.34
-% yXplot after transforming y  
+% yXplot after transforming y
 % lapos=0.5;
 % laneg=0;
 
@@ -136,16 +134,16 @@ if prin==1
     legend off
     print -depsc D3ytraX.eps
 else
-sgtitle('Figure A.34')
-set(gcf,"Name",'Figure A.34')
+    sgtitle('Figure A.34')
+    set(gcf,"Name",'Figure A.34')
 end
 
 
 %% Create Table A.16
- % D3 anova table after transforming y  
+% D3 anova table after transforming y
 % D2 anova table after transforming y
 disp('Table A.16: ANOVA in the transformed scale for y')
 outTRA=fitlm(X,ytra);
 disp(outTRA)
 
-%InsideREADME 
+%InsideREADME

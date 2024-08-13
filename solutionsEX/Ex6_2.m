@@ -1,6 +1,5 @@
-%% Exercise 6.2.
+%% Confidence interval for transformation parameter lambda.
 %
-% Confidence interval for transformation parameter lambda.
 % This file creates Figure A.17
 
 %% Beginning of code
@@ -29,10 +28,11 @@ out=boxcoxR(y,X,'plots',1,'laseq',laseq,'intercept',0');
 title('')
 if prin==1
     print -depsc lambdaconfint.eps
+else
+    sgtitle('Figure A.17')
+    set(gcf,"Name",'Figure A.17')
 end
 
 
-sgtitle('Figure A.17')
-set(gcf,"Name",'Figure A.17')
 
-%InsideREADME 
+%InsideREADME

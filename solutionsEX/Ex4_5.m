@@ -1,6 +1,5 @@
-%% Exercise 4.5
+%% Hawkins data: BIC monitoring.
 %
-% Hawkins data: BIC monitoring.
 % This file creates Figure A.13
 
 %% Beginning of code
@@ -23,7 +22,7 @@ RES=zeros(n,length(bdp));
 
 for j=1:length(bdp)
     [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',100000);
-    
+
     hh=out.h;
     if hh<n
         resj=(y-Xwithintercept*out.beta).*(out.weights);
@@ -39,7 +38,7 @@ for j=1:length(bdp)
         RSS=res'*res;
         BIClxs(j,2)=-n*log(RSS/hh)-logn*p;
     end
-    
+
 end
 
 
@@ -75,7 +74,7 @@ for j=2:size(BB,2)
     else
         RSS=resj'*resj;
     end
-        BICfs(j-1,2)=-n*log(RSS/hh)-logn*(p+n-hh);
+    BICfs(j-1,2)=-n*log(RSS/hh)-logn*(p+n-hh);
 end
 
 % Plot BIC FOR FS
@@ -89,14 +88,12 @@ ax=axis;
 xlim([n/2 n])
 ylim([min(BICfs(:,2)) max(BICfs(:,2))])
 
-
 if prin==1
     % print to postscript
     print -depsc Hbic.eps;
-    
+else
+    sgtitle('Figure A.43')
+    set(gcf,"Name",'Figure A.13')
 end
 
-% title('Figure 4.43')
-% set(gcf,"Name",'Figure A.19')
-
-%InsideREADME 
+%InsideREADME

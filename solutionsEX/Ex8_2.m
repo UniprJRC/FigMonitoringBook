@@ -1,6 +1,5 @@
-%% Exercise 8.2
+%% Differences and similarities between HAR and ART heteroskedasticity.
 %
-% Differences and similarities between HAR and ART heteroskedasticity.
 % This file creates Figures 8.45-8.46.
 
 %% Beginning of code
@@ -23,19 +22,22 @@ outH=FSRH(y,X,Z,'init',round(n*0.8),'plots',1,'ylim',[1.6 3], ...
     'typeH',typeH,'bonflev',bonflev,'nsamp',10000);
 pl_fsr=findobj(0, 'type', 'figure','tag','pl_fsr');
 close(figure(pl_fsr(end)))
-
 pl_fsr=findobj(0, 'type', 'figure','tag','pl_yX');
-set(gcf,'Name', 'Figure A.45');
-title('Figure A.45')
 
-outl=outH.ListOut;
-bsb=1:n;
-bsb(outl)=[];
+if prin ==1
+    print -depsc P48bandsHhar.eps;
+else
+    set(gcf,'Name', 'Figure A.45');
+    title('Figure A.45')
+end
 
 %% Prepare input for Figure 8.46
 [outLXS]=LXS(y,X,'nsamp',1000);
 outHEDA=FSRHeda(y,X,Z,outLXS.bs,'init',round(0.7*length(y)),'typeH',typeH);
 
+outl=outH.ListOut;
+bsb=1:n;
+bsb(outl)=[];
 
 %%  Create Figure A.46
 % Forecasts with confidence bands
@@ -48,9 +50,10 @@ ylabel('Value')
 xlabel('Weight')
 if prin==1
     print -depsc P48bandsHhar.eps;
+else
+    set(gcf,'Name', 'Figure A.46');
+    title('Figure A.46')
 end
 
-set(gcf,'Name', 'Figure A.46');
-title('Figure A.46')
 
-%InsideREADME 
+%InsideREADME

@@ -1,6 +1,5 @@
-%% Exercise 9.1
+%% Analysis of the reduced logged ozone data using RAVAS.
 %
-% Analysis of the reduced logged ozone data using RAVAS.
 % This file creates Figures A.57, A.58 and Table A.20
 
 %% Load Ozone data (reduced data)
@@ -33,23 +32,26 @@ outm=outjm{:};
 aceplot(outm,'VarNames',nameXy)
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
-sgtitle('Figure A.57')
-set(gcf,"Name",'Figure A.57')
+if prin==1
+    % print to postscript
+    print -depsc ozoneredRAVAS.eps;
+else
+    sgtitle('Figure A.57')
+    set(gcf,"Name",'Figure A.57')
+end
 
 pl_tX=findobj(0, 'type', 'figure','tag','pl_tX');
 figure(pl_tX(1))
-sgtitle('Figure A.58')
-set(gcf,"Name",'Figure A.58')
-
+if prin==1
+    print -depsc ozoneredRAVAStX.eps;
+else
+    sgtitle('Figure A.58')
+    set(gcf,"Name",'Figure A.58')
+end
 
 disp("number of outliers found")
 disp(length(outm.outliers))
 
-if prin==1
-    % print to postscript
-    print -depsc ozoneredRAVAS.eps;
-    print -depsc ozoneredRAVAStX.eps;
-end
 
 %% Create Table A.20
 outLM=fitlm(outm.tX,outm.ty,'Exclude',outm.outliers,'VarNames',nameXy);

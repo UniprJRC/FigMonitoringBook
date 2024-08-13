@@ -1,6 +1,6 @@
-%% Exercise 1.1.
+%% Trimmed means.
 %
-% Trimmed means.
+% This file solves Exercise 1.1.
 
 %% Data loading
 clear
