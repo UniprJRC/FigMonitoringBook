@@ -1,4 +1,6 @@
-%% This file creates Figures A.79 and A.80 
+%% Analysis of the auto mpg data.
+%
+% This file creates Figures A.79 and A.80. 
 % All the other figures for dataset autompg 
 % are created by file Ex10_4.m
 

@@ -1,5 +1,6 @@
 %% Multiple tests and the Bonferroni correction
-% Create Figure A.14
+%
+% This file creates Figure A.14
 
 %% Beginning of code
 close all

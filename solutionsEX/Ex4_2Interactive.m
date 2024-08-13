@@ -1,5 +1,5 @@
-
 %% Hawkins data:  brushing residuals from monitoring S residuals
+%
 % This file creates Figures A.7--A.9 in an interactive way 
 
 %% Hawkins data loading

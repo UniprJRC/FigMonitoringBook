@@ -1,5 +1,6 @@
 %% Theoretical individual and simultaneous size
-% Create Figures A.15 and A.16
+%
+% This file creates Figures A.15 and A.16
 
 
 %% Create Figure A.15: plot of the size when p=2

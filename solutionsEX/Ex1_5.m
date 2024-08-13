@@ -1,5 +1,6 @@
 %% Difference among the 3 tests
-% Create Figure A.3
+%
+% This file creates Figure A.3
 
 %% Beginning of code
 close all
