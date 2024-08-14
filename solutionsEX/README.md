@@ -6,6 +6,10 @@ Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), Appl
 
 # Code to reproduce Figures and Tables in this Chapter
 
+For each chapter of the book we have given for each file the original source .m file and the corresponding .ipynb file.
+The .m file (**after installing [FSDA](https://www.mathworks.com/matlabcentral/fileexchange/72999-fsda)**) can be run on your MATLAB desktop or in MATLAB Online (please see the button Open in MATLAB Online below).
+The .ipynb is given in order to show you the output of the code.
+In order to run the .ipynb files inside jupiter notebook follow the instructions in the file [ipynbRunInstructions.md](../ipynbRunInstructions.md). 
 
 
 
