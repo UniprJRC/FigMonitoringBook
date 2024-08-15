@@ -2,7 +2,7 @@
 
  First of all let us address the question you have in your mind: “why I would want to run the .ipynb file inside a jupyter notebook?”.
 
-Jupyter notebook is an editor that is language agnostic in the sense that under this environment it is possible to run any program: python code (through python kernel), MATLAB code (through MATLAB kernel), R code (through R kernel)  or any other language using the associated kernel.
+Jupyter notebook is an editor that is [language agnostic](https://en.wikipedia.org/wiki/Language-agnostic) in the sense that under this environment it is possible to run any program: python code (through python kernel), MATLAB code (through MATLAB kernel), R code (through R kernel)  or any other language using the associated kernel.
 
 Jupyter is written in Python and therefore needs python environment to run (however it could have been written in any other language), therefore you should have a python distribution (such as anaconda or miniconda). If for example miniconda is installed jupyter is launched through the miniconda power shell.
 
@@ -11,13 +11,10 @@ Jupyter is written in Python and therefore needs python environment to run (howe
 
 Here are the most relevant steps of the setup process.
 
-If you already a Python envirnoment
-
-Open your Python terminal (not the CMD prompt!) (i.e. the Anaconda prompt) and paste the line to install the jupiter notebook:
+If you already have a Python environment, open your Python terminal (not the CMD prompt!) (i.e. the Anaconda prompt) and paste the line below to install the jupiter notebook:
 
 ```
 python -m pip install notebook
-
 ```
 
 If you do not already have a Python setup you can copy/paste these lines in the Windows Terminal (CMD) in order to install a Python environment such as [miniconda](https://docs.anaconda.com/miniconda/#quick-command-line-install)
@@ -28,7 +25,7 @@ start /wait "" miniconda.exe /S
 del miniconda.exe
 ```
 
-Note that we recommend to install this specific verison of Python  (3.11.24) because it is the
+Note that we recommend to install this specific version of Python  (3.11.24) because this 
 is the last supported Python version to run the MATLAB kernel 
 
 
@@ -54,17 +51,22 @@ pip install jupyter notebook
 python -m notebook 
 ```
 Note at this point among the available kernels you just see the Python kernel.
-In order to launch .m files you need to install the MATLAB kernel. 
+You can open Jupyter notebooks containing MATLAB code without having MATLAB installed.
+
+In order to run .ipynb files acording to the [official MathWorks documentation](https://github.com/mathworks/jupyter-matlab-proxy/blob/main/README.md) you need to 
+1. install the MATLAB kernel 
+2. have MATLAB installed in your computer
+3. have a MATLAB license  
 
 # Installation of MATLAB kernel inside Jupiter notebooks
 
-In order to install the MATLAB kernel, in the powershell you need to run the following command
+In order to install the MATLAB kernel, in the python (anaconda) powershell you need to run the following command
 
 ```
 python -m pip install jupyter-matlab-proxy
 ```
 
-Now after typing `jupyter notebook` in the powershell if you have navigated into the folder FigMonitoringBook you should see inside localhost the subfolders of the book and in the background the terminal you used to launch the instruction jupiter notebook and from the button New you should be able to see the MATLAB kernel option
+After typing `jupyter notebook` in the powershell if you have navigated into the folder FigMonitoringBook you should see inside localhost the subfolders of the book and in the background the terminal you used to launch the instruction jupiter notebook and from the button New you should be able to see the MATLAB kernel option
 
 
 ![](./images/jupyter.jpg)
