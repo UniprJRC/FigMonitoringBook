@@ -118,12 +118,12 @@ end
 
 %%  Create Figure 5.25: analysis of outliers detected as LS increases
 
-close all
 load bandsWithLSyContn200p5
 % boxplot(BICFS,'Labels',string(LSHIFT))
 maxylim=0.16;
 fs=14;
 
+figure
 subplot(2,2,1)
 boxplot(BICLTS,'Labels',string(LSHIFT))
 xlabel('Contamination level shift')
@@ -147,12 +147,11 @@ else
 end
 
 %%  Create Figure 5.26 (n=500 p=15 with leverage points)
-close all
 % analysis of outliers detected as LS increases
 load bandsWithLSyContn500p15WithLev.mat
 maxylim=0.16;
 fs=14;
-%
+figure
 subplot(2,2,1)
 boxplot(BICLTS,'Labels',string(LSHIFT))
 xlabel('Contamination level shift')
@@ -172,7 +171,6 @@ if prin==1
 else
     sgtitle('Figure 5.26')
     set(gcf,"Name",'Figure 5.26')
-
 end
 
 %InsideREADME
