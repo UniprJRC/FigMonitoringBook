@@ -1,29 +1,26 @@
-#  How to run MATLAB code in Jupyter notebooks 
+# Preface about Jupyter notebooks. What is this? Why do I need it?
 
-For each chapter of the book we have given for each file the original source .m file and the corresponding .ipynb file.
-The .m file (after installing FSDA) can be run on your MATLAB desktop or in MATLAB Online (please see the button run in MATLAB Online).
-The .ipynb is given in order to show you the output of the code.
-The purpose of this file is to show how these .ipynb can be run in jupiter notebook. 
+ First of all let us address the question you have in your mind: “why I would want to run the .ipynb file inside a jupyter notebook?”.
 
-The official MathWorks reference on how to run  MATLAB code in Jupyter notebooks is at [Jupyter Proxy](https://github.com/mathworks/jupyter-matlab-proxy/blob/main/README.md)
+Jupyter notebook is an editor that is language agnostic in the sense that under this environment it is possible to run any program: python code (through python kernel), MATLAB code (through MATLAB kernel), R code (through R kernel)  or any other language using the associated kernel.
 
-Please follow the steps detailed in the file above. If something went wrong and the [TroublesShooting](https://github.com/mathworks/jupyter-matlab-proxy/blob/main/troubleshooting/troubleshooting.md) did not work (as in our case) try the instructions below
+Jupyter is written in Python and therefore needs python environment to run (however it could have been written in any other language), therefore you should have a python distribution (such as anaconda or miniconda). If for example miniconda is installed jupyter is launched through the miniconda power shell.
 
-## WINDOWS INSTALLATION
+
+## WINDOWS INSTALLATION of jupyter notebooks
 
 Here are the most relevant steps of the setup process.
 
-Open your Python terminal (not the CMD prompt!) (i.e. the Anaconda prompt) and paste these 3 lines:
+If you already a Python envirnoment
+
+Open your Python terminal (not the CMD prompt!) (i.e. the Anaconda prompt) and paste the line to install the jupiter notebook:
 
 ```
-python -m pip install jupyter-matlab-proxy
-
 python -m pip install notebook
 
-python -m pip install jupyterlab
 ```
 
-If you do not already have a Python setup you can run these lines in the Windows Terminal (CMD)
+If you do not already have a Python setup you can copy/paste these lines in the Windows Terminal (CMD) in order to install a Python environment such as [miniconda](https://docs.anaconda.com/miniconda/#quick-command-line-install)
 
 ```
 curl https://repo.anaconda.com/miniconda/Miniconda3-py311_24.5.0-0-Windows-x86_64.exe -o miniconda.exe
@@ -31,8 +28,8 @@ start /wait "" miniconda.exe /S
 del miniconda.exe
 ```
 
-this is the last supported Python version (3.11.24) of the MATLAB Jupyter proxy project
-
+Note that we recommend to install this specific verison of Python  (3.11.24) because it is the
+is the last supported Python version to run the MATLAB kernel 
 
 
 Now, still into the Python prompt (Anaconda prompt) if you type 
@@ -41,7 +38,7 @@ Now, still into the Python prompt (Anaconda prompt) if you type
 jupyter notebook
 ```
 
-You should be able to start a new Jupyter notebook with a MATLAB kernel.
+You should be able to start a new Jupyter notebook
 
 If you get the error
 
@@ -56,8 +53,18 @@ try
 pip install jupyter notebook 
 python -m notebook 
 ```
+Note at this point among the available kernels you just see the Python kernel.
+In order to launch .m files you need to install the MATLAB kernel. 
 
-Now, finally you should be able to start a new Jupyter notebook with a MATLAB kernel. For example if you have navigated into the folder FigMonitoringBook you should see inside localhost the subfolders of the book and in the background the terminal you used to launch the instruction jupiter notebook
+# Installation of MATLAB kernel inside Jupiter notebooks
+
+In order to install the MATLAB kernel, in the powershell you need to run the following command
+
+```
+python -m pip install jupyter-matlab-proxy
+```
+
+Now after typing `jupyter notebook` in the powershell if you have navigated into the folder FigMonitoringBook you should see inside localhost the subfolders of the book and in the background the terminal you used to launch the instruction jupiter notebook and from the button New you should be able to see the MATLAB kernel option
 
 
 ![](./images/jupyter.jpg)
@@ -99,3 +106,11 @@ Note that in the Python prompt it is possible to see which release Jupiter MATLA
 `INFO:MATLABProxyApp:Found MATLAB executable at: C:\Program Files\MATLAB\R2024a\bin\matlab.EXE`
 
 Remark: of course do not forget to rename to MATLAB.exe the file MATLABtmp.EXE
+
+
+#  Additional resources 
+
+The official MathWorks reference on how to run  MATLAB code in Jupyter notebooks is at [Jupyter Proxy](https://github.com/mathworks/jupyter-matlab-proxy/blob/main/README.md)
+
+See also the section [TroublesShooting](https://github.com/mathworks/jupyter-matlab-proxy/blob/main/troubleshooting/troubleshooting.md) 
+
