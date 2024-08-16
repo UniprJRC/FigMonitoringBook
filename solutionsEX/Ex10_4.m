@@ -1,7 +1,7 @@
 %% Analysis of the auto mpg data.
 %
 % This file creates Figures A.75-A.84
-% and Tables A.21-A.23
+% and Tables A.22-A.24
 
 %% Data loading
 % carMPG
@@ -30,10 +30,10 @@ else
 end
 
 
-%% Create Table A.21
+%% Create Table A.22
 % fitlm on the original scale
 outLM=fitlm(X,y,'VarNames',nameXycat);
-disp("Table A.21")
+disp("Table A.22")
 disp(outLM)
 
 
@@ -69,10 +69,10 @@ Xytable1=Xytable;
 Xytable1{:,end}=-Xytable1{:,end}.^labest;
 
 
-%% Create Table A.22
+%% Create Table A.23
 % Variable selection in the transformed scale
 mdlVS=stepwiselm(Xytable1,'CategoricalVars','origin','Upper','linear');
-disp('Table A.22')
+disp('Table A.23')
 disp(mdlVS)
 
 %% Create Figure A.78
@@ -142,7 +142,7 @@ end
 
 
 
-%% Create Table A.23
+%% Create Table A.24
 % fitlm in the transformed RAVAS scale
 
 Xtra=outrobAV.tX;
