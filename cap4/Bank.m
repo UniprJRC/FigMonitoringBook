@@ -164,8 +164,14 @@ plo.namey='y';
 %% Create left-hand panel of Figure 4.42
 plo.sym='+';
 plo.clr='b';
-yXplot(y(good),X(good,:),'plo',plo,'tag','yXgood');
+[~,AX]=yXplot(y(good),X(good,:),'plo',plo,'tag','yXgood');
+legend off
+for j=1:p
+    AX(j).XTickLabel='';
+end
+
 if prin==1
+     print -depsc  FSyXBDa.eps
 else
     sgtitle('Figure 4.42 (left hand panel)')
     set(gcf,"Name",'Figure 4.42 (left hand panel)')
@@ -179,9 +185,14 @@ yout=y(outliers);
 % Some jittering for the third column because it is constant and yXplot
 % thinks it is an intercept which does not have to be shown
 Xout(:,3)=Xout(:,3)+1e-08*randn(length(outliers),1);
-yXplot(yout,Xout,'plo',plo,'tag','yXout');
+[~,AX]=yXplot(yout,Xout,'plo',plo,'tag','yXout');
+legend off
+for j=1:p
+    AX(j).XTickLabel='';
+end
+
 if prin ==1
-    print -depsc  FSyXBD.eps
+    print -depsc  FSyXBDb.eps
 else
     sgtitle('Figure 4.42 (right hand panel)')
     set(gcf,"Name",'Figure 4.42 (right hand panel)')
