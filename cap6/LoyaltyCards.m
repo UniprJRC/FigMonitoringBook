@@ -30,7 +30,7 @@ end
 
 %% Prepare input for Figures 6.3-6.5
 yt=y.^0.4;
-[out]=FSR(yt,X,'plots',0,'init',round(n*0.3),'nsamp',10000);
+[out]=FSR(yt,X,'plots',0,'init',round(n*0.3),'nsamp',20000);
 outl=out.ListOut;
 
 [outLXS]=LXS(yt,X,'nsamp',10000);
