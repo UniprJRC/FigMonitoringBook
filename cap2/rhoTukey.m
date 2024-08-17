@@ -5,6 +5,7 @@
 %% Plot of rho function.
 close all
 prin=0;
+FontSize=14;
 c=4.6851;
 subplot(2,2,1)
 hold('on')
@@ -13,7 +14,7 @@ rhoTB=TBrho(x,c);
 % maxrho=max(rhoTB);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoTB,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 ylabel(['$\rho(u,c=' num2str(c) ') $'],'Interpreter','Latex','FontSize',14)
 
 
@@ -50,7 +51,7 @@ rhoTB=TBrho(x,c);
 maxrho=max(rhoTB);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoTB,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 ylabel(['$\rho(u,c=' num2str(c) ') $'],'Interpreter','Latex','FontSize',14)
 
 

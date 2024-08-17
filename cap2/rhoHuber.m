@@ -4,12 +4,12 @@
 
 %% Plot Huber rho function. Figure 2.5
 close all
-prin=0;
+prin=1;
 x=-3:0.001:3;
 c=1.345;
 rhoHU=HUrho(x,c);
 plot(x,rhoHU,'LineStyle','-','LineWidth',2)
-fs=14;
+fs=16;
 xlabel('$u$','Interpreter','Latex','FontSize',fs)
 ylabel('$\rho (u,1.345)$','Interpreter','Latex','FontSize',fs)
 yc=0.13;
@@ -41,7 +41,7 @@ c=0.5;
 dx=0.2; % horizontal label displacement
 rhoHU=HUrho(x,c);
 plot(x,rhoHU,'LineWidth',lwd)
-xlabel('u','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',fs)
 ylabel(['$\rho (x,' num2str(c) ')$'],'Interpreter','Latex','FontSize',fs)
 text(-c-dx,yc,['-$c$=-' num2str(c)],'HorizontalAlignment','right','FontSize',fs,'Interpreter','latex')
 text(c+dx,yc,['$c$=' num2str(c)],'HorizontalAlignment','left','FontSize',fs,'Interpreter','latex')
@@ -53,7 +53,7 @@ subplot(2,2,3)
 hold('on')
 psiHU=HUpsi(x,c);
 plot(x,psiHU,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',fs)
 ylabel(['$\psi (x,' num2str(c) ')$'],'Interpreter','Latex','FontSize',fs)
 text(-c,yc,['-$c$=-' num2str(c)],'HorizontalAlignment','right','FontSize',fs,'Interpreter','latex')
 text(c+dx,yc,['$c$=' num2str(c)],'HorizontalAlignment','left','FontSize',fs,'Interpreter','latex')
@@ -71,7 +71,7 @@ yc=0.3;
 lwd=2;
 rhoHU=HUrho(x,c);
 plot(x,rhoHU,'LineWidth',lwd)
-xlabel('u','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',fs)
 ylabel(['$\rho (x,' num2str(c) ')$'],'Interpreter','Latex','FontSize',fs)
 text(-c,yc,['-$c$=-' num2str(c)],'HorizontalAlignment','right','FontSize',fs,'Interpreter','latex')
 text(c+dx,yc,['$c$=' num2str(c)],'HorizontalAlignment','left','FontSize',fs,'Interpreter','latex')
@@ -83,7 +83,7 @@ subplot(2,2,4)
 hold('on')
 psiHU=HUpsi(x,c);
 plot(x,psiHU,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',fs)
 ylabel(['$\psi (x,' num2str(c) ')$'],'Interpreter','Latex','FontSize',fs)
 text(-c+3*dx,yc,['$-c$=-' num2str(c)],'HorizontalAlignment','right','FontSize',fs,'Interpreter','latex')
 text(c+dx,yc,['$c$=' num2str(c)],'HorizontalAlignment','left','FontSize',fs,'Interpreter','latex')

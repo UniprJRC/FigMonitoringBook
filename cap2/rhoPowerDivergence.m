@@ -6,6 +6,7 @@
 close all
 prin=0;
 alpha=0.2245;
+FontSize=14;
 subplot(2,2,1)
 hold('on')
 x=-9:0.1:9;
@@ -13,7 +14,7 @@ rhoPD=PDrho(x,alpha);
 % maxrho=max(rhoPD);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoPD,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 ylabel(['$\rho(u,\alpha=' num2str(alpha) ') $'],'Interpreter','Latex','FontSize',14)
 
 subplot(2,2,3)
@@ -21,7 +22,7 @@ hold('on')
 psiPD=PDpsi(x,alpha);
 % psiHA=psiHA/maxrho;
 plot(x,psiPD,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex','FontSize',14)
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 ylabel(['$\psi(u,\alpha=' num2str(alpha) ') $'],'Interpreter','Latex','FontSize',14)
 yline(0)
 
@@ -34,7 +35,7 @@ rhoPD=PDrho(x,alpha);
 maxrho=max(rhoPD);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoPD,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex')
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 ylabel(['$\rho(u,\alpha=' num2str(alpha) ') $'],'Interpreter','Latex','FontSize',14)
 
 
@@ -43,7 +44,7 @@ hold('on')
 psiPD=PDpsi(x,alpha);
 % psiHA=psiHA/maxrho;
 plot(x,psiPD,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex','FontSize',14)
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 ylabel(['$\psi(u,\alpha=' num2str(alpha) ') $'],'Interpreter','Latex','FontSize',14)
 
 yline(0)

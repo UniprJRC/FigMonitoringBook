@@ -3,8 +3,8 @@
 % This file creates Figure 2.7.
 
 %% Plot of rho function.
-FontSize=10;
-FontSizelab=9;
+FontSize=14;
+FontSizelab=12;
 shortlabely=true;
 
 close all
@@ -18,7 +18,7 @@ rhoHA=HArho(x,1);
 %maxrho=max(rhoHA);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoHA,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 if shortlabely ==true
     ylabel('$\rho(u,1,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
 else
@@ -47,7 +47,7 @@ hold('on')
 psiHA=HApsi(x,1);
 % psiHA=psiHA/maxrho;
 plot(x,psiHA,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 if shortlabely ==true
     ylabel('$\psi(u,1,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
 else
@@ -84,7 +84,7 @@ rhoHA=HArho(x,[cc,a,b,c]);
 maxrho=max(rhoHA);
 % rhoHA=rhoHA/maxrho;
 plot(x,rhoHA,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 if shortlabely ==true
     ylabel('$\rho(u,0.1981,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
 else
@@ -127,7 +127,7 @@ psiHA=HApsi(x,[cc,a,b,c]);
 % psiHA=psiHA/maxrho;
 
 plot(x,psiHA,'LineWidth',2)
-xlabel('$u$','Interpreter','Latex','FontSize',FontSizelab)
+xlabel('$u$','Interpreter','Latex','FontSize',FontSize)
 
 if shortlabely ==true
     ylabel('$\psi(u,0.1981,2, 4, 8) $','Interpreter','Latex','FontSize',FontSizelab+3)
