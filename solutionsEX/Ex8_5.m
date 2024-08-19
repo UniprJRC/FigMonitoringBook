@@ -21,13 +21,16 @@ bdp=0.25;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h1,'conflev',conflev);
 ylabel(['Breakdown point =' num2str(bdp)])
+title('')
 
 h2=subplot(2,1,2);
 bdp=0.5;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{6});
 ylabel(['Breakdown point =' num2str(bdp)])
+title('')
 cascade;
+
 if prin==1
     % print to postscript
     print -depsc fatilr_S.eps;
@@ -48,17 +51,19 @@ eff=0.80;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h1,'conflev',conflev,'numlab',{6});
 ylabel(['Eff.=' num2str(eff)])
+title('')
 h2=subplot(2,1,2);
 eff=0.99;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{4});
 ylabel(['Eff.=' num2str(eff)])
+title('')
 if prin==1
     % print to postscript
     print -depsc fatilr_MM.eps;
 else
-sgtitle('Figure A.54')
-set(gcf,"Name",'Figure A.54')
+    sgtitle('Figure A.54')
+    set(gcf,"Name",'Figure A.54')
 end
 
 drawnow
