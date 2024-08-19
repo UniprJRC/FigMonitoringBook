@@ -63,11 +63,13 @@ eff=0.80;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h1,'conflev',conflev,'numlab',{6});
 ylabel(['Eff.=' num2str(eff)])
+title('')
 h2=subplot(2,1,2);
 eff=0.99;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{4});
 ylabel(['Eff.=' num2str(eff)])
+title('')
 if prin==1
     % print to postscript
     print -depsc fishmilr_MM.eps;
