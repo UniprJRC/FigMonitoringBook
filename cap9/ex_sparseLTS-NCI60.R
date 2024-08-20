@@ -243,7 +243,7 @@ library(ggrepel)
 
 ff <- sparseLTS(X, y, lambda=0.06258666)
 
-##  Set the random seed befor ethe call to setupDiagnosticPlot.sparseLTS(), beacuse
+##  Set the random seed before the call to setupDiagnosticPlot.sparseLTS(), beacuse
 ##  subsecuqnt calls to MCD could produce different solutions (and thus different rd-distances).
 ##  Use the same seed before the call to plot(..., which+"rdiag") 
 set.seed(2345)
