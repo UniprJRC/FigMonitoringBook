@@ -1,4 +1,6 @@
-## Complements to Figures 8.24 and 8.25
+## facemask data: BIC traditional analsys
+# This file creates Figures 8.24 and 8.25
+##
 
 ## Install the required R packages, if necessary
 #install.packages("flexmix")  
@@ -168,3 +170,4 @@ p2 = ggplot(facemasks, aes(x = SU, y = V, color = clustersCWM)) +
 cowplot::plot_grid(p1, p2, labels = c(" ", " "), ncol = 2)
 
 
+#InsideREADME
