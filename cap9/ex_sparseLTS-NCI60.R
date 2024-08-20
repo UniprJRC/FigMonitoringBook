@@ -1,10 +1,20 @@
+##==============================================================================
+##   Least Absolute Shrinkage and Selection Operator (LASSO)
+##
+##  Create Figures 9.3, 9.4, 
+##
+##==============================================================================
+
 library(pracma)     # for tictoc
 library(glmnet)     # for cv.glmnet() and glmnet()
 
 library(latex2exp)
 library(ggplot2)
+library(ggrepel)
 library(viridis)
 
+prin <- TRUE        # whether to save the figures to disk as PDF files
+ 
 ## load package and data
 library("robustHD")
 data("nci60")  # contains matrices 'protein' and 'gene'
@@ -33,19 +43,41 @@ lasso = glmnet(X, y, alpha=1, lambda=best_lambda)
 length(which(lasso$beta != 0))
 (v_lasso <- row.names(lasso$beta)[which(lasso$beta != 0)])
 
-## Plot coefficent path for LASSO
+##==============================================================================
+## Create Fig. 9.3
+##
+##  NCI60 data
+##
+##  Coefficient paths plotted against the penalty parameter lambda (on a log scale). 
+##  Upper x-� axes, number of non-zero coefficients. 
+##
+##  Left panel: Plot coefficent path for LASSO
+##
 lasso1 = glmnet(X, y, alpha=1)
 plot(lasso1, xvar="lambda", cex.lab=1.4)
-savePlot(file="cap9-nci60-coefficients.pdf", type="pdf")
 
-## Plot coefficent path for ridge regression
+if(prin) {
+    pdf(file="cap9-nci60-coefficients.pdf", width=7.5, height=7.5)
+    plot(lasso1, xvar="lambda", cex.lab=1.4)
+    dev.off()
+}
+
+##
+##  Right panel: Plot coefficent path for ridge regression
+##
 lasso2 = glmnet(X, y, alpha=0)
 plot(lasso2, xvar="lambda", cex.lab=1.4)
-savePlot(file="cap9-nci60-coefficients-ridge.pdf", type="pdf")
 
-##   Plot CV Mean-Squared Error of LASSO ======================================
+if(prin) {
+    pdf(file="cap9-nci60-coefficients-ridge.pdf", width=7.5, height=7.5)
+    plot(lasso2, xvar="lambda", cex.lab=1.4)
+    dev.off()
+}
 
-plot(lasso_cv)
+##=============================================================================
+##  Create Fig. 9.4 
+##
+##   Plot CV Mean-Squared Error of LASSO 
 
 df <- data.frame(lambda=log(lasso_cv$lambda), 
     cvm=lasso_cv$cvm, low=lasso_cv$cvlo, 
@@ -74,24 +106,37 @@ gg <- ggplot(df, aes(x=lambda, y=cvm)) +
         ylab("Mean-Squared Error")
 gg
 
-cairo_pdf(filename="cap9-NCI60-crossval.pdf", width=7.5, height=5)
-gg
-dev.off()
+if(prin) {
+    pdf(file="cap9-NCI60-crossval.pdf", width=7.5, height=5)
+    print(gg)
+    dev.off()
+}
 
 ## ============================================================================
 ## Fit sparse LTS regression, first optimizing lambda for the default BDP
 
-##  This will set lambda to a value which is a small fraction of a
-##  robust estimate of the smallest value that sets all coefficients
-##  to zero
+##==============================================================================
+##  Create Fig. 9.5
+##
+##  Coefficients path for Sparse LTS
+##
+lambda <- seq(0.01, 0.5, length.out = 100)
+fit_BIC25 <- sparseLTS(X, y, lambda = lambda, mode = "fraction", crit = "BIC")
 
-fit <- sparseLTS(X, y)
-length(which(coef(fit) !=0))
+gg <- plot(fit_BIC25, labels=NA) + theme_bw(base_size=18) +
+    scale_color_viridis(discrete=TRUE, option="viridis") +
+    theme(plot.title=element_text(face="bold", hjust=0.5),
+          axis.title=element_text(face="bold")) +
+    ##ggtitle(TeX(r"( $\gamma^2 = \alpha^2 + \beta^2$ )") ) +
+    ggtitle(TeX(r"( Sparse LTS $(bdp=0.25)$ )") ) +
+    xlab(TeX(r"( $\lambda$ )") )
+gg
 
-lambda <- seq(0.01, 0.5, length.out = 50)
-fit <- sparseLTS(X, y, lambda=lambda, mode="fraction")
-length(which(coef(fit) !=0))
-plot(fit, labels=NA) + theme_bw()
+if(prin) {
+    pdf(file="cap9-NCI60-sparseLTS-25-coef.pdf", width=7.5, height=5)
+    print(gg)
+    dev.off()
+}
 
 ## Create parallel cluster
 library(parallel)
@@ -99,80 +144,63 @@ detectCores(logical = FALSE)
 cluster <- makeCluster(10)
 clusterExport(cluster, "sparseLTS")
 
+##  This can take some time ...
 tic()
 lambda <- seq(0.01, 0.5, length.out = 50)
-fit <- sparseLTS(X, y, lambda=lambda, mode="fraction", crit="PE",
+fit25 <- sparseLTS(X, y, lambda=lambda, mode="fraction", crit="PE",
                  splits=foldControl(K=10, R=10), seed=20210507, cl=cluster)
 toc()
 
 ##  elapsed time is 1720.850000 seconds
 
-fit
-length(which(coef(fit) != 0))
-v_fit <- which(coef(fit) != 0) - 1      # remove the intercept
-v_fit <- v_fit[-1]
+fit25
+length(which(coef(fit25) != 0))
+v_fit25 <- which(coef(fit25) != 0) - 1      # remove the intercept
+v_fit25 <- v_fit25[-1]
 
-v_fit[which(v_fit %in% v_lasso)]
-v_lasso[which(v_lasso %in% v_fit)]
-
-
-tic()
-fit_BIC <- sparseLTS(X, y, lambda = lambda, mode = "fraction", crit = "BIC")
-toc()
-
-length(which(abs(coef(fit_BIC)) > 1e-16))
-v_fit_BIC <- which(abs(coef(fit_BIC)) > 1e-16) - 1      # remove the intercept
-v_fit_BIC <- v_fit_BIC[-1]
-
-v_fit_BIC[which(names(v_fit_BIC) %in% v_lasso)]
-v_lasso[which(v_lasso %in% v_fit_BIC)]
-
+v_fit25[which(v_fit25 %in% v_lasso)]
+v_lasso[which(v_lasso %in% v_fit25)]
 
 ## Fit sparse LTS regression, first optimizing lambda for for BDP=0.5
 tic()
-fit_50 <- sparseLTS(X, y, alpha=0.5, lambda=lambda, mode="fraction", crit="PE",
+fit50 <- sparseLTS(X, y, alpha=0.5, lambda=lambda, mode="fraction", crit="PE",
                  splits=foldControl(K=10, R=10), seed=20210507, cl=cluster)
 toc()
 
 ##  elapsed time is 209.860000 seconds
 ##  elapsed time is 469.010000 seconds 
 
-fit_50
-length(which(coef(fit_50) != 0))
-v_fit_50 <- which(coef(fit_50) != 0) - 1      # remove the intercept
-v_fit_50 <- v_fit_50[-1]
+fit50
 
-v_fit_50[which(v_fit_50 %in% v_lasso)]
-v_lasso[which(v_lasso %in% v_fit_50)]
+length(which(coef(fit50) != 0))
+v_fit50 <- which(coef(fit50) != 0) - 1      # remove the intercept
+v_fit50 <- v_fit50[-1]
 
-v_fit_50[which(v_fit_50 %in% v_fit)]
+v_fit50[which(v_fit50 %in% v_lasso)]
+v_lasso[which(v_lasso %in% v_fit50)]
 
+v_fit50[which(v_fit50 %in% v_fit25)]
+
+save(fit25, fit50, file="nci60-sparseLTS.rda")
+
+##==============================================================================
+##  Create Fig. 9.6
+##
 ##  Plot PE for bdp=0.25 and bdp=0.50 =========================================
-##  Using the sparseLTS plot() function
-gg <- plot(fit) + theme_bw(base_size=18) + 
-    theme(plot.title=element_text(face="bold", hjust=0.5),
-          axis.title=element_text(face="bold")) +
-    ##ggtitle(TeX(r"( $\gamma^2 = \alpha^2 + \beta^2$ )") ) +
-    ggtitle(TeX(r"( $bdp=0.25$ )") ) +
-    xlab(TeX(r"( $\lambda$ )") )
-gg
+##
 
-gg <- plot(fit_50) + theme_bw(base_size=18) + 
-    theme(plot.title=element_text(face="bold", hjust=0.5),
-          axis.title=element_text(face="bold")) +
-    ##ggtitle(TeX(r"( $\gamma^2 = \alpha^2 + \beta^2$ )") ) +
-    ggtitle(TeX(r"( $bdp=0.50$ )") ) +
-    xlab(TeX(r"( $\lambda$ )") )
-gg
+## to save time - load previously computed fit25 and fit50 models
+##
 
-##  Plot PE for bdp=0.25 and bdp=0.50 =========================================
-##  Using directly ggplot2
+load(file="nci60-sparseLTS.rda")
 
-df <- data.frame(lambda=log(fit$tuning), 
-    cvm=fit$pe$reweighted, low=fit$pe$reweighted-fit$se$reweighted, 
-    upper=fit$pe$reweighted+fit$se$reweighted)
-lambda.min <- fit$tuning[which.min(fit$pe$reweighted),1]
-lambda.1se <- fit$tuning[fit$best[1],1]
+##  Left panel: bdp=0.25
+##
+df <- data.frame(lambda=log(fit25$tuning), 
+    cvm=fit25$pe$reweighted, low=fit25$pe$reweighted-fit25$se$reweighted, 
+    upper=fit25$pe$reweighted+fit25$se$reweighted)
+lambda.min <- fit25$tuning[which.min(fit25$pe$reweighted),1]
+lambda.1se <- fit25$tuning[fit25$best[1],1]
     
 gg <- ggplot(df, aes(x=lambda, y=cvm)) +
     geom_point(color="#cb4154") + 
@@ -188,15 +216,19 @@ gg <- ggplot(df, aes(x=lambda, y=cvm)) +
         ylab("RTMSPE")
 gg
 
-cairo_pdf(filename="cap9-NCI60-sparseLTS-25-PE.pdf", width=7.5, height=5)
-gg
-dev.off()
+if(prin) {
+    pdf(file="cap9-NCI60-sparseLTS-25-PE.pdf", width=7.5, height=5)
+    print(gg)
+    dev.off()
+}
 
-df <- data.frame(lambda=log(fit_50$tuning), 
-    cvm=fit_50$pe$reweighted, low=fit_50$pe$reweighted-fit_50$se$reweighted, 
-    upper=fit_50$pe$reweighted+fit_50$se$reweighted)
-lambda.min <- fit_50$tuning[which.min(fit_50$pe$reweighted),1]
-lambda.1se <- fit_50$tuning[fit_50$best[1],1]
+##  Right panel: bdp=0.50
+##
+df <- data.frame(lambda=log(fit50$tuning), 
+    cvm=fit50$pe$reweighted, low=fit50$pe$reweighted-fit50$se$reweighted, 
+    upper=fit50$pe$reweighted+fit50$se$reweighted)
+lambda.min <- fit50$tuning[which.min(fit50$pe$reweighted),1]
+lambda.1se <- fit50$tuning[fit50$best[1],1]
     
 gg <- ggplot(df, aes(x=lambda, y=cvm)) +
     geom_point(color="#cb4154") + 
@@ -212,35 +244,20 @@ gg <- ggplot(df, aes(x=lambda, y=cvm)) +
         ylab("RTMSPE")
 gg
 
-cairo_pdf(filename="cap9-NCI60-sparseLTS-50-PE.pdf", width=7.5, height=5)
-gg
-dev.off()
-
-
-##  Coefficients path for Sparse LTS
-lambda <- seq(0.01, 0.5, length.out = 50)
-fit_BIC25 <- sparseLTS(X, y, lambda = lambda, mode = "fraction", crit = "BIC")
-fit_BIC50 <- sparseLTS(X, y, alpha=0.5, lambda = lambda, mode = "fraction", crit = "BIC")
-
-gg <- plot(fit_BIC25, labels=NA) + theme_bw(base_size=18) +
-    scale_color_viridis(discrete=TRUE, option="viridis") +
-    theme(plot.title=element_text(face="bold", hjust=0.5),
-          axis.title=element_text(face="bold")) +
-    ##ggtitle(TeX(r"( $\gamma^2 = \alpha^2 + \beta^2$ )") ) +
-    ggtitle(TeX(r"( Sparse LTS $(bdp=0.25)$ )") ) +
-    xlab(TeX(r"( $\lambda$ )") )
-gg
-
-cairo_pdf(filename="cap9-NCI60-sparseLTS-25-coef.pdf", width=7.5, height=5)
-gg
-dev.off()
+if(prin) {
+    pdf(file="cap9-NCI60-sparseLTS-50-PE.pdf", width=7.5, height=5)
+    print(gg)
+    dev.off()
+}
 
 ##  Diagnostic plots ===========================================================
 ##    'arg' should be one of “all”, “rqq”, “rindex”, “rfit”, “rdiag”
 
-library(ggplot2)
-library(ggrepel)
-
+##==============================================================================
+##  Create Fig. 9.7
+##
+##  Robust regression diagnostic plots with 11 non-zero coefficients for bdp = 0.25. 
+##
 ff <- sparseLTS(X, y, lambda=0.06258666)
 
 ##  Set the random seed before the call to setupDiagnosticPlot.sparseLTS(), beacuse
@@ -264,6 +281,9 @@ yout$names <- as.character(yout$index) #rownames(yout)
 ## Choose the colors: from RColorBrewer (qualitative), Set 1
 colscheme <- c("Regular observation"="#377eb8", "Potential outlier"="#e41a1c")
 
+##  Left panel: normal QQ-plot of the standardized residuals against the quantiles 
+##  of the standard normal distribution
+##
 gg <- plot(ff, method="diagnostic", which="rqq", id.n=0) + 
     geom_text_repel(aes(x=theoretical, y=residual, label=names), data=xout, hjust=0, size=4.5, alpha=0.6) +
     scale_color_manual(values = colscheme) +
@@ -273,10 +293,13 @@ gg <- plot(ff, method="diagnostic", which="rqq", id.n=0) +
         axis.title=element_text(face="bold")) 
 gg
 
-cairo_pdf(filename="cap9-NCI60-sparseLTS-25-diag-rqq.pdf", width=7.5, height=7.5)
-gg
-dev.off()
+if(prin){
+    pdf(file="cap9-NCI60-sparseLTS-25-diag-rqq.pdf", width=7.5, height=7.5)
+    print(gg)
+    dev.off()
+}
 
+##  Diagnostic plot (not shown in the book)
 set.seed(2345)
 gg <- plot(ff, method="diagnostic", which="rdiag", id.n=0) + 
         geom_text_repel(aes(x=rd, y=residual, label=names), data=xout, hjust=0, size=4.5, alpha=0.6) +
@@ -289,13 +312,14 @@ gg <- plot(ff, method="diagnostic", which="rdiag", id.n=0) +
 
 gg
 
-cairo_pdf(filename="cap9-NCI60-sparseLTS-25-diag-rdiag.pdf", width=7.5, height=7.5)
-gg
-dev.off()
+if(prin){
+    pdf(file="cap9-NCI60-sparseLTS-25-diag-rdiag.pdf", width=7.5, height=7.5)
+    print(gg)
+    dev.off()
+}
 
-##  ============================================================================
-
-##  Index plot
+##  Right panel: standardized residuals against the index of the observations.
+##
 gg <- plot(ff, method="diagnostic", which="rindex", id.n=0) + 
     geom_text_repel(aes(x=index, y=residual, label=names), data=xout, hjust=0, size=4.5, alpha=0.6) +
     scale_color_manual(values = colscheme) +
@@ -305,7 +329,66 @@ gg <- plot(ff, method="diagnostic", which="rindex", id.n=0) +
         axis.title=element_text(face="bold"))
 gg
 
-cairo_pdf(filename="cap9-NCI60-sparseLTS-25-diag-rindex.pdf", width=7.5, height=7.5)
-gg
-dev.off()
+if(prin){
+    pdf(file="cap9-NCI60-sparseLTS-25-diag-rindex.pdf", width=7.5, height=7.5)
+    print(gg)
+    dev.off()
+}
 
+##==============================================================================
+##
+##  Compare LASSO, Sparse LTS and PENSE
+##
+##==============================================================================
+
+##  lasso_cv
+
+(lambda.min = lasso_cv$lambda.min)
+(lambda.1se = lasso_cv$lambda.1se)
+
+lasso_min = glmnet(X, y, family="gaussian", alpha=1, lambda=lambda.min)
+(lasso_varlist_min <- row.names(lasso_min$beta)[which(lasso_min$beta != 0)])
+length(lasso_varlist_min)
+
+lasso_1se = glmnet(X, y, family="gaussian", alpha=1, lambda=lambda.1se)
+(lasso_varlist_1se <- row.names(lasso_1se$beta)[which(lasso_1se$beta != 0)])
+length(lasso_varlist_1se)
+
+## lts_cv
+(lts25_lambda.min <- fit25$tuning[which.min(fit25$pe$reweighted), 1])      # 0.674232
+(lts25_lambda.1se <- fit25$tuning[fit25$best[1], 1])                       # 1.059507
+
+lts25_min <- sparseLTS(X, y, alpha=0.75, lambda=lts25_lambda.min)
+lts25_min_varlist <- coef(lts25_min)[which(abs(coef(lts25_min)) >= 1e-16)]  # get the beta
+(lts25_min_varlist <- names(lts25_min_varlist[-1]))                         # remove the intercept
+length(lts25_min_varlist)
+
+lts25_1se <- sparseLTS(X, y, alpha=0.75, lambda=lts25_lambda.1se)
+lts25_1se_varlist <- coef(lts25_1se)[which(abs(coef(lts25_1se)) >= 1e-16)]  # get the beta
+(lts25_1se_varlist <- names(lts25_1se_varlist[-1]))                         # remove the intercept
+length(lts25_1se_varlist)
+
+(lts50_lambda.min <- fit50$tuning[which.min(fit50$pe$reweighted), 1])      # 0.2889566
+(lts50_lambda.1se <- fit50$tuning[fit50$best[1], 1])                       # 1.733739
+
+lts50_min <- sparseLTS(X, y, alpha=0.75, lambda=lts50_lambda.min)
+lts50_min_varlist <- coef(lts50_min)[which(abs(coef(lts50_min)) >= 1e-16)]  # get the beta
+(lts50_min_varlist <- names(lts50_min_varlist[-1]))                         # remove the intercept
+length(lts50_min_varlist)
+
+lts50_1se <- sparseLTS(X, y, alpha=0.5, lambda=lts50_lambda.1se)
+lts50_1se_varlist <- coef(lts50_1se)[which(abs(coef(lts50_1se)) >= 1e-16)]  # get the beta
+(lts50_1se_varlist <- names(lts50_1se_varlist[-1]))                         # remove the intercept
+length(lts50_1se_varlist)
+
+## Only 3 variables selected by LASSO are included in the 11 selected by LTS with bdp=0.25
+lasso_varlist_1se 
+lts25_1se_varlist
+which(lasso_varlist_1se %in% lts25_1se_varlist)
+
+## Only 6 variables selected by LASSO are included in the 24 selected by LTS with bdp=0.50
+lts50_1se_varlist
+which(lasso_varlist_1se %in% lts50_1se_varlist)
+
+## Only 6 of the 11 variables selected by LTS with bdp=0.25 are included in the 24 selected by LTS with bdp=0.50
+which(lts25_1se_varlist %in% lts50_1se_varlist)
