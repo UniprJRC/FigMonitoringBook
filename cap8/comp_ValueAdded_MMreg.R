@@ -1,6 +1,5 @@
-## Fig. 8.35, Table 8.3 and Table 8.4
-##
-##  Manufacturing Value Added and life expectancy
+## Value added data: MM-regression
+# This file creates Figure  8.35, Table 8.3 and Table 8.4
 ##
 
 library(complmrob)          # for complmrob()
@@ -90,3 +89,5 @@ if(prin)
     dev.off()
 
 setwd(wd)               # restore the working directory
+
+#InsideREADME
