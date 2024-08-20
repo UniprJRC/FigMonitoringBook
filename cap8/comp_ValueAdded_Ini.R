@@ -1,4 +1,6 @@
-## Fig. 8.33
+## Value added data: tolerance ellipses and ternary diagrams
+# This file creates Figure  8.33
+
 ##
 ##  Manufacturing Value Added data ilr-transformed: 
 ##  - Left-hand panel: 0.975 tolerance ellipses based on the robust (MCD) and classical Mahalanobis distances. 
@@ -343,3 +345,5 @@ if(prin)
 
 ## Restore the original working directory
 setwd(wd) 
+
+#InsideREADME
