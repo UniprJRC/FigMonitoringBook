@@ -1,4 +1,4 @@
-## Fig. 8.34, Table 8.3 and Table 8.4
+## Fig. 8.35, Table 8.3 and Table 8.4
 ##
 ##  Manufacturing Value Added and life expectancy
 ##
