@@ -1,7 +1,9 @@
+## Analysis of air pollution and mortality data (also II)
+#
+# This file creates Figures A.59-A.64 (output of Exercise 9.2)
+# A.65-A.66 and Table A.21 (output of Exercise 9.3)
+
 ##==============================================================================
-##  Example 9.2
-##
-##  Creates Figures A.59 to A.66 and Table A.21
 ##
 ##  Air pollution data
 ##
@@ -455,7 +457,7 @@ if(prin) {
 }
 
 ##=============================================================================
-##  9.3: Analysis of air pollution and mortality data II
+##  Exercise 9.3: Analysis of air pollution and mortality data II
 ##
 ##  Conduct the analysis of the data from the previous problem 
 ##  using the robust PENSE method. 
@@ -664,5 +666,7 @@ which(lts50_1se_varlist %in% pense25_1se_varlist)
 ##  HC                                               X   X   
 ##  NOX          X                                   X   X  
 ##  SO2          X   X    X   X    X   X     X  X    X   X
-================================================================================
-                 8   4    9   6    9   8     8  7   15  15
+##================================================================================
+##               8   4    9   6    9   8     8  7   15  15
+
+#InsideREADME
