@@ -2,7 +2,6 @@
 % 
 % This file creates Figures A.50-52
 
-prin=0;
 
 %% Data loading
 % the original airline data (not contaminated)
@@ -20,6 +19,8 @@ airlines = ...
     104  114  146  172  180  203  237  271  305  310  362  390    % Nov
     118  140  166  194  201  229  278  306  336  337  405  432 ]; % Dec
 Y=(airlines(:));
+
+prin=0;
 
 %% Create Figure A.50
 % the model

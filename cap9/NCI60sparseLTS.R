@@ -1,9 +1,6 @@
-##==============================================================================
-##   Least Absolute Shrinkage and Selection Operator (LASSO)
+## NIC60 data:  Least Absolute Shrinkage and Selection Operator (LASSO)
+# This file creates Figures 9.3, 9.4, 9.5, 9.6 and 9.7.
 ##
-##  Create Figures 9.3, 9.4, 9.5, 9.6 and 9.7
-##
-##==============================================================================
 
 library(pracma)     # for tictoc
 library(glmnet)     # for cv.glmnet() and glmnet()
@@ -392,3 +389,5 @@ which(lasso_varlist_1se %in% lts50_1se_varlist)
 
 ## Only 6 of the 11 variables selected by LTS with bdp=0.25 are included in the 24 selected by LTS with bdp=0.50
 which(lts25_1se_varlist %in% lts50_1se_varlist)
+
+#InsideREADME
