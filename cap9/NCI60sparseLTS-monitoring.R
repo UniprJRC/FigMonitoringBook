@@ -1,4 +1,6 @@
-##=============================================================================
+## NIC60 data:  Monitoring Sparse LTS
+## This file creates Figures 9.8 and 9.9
+##
 library(pracma)     # for tictoc
 library(robustHD)
 library(ggplot2)
