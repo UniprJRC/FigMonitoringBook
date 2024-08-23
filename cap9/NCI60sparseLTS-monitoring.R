@@ -1,6 +1,7 @@
-## NIC60 data:  Monitoring Sparse LTS
-## This file creates Figures 9.8 and 9.9
+## NIC60 data:  monitoring Sparse LTS
+# This file creates Figures 9.8 and 9.9
 ##
+
 library(pracma)     # for tictoc
 library(robustHD)
 library(ggplot2)
@@ -219,3 +220,4 @@ iout <- which(lts$lts.wt==0)
 lm1 <- lm(y[-iout]~x1[-iout,])
 summary(lm1)
 
+#InsideREADME
