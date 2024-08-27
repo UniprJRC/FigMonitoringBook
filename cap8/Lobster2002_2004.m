@@ -39,6 +39,7 @@ prin=0;
 %% Create left panel of Figure 8.8
 
 scatter(X02,y02)
+box on
 xlabel('Quantity (in tons)');
 ylabel('Value (in 1000 Euro)');
 if prin ==1

@@ -37,10 +37,12 @@ airlinesLS(UPpos)=airlinesLS(UPpos)+200;
 %% Create left panel of Figure 8.30
 % figure generation
 figure;
+fs=14;
 plot(airlines,'Linewidth',1.5);
-xlabel('Month index, from 1949 to 1960','FontSize',18);
-ylabel('Thousands of passengers','FontSize',18);
-set(gca,'FontSize',18)
+xlabel('Month index, from 1949 to 1960','FontSize',fs);
+ylabel('Thousands of passengers','FontSize',fs);
+set(gca,'FontSize',fs)
+ylim([100 750])
 if prin ==1
     print -depsc ch8_ts_airline
 else
@@ -48,10 +50,10 @@ else
     title('Figure 8.30 (left panel)')
 end
 
-
 %% Create right panel of Figure 8.30
 figure;
 plot(airlinesLS,'Linewidth',1.5);
+ylim([100 750])
 hold on
 yl = ylim; yaxlim = [yl(1) ; yl(2)];
 line(LSpos*ones(2,1) , yaxlim , 'LineStyle' , ':' , 'LineWidth' , 2 , 'Color' , 'r');
@@ -63,9 +65,9 @@ text(round(median(DOWNpos)) , airlinesLS(round(median(DOWNpos))) , ['-' num2str(
 %text(DOWNpos , airlinesLS(DOWNpos) , ['-' num2str(200)] , 'Color' , 'r','FontSize',12, 'HorizontalAlignment' , 'Center', 'VerticalAlignment','Top');
 %numpar = {'model parameters:' , 'A=1, B=2, G=1, $\delta_1=0$'};
 %title(gca,'Airline data','FontSize',20);
-xlabel('Month index, from 1949 to 1960','FontSize',18);
-ylabel('Thousands of passengers','FontSize',18);
-set(gca,'FontSize',18)
+xlabel('Month index, from 1949 to 1960','FontSize',fs);
+ylabel('Thousands of passengers','FontSize',fs);
+set(gca,'FontSize',fs)
 
 if prin ==1
     print -depsc ch8_ts_airline_LScont
