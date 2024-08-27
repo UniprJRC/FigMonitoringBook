@@ -318,7 +318,7 @@ figure
 n0=250;
 
 FSRBmdr(y,X,beta0, R, tau0, n0,'init',20,'plots',1);
-
+ylabel('Minimum deletion residual')
 if prin ==1
     print -depsc h6.eps
 else
