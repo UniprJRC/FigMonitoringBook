@@ -11,7 +11,7 @@ typespm.lower='circle';
 typespm.upper='circle';
 % What to show in the main diagonal
 dispopt='box';
-% Perosnalized label rotation, maximum label length and ticklabels
+% Personalized label rotation, maximum label length and ticklabels
 plo=struct;
 plo.nameYrot=0;
 plo.TickLabels=[]; 
