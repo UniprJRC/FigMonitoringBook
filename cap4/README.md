@@ -2,7 +2,8 @@
 
 
 ---
-Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), Applied Robust Statistics through the Monitoring Approach, Heidelberg: Springer Nature.
+Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), "Applied Robust Statistics through the Monitoring Approach: 
+Applications in Regression", Heidelberg: Springer Nature.
 
 # Abstract
  This chapter introduces algorithms for the monitoring approach to robust statistical analysis
