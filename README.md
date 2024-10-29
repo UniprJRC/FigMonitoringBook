@@ -54,7 +54,7 @@ $$
     author = {Atkinson, A. C. and Riani, M. and Corbellini, A. and Perrotta, D. and Todorov, V},  
     isbn = {XXX-XXXXXX},   
     publisher = {Heidelberg: Springer Nature},  
-    title = {{Applied Robust Statistics through the Monitoring Approach, Applications in Regression}},  
+    title = {Applied Robust Statistics through the Monitoring Approach, Applications in Regression},  
     year = {2024}  
     }
 
