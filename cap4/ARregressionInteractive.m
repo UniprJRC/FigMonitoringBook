@@ -31,7 +31,7 @@ if prin==1
     print -depsc ARmonbsb30.eps;
     print -depsc ARmonbsb53.eps;
 else
-    sgtitle('Figure similar to 4.12 (it depends on your clicks)')
+    title('Figure similar to 4.12 (it depends on your clicks)')
     set(gcf,"Name",'Figure 4.12')
 
 end
