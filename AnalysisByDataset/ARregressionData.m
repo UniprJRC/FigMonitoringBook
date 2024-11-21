@@ -15,51 +15,55 @@ n=length(y);
 prin=0;
 
 %% Create Figure 3.1
-% outLS=fitlm(X,y);
 yXplot(y,X);
-sgtitle('Figure 3.1')
-set(gcf,"Name",'Figure 3.1')
 
 if prin==1
     % print to postscript
     print -depsc AR1.eps;
+else
+    sgtitle('Figure 3.1')
+    set(gcf,"Name",'Figure 3.1')
+
 end
 
 
-%% Create Figure 3.2
-
+%% Fit based on all the data
 outLS=fitlm(X,y);
 disp('Traditional ANOVA table based on all the observations')
 disp(outLS)
+
+%% Create Figure 3.2: residuals
 figure
 conflev=[0.95 0.99 1-0.05/n];
 yl=3.5;
 h1=subplot(2,1,1);
 resindexplot(outLS.Residuals{:,3},'h',h1,'conflev',conflev,'numlab',{1})
-title('')
+if prin==1
+    title('')
+else
+    title('Studentized residuals')
+end
 ylim([-yl yl])
 h2=subplot(2,1,2);
 resindexplot(outLS.Residuals{:,4},'h',h2,'conflev',conflev,'numlab',{1})
-title('')
+if prin==1
+    title('')
+else
+    title('Deletion residuals')
+end
 ylim([-yl yl])
 
-sgtitle('Figure 3.2')
-set(gcf,"Name",'Figure 3.2')
 
 if prin==1
     % print to postscript
     print -depsc AR2.eps;
+else
+    % sgtitle('Figure 3.2')
+    set(gcf,"Name",'Figure 3.2')
 end
 
-%% ANOVA table after removing 43
-out=fitlm(X,y,'Exclude',43);
-disp('Anova table after deleting unit 43')
-disp(out)
 
-
-
-%% Create Figure 3.3
-% qqplot with envelopes + residuals
+%% Create Figure 3.3: qqplot with envelopes + residuals
 figure
 load('multiple_regression.txt');
 y=multiple_regression(:,4);
@@ -78,12 +82,13 @@ text(outLM.Fitted(sel)+0.5,res(sel),num2str(sel))
 xlabel('Fitted values')
 ylabel('Residuals')
 
-sgtitle('Figure 3.3')
-set(gcf,"Name",'Figure 3.3')
 
 if prin==1
     % print to postscript
     print -depsc AR3.eps;
+else
+sgtitle('Figure 3.3')
+set(gcf,"Name",'Figure 3.3')
 end
 
 
@@ -100,12 +105,13 @@ SizeAxesNum=10;
 outADD=addt(y,X(:,2:3),X(:,1),'plots',1,'units',[9 21 30 31 38 47]','textlab','y','FontSize',fsiztitl,'SizeAxesNum',SizeAxesNum);
 ylim([-2.6 2.6])
 
-sgtitle('Figure 3.4')
-set(gcf,"Name",'Figure 3.4')
 
 if prin==1
     % print to postscript
     print -depsc AR4.eps;
+else
+sgtitle('Figure 3.4')
+set(gcf,"Name",'Figure 3.4')
 end
 
 %% Create Figure 3.5
@@ -114,16 +120,23 @@ figure;
 out43=addt(y,X(:,2:3),X(:,1),'plots',1,'units',43','textlab','y','FontSize',fsiztitl,'SizeAxesNum',SizeAxesNum);
 text(-1.5,-2.3,'43','FontSize',12)
 ylim([-2.6 2.6])
-sgtitle('Figure 3.5')
-set(gcf,"Name",'Figure 3.5')
 
 if prin==1
     % print to postscript
     print -depsc AR5.eps;
+else
+    sgtitle('Figure 3.5')
+set(gcf,"Name",'Figure 3.5')
+
 end
 
-%% Create Figure 3.8 
-% Traditional robust analysis based on S estimators
+%% ANOVA table after removing 43
+out=fitlm(X,y,'Exclude',43);
+disp('Anova table after deleting unit 43')
+disp(out)
+
+
+%% Create Figure 3.8: traditional robust analysis based on S estimators
 % S estimators with 2 values of breakdown point
 
 conflev=[0.95 0.99];
@@ -136,22 +149,25 @@ bdp=0.25;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h1,'conflev',conflev);
 ylabel(['Breakdown point =' num2str(bdp)])
+title('')
 h2=subplot(2,1,2);
 bdp=0.5;
 [out]=Sreg(y,X,'nsamp',3000,'bdp',bdp);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{6});
 ylabel(['Breakdown point =' num2str(bdp)])
+title('')
 
-sgtitle('Figure 3.8')
-set(gcf,"Name",'Figure 3.8')
 
 if prin==1
     % print to postscript
     print -depsc ARtradrobS.eps;
+else
+sgtitle('Figure 3.8')
+set(gcf,"Name",'Figure 3.8')
 end
 
-%% Create Figure 3.9 
-%% MR: (Multiple regression data): MM estimators with 2 values of efficiency
+%% Create Figure 3.9
+% MR: (Multiple regression data): MM estimators with 2 values of efficiency
 
 % MMreg using two different level of efficiency
 conflev=[0.95 0.99];
@@ -164,17 +180,22 @@ eff=0.90;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h1,'conflev',conflev,'numlab',{6});
 ylabel(['Eff.=' num2str(eff)])
+title('')
+
 h2=subplot(2,1,2);
 eff=0.95;
 [out]=MMreg(y,X,'Snsamp',3000,'eff',eff);
 resindexplot(out,'h',h2,'conflev',conflev,'numlab',{4});
 ylabel(['Eff.=' num2str(eff)])
-sgtitle('Figure 3.9')
-set(gcf,"Name",'Figure 3.9')
+title('')
 
 if prin==1
     % print to postscript
     print -depsc ARtradrobMM.eps;
+else
+    sgtitle('Figure 3.9')
+set(gcf,"Name",'Figure 3.9')
+
 end
 
 
@@ -194,7 +215,7 @@ plot(out.Tols(:,1),out.Tols(:,3:end),'LineWidth',3)
 for j=3:5
     tj=['t_' num2str(j-2)];
     text(out.Tols(1,1)-1.2,out.Tols(1,j),tj,'FontSize',16)
-    
+
 end
 
 quant=norminv(0.95);
@@ -204,7 +225,7 @@ line([v(1),v(2)],[quant,quant],'color','g','LineWidth',lwdenv);
 line([v(1),v(2)],[-quant,-quant],'color','g','LineWidth',lwdenv);
 % plot(out.Tols(end-6:end-1,1),out.Tols(end-6:end-1,3),'LineWidth',4,'color','r')
 if showtit==true
-title('Monitoring of t-stat','FontSize',14);
+    title('Monitoring of t-stat','FontSize',14);
 end
 xlabel('Subset size m');
 
@@ -219,7 +240,7 @@ line([v(1),v(2)],[quant,quant],'color','g','LineWidth',lwdenv);
 line([v(1),v(2)],[-quant,-quant],'color','g','LineWidth',lwdenv);
 plot(out.Tols(end-6:end-1,1),out.Tols(end-6:end-1,3),'LineWidth',4,'color','r')
 if showtit==true
-title('Monitoring of t-stat for first variable');
+    title('Monitoring of t-stat for first variable');
 end
 xlabel('Subset size m');
 plot(out.Tols(end-7:end-6,1),out.Tols(end-7:end-6,3),'LineWidth',4,'color','b')
@@ -242,11 +263,40 @@ end
 
 %% Prepare input for Figures 4.16-4.18
 disp('Monitoring S regression estimators')
+disp('PD rho function')
+tStart=tic;
 outPD=Sregeda(y,X,'plots',0,'rhofunc','mdpd','msg',0);
+a=toc(tStart);
+disp(['PD rho function: number of seconds=' num2str(a)])
+disp('---------------------')
+
+disp('Optimal rho function')
+tStart=tic;
 outOPT=Sregeda(y,X,'plots',0,'rhofunc','optimal','covrob',0,'msg',0);
+a=toc(tStart);
+disp(['Optimal rho function: number of seconds=' num2str(a)])
+disp('---------------------')
+
+disp('Hampel rho function')
+tStart=tic;
 outHA=Sregeda(y,X,'plots',0,'rhofunc','hampel','msg',0);
+a=toc(tStart);
+disp(['Hampel rho function: number of seconds=' num2str(a)])
+disp('---------------------')
+
+disp('Hyperbolic rho function')
+tStart=tic;
 outHYP=Sregeda(y,X,'plots',0,'rhofunc','hyperbolic','msg',0);
+a=toc(tStart);
+disp(['Hyperbolic rho function: number of seconds=' num2str(a)])
+disp('---------------------')
+
+disp('Optimal rho function')
+tStart=tic;
 outOPT1=Sregeda(y,X,'plots',0,'rhofunc','optimal','covrob',1,'msg',0);
+a=toc(tStart);
+disp(['Optimal rho function (different cov(b) estimator): number of seconds=' num2str(a)])
+disp('---------------------')
 
 fground=struct;
 sel=[ 9 21 30 31 38 47    3 11 14 24 27 36 42 50 43  7 39 ]';
@@ -304,10 +354,10 @@ nsamp=20000;
 RESLMS=zeros(n,length(bdp));
 
 for j=1:length(bdp)
-% Store LTS residuals
+    % Store LTS residuals
     [out]=LXS(y,X,'lms',2,'bdp',bdp(j),'nsamp',nsamp);
     RESLTS(:,j)=out.residuals;
-    
+
     % Store LMS residuals
     [outLMS]=LXS(y,X,'bdp',bdp(j),'nsamp',nsamp);
     RESLMS(:,j)=outLMS.residuals;

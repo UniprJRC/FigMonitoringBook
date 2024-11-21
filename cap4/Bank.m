@@ -80,7 +80,7 @@ rhofunc='bisquare';
 outsTB=Sregeda(y,X,'rhofunc',rhofunc,'msg',true);
 
 rhofunc='mdpd';
-outsPD=Sregeda(y,X,'rhofunc',rhofunc,'msg',false);
+outsPD=Sregeda(y,X,'rhofunc',rhofunc,'msg',true);
 
 sel=Un6Largest';
 fground=struct;
@@ -99,7 +99,7 @@ if prin==1
     print -depsc  BDSresTB.eps
 else
     sgtitle('Figure 4.37')
-    set(gcf,"Name",'Figure 4.37')
+    set(gcf,"Name",'Figure 4.37 (TB residuals)')
 end
 
 %% Create Figure 4.38
@@ -107,7 +107,7 @@ resfwdplot(outsPD,'fground',fground,'bground','','corres',true,'tag','plresPD');
 if prin ==1
     print -depsc  BDSresPD.eps
 else
-    sgtitle('Figure 4.38')
+    sgtitle('Figure 4.38 (PD residuals)')
     set(gcf,"Name",'Figure 4.38')
 end
 
@@ -119,7 +119,7 @@ if prin==1
     % print to postscript
     print -depsc figs\StstatBD.eps;
 else
-    sgtitle('Figure 4.39')
+    sgtitle('Figure 4.39 (same scale for all plots)')
     set(gcf,"Name",'Figure 4.39')
 end
 
