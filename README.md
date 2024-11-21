@@ -1,4 +1,4 @@
-# Applied Robust Statistics through the Monitoring Approach
+# Applied Robust Statistics through the Monitoring Approach: Applications in Regression
 GitHub repo of the forthcoming book "Applied Robust Statistics through the Monitoring Approach: 
 Applications in Regression" Heidelberg: Springer Nature. by 
 Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2024), 
@@ -54,7 +54,7 @@ $$
     author = {Atkinson, A. C. and Riani, M. and Corbellini, A. and Perrotta, D. and Todorov, V},  
     isbn = {XXX-XXXXXX},   
     publisher = {Heidelberg: Springer Nature},  
-    title = {{Applied Robust Statistics through the Monitoring Approach}},  
+    title = {Applied Robust Statistics through the Monitoring Approach, Applications in Regression},  
     year = {2024}  
     }
 

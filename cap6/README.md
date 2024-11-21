@@ -2,7 +2,8 @@
 
 
 ---
-Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2023), Applied Robust Statistics through the Monitoring Approach, Heidelberg: Springer Nature.
+Atkinson,A.C., Riani,M., Corbellini,A., Perrotta D., and Todorov,V. (2023), "Applied Robust Statistics through the Monitoring Approach: 
+Applications in Regression", Heidelberg: Springer Nature.
 
 # Abstract
 For observations from a known distribution, the variance stabilizing transformation yields approximately normally distributed transformed variables. For data, the Box-Cox family of power transformations, indexed by a parameter $\lambda$, provides a widely applicable method for transformation of positive response data to approximate normality. The chapter describes procedures for making the transformation robust and extending the robustness to more general problems.
