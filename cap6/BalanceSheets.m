@@ -9,6 +9,7 @@ X=XX(:,1:5);
 prin=0;
 p=size(X,2)+1;
 n=length(y);
+% yXplot(y,X)
 
 %% Create Figure 6.12 (top panel)
 ylimy=20;
