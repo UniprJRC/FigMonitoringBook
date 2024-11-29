@@ -20,6 +20,8 @@ y=Xytable{:,end};
 ytra=sqrt(y);
 n=length(y);
 
+% yXplot(Xytable(:,end),Xytable(:,1:end-1))
+
 %% Figure 10.22 yXplot (Created not interactively)
 group=ones(n,1);
 group([7:9 13 17 21 22 41])=2;
@@ -120,8 +122,35 @@ drawnow
 %%  Create Figure 10.26
 % Not clear what is the best transformation
 outFSRfan=FSRfan(y,X);
-fanplotFS(outFSRfan,'highlight',out.outliers, ...
-    'xlimx',[30 n+100],'ylimy',[-8 35]);
+%{
+ fanplotFS(outFSRfan,'highlight',out.outliers, ...
+     'xlimx',[30 n+100],'ylimy',[-8 35]);
+%}
+
+% Find best automatic value of lambda is 0.5
+outBIC=fanBIC(outFSRfan,'plots',1);
+if prin==1
+    % print to postscript
+    print -depsc figs\transf2.eps;
+end
+
+% Units highlighting in the different trajectories using fanBIC
+Highl=NaN(1000,5);
+la=[-1 -0.5 0 0.5 1];
+seq=1:n;
+for j=1:length(la)
+    
+    oultlj=seq(outBIC.BBla(:,j)<2);
+    Highl(1:length(oultlj),j)=oultlj;
+end
+
+fanplot(outFSRfan,'highlight',Highl,'ylimy',[-8 35])
+title('')
+
+if prin==1
+    % print to postscript
+    print -depsc figs\transf1.eps;
+end
 
 if prin==1
     % print to postscript
@@ -212,7 +241,7 @@ pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
 if prin==1
     % print to postscript
-    print -depsc figs\AV1.eps;
+    print -depsc AV1.eps;
 else
     sgtitle('Figure 10.30')
     set(gcf,"Name",'Figure 10.30')
@@ -243,13 +272,13 @@ outMS=avasms(y,X,'plots',0);
 j=1;
 outj=outMS{j,"Out"};
 outrobAV=outj{:};
-aceplot(outrobAV,'VarNames',nameX,'notitle',true)
+aceplot(outrobAV,'VarNames',nameXy,'notitle',true)
 
 pl_ty=findobj(0, 'type', 'figure','tag','pl_ty');
 figure(pl_ty(1))
 if prin==1
     % print to postscript
-    print -depsc figs\AV3.eps;
+    print -depsc AV3.eps;
 else
     sgtitle('Figure 10.32')
     set(gcf,"Name",'Figure 10.32')
@@ -340,6 +369,10 @@ outFinal=FSR(outrobAV.ty,outrobAV.tX,'plots',0);
 [outLXSav]=LXS(outrobAV.ty,outrobAV.tX,'nsamp',10000,'lms',2);
 % Forward Search
 [outFS]=FSReda(outrobAV.ty,outrobAV.tX,outLXSav.bs);
+
+
+mdlRAVASFSR=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outFinal.outliers,'VarNames',nameXy);
+
 
 %% Create Figure 10.36
 % Options for the trajectories in foreground
