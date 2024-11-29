@@ -42,8 +42,16 @@ drawnow
 %% Prepare input for Figures 4.28 and 4.29
 % Sregeda with PD link
 disp('Monitoring S estimators')
+tStart=tic;
 outPD=Sregeda(y,X,'plots',0,'rhofunc','mdpd','msg',0);
+a=toc(tStart);
+disp(['PD rho function: number of seconds=' num2str(a)])
+disp('---------------------')
+tStart=tic;
 outTB=Sregeda(y,X,'plots',0,'rhofunc','bisquare','msg',0);
+a=toc(tStart);
+disp(['TB rho function: number of seconds=' num2str(a)])
+disp('---------------------')
 
 %% Create Figure 28 left panel
 resfwdplot(outTB,'tag','pl_TBori','datatooltip','');
@@ -54,7 +62,7 @@ if prin==1
     % print to postscript
     print -depsc HDtblink.eps
 else
-    title('Figure 4.28 (left panel)')
+    title('Figure 4.28 (left panel): TB rho function')
     set(gcf,"Name",'Figure 4.28 (left panel)')
 end
 
@@ -67,7 +75,7 @@ if prin==1
     % print to postscript
     print -depsc HDpdlink.eps
 else
-    title('Figure 4.28 (right panel)')
+    title('Figure 4.28 (right panel): PD rho function')
     set(gcf,"Name",'Figure 4.28 (right panel)')
 end
 
@@ -81,7 +89,7 @@ if prin==1
     % print to postscript
     print -depsc HDtblinkZ.eps
 else
-    title('Figure 4.29 (left panel)')
+    title('Figure 4.29 (left panel): TB rho function ZOOM')
     set(gcf,"Name",'Figure 4.28 (left panel)')
 
 end
@@ -94,7 +102,7 @@ ylim([-yl yl])
 if prin==1
     print -depsc HDpdlinkZ.eps;
 else
-    title('Figure 4.29 (right panel)')
+    title('Figure 4.29 (right panel): PD rho function ZOOM')
     set(gcf,"Name",'Figure 4.29 (right panel)')
 end
 
