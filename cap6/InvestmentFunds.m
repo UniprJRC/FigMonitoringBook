@@ -2,15 +2,15 @@
 % This file creates Figures 6.8-6.11 and Table 6.1.
 
 %% Beginning of code
-FondiInv=load('fondi_large.txt');
+load fondi_large.mat
 
-y=FondiInv(:,2);
-X=FondiInv(:,[1 3]);
+y=fondi_large{:,2};
+X=fondi_large{:,[1 3]};
 n=length(y);
 prin=0;
 
 %%  Create Figure 6.8
-% yXplot
+% yXplot(fondi_large(:,2),fondi_large(:,[1 3]),'tag','ori')
 
 booneg=y<0;
 seq=1:length(y);
