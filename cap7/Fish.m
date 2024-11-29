@@ -14,6 +14,12 @@ sel=categorical(fish{:,1})~='Pike';
 y=fish{sel,2};
 X=fish{sel,3:5};
 
+%{
+yt=fish(sel,2);
+Xt=fish(sel,3:5);
+yXplot(yt,Xt)
+%}
+
 %% Prepare input for Figure 7.16  and Figure 7.17
 % automatic model selection (a monotonicity constraint
 % on the transformation of the regressors is imposed)
