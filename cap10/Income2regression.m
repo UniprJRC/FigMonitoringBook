@@ -136,6 +136,8 @@ title('')
 
 % Plot residuals excluding outl
 mdl=fitlm(X,ytra,'Exclude',outf.outliers);
+disp('ANOVA in the transformed scale (outliers excluded)')
+disp(mdl)
 h2=subplot(nr,nc,2);
 good=setdiff(1:n,outf.outliers);
 Xg=X(good,:);
@@ -190,7 +192,7 @@ end
 
 %% Create Table 10.3
 disp("Table 10.3")
-disp('ANOVA in the transformed scale using all obs')
+disp('ANOVA in the transformed scale (excluding the outliers)')
 mdlyOutRemoved=fitlm(X,ytra,'Exclude',outf.outliers);
 disp(mdlyOutRemoved)
 
