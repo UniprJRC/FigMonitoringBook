@@ -1,12 +1,13 @@
 %% Surgical Unit data.
 % This file creates Figure 6.1.
 
-%% Preapare input for Figure 6.1
+%% Prepare input for Figure 6.1
 close all;
 clearvars;
 load('hospitalFS.txt');
 y=exp(hospitalFS(:,5));
 X=hospitalFS(:,1:4);
+% yXplot(y,X)
 
 n=length(y);
 prin=0;
