@@ -18,7 +18,7 @@ res=mtR(n,1,negstate);
 y = log(4 + sin(3*X1) + abs(X2) + X3.^2 + X4 + .1*res );
 X = [X1 X2 X3 X4];
 y([121 80 34 188 137 110 79 86 1])=1.9+randn(9,1)*0.01;
-
+% yXplot(y,X)
 
 %% Prepare input for Figure 7.13
 % automatic model selection
