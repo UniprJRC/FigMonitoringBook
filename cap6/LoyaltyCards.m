@@ -4,14 +4,16 @@
 
 
 %% LD (Loyalty cards data)
-load('loyalty.txt');
-y=loyalty(:,4); %#ok<SUSENS>
-X=loyalty(:,1:3);
+load loyalty.mat
+y=loyalty{:,4}; %#ok<SUSENS>
+X=loyalty{:,1:3};
 n=length(y);
 prin=0;
 
+% Initial yXplot
+% yXplot(loyalty(:,end),loyalty(:,1:end-1));
+
 %% Prepare input for Figure 6.2
-%la=[-1:0.1:1];
 la=0:0.1:1;
 [outFSRfan]=FSRfan(y,X,'plots',1,'init',round(n*0.3),'nsamp',10000,'la',la,'msg',0);
 
