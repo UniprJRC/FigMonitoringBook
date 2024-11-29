@@ -20,7 +20,6 @@ n=length(y);
 one=ones(n,1);
 
 close all
-FontSize=14;
 
 
 %% Create Figure 10.1: yX plot
@@ -47,7 +46,7 @@ set(gcf,"Name",'Figure not in the book')
 
 
 %%  Figure 10.2 left panel: analysis using a finer grid of values of lambda
-outFSRfan=FSRfan(y,X,'la',[0 0.25  0.5 0.75 1],'plots',1,'tag','best la steps of 0.25');
+outFSRfan=FSRfan(y,X,'la',[0 0.25  0.5 0.75 1],'plots',1,'tag','best la steps of 0.25','nsamp',20000);
 
 if prin==1
     % print to postscript
@@ -92,15 +91,23 @@ mdl=fitlm(X,y);
 res=mdl.Residuals{:,3};
 qqplotFS(res,'X',X,'plots',1,'h',h1,'conflev',0.95);
 % title('qqplot of stud. res.')
-title('')
+if prin==1
+    title('')
+else
+    title('Original data')
+end
+
 
 h2=subplot(nr,nc,2);
 mdlytra=fitlm(X,ytra);
 res=mdlytra.Residuals{:,3};
 qqplotFS(res,'X',X,'plots',1,'h',h2,'conflev',0.95);
 % title('qqplot of stud. res.')
-title('')
-
+if prin==1
+    title('')
+else
+    title('Square-root transformed data')
+end
 
 % Plot residuals
 h3=subplot(nr,nc,3);
@@ -111,7 +118,12 @@ yg=ytra(good);
 resg=mdlytraExcludeOutliers.Residuals{good,3};
 qqplotFS(resg,'X',Xg,'plots',1,'h',h3,'conflev',0.99);
 
-title('')
+if prin==1
+    title('')
+else
+    title('Square-root transformed data (outliers removed)')
+end
+
 
 if prin==1
     % print to postscript
