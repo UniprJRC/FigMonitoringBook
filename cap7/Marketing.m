@@ -9,6 +9,7 @@ load('Marketing_Data')
 y=Marketing_Data{:,4};
 X=Marketing_Data{:,1:3};
 prin=0;
+% yXplot(Marketing_Data(:,4),Marketing_Data(:,1:3))
 
 %% Preliminary analysis
 % Fit regression model based on the original data
