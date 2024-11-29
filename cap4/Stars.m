@@ -20,7 +20,7 @@ set(gca,'XDir','reverse');
 plot(X,y,'o','MarkerFaceColor','black')
 set(gca,'FontSize',12)
 
-xlabel('Log temperature)')
+xlabel('Log temperature')
 ylabel('Log light intensity')
 if prin==1
     print -depsc fig4:STsca.eps
