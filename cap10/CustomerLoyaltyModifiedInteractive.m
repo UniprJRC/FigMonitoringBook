@@ -5,6 +5,7 @@
 %% Data loading
 close all
 clear
+prin=0;
 load ConsLoyaltyRet.mat
 Xytable=ConsLoyaltyRet(:,2:end);
 nameXy=Xytable.Properties.VariableNames;
