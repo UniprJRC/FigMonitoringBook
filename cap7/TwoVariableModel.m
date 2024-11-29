@@ -10,7 +10,7 @@ X=[x1 x2];
 y = 10*(1+sin(x1)+ exp(x2)) + 0.5*(randn(n,1)-0.5);
 y=y.^3;
 prin=0;
-
+% yXplot(y,X);
 
 %% Two variable model: create Figure 7.6
 % All options initially set to false
