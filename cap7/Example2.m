@@ -12,6 +12,7 @@ y([90,100,105:110]) = 1;
 X=[x1 X24];
 y=exp(y);
 prin=0;
+% yXplot(y,X)
 
 %% Example 2: automatic model selection create figure 7.10
 [VALtfin,~]=avasms(y,X);
