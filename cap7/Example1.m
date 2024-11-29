@@ -10,6 +10,7 @@ y = sin(x) + 0.5*(rand(size(x))-0.5);
 y([100,105:110]) = 1;
 y=exp(y);
 prin=0;
+% scatter(x,y)
 
 %% Create Figure 7.4 (non robust analysis, no option)
 % Standard non-robust analysis without options.
