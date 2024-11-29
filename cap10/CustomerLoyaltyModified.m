@@ -22,6 +22,12 @@ y(ss)=y(ss)-kk;
 Xytable{ss,end}= Xytable{ss,end}-kk;
 prin=0;
 
+%{
+group=ones(n,1);
+group(ss)=2;
+yXplot(Xytable(:,end),Xytable(:,1:end-1),'group',group)
+%}
+
 %% Create Table 10.7
 % Standard regression with all variables
 mdl=fitlm(Xytable);
@@ -56,7 +62,7 @@ drawnow
 % Forward Search
 [out]=FSReda(y,X,outLXS.bs);
 
-resfwdplot(out,'datatooltip','')
+resfwdplot(out,'datatooltip',1)
 if prin==1
     % print to postscript
     print -depsc figs\modCL5.eps;
@@ -148,7 +154,7 @@ drawnow
 
 %% Prepare the input for Figure 10.45
 % avas model selection with no constraint in X
-disp('Note that automatic model selection in this case might more than one minute')
+disp('Note that automatic model selection in this case might take more than one minute')
 outMS=avasms(y,X,'plots',0);
 % avasmsplot(outMS)
 
