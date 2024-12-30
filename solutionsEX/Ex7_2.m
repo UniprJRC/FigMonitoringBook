@@ -6,15 +6,15 @@
 load InvFundsExt.mat
 y=InvFundsExt{:,end};
 X=InvFundsExt{:,[1 2]};
-
+prin=0;
 yXplot(y,X)
 legend off
 
 if prin==1
     print -depsc NPyXplot.eps
 else
-    title('Figure A.35')
-    set(gcf,"Name",'Figure A.35')
+    sgtitle('Figure not shown in the book')
+    set(gcf,"Name",'Figure not shown in the book')
 end
 
 
@@ -125,7 +125,7 @@ Xg=X(sel,:);
 group=repelem("Good units",n,1);
 group(outliers)="Outliers";
 group=cellstr(group);
-yXplot(ytra,X,group,'tag','pl_ytra');
+yXplot(ytra,X,'group',group,'tag','pl_ytra');
 
 if prin==1
     % print to postscript

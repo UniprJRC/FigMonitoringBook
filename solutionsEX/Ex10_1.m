@@ -6,20 +6,30 @@
 Y=load('ms212.txt');
 y=Y(:,10)-Y(:,9);
 n=length(y);
+prin=0;
+
+% Find the 4 largest frequencies.
+TA=tabulateFS(y);
+TAsor=sortrows(TA,2,'descend');
+disp('4 highest frequemcies')
+disp(TAsor(1:4,:))
 
 Gender=dummyvar(Y(:,4));
 Smoke=dummyvar(Y(:,5));
 Alcohol=dummyvar(Y(:,6));
-Exercise=dummyvar(Y(:,7));
-Run=dummyvar(Y(:,8));
+Exercise=dummyvar(Y(:,7)); % 3 levels factor Frequency of exercise (1 = high, 2 = moderate, 3 = low)
+Run=dummyvar(Y(:,8)); % Indicator for running or sitting
 
 X=[Y(:,1:3) Gender(:,1:end-1)  Smoke(:,1:end-1) Alcohol(:,1:end-1) Exercise(:,1:end-1) Run(:,1:end-1)];
+
+%% Variable selection
+disp('Output from variable selection (original scale)')
+disp(stepwiselm(X,y))
 
 %% Create left panel of Figure A.67
 la=[0.5 0.6 0.7 0.8];
 out=FSRfan(y,X,'family','YJ','plots',1,'init',round(n/2),'la',la,'tag','plini');
 title('')
-prin=0;
 if prin==1
     % print to postscript
     print -depsc x1L.eps;
@@ -43,12 +53,17 @@ else
     set(gcf,"Name",'Figure A.67 (right panel)')
 end
 
+%% Transform the response
+la=0.7;
+ytra=normYJ(y,[],la,'inverse',false);
+
+%% Variable selection in the transformed space
+disp('Output from variable selection (transformed scale)')
+disp(stepwiselm(X,ytra))
 
 
 %% Create Figure A.68
 figure
-la=0.7;
-ytra=normYJ(y,[],la,'inverse',false);
 
 h1=subplot(2,2,1);
 outlmori=fitlm(X(:,9),y);
@@ -85,6 +100,16 @@ else
     set(gcf,"Name",'Figure A.69')
 end
 
+%% FS on the original and transformed scale
+outORI=FSR(y,X,'plots',0,'msg',0);
+disp('Number of outliers detected by FS in the orginal scale')
+disp(length(outORI.outliers))
+
+outTRA=FSR(ytra,X(:,9),'plots',0,'msg',0); % ,'nsamp',300000);
+disp('Number of outliers detected by FS in the transformed scale')
+disp(outTRA.outliers)
+disp('Last observation to enter the search in the transformed scale')
+disp(outTRA.Un(end,1:2))
 
 
 %% Create Figure A.70
