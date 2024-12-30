@@ -31,8 +31,8 @@ load wsctsub.mat
 updatedValuestyhatTfalse=ctsub(yhatord,v,oldValuestyhat,false);
 updatedValuestyhatTtrue=ctsub(yhatord,v,oldValuestyhat,true);
 
-names=["Old values tyhat" "Updated values tyhat trapeziod=false" ...
-    "Updated values tyhat trapeziod=true"];
+names=["Old values tyhat" "Updated values tyhat trapezoid=false" ...
+    "Updated values tyhat trapezoid=true"];
 oldAndNew=[oldValuestyhat updatedValuestyhatTfalse updatedValuestyhatTtrue];
 oldAndNewT=array2table(oldAndNew,"VariableNames",names);
 disp('Table A.17')

@@ -72,7 +72,7 @@ Xytable1{:,end}=-Xytable1{:,end}.^labest;
 %% Create Table A.23
 % Variable selection in the transformed scale
 mdlVS=stepwiselm(Xytable1,'CategoricalVars','origin','Upper','linear');
-disp('Table A.23')
+disp('Table A.23: ANOVA in the transformed scale dor y after var. selection')
 disp(mdlVS)
 
 %% Create Figure A.78
@@ -90,7 +90,7 @@ else
 end
 drawnow
 
-%% Figures A.79 and A.80 are create by file Ex10_4Interactive.m
+%% Figures A.79 and A.80 are created by file Ex10_4Interactive.m
 
 
 %% Monitoring of residuals FSReda and brushing
@@ -148,17 +148,17 @@ end
 Xtra=outrobAV.tX;
 ytraAV=outrobAV.ty;
 % exclude the outliers
-disp('Table A.23')
+disp('Table A.24: ANOVA in the transformed RAVAS scale')
 outRAVAS=fitlm(Xtra,ytraAV,'Exclude',outrobAV.outliers,'VarNames',nameXycat);
 disp(outRAVAS)
 
 %% Create Figure A.83
 % FSRaddt in RAVAS scale
 % Use just the quantitative variables
-outADD=FSRaddt(ytraAV,Xtra,'plots',1,'DataVars',1:6);
+outADD=FSRaddt(ytraAV,Xtra,'plots',0,'DataVars',1:6);
 
 fanplotFS(outADD,'highlight',outrobAV.outliers,'ylimy',[-4 19], ...
-    'xlimx',[80 410]);
+    'xlimx',[80 410],'tag','pl_RAVAS');
 title('')
 
 

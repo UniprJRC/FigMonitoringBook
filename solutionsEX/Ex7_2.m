@@ -1,6 +1,6 @@
 %% Augmented Investment Funds data.
 %
-% This file creates Figure A.36-A.43 and Table A.17
+% This file creates Figure A.36-A.43 and Tables A.18-A.19
 
 %% Initial part
 load InvFundsExt.mat
@@ -301,7 +301,7 @@ else
 end
 
 %% Create Table A.19
-disp('Table A.19: ANOVA in the transformed RAVAS scale')
+disp('Table A.19: ANOVA in the transformed RAVAS scale for y')
 outF=fitlm(outrobAV.tX,outrobAV.ty,'Exclude',outrobAV.outliers,'VarNames',nameXy);
 disp(outF)
 
