@@ -18,8 +18,16 @@ if prin==1
     print -depsc ctsubxy.eps;
 end
 
-%% Create Table A.17
+%% Find initial values of ty hat (old values tyhat)
 oldValuestyhat=(y-mean(y))/std(y,1);
+
+%% Load the requested data (table 7.1)
+% v =  reciprocal of smoothed residuals (second column of Table 7.1)
+% yhatord = sorted fitted values (first column of Table 7.1)
+load wsctsub.mat
+
+
+%% Create Table A.17
 updatedValuestyhatTfalse=ctsub(yhatord,v,oldValuestyhat,false);
 updatedValuestyhatTtrue=ctsub(yhatord,v,oldValuestyhat,true);
 
@@ -32,9 +40,6 @@ disp(oldAndNewT)
 
 
 %% Create Figure A.35
-% load v=  reciprocal of smoothed residuals
-% load yhatord = sorted fitted values
-load wsctsub.mat
 
 plot(yhatord,v,'LineWidth',2)
 hold('on')
