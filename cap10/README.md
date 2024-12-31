@@ -10,6 +10,20 @@ In this last chapter, we exhibit the power of the methods described earlier, by 
 With only seven explanatory variables, we monitor LS diagnostics, detect outliers and  apply RAVAS, which gives the best fitting model. The generalized candlestick plot provides further model selection. 
 
 
+# YouTube videos  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" width="100">
+
+[Analysis of the Income data 1 (Section 10.2)](https://youtu.be/wj3k2-Ca-f4)
+
+[Analysis of the Income data 2 (Section 10.3)](https://youtu.be/6EF3Nk1yzTE)
+
+[Analysis of the customer loyalty data (Section 10.4)](https://youtu.be/0mVbMqh99_4)
+
+[Analysis of the modified customer loyalty data (Section 10.5)](https://youtu.be/YT8exrmVpdg)
+
+<a href="https://youtu.be/YT8exrmVpdg" target="_blank">Analysis of the modified customer loyalty data (Section 10.5)</a>
+
+<hr>
+
 # Code to reproduce Figures and Tables in this Chapter
 
 
