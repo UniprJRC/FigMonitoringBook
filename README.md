@@ -15,7 +15,7 @@ All the README.m files in each Chapter have been automatically created
 by FSDA function [[m2ipynb](http://rosa.unipr.it/FSDA/m2ipynb.html)]   
 
 
-# Table of Contents and Code Notebooks
+# Table of Contents and Code Notebooks <a href="https://www.youtube.com/watch?v=kdJGzdDx4fg"> <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" width="100"></a>
 <br>
 
 1. Introduction and the Grand Plan  [[open dir](cap1/README.md)]  
