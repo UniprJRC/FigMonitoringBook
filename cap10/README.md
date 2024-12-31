@@ -20,7 +20,6 @@ With only seven explanatory variables, we monitor LS diagnostics, detect outlier
 
 [Analysis of the modified customer loyalty data (Section 10.5)](https://youtu.be/YT8exrmVpdg)
 
-<a href="https://youtu.be/YT8exrmVpdg" target="_blank">Analysis of the modified customer loyalty data (Section 10.5)</a>
 
 <hr>
 
