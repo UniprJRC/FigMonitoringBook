@@ -16,9 +16,8 @@ disp(Mea)
 
 %% Prepare the input data for Figure 1.1
 % Repeat the previous simulation study for each value of nn=5, 6, ..., 100
-nsimul=1000000;
+nsimul=10000; % Use nsimul=1000000 for greater precision
 nn=5:100;
-% nn=100; just n=100
 maxnn=nn(end);
 minnn=nn(1);
 MADall=NaN(maxnn-minnn+1,1);
@@ -27,7 +26,6 @@ for i=nn
     MAD=zeros(nsimul,1);
 
     parfor j=1:nsimul
-        % x=randn(i,1);
         MAD(j)=mad(randn(i,1),1);
     end
     Mea=mean(MAD);

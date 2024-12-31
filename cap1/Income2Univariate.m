@@ -17,7 +17,6 @@ Xytable=Income2;
 
 n=length(y);
 one=ones(n,1);
-% prin =
 prin=0;
 
 %% Create Table 1.3
@@ -86,6 +85,7 @@ rn=["Mean" "Trimmed mean" "Median" "Standard Deviation" "MADN"];
 vn=["Original data" "Inverse transf" "la=-1.5"];
 LOCt=array2table(LOC,'RowNames',rn,'VariableNames',vn);
 format bank
+disp('Table 1.4')
 disp(LOCt)
 
 
