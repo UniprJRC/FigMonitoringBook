@@ -235,7 +235,7 @@ drawnow
 % of beta and sigma2
 % init = point to start monitoring diagnostics along the FS
 init=80;
-[outLXS]=LXS(y,X,'nsamp',50000);
+[outLXS]=LXS(y,X,'nsamp',100000);
 outEDA=FSReda(y,X,outLXS.bs,'conflev',[0.95 0.99],'init',init);
 p=size(X,2)+1;
 % Set font size, line width and line style
@@ -245,7 +245,7 @@ FontSize=14;
 linst={'-','--',':','-.','--',':'};
 nr=3;
 nc=2;
-xlimL=init; % lower value fo xlim
+xlimL=250; % lower value fo xlim
 xlimU=n+1;  % upper value of xlim
 for j=1:p
     subplot(nr,nc,j);

@@ -10,9 +10,11 @@ For observations from a known distribution, the variance stabilizing transformat
   An approximate score test for the null value  $\lambda_0$ is developed in section 6.1.2. A significant value leads to rejection of the value $\lambda_0$. Using the FS to monitor the score test for a set of values of $\lambda_0$ leads in section 6.1.3 to the "Fan Plot". This reveals the effect of outliers on the estimated transformation and so to the deletion of outliers and selection of a value of $\lambda$ for further data analysis. Section 6.2 develops related procedures (the extended Yeo-Johnson transformation) for data which can be positive or negative.
 The approach is visual, being based on the interpretation of fan plots. Section 6.3 provides an automatic procedure for estimating these transformations  using quantities calculated from fan plots.  Transformation procedures  when the responses are proportions or percentages follow, as well as transformations of both sides of a statistical model.
 
-# You Tube Video for this Chapter
+# YouTube videos  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" width="100">
 
-[Summary of the contents of Chapter 6](https://youtu.be/KOPYSeNgKPM)
+[Parametric transformation of the response](https://youtu.be/KOPYSeNgKPM)
+
+
 
 # Code to reproduce Figures and Tables in this Chapter
 

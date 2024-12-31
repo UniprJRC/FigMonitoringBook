@@ -18,7 +18,7 @@ Applications in Regression", Heidelberg: Springer Nature.
 
 [Analysis of Hawkins data (Section 4.9.4)](https://youtu.be/Aj6-3Qyr36E)
 
-[Regression outlier detection with FS (Section 4.3-4.5 and 4.9.5)](https://youtu.be/MMPVy7G41T8)
+[Regression outlier detection with FS (Sections 4.1-4.5 and 4.9.5)](https://youtu.be/MMPVy7G41T8)
 
 
 
