@@ -10,6 +10,20 @@ Applications in Regression", Heidelberg: Springer Nature.
  and compares their performance in the analyses of several sets of data. The Forward Search (FS) is introduced in section 4.1. This algorithm fits subsets of the data of increasing size in such a way that the most outlying observations are included towards the end of the search. To monitor other forms of robust regression,  we estimate the parameters using, typically, a grid of 50 values of *bdp* or *eff*.  Monitoring plots of residuals, parameter estimates and $t$-tests from very robust regression to LS are introduced in section 4.6; these plots are enriched by brushing and linking to other plots. Frequently, the plots from monitoring residuals show an abrupt change from robust to LS analyses. In section 4.7 we introduce the empirical *bdp* defining the most efficient robust estimator for each dataset, thus overcoming the arbitrariness of the conventional approach to robust statistics.  Many examples are given in section 4.9 for a variety of estimators.
  The chapter concludes in section 4.11 with a generalized Bayesian Information Criterion (BIC) for model choice which, via the mean shift outlier model, makes it possible to compare models in which different numbers of observations have been deleted. 
 
+# YouTube videos  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" width="100">
+
+[Analysis of Bank data (Section 4.10)](https://youtu.be/z-cCFCYiwpU)
+
+[Analysis of AR regression data (Sections 3.5, 3.13 and 4.9.3)](https://youtu.be/X_P8bQABQrw)
+
+[Analysis of Hawkins data (Section 4.9.4)](https://youtu.be/Aj6-3Qyr36E)
+
+[Regression outlier detection with FS (Section 4.3-4.5 and 4.9.5)](https://youtu.be/MMPVy7G41T8)
+
+
+
+<hr>
+
 # Code to reproduce Figures and Tables in this Chapter
 
 
