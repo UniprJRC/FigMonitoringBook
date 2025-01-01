@@ -3,7 +3,7 @@
 % This file creates Figures 4.1-4.4, 4.9-4.11
 
 %% Beginning of code
-clearvars;
+clear
 close all;
 prin=0;
 stars=load('stars.txt');
@@ -47,6 +47,7 @@ if prin==1
 else
     title('Figure 4.2')
     set(gcf,"Name",'Figure 4.2')
+    set(gcf, 'WindowStyle', 'docked');
 end
 
 %% Create Figure 4.3

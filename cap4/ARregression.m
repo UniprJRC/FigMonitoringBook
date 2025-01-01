@@ -3,6 +3,7 @@
 
 %% Data loading
 close all;
+clear
 load('multiple_regression.txt');
 y=multiple_regression(:,4);
 X=multiple_regression(:,1:3);

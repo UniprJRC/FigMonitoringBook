@@ -27,7 +27,7 @@ end
 out=FSR(y,X,'plots',0);
 seq=1:n;
 goodOBS=setdiff(seq,out.ListOut);
-yXplot(y(goodOBS),X(goodOBS,:),'tag','pl_goodobs')
+yXplot(y(goodOBS),X(goodOBS,:),'tag','pl_goodobs');
 
 if prin==1
     % print to postscript
